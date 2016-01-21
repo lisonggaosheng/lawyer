@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="conExpress" extends="struts-default">
+		
+		<action name="insertConExpress" class="conExpressAction" method="insert">
+			<result type="redirectAction">
+				 <param name="actionName">/lawyer/selectCourtById?court.casecodeself=${contactExpress.ceCasecodeself}&amp;court.caseId=${caseId}</param> 
+				 <param name="namespace"></param> 
+			 </result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="selectConExpress" class="conExpressAction" method="selectConExpress">
+			<result name="success">/user/source/selectContactEms.jsp</result>
+		</action>
+	</package>
+</struts>    
+

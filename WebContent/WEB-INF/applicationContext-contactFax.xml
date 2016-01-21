@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- dao层 -->
+	<bean id="conFaxDao" class="com.lawyer.dao.impl.ContactFaxDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- service层 -->
+	<bean id="conFaxService" class="com.lawyer.service.impl.ContactFaxServiceImpl">
+		<property name="contactFaxDao">
+			<ref bean="conFaxDao" />
+		</property>
+	</bean>
+
+	<!-- action -->
+	<bean id="conFaxAction" class="com.lawyer.action.ContactFaxAction" scope="prototype">
+		<property name="cfs" >
+			<ref bean="conFaxService" />
+			
+		</property>
+		<property name="filesService" ref="filesServiceImpl"/>
+	</bean>
+
+
+
+
+</beans>

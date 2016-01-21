@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="clearRecord" extends="struts-default" namespace="/">
+		<action name="seniorSelect" class="clearRecordAction" method="seniorSelect">
+			<result>/user/lawCase/seniorSelectResult.jsp</result>
+		</action>
+		<action name="selectCourts" class="clearRecordAction" method="selectCourts">
+			<result>/user/lawCase/selectclear.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		<action name="searchCourtsByname" class="clearRecordAction" method="searchCourtsByname">
+			<result>/user/lawCase/selectclear.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+			
+		<action name="selectDetal" class="clearRecordAction" method="selectDetal">
+			<result>/user/lawCase/selectcleardetal.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="showclearrecord" class="clearRecordAction" method="showclearrecord">
+			<result name="success">/user/lawCase/insertclearrecord.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="showclearclear" class="clearRecordAction" method="showclearclear">
+			<result name="success">/user/lawCase/insertclearclear.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="showlitigation" class="clearRecordAction" method="showlitigation">
+			<result name="success">/user/lawCase/insertlitigation.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="showexecute" class="clearRecordAction" method="showexecute">
+			<result name="success">/user/lawCase/insertexecute.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="addclearrecord" class="clearRecordAction" method="addClearrecord">
+			<result type="redirect">selectDetal.action?cont.csCasecodeself=${clearRecord.crcasecodeself}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="addclearclear" class="clearRecordAction" method="addClearclear">
+			<result type="redirect">selectDetal.action?cont.csCasecodeself=${clearClear.cccasecodeself}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="addlitigation" class="clearRecordAction" method="addLitigation">
+			<result type="redirect">selectDetal.action?cont.csCasecodeself=${litigation.licasecodeself}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+			
+		<action name="addexecute" class="clearRecordAction" method="addExecute">
+			<result type="redirect">selectDetal.action?cont.csCasecodeself=${execute.excasecodeself}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+				
+		<action name="addclearclose" class="clearRecordAction" method="addClearClose">
+			<result type="redirect">selectDetal.action?cont.csCasecodeself=${closeRecord.crcasecodeself}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+			
+		<action name="dayinclearrecord" class="clearRecordAction" method="daYinClearRecord">
+			<result>/user/lawCase/dayin2.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="selectclearrecord" class="clearRecordAction" method="selectClearRecord">
+			<result>/user/lawCase/selectclearrecord.jsp</result>
+		</action>
+		<action name="selectclearclear" class="clearRecordAction" method="selectClearClear">
+			<result>/user/lawCase/selectclearclear.jsp</result>
+		</action>
+		<action name="selectlitigation" class="clearRecordAction" method="selectLitigation">
+			<result>/user/lawCase/selectlitigation.jsp</result>
+		</action>
+		<action name="selectexecute" class="clearRecordAction" method="selectExecute">
+			<result>/user/lawCase/selectexecute.jsp</result>
+		</action>
+		
+		<action name="smsremind" class="clearRecordAction" method="smsRemind">
+			<result>/user/lawCase/selectclearrecord.jsp</result>
+		</action>
+			
+		<action name="addMaterial" class="clearRecordAction" method="addMaterial">
+			<result type="redirect">selectDetal.action?cont.csCasecodeself=${material.casecodeself}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		<action name="selectMaterial" class="clearRecordAction" method="selectMaterial">
+			<result>/user/lawCase/selectmaterial.jsp</result>
+		</action>
+			
+	</package>
+</struts>    
+

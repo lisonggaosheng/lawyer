@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="apply" extends="struts-default">
+		<action name="applyShow" class="applyAction" method="selectShow">
+			<result name="show">/admin/apply/show.jsp</result>
+		</action>
+		<action name="applySelectName" class="applyAction" method="selectName">
+			<result name="applyShow">/admin/apply/applyShow.jsp</result>
+		</action>
+		<action name="applyAuthorize" class="applyAction" method="authorize">
+			<result name="authorize">/admin/apply/applyShow.jsp</result>
+		</action>
+		<action name="applyDecline" class="applyAction" method="decline">
+			<result name="decline">/admin/apply/applyShow.jsp</result>
+		</action>
+			<action name="applyDeclineShowUsers" class="applyAction" method="selectName2">
+			<result name="applyShow">/admin/apply/applyDeclineShow.jsp</result>
+		</action>
+		<action name="applyDeclineShow" class="applyAction" method="declineShow">
+			<result name="show">/admin/apply/declineShow.jsp</result>
+		</action>
+		<action name="applyDeclineUsers" class="applyAction" method="declineUsers">
+			<result name="show">/admin/apply/declineShow.jsp</result>
+		</action>
+	</package>
+</struts>    

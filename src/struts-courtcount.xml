@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="courtcount" extends="struts-default">
+	
+		<action name="courtCount" class="courtCountAction" method="count">
+			<result name="success">/user/source/count.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		<action name="courtCountByTime" class="courtCountAction" method="countByTime">
+			<result name="success">/user/source/count.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+	</package>
+</struts>    

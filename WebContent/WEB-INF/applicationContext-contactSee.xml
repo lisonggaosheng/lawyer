@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- dao层 -->
+	<bean id="conSeeDao" class="com.lawyer.dao.impl.ContactSeeDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- service层 -->
+	<bean id="conSeeService" class="com.lawyer.service.impl.ContactSeeServiceImpl">
+		<property name="contactSeeDao">
+			<ref bean="conSeeDao" />
+		</property>
+	</bean>
+
+	<!-- action -->
+	<bean id="conSeeAction" class="com.lawyer.action.ContactSeeAction" scope="prototype">
+		<property name="css" >
+			<ref bean="conSeeService" />		
+		</property>
+		<property name="filesService" ref="filesServiceImpl"/>
+	</bean>
+
+
+
+
+</beans>

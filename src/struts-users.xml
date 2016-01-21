@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="users" extends="struts-default">
+		<action name="userlp" class="usersLogin1" method="findlp">
+			<result name="success">/admin/users/limitpower.jsp</result>
+		</action>
+		<action name="upduserlp" class="usersLogin1" method="updlp">
+			<result>/admin/result.jsp</result>
+		</action>
+		<action name="usersLogin" class="usersLogin1" method="login">
+			<result name="users">/user/index.jsp</result>
+			<result name="admin">/admin/index.jsp</result>
+			<result name="fali">/loginFali.jsp</result>
+		</action>
+		<action name="usersQuit" class="usersLogin1" method="quit">
+			<result name="quit">/login.jsp</result>
+		</action>
+		<action name="insertUsers" class="usersLogin1" method="insert">
+			<result name="show">/admin/users/show.jsp</result>
+		</action>
+		<action name="usersShow" class="usersLogin1" method="SelectShow">
+			<result name="show">/admin/users/show.jsp</result>
+		</action>
+		<action name="usersSelectName" class="usersLogin1" method="selectName">
+			<result name="usersShow">/admin/users/usersShow.jsp</result>
+		</action>
+		<action name="usersUpdate1" class="usersLogin1" method="update1">
+			<result name="update1">/admin/users/update.jsp</result>
+		</action>
+		<action name="usersUpdate2" class="usersLogin1" method="update2">
+			<result name="usersShow">/admin/users/usersShow.jsp</result>
+		</action>
+		<action name="useresDelete" class="usersLogin1" method="delete">
+			<result name="show">/admin/users/show.jsp</result>
+		</action>
+		<action name="updateUSta" class="usersLogin1" method="updateUSta">
+			<result name="usersShow">/admin/users/usersShow.jsp</result>
+		</action>
+		
+		<action name="selectLawyers" class="usersLogin1" method="selectLawyers">
+		</action>
+		
+		<action name="selectPensons" class="usersLogin1" method="selectPensons">
+		</action>
+	</package>
+</struts>    

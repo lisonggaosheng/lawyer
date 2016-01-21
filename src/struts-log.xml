@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="log" extends="struts-default">
+		<action name="logUersShow" class="LogAction" method="showUsersLog">
+			<result name="usersLog">/admin/log/show.jsp</result>
+		</action>
+		<action name="logSelectUsersName" class="LogAction" method="selectUsersName">
+			<result name="usersName">/admin/log/usersShow.jsp</result>
+		</action>
+		<action name="logAdminShow" class="LogAction" method="showAdminLog">
+			<result name="adminLog">/admin/log/adminShow.jsp</result>
+		</action>
+		<action name="logSelectAdminName" class="LogAction" method="selectAdminName">
+			<result name="adminName">/admin/log/adminNameShow.jsp</result>
+		</action>
+	</package>
+</struts>

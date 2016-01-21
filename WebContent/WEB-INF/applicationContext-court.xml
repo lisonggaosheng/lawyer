@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+		<!-- dao层 -->
+		<bean id="courtDao" class="com.lawyer.dao.impl.CourtDaoImpl">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"></ref>
+			</property>
+		</bean>
+		
+		<!-- service层 -->
+		<bean id="courtService" class="com.lawyer.service.impl.CourtServiceImpl">
+			 <property name="courtDao">
+			 	<ref bean="courtDao"></ref>
+			 </property>
+			 <property name="executebusDao">
+			 	<ref bean="executebusDao"></ref>
+			 </property>
+			 <property name="appdao">
+				<ref bean="applierinfoDao" />
+			</property>
+		</bean>		
+		
+		<!-- action -->
+		<bean id="courtAction" class="com.lawyer.action.CourtAction" scope="prototype">
+			<property name="courtService">
+				<ref bean="courtService"/>
+			</property>
+			<property name="lcs" ref="lawyerCourtService"/>
+		</bean>
+		
+		
+		
+		
+</beans>

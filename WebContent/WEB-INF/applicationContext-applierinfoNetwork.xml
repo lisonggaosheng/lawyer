@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- dao层 -->
+	<bean id="applierinfoNetworkDao" class="com.lawyer.dao.impl.ApplierinfoNetworkDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- service层 -->
+	<bean id="appNetService" class="com.lawyer.service.impl.ApplierinfoNetworkServiceImpl">
+		<property name="applierinfoNetworkDao">
+			<ref bean="applierinfoNetworkDao" />
+		</property>
+	</bean>
+
+	<!-- action -->
+	<bean id="appNetAction" class="com.lawyer.action.ApplierinfoNetworkAction" scope="prototype">
+		<property name="appNetService" >
+			<ref bean="appNetService" />	
+		</property>	
+	</bean>
+
+
+
+
+</beans>

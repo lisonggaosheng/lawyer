@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="lawyerCourt" namespace="/lawyerCourt" extends="struts-default">
+	<!-- 基本用于  ajax 的异步请求 -->
+		<!-- 查找所有 -->
+		<action name="findAllLawyerCourt" class="lawyerCourtAction" method="findAll">
+		</action>
+		<!--  查找一级-->
+		<action name="findFirstLawyerCourt" class="lawyerCourtAction" method="findFirst">
+		</action>
+		<!--  根据一级 查找二级-->
+		<action name="finSecondLawyerCourt" class="lawyerCourtAction" method="findSecondByFirst">
+		</action>
+		<!-- 根据二级查找三级 -->
+		<action name="findThirdLawyerCourt" class="lawyerCourtAction" method="findThirdBySecond">
+		</action>
+	</package>
+</struts>    

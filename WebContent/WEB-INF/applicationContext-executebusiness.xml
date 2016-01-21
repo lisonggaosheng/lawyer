@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+		<!-- dao层 -->
+		<bean id="executebusDao" class="com.lawyer.dao.impl.ExecutebusinessDaoImpl">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"></ref>
+			</property>
+		</bean>
+		
+		<!-- service层 -->
+		<bean id="executebusService" class="com.lawyer.service.impl.ExecutebusinessServiceImpl">
+			 <property name="executebusDao">
+			 	<ref bean="executebusDao"></ref>
+			 </property>
+			 <property name="courtDao">
+			 	<ref bean="courtDao"></ref>
+			 </property>
+		</bean>		
+		
+		<!-- action -->
+		<bean id="executebusinessAction" class="com.lawyer.action.ExecutebusinessAction">
+			<property name="executebusService">
+				<ref bean="executebusService"/>
+			</property>
+			<property name="ars" ref="addRecordService"/>
+		</bean>
+		
+		
+		
+		
+</beans>

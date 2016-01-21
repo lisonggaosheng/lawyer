@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.lawyer.pojo.AdverseJudicialInformation" table="adverse_judicial_information"  >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="registration_mark" type="java.lang.String">
+            <column name="registration_mark"/>
+        </property>
+        <property name="litigant" type="java.lang.String">
+            <column name="litigant"/>
+        </property>
+        <property name="paperID" type="java.lang.String">
+            <column name="paperID"/>
+        </property>
+        <property name="caseid" type="java.lang.String">
+            <column name="caseid"/>
+        </property>
+        <property name="obligation" type="java.lang.String">
+            <column name="obligation"/>
+        </property>
+        <property name="circumstances" type="java.lang.String">
+            <column name="circumstances"/>
+        </property>
+        <property name="basis_unit" type="java.lang.String">
+            <column name="basis_unit"/>
+        </property>
+        <property name="performance" type="java.lang.String">
+            <column name="performance"/>
+        </property>
+        <property name="implementation_court" type="java.lang.String">
+            <column name="implementation_court"/>
+        </property>
+        <property name="publication_date" type="java.lang.String">
+            <column name="publication_date"/>
+        </property>
+    </class>
+</hibernate-mapping>

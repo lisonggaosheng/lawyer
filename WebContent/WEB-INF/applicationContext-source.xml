@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!--Excel表格  -->
+	<bean id="excelLoadandput" class="com.lawyer.tools.ExcelLoadAndPut">
+	</bean>
+	<!-- Dao层配置 -->
+	<bean id="lawyerSourceDao" class="com.lawyer.dao.impl.LawyerSourceImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- Service层配置 -->
+	<bean id="lawyerSourceServicer1" class="com.lawyer.service.impl.LawyerSourceServiceImpl">
+		<property name="lawyerSource" ref="lawyerSourceDao" />
+	</bean>
+	<!-- Action层配置 -->
+	<bean id="source" class="com.lawyer.action.LawyerSourceAction">
+		<property name="lawyerSourceServicer" ref="lawyerSourceServicer1" />
+		<property name="excelLoadandput" ref="excelLoadandput" />
+	</bean>
+</beans>

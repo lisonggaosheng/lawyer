@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- Dao层配置 -->
+	<bean id="userTaskDao" class="com.lawyer.dao.impl.UserTaskDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- Service层配置 -->
+	<bean id="userTaskService" class="com.lawyer.service.impl.UserTaskServiceImpl">
+		<property name="userTaskDao" ref="userTaskDao"/>
+	</bean>
+
+	<!-- Action层配置 -->
+	<bean id="taskAction" class="com.lawyer.action.SendSmsAction" scope="prototype">
+		<property name="userTaskService" ref="userTaskService"/>
+	</bean>
+</beans>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lawyer.pojo.Execute" table="execute"  >
+        <id name="exid" type="java.lang.Integer">
+            <column name="ex_id" />
+            <generator class="identity" />
+        </id>
+        <property name="exnumber" type="java.lang.String">
+            <column name="ex_number" length="128" />
+        </property>
+        <property name="exdate" type="java.lang.String">
+            <column name="ex_date" length="128"  />
+        </property>
+        <property name="exlawname" type="java.lang.String">
+            <column name="ex_lawname" length="255"  />
+        </property>
+          <property name="exlawtel" type="java.lang.String">
+            <column name="ex_lawtel" length="255" />
+        </property>
+          <property name="exjudge" type="java.lang.String">
+            <column name="ex_judge" length="255" />
+        </property>
+         <property name="exjudgetel" type="java.lang.String">
+            <column name="ex_judgetel" length="255"  />
+        </property>
+        <many-to-one name="users" class="com.lawyer.pojo.Users" fetch="select" lazy="false">
+            <column name="ex_uid" not-null="true" />
+        </many-to-one>
+        <property name="excasecodeself" type="java.lang.String">
+            <column name="ex_casecodeself" length="255" not-null="true" />
+        </property>
+        <property name="exfollowupresult" type="java.lang.String">
+            <column name="ex_followupresult" length="255"  />
+        </property>
+         <property name="exremark" type="java.lang.String">
+            <column name="remark" length="255" />
+        </property>
+         <property name="exattach" type="java.lang.String">
+            <column name="ex_attach" length="255" />
+        </property>
+        <property name="exsavetime" type="java.lang.String">
+            <column name="ex_savetime" length="128" />
+        </property>
+        <property name="assistingName" type="java.lang.String">
+            <column name="assisting_name" />
+        </property>
+        <property name="assistingTel" type="java.lang.String">
+            <column name="assisting_tel" />
+        </property>
+        <property name="competentCourt" type="java.lang.String">
+            <column name="competent_court" />
+        </property>
+        <property name="execMoney" type="java.lang.String">
+            <column name="exec_money" precision="22" scale="0">
+                <comment>执行标的</comment>
+            </column>
+        </property>
+         
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+<!-- Dao层配置 -->
+<bean id="logDao1" class="com.lawyer.dao.impl.LogDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<!-- Service层配置 -->
+<bean id="logService1" class="com.lawyer.service.impl.LogServiceImpl">
+	<property name="logDao" ref="logDao1"></property>
+</bean>
+
+<!-- Action层配置 -->
+<bean id="LogAction" class="com.lawyer.action.LogAction">
+		<property name="usersService" ref="usersService1"/>
+		<property name="logService" ref="logService1"/>
+		<property name="pageService" ref="pageService1"></property>
+</bean>
+</beans>

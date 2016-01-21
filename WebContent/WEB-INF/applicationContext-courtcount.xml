@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+		<!-- dao层 -->
+		<bean id="courtCountDao" class="com.lawyer.dao.impl.CourtCountDaoImpl">
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"></ref>
+			</property>
+		</bean>
+		
+		<!-- service层 -->
+		<bean id="courtCountService" class="com.lawyer.service.impl.CourtCountServiceImpl">
+			 <property name="ccd">
+			 	<ref bean="courtCountDao"></ref>
+			 </property>
+		</bean>		
+		
+		<!-- action -->
+		<bean id="courtCountAction" class="com.lawyer.action.CourtCountAction">
+			<property name="ccs">
+				<ref bean="courtCountService"/>
+			</property>
+		</bean>
+		
+		
+		
+		
+</beans>

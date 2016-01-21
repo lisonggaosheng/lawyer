@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="sendSms" extends="struts-default" namespace="/">
+		<action name="insertTasks" class="taskAction" method="insertTasks">
+			
+		</action>
+	
+		<action name="selectTasks" class="taskAction" method="selectTasks">
+			<result>/user/lawCase/selecttask.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+	
+		<action name="smsremind" class="com.lawyer.action.SendSmsAction" method="smsRemind">
+		</action>
+			
+	</package>
+</struts>    
+

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="court" extends="struts-default" >
+		
+		<!-- excel导入被执行人信息 -->
+		<action name="excelInsertCourt" class="courtAction" method="excelInsertCourt">
+			<result>/user/source/court/excelCourts.jsp</result>
+		</action>
+		
+		<!-- 法院编码更新 -->
+		<action name="courtcodeUpdate" class="courtAction" method="courtcodeUpdate">
+		</action>
+		<!-- 企业状态更新数据存储 -->
+		<action name="createUpdateData" class="courtAction" method="createUpdateData">
+		</action>
+	
+		<!-- 债务人公告信息批处理导入 -->
+		<action name="insertNoteCourts" class="courtAction" method="insertNoteCourts">
+		</action>
+		
+		<!-- 数据暂时排除 -->
+		<action name="presentExclude" class="courtAction" method="presentExclude">
+		</action>
+		<!-- 数据永久排除 -->
+		<action name="perpetualExclude" class="courtAction" method="perpetualExclude">
+		</action>
+		<!-- 数据恢复显示 -->
+		<action name="dataRecover" class="courtAction" method="dataRecover">
+		</action>
+		<action name="openOne" class="courtAction" method="openOne">
+		</action>
+		<action name="createData" class="courtAction" method="createData">
+		</action>
+		
+		<action name="changeCourtStep" class="courtAction" method="changeStep">
+		</action>
+		
+		<action name="changeOneStep" class="courtAction" method="changeOneStep">
+		</action>
+		
+		<!-- 根据法院查看普通案源 -->
+		<action name="findCourts" class="courtAction" method="findCourts">
+			<result>/user/source/court/result.jsp</result>
+		</action>
+		
+		<!-- 根据法院查看公告案源 -->
+		<action name="findNoteCourts" class="courtAction" method="findNoteCourts">
+			<result>/user/source/court/noteResult.jsp</result>
+		</action>
+		
+		<!-- 企业状态操作 -->
+		<action name="updateStutasByCourt" class="courtAction" method="findCourts">
+			<result>/user/stateUpdate/result.jsp</result>
+		</action>
+		<action name="updateStutas" class="courtAction" method="updateStutas">
+			<result>/user/stateUpdate/result.jsp</result>
+		</action>
+		
+		<action name="insertNoteExcel" class="courtAction" method="insertNoteExcel">
+			<result>/user/source/court/result.jsp</result>
+		</action>
+		
+		<action name="insertCourt" class="courtAction" method="insertCourt">
+			<result type="redirect">/user/source/court/selectCourt.jsp</result>
+			<result name="error">/user/welcome/error.jsp</result>
+			<result name="filed">/user/welcome/welcome.jsp</result>
+		</action>
+		
+		<action name="court2" class="courtAction" method="court1">
+			<result name="success">/user/source/court/insertCourt.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="court3" class="courtAction" method="selectCourtAll">
+			<result name="success">/user/source/court/selectCourt.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="selectCourtById" class="courtAction" method="selectCourtById">
+			<result name="success">/user/source/selectSource1.jsp</result>
+			<result name="uninfo">/user/source/court/selectCourt1.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="updateCourt" class="courtAction" method="updateCourt">
+			<result name="success">/user/source/selectSource1.jsp</result>
+			<result name="error">/user/updateCourt.jsp</result>
+			<result name="filed">/user/welcome/welcome.jsp</result>
+		</action>
+		
+		<!-- 文件批量 -->
+		<action name="upd1" class="courtAction" method="upd">
+			<result type="redirect">/user/source/court/insertCourt.jsp</result>
+		</action>
+		
+		<action name="insertCourts" class="courtAction" method="insertMore">
+			<result type="redirect">/user/source/court/insertCourt.jsp</result>
+		</action>
+		
+		
+		<action name="updCourt1" class="courtAction" method="updCourt1">
+			<result name="success">/user/source/court/updateCourt.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdCourt1" class="courtAction" method="toupdCourt1">
+			<result name="success" type="redirect">selectCourtById?court.casecodeself=${court.casecodeself}&amp;court.caseId=${court.caseId}</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="upexecutebus" class="courtAction" method="updExecutebus">
+			<result name="success">/user/source/updateexecutebus.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+			<action name="toupexecutebus" class="courtAction" method="toupdExecutebus">
+			<result name="success" type="redirect">selectCourtById?court.casecodeself=${court.eb.ECCasecodeself}&amp;court.caseId=${court.caseId}</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		
+		<action name="updapplierinfo" class="courtAction" method="updApplierinfo">
+			<result name="success">/user/source/updapplierinfo.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdapplierinfo" class="courtAction" method="toupdApplierinfo">
+			<result name="success" type="redirect">selectCourtById?court.casecodeself=${court.ap.appCCasecodeself}&amp;court.caseId=${court.caseId}</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		
+		
+		<action name="updnetwork" class="courtAction" method="updNetwork">
+			<result name="success">/user/source/updNetwork.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdnetwork" class="courtAction" method="toupdNetwork">
+			<result name="success" type="redirect">selectCourtById?court.casecodeself=${court.an.anCasecodeself}</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		
+		<action name="updapplierinfoonself" class="courtAction" method="updApplierinfoOnself">
+			<result name="success">/user/source/updapplierinfoonself.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdapplierinfoonself" class="courtAction" method="toupdApplierinfoOnself">
+			<result name="success" type="redirect">selectCourtById?court.casecodeself=${court.ao.aoCasecodeself}&amp;court.caseId=${court.caseId}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="updConMail" class="courtAction" method="updConMail">
+			<result name="success">/user/source/updConMail.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdConMail" class="courtAction" method="toupdConMail">
+			<result name="success" type="redirect">selectConMail?contactMail.cmCasecodeself=${court.cm.cmCasecodeself }&amp;court.caseId=${caseId}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="updConTel" class="courtAction" method="updConTel">
+			<result name="success">/user/source/updConTel.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdConTel" class="courtAction" method="toupdConTel">
+			<result name="success" type="redirect">selectConTel?contactTel.ctCasecodeself=${court.ct.ctCasecodeself }&amp;court.caseId=${caseId}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="updConExpress" class="courtAction" method="updConExpress">
+			<result name="success">/user/source/updConExpress.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdConExpress" class="courtAction" method="toupdConExpress">
+			<result name="success" type="redirect">selectConExpress?contactExpress.ceCasecodeself=${court.ce.ceCasecodeself }&amp;court.caseId=${caseId}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="updConFax" class="courtAction" method="updConFax">
+			<result name="success">/user/source/updConFax.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdConFax" class="courtAction" method="toupdConFax">
+			<result name="success" type="redirect">selectConFax?contactFax.cfCasecodeself=${court.cf.cfCasecodeself }&amp;court.caseId=${caseId}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="updConSee" class="courtAction" method="updConSee">
+			<result name="success">/user/source/updConSee.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="toupdConSee" class="courtAction" method="toupdConSee">
+			<result name="success" type="redirect">selectConSee?contactSee.csCasecodeself=${court.csee.csCasecodeself }&amp;court.caseId=${caseId}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+	</package>
+</struts>    

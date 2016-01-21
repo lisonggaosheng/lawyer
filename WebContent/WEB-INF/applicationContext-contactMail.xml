@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- dao层 -->
+	<bean id="conMailDao" class="com.lawyer.dao.impl.ContactMailDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- service层 -->
+	<bean id="conMailService" class="com.lawyer.service.impl.ContactMailServiceImpl">
+		<property name="contactMailDao">
+			<ref bean="conMailDao" />
+		</property>
+	</bean>
+
+	<!-- action -->
+	<bean id="conMailAction" class="com.lawyer.action.ContactMailAction" scope="prototype">
+		<property name="contactMailService" >
+			<ref bean="conMailService" />		
+		</property>
+		<property name="filesService" ref="filesServiceImpl"/>
+	</bean>
+
+
+
+
+</beans>

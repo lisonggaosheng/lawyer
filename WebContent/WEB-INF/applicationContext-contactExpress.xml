@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- dao层 -->
+	<bean id="conExpressDao" class="com.lawyer.dao.impl.ContactExpressDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- service层 -->
+	<bean id="conExpressService" class="com.lawyer.service.impl.ContactExpressServiceImpl">
+		<property name="contactExpressDao">
+			<ref bean="conExpressDao" />
+		</property>
+	</bean>
+
+	<!-- action -->
+	<bean id="conExpressAction" class="com.lawyer.action.ContactExpressAction" scope="prototype">
+		<property name="ces" >
+			<ref bean="conExpressService" />	
+		</property>
+		<property name="filesService" ref="filesServiceImpl"/>
+	</bean>
+
+
+
+
+</beans>

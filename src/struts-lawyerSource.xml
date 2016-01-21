@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="lawyerSource" extends="struts-default">
+		<action name="seniorSelectLawyerSource" class="source" method="seniorSelectSource">
+			<result name="success">/user/source/court/selectCourtGaoJi.jsp</result>
+		</action>
+		
+		
+		<action name="daYin" class="source" method="daYin">
+			<result name="success">/user/source/court/dayin2.jsp</result>
+			<result name="pattern">/user/source/court/dayinPattern.jsp</result>
+		</action>
+		
+		<action name="down" class="source" method="down">
+		<!-- 指定 type   stream   org.apache.struts2.dispatcher.StreamResult -->
+			<result type="stream">
+			    <!-- 设置响应头  指定下载方式为   附件格式-->
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+				<!-- 指定下载所关联的 inputStream -->
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+		
+		
+	</package>
+</struts>    

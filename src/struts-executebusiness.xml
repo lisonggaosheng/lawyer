@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="exe" extends="struts-default" namespace="">
+	
+		<!-- excel导入被执行人信息 -->
+		<action name="excelInsertExecutebusiness" class="executebusinessAction" method="excelInsertExecutebusiness">
+			<result>/user/source/court/excelCourts.jsp</result>
+		</action>
+	
+		<!-- excel导入更新企业状态 -->
+		<action name="excelUpStutas" class="executebusinessAction" method="excelUpStutas">
+			<result>/user/stateUpdate/excelUpStutas.jsp</result>
+		</action>
+		
+		<action name="insertStep2" class="executebusinessAction" method="insertStep2">
+			<result type="redirectAction">
+				 <param name="actionName">/lawyer/selectCourtById?court.casecodeself=${executebus.ECCasecodeself}&amp;court.caseId=${caseId}</param> 
+				 <param name="namespace"></param> 
+			 </result>
+			<result name="error">/user/index.jsp</result>
+			<result name="filed">/user/welcome/welcome.jsp</result>
+		</action>
+		
+		<action name="insertEb" class="executebusinessAction" method="insertEb">
+			<result type="redirectAction">
+				 <param name="actionName">/lawyer/selectCourtById?court.casecodeself=${executebus.ECCasecodeself}&amp;court.caseId=${caseId}</param> 
+				 <param name="namespace"></param> 
+			 </result>
+			 <result name="error">/user/index.jsp</result>
+		</action>
+		
+		<!-- 文件批量 -->
+		<action name="upd2" class="executebusinessAction" method="upd">
+			<result type="redirect">/user/source/insertStep2.jsp</result>
+		</action>
+		
+		<action name="insertExecutes" class="executebusinessAction" method="insertMore">
+			<result type="redirect">/user/source/insertStep2.jsp</result>
+		</action>
+		
+		<action name="selexecutebusiness" class="executebusinessAction" method="selExecutebusiness">
+			<result>/user/source/selectexecutbus.jsp</result>
+		</action>
+	</package>
+</struts>    

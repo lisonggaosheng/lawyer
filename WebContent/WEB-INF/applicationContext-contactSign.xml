@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- dao层 -->
+	<bean id="conSignDao" class="com.lawyer.dao.impl.ContractSignDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- service层 -->
+	<bean id="conSignService" class="com.lawyer.service.impl.ContractSignServiceImpl">
+		<property name="csd">
+			<ref bean="conSignDao" />
+		</property>
+	</bean>
+
+	<!-- action -->
+	<bean id="conSignAction" class="com.lawyer.action.ContactSignAction" scope="prototype">
+		<property name="css" >
+			<ref bean="conSignService" />
+			
+		</property>
+		<property name="filesService" ref="filesServiceImpl"/>
+	</bean>
+
+
+
+
+</beans>

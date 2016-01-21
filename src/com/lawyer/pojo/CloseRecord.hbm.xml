@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.lawyer.pojo.CloseRecord" table="close_record"  >
+        <id name="crid" type="java.lang.Integer">
+            <column name="cr_id" />
+            <generator class="identity" />
+        </id>
+        <property name="crtime" type="java.lang.String">
+            <column name="cr_time" length="128" not-null="false" />
+        </property>
+        <property name="crperson" type="java.lang.String">
+            <column name="cr_person" length="64" not-null="false" />
+        </property>
+           <property name="crpersontel" type="java.lang.String">
+            <column name="cr_persontel" length="64" not-null="false" />
+        </property>
+           <many-to-one name="users" class="com.lawyer.pojo.Users" fetch="select">
+            <column name="cr_uid" not-null="false" />
+        </many-to-one>
+        <property name="crcasecodeself" type="java.lang.String">
+            <column name="cr_casecodeself" length="255" not-null="false" />
+        </property>
+         <property name="crremark" type="java.lang.String">
+            <column name="remark" length="255" not-null="false" />
+        </property>
+         <property name="crattach" type="java.lang.String">
+            <column name="cr_attach" length="255" not-null="false" />
+        </property>
+        <property name="crsavetime" type="java.lang.String">
+            <column name="cr_savetime" length="128" not-null="false" />
+        </property>
+    </class>
+</hibernate-mapping>

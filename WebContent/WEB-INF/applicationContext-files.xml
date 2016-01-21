@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- dao层 -->
+	<bean id="filelibraryDaoImpl" class="com.lawyer.dao.impl.FilelibraryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="filesDaoImpl" class="com.lawyer.dao.impl.FilesDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="pagingDao" class="com.lawyer.dao.impl.PagingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- service层 -->
+	<bean id="filelibraryServiceImpl" class="com.lawyer.service.impl.FilelibraryServiceImpl">
+		<property name="filelibraryDao" ref="filelibraryDaoImpl"/>
+	</bean>
+	
+	<bean id="filesServiceImpl" class="com.lawyer.service.impl.FilesServiceImpl">
+		<property name="filesDao" ref="filesDaoImpl"/>
+	</bean>
+	
+	<bean id="pagingService" class="com.lawyer.service.impl.PagingServiceImpl">
+		<property name="pagingDao" ref="pagingDao"/>
+	</bean>
+	
+	<!-- action层 -->
+	<bean id="filelibraryAction" class="com.lawyer.action.FilelibraryAction">
+	<property name="filelibraryService" ref="filelibraryServiceImpl"/>
+	<property name="pagingService" ref="pagingService"/>
+	</bean>
+	
+	<bean id="filesAction" class="com.lawyer.action.FilesAction">
+		<property name="filesService" ref="filesServiceImpl"/>
+		<property name="pagingService" ref="pagingService"/>
+	</bean>
+	
+	</beans>

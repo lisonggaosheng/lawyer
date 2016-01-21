@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="app" extends="struts-default">
+		<!-- excel导入申请人信息 -->
+		<action name="excelInsertApplierinfo" class="appInfoAction" method="excelInsertApplierinfo">
+			<result>/user/source/court/excelCourts.jsp</result>
+		</action>
+		
+		<action name="insertAppInfo" class="appInfoAction" method="insert">
+			<result type="redirectAction">
+				 <param name="actionName">/lawyer/selectCourtById?court.casecodeself=${applierinfo.appCCasecodeself}&amp;court.caseId=${caseId}</param> 
+				 <param name="namespace"></param> 
+			 </result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
+		<action name="markAppInfo" class="appInfoAction" method="markAppInfo">
+			<result type="redirectAction">
+				 <param name="actionName">/lawyer/selap</param> 
+				 <param name="applierinfo.appCCasecodeself">${applierinfo.appCCasecodeself}</param> 
+			    <param name="caseId">${caseId}</param> 
+			 </result>
+			<result name="error">/user/index.jsp</result>
+		</action>		
+		
+		<action name="insertApp" class="appInfoAction" method="insertApp">
+			<result type="redirectAction">
+				 <param name="actionName">/lawyer/selectCourtById?court.casecodeself=${applierinfo.appCCasecodeself}&amp;court.caseId=${caseId}</param>
+				 <param name="namespace"></param> 
+			 </result>
+		</action>
+		
+		<action name="insertApplierinfos" class="appInfoAction" method="insertMore">
+		</action>
+		
+		<action name="selap" class="appInfoAction" method="selAp">
+			<result>/user/source/selStep3.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+	</package>
+</struts>    

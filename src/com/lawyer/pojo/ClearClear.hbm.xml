@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.lawyer.pojo.ClearClear" table="clear_clear"
+		 >
+		<id name="ccid" type="java.lang.Integer">
+			<column name="cc_id" />
+			<generator class="identity" />
+		</id>
+		<property name="ccnumber" type="java.lang.String">
+			<column name="cc_number" length="255" />
+		</property>
+		<property name="cclawname" type="java.lang.String">
+			<column name="cc_lawname" length="255" />
+		</property>
+		<property name="cclawnametel" type="java.lang.String">
+			<column name="cc_lawnametel" length="255"  />
+		</property>
+		<many-to-one name="users" class="com.lawyer.pojo.Users" lazy="false"
+			fetch="select">
+			<column name="cc_uid" />
+		</many-to-one>
+		<property name="cccasecodeself" type="java.lang.String">
+			<column name="cc_casecodeself" not-null="true" />
+		</property>
+		<property name="ccjudge" type="java.lang.String">
+			<column name="cc_judge"  />
+		</property>
+		<property name="ccjudgetel" type="java.lang.String">
+			<column name="cc_judgetel" />
+		</property>
+		<property name="ccfollowupresult" type="java.lang.String">
+			<column name="cr_followupresult"/>
+		</property>
+		<property name="ccattach" type="java.lang.String">
+			<column name="cc_attach"  />
+		</property>
+		<property name="ccremark" type="java.lang.String">
+			<column name="cc_remark" />
+		</property>
+		<property name="ccTime" type="java.lang.String">
+			<column name="cc_time" />
+		</property>
+		<property name="ccsaveTime" type="java.lang.String">
+			<column name="cc_savetime" />
+		</property>
+		<property name="assistingName" type="java.lang.String">
+            <column name="assisting_name" />
+        </property>
+        <property name="assistingTel" type="java.lang.String">
+            <column name="assisting_tel" />
+        </property>
+        <property name="competentCourt" type="java.lang.String">
+            <column name="competent_court" />
+        </property>
+	</class>
+</hibernate-mapping>

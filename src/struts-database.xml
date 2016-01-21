@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="10701096000"></constant>
+	<package name="database" extends="struts-default">
+		<action name="backupDB" class="com.lawyer.action.DatabaseAction" method="backup">
+			<!-- 指定 type=stream   org.apache.struts2.dispatcher.StreamResult -->
+    		<result type="stream">
+    			<!-- 设置响应头        指定下载方式为 -附件格式     ${filename}会调用getFilename方法 -->
+    			<param name="contentDisposition">attachment;filename="${filename}"</param>
+    			<!-- 指定下载所关联的 inputStream -->
+    			<param name="inputName">downloadFile</param>
+    		</result>
+		</action>
+		
+		<action name="loadDB" class="com.lawyer.action.DatabaseAction" method="load">
+			<result name="success">/admin/result.jsp</result>
+			<result name="error">/admin/index.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>    
+

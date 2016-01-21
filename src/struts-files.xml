@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="files" extends="struts-default" ><!--
+	
+		<action name="*-*" class="{1}Action" method="{2}">
+			<result name="success">/file/{1}-{2}.jsp?flId=${filelibrary.flId}</result>
+			<result name="error">/file/{1}.jsp</result>
+			<result name="input">/file/files.jsp</result>
+			<result name="list">/file/filelibrary-list.jsp</result>
+			<result name="files2">/file/files-list.jsp</result>
+			<result name="filelist" >/file/files-add.jsp?flId=${filelibrary.flId}</result>
+		</action>
+		
+		--><action name="filelibrary-add" class="filelibraryAction" method="add">
+			<result name="success">/file/filelibrary-add.jsp</result>
+			<result name="error">/file/filelibrary.jsp</result>
+		</action>
+		<action name="filelibrary-list" class="filelibraryAction" method="list">
+			<result name="success">/file/filelibrary-list.jsp</result>
+			<result name="error">/file/filelibrary.jsp</result>
+		</action>
+		<action name="filelibrary-selectlist" class="filelibraryAction" method="getList">
+			<result name="success">/file/files.jsp</result>
+			<result name="error">/file/filelibrary.jsp</result>
+		</action>
+		<action name="filelibrary-selectFilelibrary" class="filelibraryAction" method="selectFilelibrary">
+			<result name="success">/file/filelibrary-list.jsp</result>
+			<result name="error">/file/filelibrary.jsp</result>
+		</action>
+		<action name="filelibrary-updateInput" class="filelibraryAction" method="updateInput">
+			<result name="success">/file/filelibrary-updateInput.jsp</result>
+			<result name="error">/file/filelibrary.jsp</result>
+		</action>
+		<action name="filelibrary-update" class="filelibraryAction" method="update">
+			<result name="success">/file/filelibrary-update.jsp</result>
+			<result name="error">/file/filelibrary.jsp</result>
+		</action>
+		<action name="files-list" class="filesAction" method="list">
+			<result name="success">/file/files-list.jsp</result>
+			<result name="error">/file/files.jsp</result>
+		</action>
+		<action name="files-selectFile" class="filesAction" method="selectFile">
+			<result name="success">/file/files-list.jsp</result>
+			<result name="error">/file/files.jsp</result>
+		</action>
+		<action name="files-delete" class="filesAction" method="delete">
+			<result name="success" type="redirect">files-list?i=files&amp;files1.fId=${files1.fId}</result>
+			<result name="error">/file/files.jsp</result>
+		</action>
+		<action name="files-add" class="filesAction" method="add">
+			<result type="redirectAction">
+				 <param name="actionName">/lawyer/files-list?i=files&amp;files1.fId=${files1.filelibrary.flId}</param> 
+				 <param name="namespace"></param> 
+			 </result>
+			<result name="error">/file/files.jsp</result>
+		</action>
+		
+	</package>
+	<package name="downTest" extends="struts-default" >
+		<!-- 下载文件的Action定义 -->    
+        <action name="download" class="filesAction">    
+            <!-- 设置文件名参数，由页面上传入 -->    
+            <param name="fileName"></param> 
+            <result name="success" type="stream">    
+                <!-- 下载文件类型定义 -->    
+                <param name="contentType">text/plain</param>    
+                <!-- 下载文件处理方法 -->    
+                <param name="contentDisposition">    
+                    attachment;filename="${downloadChineseFileName}"   
+                </param>  
+                <!-- 下载文件输出流定义 -->    
+                <param name="inputName">inputStream</param>    
+            </result>    
+            </action>
+	</package>
+</struts>    

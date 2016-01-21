@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<!-- Dao层配置 -->
+	<bean id="usersDao1" class="com.lawyer.dao.impl.UsersDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="lpdao" class="com.lawyer.dao.impl.LimitPowerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Service层配置 -->
+	<bean id="usersService1" class="com.lawyer.service.impl.UsersServiceImpl">
+		<property name="usersDao" ref="usersDao1"/>
+	</bean>
+	<bean id="lpService" class="com.lawyer.service.impl.LimitPowerServiceImpl">
+		<property name="lpdao" ref="lpdao"></property>
+	</bean>
+	<!-- Action层配置 -->
+	<bean id="usersLogin1" class="com.lawyer.action.UsersAction" scope="prototype">
+		<property name="usersService" ref="usersService1"/>
+		<property name="logService" ref="logService1"/>
+		<property name="pageService" ref="pageService1"></property>
+		<property name="lpService" ref="lpService"></property>
+	</bean>
+</beans>

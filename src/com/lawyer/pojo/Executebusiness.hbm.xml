@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.lawyer.pojo.Executebusiness" table="executebusiness"  >
+        <id name="EId" type="java.lang.Integer">
+            <column name="e_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="users" class="com.lawyer.pojo.Users" fetch="select">
+            <column name="e_uid" not-null="true"/>
+        </many-to-one>
+        <property name="ERenumber" type="java.lang.String">
+            <column name="e_renumber" length="255" />
+        </property>
+        <property name="EType" type="java.lang.String">
+            <column name="e_type" length="255" />
+        </property>
+        <property name="EName" type="java.lang.String">
+            <column name="e_name" length="255" not-null="true"/>
+        </property>
+        <property name="ERepname" type="java.lang.String">
+            <column name="e_repname" length="255" />
+        </property>
+        <property name="shareholder" type="java.lang.String">
+            <column name="shareholder" length="500" />
+        </property>
+        <property name="ERepid" type="java.lang.String">
+            <column name="e_repid" length="255" />
+        </property>
+        <property name="EDistrict" type="java.lang.String">
+            <column name="e_district" length="255" />
+        </property>
+        <property name="EDate" type="java.lang.String">
+            <column name="e_date" length="128" />
+        </property>
+        <property name="EFund" type="java.lang.String">
+            <column name="e_fund" length="255" />
+        </property>
+        <property name="paidFund" type="java.lang.String">
+            <column name="paid_in_capital" length="255" />
+        </property>
+        <property name="EDfrom" type="java.lang.String">
+            <column name="e_dfrom" length="255" />
+        </property>
+        <property name="EDto" type="java.lang.String">
+            <column name="e_dto" length="255" />
+        </property>
+        <property name="EOrgan" type="java.lang.String">
+            <column name="e_organ" length="255" />
+        </property>
+        <property name="EAddress" type="java.lang.String">
+            <column name="e_address" />
+        </property>
+        <property name="EStatus" type="java.lang.String">
+            <column name="e_status" length="255"/>
+        </property>
+        <property name="ERemark" type="java.lang.String">
+            <column name="e_remark" />
+        </property>
+        <property name="ECCasecodeself" type="java.lang.String">
+            <column name="e_c_casecodeself" not-null="true"/>
+        </property>
+        <property name="ESavetime" type="java.lang.String">
+            <column name="e_savetime" />
+        </property>
+        <property name="EAnnual" type="java.lang.String">
+            <column name="e_inspection_annual" />
+        </property>
+        <property name="EResults" type="java.lang.String">
+            <column name="e_inspection_results" />
+        </property>
+        <property name="ECancellation" type="java.lang.String">
+            <column name="e_cancellation_date" />
+        </property>
+        <property name="ERevoke" type="java.lang.String">
+            <column name="e_revoke_date" />
+        </property>
+        <property name="organization_code" type="java.lang.String">
+            <column name="organization_code" />
+        </property>
+        <property name="organization_code_issuing_agencies" type="java.lang.String">
+            <column name="organization_code_issuing_agencies" />
+        </property>
+        <property name="adverse_judicial_information" type="java.lang.String">
+            <column name="adverse_judicial_information" />
+        </property>
+        <property name="administrative_sanction_information" type="java.lang.String">
+            <column name="administrative_sanction_information" />
+        </property>
+        <property name="investor_information" type="java.lang.String">
+            <column name="investor_information" />
+        </property>
+        <property name="reinvestment_information" type="java.lang.String">
+            <column name="reinvestment_information" />
+        </property>
+        <property name="exception" type="java.lang.String">
+            <column name="exception" />
+        </property>
+    </class>
+</hibernate-mapping>

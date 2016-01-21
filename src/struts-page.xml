@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "struts-2.0.dtd">
+<struts>
+	<package name="PageBean" extends="struts-default">
+		<action name="pageAction" class="pageAction1" method="page">
+			<result name="success">/page.jsp</result>
+		</action>
+	</package>
+</struts>    
