@@ -1,6 +1,8 @@
 package com.lawyer.dao.impl;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -116,7 +118,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 				}
 				
 				mysql.append("from lawyer.courtinfo court0_  ");
-				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())){
+				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())
+						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim())){
 					mysql.append("left join lawyer.applierinfo applierinf1_ ");
 					mysql.append("ON court0_.casecodeself=applierinf1_.a_c_casecodeself ");
 				}
@@ -198,7 +201,22 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 					mysql.append("AND applierinf1_.a_organ LIKE '%"+params[7]+"%' ");
 				if (!"".equals(params[8].trim()))
 					mysql.append("AND applierinf1_.a_address LIKE '%"+params[8]+"%' ");
-
+				if (!"".equals(params[41].trim()))
+					mysql.append("AND applierinf1_.used_mark = "+params[41]+" ");
+				if (!"".equals(params[42].trim()) || !"".equals(params[43].trim())){
+					if("".equals(params[42].trim())) params[42]="1970-01-01";
+					if("".equals(params[43].trim())) params[43]="2100-12-31";
+					
+					SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+					try {
+						params[42] = sdf1.format(sdf2.parse(params[42]));
+						params[43] = sdf1.format(sdf2.parse(params[43]));
+					} catch (ParseException e) {
+					}
+					mysql.append("and applierinf1_.mark_time between '"+params[42]+"' AND '"+params[43]+"' ");
+				}
+				
 				if (!"".equals(params[9].trim()))
 					mysql.append("AND applierinf2_.ao_name LIKE '%"+params[9]+"%' ");
 				if (!"".equals(params[10].trim()))
@@ -271,7 +289,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 				mysql.append("select count(DISTINCT court0_.casecodeself) ");
 				mysql.append("from lawyer.courtinfo court0_  ");
 				
-				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())){
+				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())
+						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim()) ){
 					mysql.append("left join lawyer.applierinfo applierinf1_ ");
 					mysql.append("ON court0_.casecodeself=applierinf1_.a_c_casecodeself ");
 				}
@@ -352,7 +371,22 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 					mysql.append("AND applierinf1_.a_organ LIKE '%"+params[7]+"%' ");
 				if (!"".equals(params[8].trim()))
 					mysql.append("AND applierinf1_.a_address LIKE '%"+params[8]+"%' ");
-
+				if (!"".equals(params[41].trim()))
+					mysql.append("AND applierinf1_.used_mark = "+params[41]+" ");
+				if (!"".equals(params[42].trim()) || !"".equals(params[43].trim())){
+					if("".equals(params[42].trim())) params[42]="1970-01-01";
+					if("".equals(params[43].trim())) params[43]="2100-12-31";
+					
+					SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+					try {
+						params[42] = sdf1.format(sdf2.parse(params[42]));
+						params[43] = sdf1.format(sdf2.parse(params[43]));
+					} catch (ParseException e) {
+					}
+					mysql.append("and applierinf1_.mark_time between '"+params[42]+"' AND '"+params[43]+"' ");
+				}
+				
 				if (!"".equals(params[9].trim()))
 					mysql.append("AND applierinf2_.ao_name LIKE '%"+params[9]+"%' ");
 				if (!"".equals(params[10].trim()))
@@ -529,7 +563,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 				StringBuffer mysql = new StringBuffer();
 				mysql.append("select DISTINCT court0_.ID as id,court0_.caseId as caseid,court0_.pname as pname,court0_.execCourtName as execcourtname,court0_.casecodeself as casecodeself,court0_.caseCreateTime as casecreatetime,court0_.caseCode as caseCode ");
 				mysql.append("from lawyer.courtinfo court0_  ");
-				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())){
+				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())
+						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim())){
 					mysql.append("left join lawyer.applierinfo applierinf1_ ");
 					mysql.append("ON court0_.casecodeself=applierinf1_.a_c_casecodeself ");
 				}
@@ -607,7 +642,22 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 					mysql.append("AND applierinf1_.a_organ LIKE '%"+params[7]+"%' ");
 				if (!"".equals(params[8].trim()))
 					mysql.append("AND applierinf1_.a_address LIKE '%"+params[8]+"%' ");
-
+				if (!"".equals(params[41].trim()))
+					mysql.append("AND applierinf1_.used_mark = "+params[41]+" ");
+				if (!"".equals(params[42].trim()) || !"".equals(params[43].trim())){
+					if("".equals(params[42].trim())) params[42]="1970-01-01";
+					if("".equals(params[43].trim())) params[43]="2100-12-31";
+					
+					SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+					try {
+						params[42] = sdf1.format(sdf2.parse(params[42]));
+						params[43] = sdf1.format(sdf2.parse(params[43]));
+					} catch (ParseException e) {
+					}
+					mysql.append("and applierinf1_.mark_time between '"+params[42]+"' AND '"+params[43]+"' ");
+				}
+				
 				if (!"".equals(params[9].trim()))
 					mysql.append("AND applierinf2_.ao_name LIKE '%"+params[9]+"%' ");
 				if (!"".equals(params[10].trim()))
@@ -703,7 +753,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 				mysql.append("select count(DISTINCT court0_.casecodeself) ");
 				mysql.append("from lawyer.courtinfo court0_  ");
 				
-				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())){
+				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())
+						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim())){
 					mysql.append("left join lawyer.applierinfo applierinf1_ ");
 					mysql.append("ON court0_.casecodeself=applierinf1_.a_c_casecodeself ");
 				}
@@ -783,6 +834,21 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 					mysql.append("AND applierinf1_.a_organ LIKE '%"+params[7]+"%' ");
 				if (!"".equals(params[8].trim()))
 					mysql.append("AND applierinf1_.a_address LIKE '%"+params[8]+"%' ");
+				if (!"".equals(params[41].trim()))
+					mysql.append("AND applierinf1_.used_mark = "+params[41]+" ");
+				if (!"".equals(params[42].trim()) || !"".equals(params[43].trim())){
+					if("".equals(params[42].trim())) params[42]="1970-01-01";
+					if("".equals(params[43].trim())) params[43]="2100-12-31";
+					
+					SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
+					SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+					try {
+						params[42] = sdf1.format(sdf2.parse(params[42]));
+						params[43] = sdf1.format(sdf2.parse(params[43]));
+					} catch (ParseException e) {
+					}
+					mysql.append("and applierinf1_.mark_time between '"+params[42]+"' AND '"+params[43]+"' ");
+				}
 
 				if (!"".equals(params[9].trim()))
 					mysql.append("AND applierinf2_.ao_name LIKE '%"+params[9]+"%' ");

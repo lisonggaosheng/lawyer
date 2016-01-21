@@ -131,7 +131,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td colspan="3"><input type="text" name="executebusiness.EStatus"/></td>
                     </tr>
                     <tr>
-                    	<td colspan="6" class="title">&nbsp;&nbsp;申请执行人企业信息</td>
+                    	<td colspan="6" class="title">&nbsp;&nbsp;申请人(债务人)信息</td>
+                    </tr>
+                    <tr>
+                    	<td align="right">市场标记：</td>
+                        <td>
+                        	<select name="applierinfo.usedMark">
+                        	   <option value="">请选择标记</option>
+							   <option value="1">是</option>
+							   <option value="0">否</option>
+							   <option value="2">其他</option>
+							</select> 
+                        </td>
+                        <td align="right">标记时间：</td>
+                        <td colspan="3">
+                        	<input type="text" name="startmarkTime" id="startmarkTime" /><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.startmarkTime)">至
+                        	<input type="text" name="endmarkTime" id="endmarkTime"><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.endmarkTime)">
+                        </td>
                     </tr>
                     <tr>
                     	<td align="right">申请企业主体名称：</td>

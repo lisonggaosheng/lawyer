@@ -50,6 +50,9 @@ public class LawyerSourceAction extends ActionSupport {
 	private String startctTime;
 	private String endctTime;
 	
+	private String startmarkTime;
+	private String endmarkTime;
+	
 	private String[] adayin;
 	private String[] bdayin;
 	private String[] cdayin;
@@ -996,12 +999,15 @@ public class LawyerSourceAction extends ActionSupport {
 					applierinfo.getAppName(),
 					contactExpress.getCeName(),
 					startSentEmstime,
-					endSentEmstime,//36
-					
+					endSentEmstime,
 					startctTime,
 					endctTime,
 					contactTel.getCtName1(),
-					contactTel.getCtTel1()
+					contactTel.getCtTel1(),//40
+					String.valueOf(applierinfo.getUsedMark()),
+					startmarkTime,
+					endmarkTime
+					
 			};
 			flog="1";
 			session.put("params", params);
@@ -1135,6 +1141,22 @@ public class LawyerSourceAction extends ActionSupport {
 
 	public void setEndctTime(String endctTime) {
 		this.endctTime = endctTime;
+	}
+
+	public String getStartmarkTime() {
+		return startmarkTime;
+	}
+
+	public void setStartmarkTime(String startmarkTime) {
+		this.startmarkTime = startmarkTime;
+	}
+
+	public String getEndmarkTime() {
+		return endmarkTime;
+	}
+
+	public void setEndmarkTime(String endmarkTime) {
+		this.endmarkTime = endmarkTime;
 	}
 
 }
