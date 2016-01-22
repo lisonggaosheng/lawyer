@@ -450,7 +450,7 @@
 									<a href="updapplierinfo?court.ap.appId=${court.ap.appId }&court.caseId=${court.caseId}">修改</a>&nbsp;&nbsp;
 									<a href="javascript:confirm('确实要删除吗?'){alert('业务不支持删除操作');};">删除</a>
 									&nbsp;&nbsp;&nbsp;
-									<a href="selap.action?applierinfo.appCCasecodeself=${applierinfo.appCCasecodeself}&caseId=${court.caseId}">查看全部数据</a>
+									<a href="selap.action?applierinfo.appCCasecodeself=${court.ap.appCCasecodeself}&caseId=${court.caseId}">查看全部数据</a>
 								</td>
 							</tr>
 						</table>

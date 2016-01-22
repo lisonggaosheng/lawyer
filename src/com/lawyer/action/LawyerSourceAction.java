@@ -958,6 +958,13 @@ public class LawyerSourceAction extends ActionSupport {
 
 	@SuppressWarnings("unchecked")
 	public String seniorSelectSource() throws Exception {
+		String usedmark = "";
+		if(applierinfo.getUsedMark() == null){
+			usedmark = "";
+		}else{
+			usedmark = String.valueOf(applierinfo.getUsedMark());
+		}
+		
 		String[] params = null;
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		if (flog.endsWith("0")) {
@@ -1004,7 +1011,7 @@ public class LawyerSourceAction extends ActionSupport {
 					endctTime,
 					contactTel.getCtName1(),
 					contactTel.getCtTel1(),//40
-					String.valueOf(applierinfo.getUsedMark()),
+					usedmark,
 					startmarkTime,
 					endmarkTime
 					
