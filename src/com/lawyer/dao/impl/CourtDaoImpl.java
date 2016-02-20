@@ -39,6 +39,7 @@ import com.lawyer.pojo.LawyerCourtName;
 import com.lawyer.pojo.NoteInfo;
 import com.lawyer.pojo.PageBean;
 import com.lawyer.pojo.Users;
+import com.lawyer.tools.StringFilter;
 
 @Entity
 public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
@@ -638,8 +639,9 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		List list = this.getSession().createSQLQuery(sql)
 				.addEntity("CollectCourt", CollectCourt.class).list();
 		if (list.size() > 0) {
-			Iterator it = list.iterator();
 			String sqlstr = "INSERT IGNORE into courtinfo(caseId,pname,partyCardNum,execCourtName,courtcode,casecodeself,caseCreateTime,caseCode,execMoney,caseState,savetime,beijingCourtState,infoType,excludeStatus,executestep) values ";
+			
+			Iterator it = list.iterator();
 			while (it.hasNext()) {
 				CollectCourt court = (CollectCourt) it.next();
 				
@@ -657,9 +659,9 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 				sqlstr += "('"
 						+ court.getCaseId()
 						+ "','"
-						+ court.getPname()
+						+ StringFilter.stringFilter(court.getPname())
 						+ "','"
-						+ court.getPartyCardNum()
+						+ StringFilter.stringFilter(court.getPartyCardNum().replaceAll("\\\\", ""))
 						+ "','"
 						+ court.getExecCourtName()
 						+ "','"
@@ -682,11 +684,12 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			}
 			sqlstr = sqlstr.substring(0, sqlstr.length()-1);
 			count = this.getSession().createSQLQuery(sqlstr).executeUpdate();
+			
 		}
 
 		String sql2 = "UPDATE courtinfo SET uid = '"
 				+ user.getUId()
-				+ "',executestep='1' WHERE uid is NULL and executestep is NULL ";
+				+ "' WHERE uid is NULL";
 		this.getSession().createSQLQuery(sql2).executeUpdate();
 
 		String sql3 = "DELETE FROM court limit 5000";

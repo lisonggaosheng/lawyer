@@ -459,7 +459,7 @@ public class CourtAction extends ActionSupport{
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print("批处理数据完成,查询10000条，实际插入"+count+"条数据");
+			out.print("批处理数据完成,查询5000条，实际插入"+count+"条数据");
 			out.flush();
 			out.close();
 			return null;

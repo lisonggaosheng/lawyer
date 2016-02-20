@@ -319,6 +319,10 @@
 										<td class="td">${cont.clearrecord.competentCourt}</td>
 									</tr>
 									<tr>
+										<td align="right" class="td">案件进展：</td>
+										<td class="td">${cont.clearrecord.crfollowupresult }</td>
+									</tr>
+									<tr>
 										<td align="right" class="td">备注：</td>
 										<td class="td">${cont.clearrecord.crremark }</td>
 									</tr>
