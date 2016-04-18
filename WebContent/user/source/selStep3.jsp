@@ -54,6 +54,7 @@ function markApplierinfo(){
 					<!-- <input type="hidden" id="markvalue" name="applierinfo.usedMark"> -->
 					<label><input name="applierinfo.usedMark" type="radio" value="1" onclick="clickRaido(this)"/>是 </label>
 					<label><input name="applierinfo.usedMark" type="radio" value="0" onclick="clickRaido(this)"/>否</label>
+					<label><input name="applierinfo.usedMark" type="radio" value="3" onclick="clickRaido(this)"/>北京</label>
 					<label><input name="applierinfo.usedMark" type="radio" value="2" onclick="clickRaido(this)"/>其他 </label>
 					<input type="text" name="applierinfo.markRemark" id="markRemark" style="width:300px; display: none;"/>
 					<input type="button" value="确认标记" onclick="markApplierinfo()"/>
@@ -142,6 +143,7 @@ function markApplierinfo(){
 				<c:choose>
 				    <c:when test="${usedMark == 1}">是</c:when>
 				    <c:when test="${usedMark == 0}">否</c:when>
+				    <c:when test="${usedMark == 3}">北京</c:when>
 				    <c:when test="${usedMark == 2}">其他：${markRemark }</c:when>
 				    <c:otherwise>
 				    	还没有进行标记
