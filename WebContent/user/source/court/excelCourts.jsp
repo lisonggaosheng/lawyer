@@ -9,16 +9,16 @@
 <title>使用excel导入操作</title>
 </head>
 <body>
-	<form action="excelInsertCourt.action" method="post" enctype="multipart/form-data">
+	<form action="excelUpdateApplierinfo.action" method="post" enctype="multipart/form-data">
 		<table cellpadding="0" cellspacing="0" border="0" align="center"
 		width="98%" class="result_table">
 			<tr>
 			<td colspan="2">&nbsp;&nbsp;<img src="../../images/view_16x16.gif" />&nbsp;
-			<span class="title">导入excel更新企业状态</span></td>
+			<span class="title">导入excel更新申请人企业状态</span></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-				<input type="file" name="upd" /><input type="submit" value="excel企业状态更新"/>
+				<input type="file" name="upd" /><input type="submit" value="更新"/>
 				</td>
 		</tr>
 		</table>
@@ -59,7 +59,7 @@
 		width="98%" class="result_table">
 			<tr>
 			<td colspan="2">&nbsp;&nbsp;<img src="../../images/view_16x16.gif" />&nbsp;
-			<span class="title">导入第一步数据excel</span></td>
+			<span class="title">导入第一步数据excel（前三步生成）</span></td>
 			</tr>
 			<tr>
 				<td colspan="2">

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.apache.struts2.ServletActionContext;
 
 import com.lawyer.pojo.LimitPower;
@@ -174,29 +175,10 @@ public class UsersAction extends ActionSupport{
 			if(admin!=null){
 		//		System.out.println(admin+"=============>"+admin.getURole());
 				if(admin.getURole().equals("管理员")){
-		//			System.out.println(admin+"=============>");
-					//:添加管理员登陆记录
-					log=new Log();
-					log.setLogDate(logService.getDataTime());
-					log.setLogUid(admin.getUId());
-					log.setLogUname(admin.getUName());
-					log.setLogUrole(admin.getURole());
-					log.setLogContent("登陆");
-					log.setLogTarget("办公系统");
-					logService.insert(log);
 					session.setAttribute("admin", admin);
 					return "admin";
 				}else {
 					if(admin.getUSta().equals("启用")){
-						//:添加普通用户登陆记录
-						log=new Log();
-						log.setLogDate(logService.getDataTime());
-						log.setLogUid(admin.getUId());
-						log.setLogUname(admin.getUName());
-						log.setLogUrole(admin.getURole());
-						log.setLogContent("登陆");
-						log.setLogTarget("办公系统");
-						logService.insert(log);
 						//查询用户的权限放入session中 
 						LimitPower userlp = lpService.findLPByUserName(admin.getUName());
 						session.setAttribute("admin", admin);
@@ -220,17 +202,6 @@ public class UsersAction extends ActionSupport{
 	 * */
 	public String quit(){
 		try {
-			//:添加用户退出记录
-			
-			admin = (Users) ServletActionContext.getRequest().getSession().getAttribute("admin");
-			log=new Log();
-			log.setLogDate(logService.getDataTime());
-			log.setLogUid(admin.getUId());
-			log.setLogUname(admin.getUName());
-			log.setLogUrole(admin.getURole());
-			log.setLogContent("退出");
-			log.setLogTarget("办公系统");
-			logService.insert(log);
 			ServletActionContext.getRequest().getSession().setAttribute("admin", null);
 			ServletActionContext.getRequest().getSession().setAttribute("userlp", null);
 			return "quit";
@@ -247,15 +218,6 @@ public class UsersAction extends ActionSupport{
 		try {
 			//:管理员添加用户记录
 			admin = usersService.SelectID(admin);
-			log=new Log();
-			log.setLogDate(logService.getDataTime());
-			log.setLogUid(admin.getUId());
-			log.setLogUname(admin.getUName());
-			log.setLogUrole(admin.getURole());
-			log.setLogContent("添加");
-			log.setLogTarget("用户信息");
-			logService.insert(log);
-			
 			usersService.insert(users);
 			//为用户添加对应的权限
 			lpService.addLP(new LimitPower(users.getUName(),"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"));
@@ -278,14 +240,6 @@ public class UsersAction extends ActionSupport{
 		try {
 			//:管理员查询用户记录
 			admin = (Users) ServletActionContext.getRequest().getSession().getAttribute("admin");
-			log=new Log();
-			log.setLogDate(logService.getDataTime());
-			log.setLogUid(admin.getUId());
-			log.setLogUname(admin.getUName());
-			log.setLogUrole(admin.getURole());
-			log.setLogContent("查询");
-			log.setLogTarget("所有用户信息");
-			logService.insert(log);
 
 			pageBean=pageService.queryForPage(10,page,"Users","UId","where UName <> 'admin'");
 			return "show";
@@ -301,16 +255,6 @@ public class UsersAction extends ActionSupport{
 	public String selectName(){
 		try {
 			//:管理员查询用户记录
-			admin = (Users) ServletActionContext.getRequest().getSession().getAttribute("admin");
-			log=new Log();
-			log.setLogDate(logService.getDataTime());
-			log.setLogUid(admin.getUId());
-			log.setLogUname(admin.getUName());
-			log.setLogUrole(admin.getURole());
-			log.setLogContent("模糊查询");
-			log.setLogTarget("用户信息");
-			logService.insert(log);
-
 			list=usersService.selectName(users);
 			return "usersShow";
 		} catch (Exception e) {
@@ -337,17 +281,6 @@ public class UsersAction extends ActionSupport{
 		try {
 			usersService.update(users);
 			list=usersService.selectName(users);
-			
-			//:管理员修改用户信息记录
-			admin = (Users) ServletActionContext.getRequest().getSession().getAttribute("admin");
-			log=new Log();
-			log.setLogDate(logService.getDataTime());
-			log.setLogUid(admin.getUId());
-			log.setLogUname(admin.getUName());
-			log.setLogUrole(admin.getURole());
-			log.setLogContent("修改");
-			log.setLogTarget("用户 "+users.getUName()+" 的信息");
-			logService.insert(log);
 			return "usersShow";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -361,16 +294,6 @@ public class UsersAction extends ActionSupport{
 		
 		try {
 			users=usersService.SelectID(users);
-			//:管理员删除用户信息记录
-			admin = (Users) ServletActionContext.getRequest().getSession().getAttribute("admin");
-			log=new Log();
-			log.setLogDate(logService.getDataTime());
-			log.setLogUid(admin.getUId());
-			log.setLogUname(admin.getUName());
-			log.setLogUrole(admin.getURole());
-			log.setLogContent("删除");
-			log.setLogTarget("用户 "+users.getUName()+" 的信息");
-			logService.insert(log);
 			//删除用户权限
 			lpService.removeLP(lpService.findLPByUserName(users.getUName()));
 			usersService.delete(users);
@@ -386,25 +309,14 @@ public class UsersAction extends ActionSupport{
 	 * */
 	public String updateUSta(){
 		try {
-			//:管理员修改用户账号状态记录
-			admin = (Users) ServletActionContext.getRequest().getSession().getAttribute("admin");
-			log=new Log();
-			log.setLogDate(logService.getDataTime());
-			log.setLogUid(admin.getUId());
-			log.setLogUname(admin.getUName());
-			log.setLogUrole(admin.getURole());
 			
 			users=usersService.SelectID(users);
 			if(users.getUSta().equals("启用")){
 				users.setUSta("禁用");
-				log.setLogContent("禁用");
 			}else{
 				users.setUSta("启用");
-				log.setLogContent("启用");
 			}
 			usersService.update(users);
-			log.setLogTarget("用户 "+users.getUName()+" 的账号");
-			logService.insert(log);
 			list=usersService.selectName(users);
 			return "usersShow";
 		} catch (Exception e) {

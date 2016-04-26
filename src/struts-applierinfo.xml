@@ -9,6 +9,11 @@
 			<result>/user/source/court/excelCourts.jsp</result>
 		</action>
 		
+		<!-- excel更新申请人信息 -->
+		<action name="excelUpdateApplierinfo" class="appInfoAction" method="excelUpdateApplierinfo">
+			<result>/user/source/court/excelCourts.jsp</result>
+		</action>
+		
 		<action name="insertAppInfo" class="appInfoAction" method="insert">
 			<result type="redirectAction">
 				 <param name="actionName">/lawyer/selectCourtById?court.casecodeself=${applierinfo.appCCasecodeself}&amp;court.caseId=${caseId}</param> 

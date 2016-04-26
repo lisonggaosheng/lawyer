@@ -3,7 +3,6 @@ package com.lawyer.service;
 import java.util.List;
 
 import com.lawyer.pojo.Applierinfo;
-import com.lawyer.pojo.Executebusiness;
 import com.lawyer.pojo.Users;
 
 public interface ApplierinfoService {
@@ -21,4 +20,11 @@ public interface ApplierinfoService {
      * @throws Exception 
 	 */
 	public void excelInsertApplierinfo(List<Applierinfo> dataList) throws Exception;
+	
+	/**
+	 * excel导入更新申请人信息
+	 * @param dataList
+	 * @throws Exception
+	 */
+	public void excelUpdateApplierinfo(List<Applierinfo> dataList)throws Exception;
 }

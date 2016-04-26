@@ -1,8 +1,10 @@
 package com.lawyer.action;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,6 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 
 import com.lawyer.pojo.Addrecord;
@@ -24,6 +30,7 @@ import com.lawyer.pojo.Applierinfo;
 import com.lawyer.pojo.Users;
 import com.lawyer.service.AddRecordService;
 import com.lawyer.service.ApplierinfoService;
+import com.lawyer.tools.ExcelTools;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ApplierinfoAction extends ActionSupport{
@@ -99,8 +106,77 @@ public class ApplierinfoAction extends ActionSupport{
 	public void setUpdContentType(String updContentType) {
 		this.updContentType = updContentType;
 	}
+	
 	/*
-	 * excel导入被执行人信息
+	 * excel导入更新申请人信息
+	 */
+	public String excelUpdateApplierinfo(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String basePath=ServletActionContext.getServletContext().getRealPath("/");
+		Connection conn = null;
+		try {
+			if(updFileName != null){
+				String path = basePath+"\\impExcel\\"+updFileName;
+				FileUtils.copyFile(upd, new File(path));
+				
+				List<Applierinfo> dataList = new ArrayList<Applierinfo>();
+				
+				HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(path));
+				// 在Excel文档中，第一张工作表的缺省索引是0
+				HSSFSheet sheet = workbook.getSheetAt(0);
+				// 获取到Excel文件中的所有行数
+				int rows = sheet.getPhysicalNumberOfRows();
+				// 遍历行
+				for (int i = 1; i < rows; i++) {
+					HSSFRow row = sheet.getRow(i);
+					if (row != null) {
+						// 获取到Excel文件中的所有的列
+//						int cells = row.getPhysicalNumberOfCells();
+						Applierinfo applierinfo = new Applierinfo();
+						
+						HSSFCell namecell = row.getCell(0);
+						HSSFCell repnamecell = row.getCell(1);
+		                HSSFCell statuscell = row.getCell(2);
+		                if (namecell == null) {
+		                    continue;
+		                }
+		                applierinfo.setAppName(ExcelTools.getValue(namecell));
+		                if(repnamecell != null){
+		                	applierinfo.setAppRepname(ExcelTools.getValue(repnamecell));
+		                }else{
+		                	applierinfo.setAppRepname("");
+		                }
+		                if(statuscell != null){
+		                	applierinfo.setAppStatus(ExcelTools.getValue(statuscell));
+		                }else{
+		                	applierinfo.setAppStatus("");
+		                }
+						
+						dataList .add(applierinfo);
+					}
+				}
+				
+				this.appinfoService.excelUpdateApplierinfo(dataList);
+				request.setAttribute("message","excel导入申请人信息更新成功");
+				return SUCCESS;
+			}else{
+				request.setAttribute("message","excel导入申请人信息文件上传失败");
+				return SUCCESS;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				request.setAttribute("message","excel更新申请人信息失败");
+				return SUCCESS;
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				return SUCCESS;
+			}
+		}
+	}
+	
+	/*
+	 * excel导入申请人信息
 	 */
 	public String excelInsertApplierinfo(){
 		HttpServletRequest request = ServletActionContext.getRequest();

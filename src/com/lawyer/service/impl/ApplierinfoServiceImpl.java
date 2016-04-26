@@ -44,7 +44,7 @@ public class ApplierinfoServiceImpl implements ApplierinfoService {
 
 	@Override
 	public void updateApp(Applierinfo applierinfo) throws Exception {
-		this.appdao.updateApp(applierinfo);
+		this.appdao.updateAppMark(applierinfo);
 
 	}
 
@@ -93,6 +93,14 @@ public class ApplierinfoServiceImpl implements ApplierinfoService {
 		}
 	}
 
+	@Override
+	public void excelUpdateApplierinfo(List<Applierinfo> dataList) throws Exception {
+		
+		for (int i = 0; i < dataList.size(); i++) {
+			Applierinfo applierinfo = dataList.get(i);
+			this.appdao.updateAppStatus(applierinfo);
+		}
+	}
 
 
 }

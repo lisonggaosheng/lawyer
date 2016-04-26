@@ -1293,7 +1293,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	
 	@Override
 	public List<Court> selectCourtsByNameCasecode(String pname,String caseCode) {
-		String hqlcc = "from Court c  where c.pname like '%"+pname+"%' and c.caseCode like '"+caseCode+"' ";
+		String hqlcc = "from Court c  where c.pname like '%"+pname+"%' and c.caseCode like '%"+caseCode+"%' ";
 		@SuppressWarnings("unchecked")
 		List<Court> courts = this.getHibernateTemplate().find(hqlcc);
 		return courts;

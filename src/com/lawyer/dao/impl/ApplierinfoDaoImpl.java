@@ -33,7 +33,7 @@ public class ApplierinfoDaoImpl extends HibernateDaoSupport implements
 	}
 
 	@Override
-	public void updateApp(Applierinfo applierinfo) throws Exception {
+	public void updateAppMark(Applierinfo applierinfo) throws Exception {
 		String sql = "update applierinfo set used_mark= "+applierinfo.getUsedMark()+",mark_remark='"+applierinfo.getMarkRemark()
 				+"',mark_time=DATE_FORMAT(NOW(), '%Y-%m-%d %T') where a_c_casecodeself='"+applierinfo.getAppCCasecodeself()+"'; ";
 		this.getSession().createSQLQuery(sql).executeUpdate();
@@ -135,6 +135,14 @@ public class ApplierinfoDaoImpl extends HibernateDaoSupport implements
 						"from Applierinfo ap where ap.appCCasecodeself='"
 								+ applierinfo.getAppCCasecodeself()
 								+ "' and ap.appName is not null ");
+	}
+
+	@Override
+	public void updateAppStatus(Applierinfo applierinfo) throws Exception {
+		String sql = "update applierinfo set a_repname= '"+applierinfo.getAppRepname()+"',a_status='"+applierinfo.getAppStatus()
+				+"' where a_name like '%"+applierinfo.getAppName()+"%'; ";
+		this.getSession().createSQLQuery(sql).executeUpdate();
+		
 	}
 
 }
