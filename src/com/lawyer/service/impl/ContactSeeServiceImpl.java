@@ -53,4 +53,8 @@ public class ContactSeeServiceImpl implements ContactSeeService{
 	public void deleteContactSee(ContactSee contactSee) throws Exception {
 		contactSeeDao.deleteContactSee(contactSee);
 	}
+	@Override
+	public ContactSee showConSee(String casecodeself) throws Exception {
+		return contactSeeDao.showConSee(casecodeself);
+	}
 }

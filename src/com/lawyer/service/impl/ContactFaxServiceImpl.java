@@ -55,4 +55,9 @@ public class ContactFaxServiceImpl implements ContactFaxService {
 	public void deleteContactFax(ContactFax contactFax) throws Exception {
 		contactFaxDao.deleteContactFax(contactFax);
 	}
+
+	@Override
+	public ContactFax showConFax(String casecodeself) throws Exception {
+		return contactFaxDao.showConFax(casecodeself);
+	}
 }

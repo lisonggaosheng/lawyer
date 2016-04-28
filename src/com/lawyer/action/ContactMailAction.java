@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
-import com.lawyer.pojo.ApplierinfoNetwork;
 import com.lawyer.pojo.ContactMail;
 import com.lawyer.pojo.Files;
 import com.lawyer.pojo.Users;
@@ -31,7 +30,14 @@ public class ContactMailAction extends ActionSupport{
 	private List<ContactMail> cms;
 	
 	private String caseId;
+	private String casecodeself;
 	
+	public String getCasecodeself() {
+		return casecodeself;
+	}
+	public void setCasecodeself(String casecodeself) {
+		this.casecodeself = casecodeself;
+	}
 	public List<ContactMail> getCms() {
 		return cms;
 	}
@@ -92,6 +98,18 @@ public class ContactMailAction extends ActionSupport{
 	public void setAttachContentType(String attackContentType) {
 		this.attachContentType = attackContentType;
 	}
+	
+	public String showConMail(){
+		try {
+			contactMail=this.contactMailService.showConMail(casecodeself);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+		
+	}
+	
 	/**
 	 * 添加申请执行人联系信息--电子邮件
 	 * 郭志鹏
@@ -143,7 +161,6 @@ public class ContactMailAction extends ActionSupport{
 			e.printStackTrace();
 			return ERROR;
 		}
-		
-		
 	}
+	
 }

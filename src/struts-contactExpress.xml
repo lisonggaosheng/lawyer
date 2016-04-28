@@ -4,6 +4,10 @@
     "struts-2.0.dtd">
 <struts>
 	<package name="conExpress" extends="struts-default">
+		<action name="showConExpress" class="conExpressAction" method="showConExpress">
+			<result name="success">/user/source/insertStep4_ems.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
 		
 		<action name="insertConExpress" class="conExpressAction" method="insert">
 			<result type="redirectAction">

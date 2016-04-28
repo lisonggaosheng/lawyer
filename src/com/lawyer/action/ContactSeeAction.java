@@ -29,6 +29,14 @@ public class ContactSeeAction extends ActionSupport{
 	private Files file = new Files();
 	private String caseId;
 	private List<ContactSee> cseelist;
+	private String casecodeself;
+	
+	public String getCasecodeself() {
+		return casecodeself;
+	}
+	public void setCasecodeself(String casecodeself) {
+		this.casecodeself = casecodeself;
+	}
 	
 	public List<ContactSee> getCseelist() {
 		return cseelist;
@@ -65,6 +73,16 @@ public class ContactSeeAction extends ActionSupport{
 	}
 	public void setCss(ContactSeeService css) {
 		this.css = css;
+	}
+	
+	public String showConSee(){
+		try {
+			contactSee=this.css.showConSee(casecodeself);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 	
 	@SuppressWarnings("unchecked")

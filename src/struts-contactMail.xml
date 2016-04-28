@@ -5,6 +5,11 @@
 <struts>
 	<package name="conMail" extends="struts-default">
 		
+		<action name="showConMail" class="conMailAction" method="showConMail">
+			<result name="success">/user/source/insertStep4_email.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
 		<action name="insertConMail" class="conMailAction" method="insert">
 			<result type="redirectAction">
 				 <param name="actionName">/lawyer/selectCourtById?court.casecodeself=${contactMail.cmCasecodeself}&amp;court.caseId=${caseId}</param> 

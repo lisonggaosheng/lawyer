@@ -12,4 +12,12 @@ public interface ContactTalkDao {
 	public List<ContactTalk> selectContactTalk(ContactTalk contactTalk)throws Exception;//查询与申请执行人联系信息（登门拜访）——何静
 	public void updateContactTalk(ContactTalk contactTalk)throws Exception;//修改案源信息（与申请执行人联系信息——登门拜访） ——何静
 	public void deleteContactTalk(ContactTalk contactTalk)throws Exception;//删除案源信息（与申请执行人联系信息——登门拜访） ——何静
+
+	/**
+	 * 添加约谈信息时显示之前的信息
+	 * @param casecodeself
+	 * @return
+	 * @throws Exception
+	 */
+	public ContactTalk showConTalk(String casecodeself) throws Exception;
 }

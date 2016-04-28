@@ -52,4 +52,8 @@ public class ContactTalkServiceImpl implements ContactTalkService{
 	public void deleteContactTalk(ContactTalk contactSee) throws Exception {
 		contactTalkDao.deleteContactTalk(contactSee);
 	}
+	@Override
+	public ContactTalk showConTalk(String casecodeself) throws Exception {
+		return contactTalkDao.showConTalk(casecodeself);
+	}
 }

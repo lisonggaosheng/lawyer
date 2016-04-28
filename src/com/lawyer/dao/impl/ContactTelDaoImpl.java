@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.lawyer.dao.ContactTelDao;
+import com.lawyer.pojo.ContactMail;
 import com.lawyer.pojo.ContactTel;
 import com.lawyer.pojo.Users;
 
@@ -42,6 +43,18 @@ public class ContactTelDaoImpl extends HibernateDaoSupport implements ContactTel
 
 	public void deleteContactTel(ContactTel contactTel) throws Exception {
 		this.getHibernateTemplate().delete(contactTel);
+	}
+
+	@Override
+	public ContactTel showConTel(String casecodeself) throws Exception {
+		String hql = "from ContactTel where ctCasecodeself='"
+				+ casecodeself + "' order by ctSavetime desc";
+		List<ContactTel> contels = this.getHibernateTemplate().find(hql);
+		if(contels.size()<1){
+			return null;
+		}else{
+			return contels.get(0);
+		}
 	}
 
 }

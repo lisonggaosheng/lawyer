@@ -612,9 +612,9 @@
 												<td class="td"></td>
 											</tr>
 										</table>
-									</s:iterator><a
-										href="/lawyer/user/source/insertStep4_email.jsp?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
-
+									</s:iterator>
+									<a href="showConMail.action?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a>
+								</td>
 								</s:if>
 								<s:else>
 									<td class="padding_td" valign="top" colspan="3"><a
@@ -679,8 +679,9 @@
 												<td class="td"></td>
 											</tr>
 										</table>
-									</s:iterator> <a
-										href="/lawyer/user/source/insertStep4_tel.jsp?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
+									</s:iterator> 
+									<a href="showConFax.action?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a>
+								</td>
 								</s:if>
 								<s:else>
 									<td class="padding_td" valign="top" colspan="3"><a

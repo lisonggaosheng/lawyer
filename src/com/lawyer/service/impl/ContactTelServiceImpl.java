@@ -52,4 +52,8 @@ public class ContactTelServiceImpl implements ContactTelService {
 	public void deleteContactTel(ContactTel contactTel) throws Exception {
 		contactTelDao.deleteContactTel(contactTel);
 	}
+	@Override
+	public ContactTel showConTel(String casecodeself) throws Exception {
+		return contactTelDao.showConTel(casecodeself);
+	}
 }

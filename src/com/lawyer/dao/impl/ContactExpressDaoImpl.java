@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.lawyer.dao.ContactExpressDao;
 import com.lawyer.pojo.ContactExpress;
+import com.lawyer.pojo.ContactMail;
 import com.lawyer.pojo.Users;
 
 public class ContactExpressDaoImpl extends HibernateDaoSupport implements ContactExpressDao {
@@ -46,6 +47,18 @@ public class ContactExpressDaoImpl extends HibernateDaoSupport implements Contac
 	public void deleteContactExpress(ContactExpress contactExpress)
 			throws Exception {
 		this.getHibernateTemplate().delete(contactExpress);
+	}
+
+	@Override
+	public ContactExpress showConExpress(String casecodeself) throws Exception {
+		String hql = "from ContactExpress where ceCasecodeself='"
+				+ casecodeself + "' order by ceSavetime desc";
+		List<ContactExpress> conExpresslist = this.getHibernateTemplate().find(hql);
+		if(conExpresslist.size()<1){
+			return null;
+		}else{
+			return conExpresslist.get(0);
+		}
 	}
 
 }

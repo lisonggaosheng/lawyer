@@ -57,4 +57,9 @@ public class ContactMailServiceImpl implements ContactMailService {
 		
 	}
 
+	@Override
+	public ContactMail showConMail(String casecodeself) throws Exception {
+		return contactMailDao.showConMail(casecodeself);
+	}
+
 }

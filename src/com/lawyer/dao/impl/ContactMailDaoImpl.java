@@ -1,13 +1,12 @@
 package com.lawyer.dao.impl;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.lawyer.dao.ContactMailDao;
+import com.lawyer.pojo.ClearRecord;
 import com.lawyer.pojo.ContactMail;
-import com.lawyer.pojo.Users;
 
 public class ContactMailDaoImpl extends HibernateDaoSupport implements ContactMailDao {
 
@@ -17,21 +16,9 @@ public class ContactMailDaoImpl extends HibernateDaoSupport implements ContactMa
 		this.getSession().createSQLQuery(sql).executeUpdate();
 	}
 
-	public ContactMail selectContactMail(ContactMail contactMail, Users users)
-			throws Exception {
-		String str1 = "";
-		String str2 = "";
-		ContactMail conMa = null;
-		Iterator<ContactMail> it = this.getHibernateTemplate().find("from Apply where app_uid="+users.getUId() +" and appTarget='"+str1+"' and app_content='"+str2+"'").iterator();
-		while(it.hasNext()){
-			conMa = it.next();
-		}
-		return conMa;
-	}
-
-	@SuppressWarnings("unchecked")
-	public List selectContactMail(ContactMail contactMail) throws Exception {
-		List list =this.getHibernateTemplate().find("from ContactMail where cmCasecodeself = '"+contactMail.getCmCasecodeself()+"' ");
+	@SuppressWarnings("rawtypes")
+	public List<ContactMail> selectContactMail(ContactMail contactMail) throws Exception {
+		List<ContactMail> list =this.getHibernateTemplate().find("from ContactMail where cmCasecodeself = '"+contactMail.getCmCasecodeself()+"' ");
 		return list;
 	}
 
@@ -41,6 +28,18 @@ public class ContactMailDaoImpl extends HibernateDaoSupport implements ContactMa
 
 	public void deleteContactMail(ContactMail contactMail) throws Exception {
 		this.getHibernateTemplate().delete(contactMail);
+	}
+
+	@Override
+	public ContactMail showConMail(String casecodeself) throws Exception {
+		String hql = "from ContactMail cm where cm.cmCasecodeself='"
+				+ casecodeself + "' order by cm.cmSavetime desc";
+		List<ContactMail> conmails = this.getHibernateTemplate().find(hql);
+		if(conmails.size()<1){
+			return null;
+		}else{
+			return conmails.get(0);
+		}
 	}
 
 }

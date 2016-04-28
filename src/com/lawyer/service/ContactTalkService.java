@@ -12,4 +12,13 @@ public interface ContactTalkService {
 	public List<ContactTalk> selectContactTalk(ContactTalk contactTalk)throws Exception;
 	public void updateContactTalk(ContactTalk contactTalk)throws Exception;
 	public void deleteContactTalk(ContactTalk contactTalk)throws Exception;
+	
+	/**
+	 * 添加约谈信息时显示之前的信息
+	 * @param casecodeself
+	 * @return
+	 * @throws Exception
+	 */
+	public ContactTalk showConTalk(String casecodeself) throws Exception;
+	
 }

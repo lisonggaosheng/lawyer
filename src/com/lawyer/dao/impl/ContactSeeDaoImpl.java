@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.lawyer.dao.ContactSeeDao;
+import com.lawyer.pojo.ContactMail;
 import com.lawyer.pojo.ContactSee;
 import com.lawyer.pojo.Users;
 
@@ -42,5 +43,17 @@ public class ContactSeeDaoImpl extends HibernateDaoSupport implements ContactSee
 
 	public void deleteContactSee(ContactSee contactSee) throws Exception {
 		this.getHibernateTemplate().delete(contactSee);
+	}
+
+	@Override
+	public ContactSee showConSee(String casecodeself) throws Exception {
+		String hql = "from ContactSee where csCasecodeself='"
+				+ casecodeself + "' order by csSavetime desc";
+		List<ContactSee> consees = this.getHibernateTemplate().find(hql);
+		if(consees.size()<1){
+			return null;
+		}else{
+			return consees.get(0);
+		}
 	}
 }

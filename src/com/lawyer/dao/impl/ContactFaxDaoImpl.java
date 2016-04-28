@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.lawyer.dao.ContactFaxDao;
 import com.lawyer.pojo.ContactFax;
+import com.lawyer.pojo.ContactMail;
 import com.lawyer.pojo.Users;
 
 public class ContactFaxDaoImpl extends HibernateDaoSupport implements ContactFaxDao {
@@ -42,6 +43,18 @@ public class ContactFaxDaoImpl extends HibernateDaoSupport implements ContactFax
 
 	public void deleteContactFax(ContactFax contactFax) throws Exception {
 		this.getHibernateTemplate().delete(contactFax);
+	}
+
+	@Override
+	public ContactFax showConFax(String casecodeself) throws Exception {
+		String hql = "from ContactFax where cfCasecodeself='"
+				+ casecodeself + "' order by cfSavetime desc";
+		List<ContactFax> confaxs = this.getHibernateTemplate().find(hql);
+		if(confaxs.size()<1){
+			return null;
+		}else{
+			return confaxs.get(0);
+		}
 	}
 
 }

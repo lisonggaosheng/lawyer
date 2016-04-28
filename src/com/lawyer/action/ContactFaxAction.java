@@ -29,6 +29,14 @@ public class ContactFaxAction extends ActionSupport{
 	private Files file = new Files();
 	private List<ContactFax> cflist;
 	private String caseId;
+	private String casecodeself;
+	
+	public String getCasecodeself() {
+		return casecodeself;
+	}
+	public void setCasecodeself(String casecodeself) {
+		this.casecodeself = casecodeself;
+	}
 	
 	public List<ContactFax> getCflist() {
 		return cflist;
@@ -53,6 +61,16 @@ public class ContactFaxAction extends ActionSupport{
 	}
 	public void setFilesService(FilesService filesService) {
 		this.filesService = filesService;
+	}
+	
+	public String showConFax(){
+		try {
+			contactFax=this.cfs.showConFax(casecodeself);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 	
 	@SuppressWarnings("unchecked")

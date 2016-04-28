@@ -6,8 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+
 import com.lawyer.pojo.ContactExpress;
 import com.lawyer.pojo.Files;
 import com.lawyer.pojo.Users;
@@ -27,6 +29,14 @@ public class ContactExpressAction extends ActionSupport{
 	private Files file = new Files();
 	private String caseId;
 	private List<ContactExpress> celist;
+	private String casecodeself;
+	
+	public String getCasecodeself() {
+		return casecodeself;
+	}
+	public void setCasecodeself(String casecodeself) {
+		this.casecodeself = casecodeself;
+	}
 	
 	public List<ContactExpress> getCelist() {
 		return celist;
@@ -52,6 +62,16 @@ public class ContactExpressAction extends ActionSupport{
 	}
 	public void setFile(Files file) {
 		this.file = file;
+	}
+	
+	public String showConExpress(){
+		try {
+			contactExpress=this.ces.showConExpress(casecodeself);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -146,6 +166,5 @@ public class ContactExpressAction extends ActionSupport{
 	public void setAttachContentType(String attachContentType) {
 		this.attachContentType = attachContentType;
 	}
-	
 	
 }

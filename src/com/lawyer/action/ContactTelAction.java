@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
-import com.lawyer.pojo.ContactMail;
 import com.lawyer.pojo.ContactTel;
 import com.lawyer.pojo.Files;
 import com.lawyer.pojo.Users;
@@ -30,6 +29,14 @@ public class ContactTelAction extends ActionSupport {
 	private Files file = new Files();
 	private String caseId;
 	private List<ContactTel> ctels;
+	private String casecodeself;
+	
+	public String getCasecodeself() {
+		return casecodeself;
+	}
+	public void setCasecodeself(String casecodeself) {
+		this.casecodeself = casecodeself;
+	}
 
 	public List<ContactTel> getCtels() {
 		return ctels;
@@ -61,6 +68,16 @@ public class ContactTelAction extends ActionSupport {
 
 	public void setFilesService(FilesService filesService) {
 		this.filesService = filesService;
+	}
+	
+	public String showConTel(){
+		try {
+			contactTel=this.cts.showConTel(casecodeself);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -4,6 +4,10 @@
     "struts-2.0.dtd">
 <struts>
 	<package name="conSee" extends="struts-default">
+		<action name="showConSee" class="conFaxAction" method="showConSee">
+			<result name="success">/user/source/insertStep4_see.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
 		
 		<action name="insertConSee" class="conSeeAction" method="insert">
 			<result type="redirectAction">

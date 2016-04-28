@@ -29,7 +29,14 @@ public class ContactTalkAction extends ActionSupport{
 	private Files file = new Files();
 	private String caseId;
 	private List<ContactTalk> contactTalkList;
+	private String casecodeself;
 	
+	public String getCasecodeself() {
+		return casecodeself;
+	}
+	public void setCasecodeself(String casecodeself) {
+		this.casecodeself = casecodeself;
+	}
 	
 	public String getCaseId() {
 		return caseId;
@@ -68,6 +75,17 @@ public class ContactTalkAction extends ActionSupport{
 	public void setContactTalkList(List<ContactTalk> contactTalkList) {
 		this.contactTalkList = contactTalkList;
 	}
+	
+	public String showConTalk(){
+		try {
+			contactTalk=this.contactTalkService.showConTalk(casecodeself);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+	
 	public String selectConTalk(){
 		try {
 			contactTalkList = this.contactTalkService.selectContactTalk(contactTalk);

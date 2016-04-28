@@ -4,6 +4,10 @@
     "struts-2.0.dtd">
 <struts>
 	<package name="conFax" extends="struts-default">
+		<action name="showConFax" class="conFaxAction" method="showConFax">
+			<result name="success">/user/source/insertStep4_fax.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
 		
 		<action name="insertConFax" class="conFaxAction" method="insert">
 			<result type="redirectAction">

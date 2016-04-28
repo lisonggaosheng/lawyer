@@ -57,4 +57,8 @@ public class ContactExpressServiceImpl implements ContactExpressService {
 			throws Exception {
 		contactExpressDao.deleteContactExpress(contactExpress);
 	}
+	@Override
+	public ContactExpress showConExpress(String casecodeself) throws Exception {
+		return contactExpressDao.showConExpress(casecodeself);
+	}
 }
