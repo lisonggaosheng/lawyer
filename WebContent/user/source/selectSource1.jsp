@@ -680,7 +680,7 @@
 											</tr>
 										</table>
 									</s:iterator> 
-									<a href="showConFax.action?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a>
+									<a href="showConTel.action?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a>
 								</td>
 								</s:if>
 								<s:else>
@@ -746,7 +746,7 @@
 											</tr>
 										</table>
 									</s:iterator> <a
-										href="/lawyer/user/source/insertStep4_ems.jsp?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
+										href="showConExpress.action?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
 								</s:if>
 
 								<s:else>
@@ -798,7 +798,7 @@
 											</tr>
 										</table>
 									</s:iterator><a
-										href="/lawyer/user/source/insertStep4_fax.jsp?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
+										href="showConFax.action?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
 								</s:if>
 								<s:else>
 									<td class="padding_td" valign="top" colspan="3"><a
@@ -854,7 +854,7 @@
 											</tr>
 										</table>
 									</s:iterator><a
-										href="/lawyer/user/source/insertStep4_see.jsp?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
+										href="showConSee.action?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
 								</s:if>
 								<s:else>
 									<td class="padding_td" valign="top" colspan="3"><a
@@ -904,7 +904,7 @@
 											</tr>
 										</table>
 									</s:iterator><a
-										href="/lawyer/user/source/insertStep4_talk.jsp?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
+										href="showConTalk.action?casecodeself=${court.casecodeself}&caseId=${court.caseId}">继续添加</a></td>
 								</s:if>
 								<s:else>
 									<td class="padding_td" valign="top" colspan="3"><a

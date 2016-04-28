@@ -1,17 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加第四步（与申请执行人联系信息——约谈跟进情况）页面</title>
-<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectpenson.js"></script>
 <script language="javascript">
@@ -43,7 +38,7 @@
 	height="100%" class="content_table">
 
 	<tr>
-		<td>&nbsp;&nbsp;<img src="../../images/flag3_(add)_16x16.gif" />&nbsp;
+		<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif" />&nbsp;
 		<span class="title">添加与申请执行人联系信息</span></td>
 	</tr>
 	<tr>
@@ -51,8 +46,14 @@
 		<table cellpadding="0" cellspacing="0" width="98%" align="center"
 			class="search_table" border="0">
 			<tr>
-				<td align="right" width="20%">案源信息编号：</td>
-				<td><strong>${param.casecodeself}</strong></td>
+				<c:choose>
+			       <c:when test="${param.casecodeself != null}">
+			            <td align="left">案源信息编号：<strong>${param.casecodeself}</strong></td>
+			       </c:when>
+			       <c:when test="${contactTalk.ctCasecodeself != null}">
+			             <td align="left">案源信息编号：<strong>${contactTalk.ctCasecodeself}</strong></td>
+			       </c:when>
+				</c:choose>
 			</tr>
 		</table>
 		</td>
@@ -65,21 +66,21 @@
 				<td>
 				<form name="form3" method="post" action="insertConTalk.action"
 					enctype="multipart/form-data">
-
 				<table class="form_table" align="center" cellpadding="0"
 					cellspacing="0" width="100%" border="0">
 					<tr class="title">
-						<td align="right"><img src="../../images/flag2_16x16.gif" />&nbsp;约谈跟进情况</td>
+						<td align="right"><img src="/lawyer/images/flag2_16x16.gif" />&nbsp;约谈跟进情况</td>
 						<td colspan="2">&nbsp;</td>
 					</tr>					
 					<tr>
 						<td align="right">对方联系人：</td>
-						<td colspan="2"><input type="text" name="contactTalk.ctName" /></td>
+						<td colspan="2"><input type="text" name="contactTalk.ctName" value="${contactTalk.ctName }"/></td>
 					</tr>
 					<tr>
 						<td align="right">跟进人：</td>
 						<td colspan="2">
-							<input type="text" id="ctLawyerName" name="contactTalk.ctLawyerName" readOnly="true"/>
+							<input type="text" id="ctLawyerName" name="contactTalk.ctLawyerName" value="${contactTalk.ctLawyerName }" 
+								readOnly="true"/>
 							<select name="penson" id="penson" onchange="selectpenson()">
 								<option >请选择跟进人</option>
 							</select>
@@ -87,28 +88,41 @@
 					</tr>
 					<tr>
 						<td align="right">跟进情况：</td>
-						<td colspan="2"><input type="text" name="contactTalk.ctResult" /></td>
+						<td colspan="2"><input type="text" name="contactTalk.ctResult" value="${contactTalk.ctResult }"/></td>
 					</tr>
 					<tr>
 						<td align="right" width="20%">时间：</td>
-						<td colspan="2"><input type="text" name="contactTalk.ctDate" id="calendardate" onClick="loadCalendar(this)" /></td>
+						<td colspan="2"><input type="text" name="contactTalk.ctDate" value="${contactTalk.ctDate }" 
+						id="calendardate" onClick="loadCalendar(this)" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td align="right">备注：</td>
 						<td colspan="2"><textarea class="textarea_remarks"
-							name="contactTalk.ctRemark"></textarea></td>
+							name="contactTalk.ctRemark">${contactTalk.ctRemark}</textarea></td>
 					</tr>
 					<tr>
 						<td align="right">附件：</td>
 						<td colspan="2"><input type="file" name="attach" /></td>
 					</tr>
 					<tr style="display: none;">
-						<td colspan="2"><input type="text"
-							name="contactTalk.ctCasecodeself" value="${param.casecodeself}" /></td>
+						<td colspan="2">
+							<c:choose>
+						       <c:when test="${param.casecodeself != null}">
+						            <input type="hidden" name="contactTalk.ctCasecodeself"
+										value="${param.casecodeself}" />
+									<input type="hidden" name="caseId"
+											value="${param.caseId}" />
+						       </c:when>
+						       <c:when test="${contactTalk.ctCasecodeself != null}">
+						              	<input type="hidden" name="contactTalk.ctCasecodeself"
+											value="${contactTalk.ctCasecodeself}" />
+										<input type="hidden" name="caseId"
+											value="${caseId}" />
+						       </c:when>
+							</c:choose>
+						</td>
 					</tr>
 					<tr>
-						<td>&nbsp;<input type="hidden"
-							name="caseId" value="${param.caseId}" /></td>
 						<td colspan="2"><input type="submit" value="保存" />&nbsp;&nbsp;
 						<input type="reset" value="重置" /></td>
 					</tr>

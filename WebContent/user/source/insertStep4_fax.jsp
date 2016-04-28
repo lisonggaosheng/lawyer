@@ -1,15 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加第四步（与申请执行人联系信息——传真）页面</title>
-<link rel="stylesheet" href="../../css/public.css"/>
+<link rel="stylesheet" href="/lawyer/css/public.css"/>
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script language="javascript">
 
@@ -29,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
     <tr>
     	<td>
-        	&nbsp;&nbsp;<img src="../../images/flag3_(add)_16x16.gif"/>&nbsp;
+        	&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif"/>&nbsp;
             <span class="title">添加与申请执行人联系信息</span>
         </td>
     </tr>
@@ -37,8 +34,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<td>
         	<table cellpadding="0" cellspacing="0" width="98%" align="center" class="search_table" border="0">
                 	<tr>
-                    	<td align="right" width="20%">案源信息编号：</td>
-                        <td><strong>${param.casecodeself}</strong></td>
+                		<c:choose>
+					       <c:when test="${param.casecodeself != null}">
+					            <td align="left">案源信息编号：<strong>${param.casecodeself}</strong></td>
+					       </c:when>
+					       <c:when test="${contactFax.cfCasecodeself != null}">
+					             <td align="left">案源信息编号：<strong>${contactFax.cfCasecodeself}</strong></td>
+					       </c:when>
+						</c:choose>
                     </tr>
                 </table>
         </td>
@@ -52,29 +55,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	
                     	<table class="form_table" align="center" cellpadding="0" cellspacing="0" width="100%" border="0">
                         	<tr class="title">
-                            	<td align="right"><img src="../../images/flag2_16x16.gif" />&nbsp;传真</td>
+                            	<td align="right"><img src="/lawyer/images/flag2_16x16.gif" />&nbsp;传真</td>
                                 <td colspan="2">&nbsp;</td>
                             </tr>
                         	<tr>
                             	<td align="right" width="20%">发送人：</td>
-                                <td colspan="2"><input type="text" name="contactFax.cfName" /></td>
+                                <td colspan="2"><input type="text" name="contactFax.cfName" value="${contactFax.cfName }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">传真时间：</td>
-                                <td colspan="2"><input type="text" name="contactFax.cfTime" onClick="loadCalendar(this)" readonly="readonly"/></td>
+                                <td colspan="2"><input type="text" name="contactFax.cfTime" onClick="loadCalendar(this)"
+                                readonly="readonly" value="${contactFax.cfTime }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">发送结果：</td>
-                                <td colspan="2"><input type="text" name="contactFax.cfResult"/></td>
+                                <td colspan="2"><input type="text" name="contactFax.cfResult" value="${contactFax.cfResult }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">对方接收人：</td>
-                                <td colspan="2"><input type="text" name="contactFax.cfReceive"/></td>
+                                <td colspan="2"><input type="text" name="contactFax.cfReceive" value="${contactFax.cfReceive }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">备注：</td>
                                 <td colspan="2">
-                                	<textarea class="textarea_remarks" name="contactFax.cfRemark"></textarea>
+                                	<textarea class="textarea_remarks" name="contactFax.cfRemark">${contactFax.cfRemark}</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -83,13 +87,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </tr>
                            
                              <tr style="display:none;">
-                            	<td ><input type="text" name="contactFax.cfCasecodeself" value="${param.casecodeself}"/></td>
+                            	<td >
+                            		<c:choose>
+								       <c:when test="${param.casecodeself != null}">
+								            <input type="hidden" name="contactFax.cfCasecodeself"
+												value="${param.casecodeself}" />
+											<input type="hidden" name="caseId"
+													value="${param.caseId}" />
+								       </c:when>
+								       <c:when test="${contactFax.cfCasecodeself != null}">
+								              	<input type="hidden" name="contactFax.cfCasecodeself"
+													value="${contactFax.cfCasecodeself}" />
+												<input type="hidden" name="caseId"
+													value="${caseId}" />
+								       </c:when>
+									</c:choose>
+                            	</td>
                             </tr>
                             <tr>
                             	<td>&nbsp;</td>
                             	<td colspan="2">
-                            	<input type="hidden"
-							name="caseId" value="${param.caseId}" />
                                 	<input type="submit" value="保存" />&nbsp;&nbsp;
                                     <input type="reset" value="重置" />
                                  </td>

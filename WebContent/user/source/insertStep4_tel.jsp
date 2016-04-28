@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -10,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>添加第四步（与申请执行人联系信息——电话联系）页面</title>
-<link rel="stylesheet" href="../../css/public.css"/>
+<link rel="stylesheet" href="/lawyer/css/public.css"/>
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectpenson.js"></script>
 <script language="javascript">
@@ -38,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
     <tr>
     	<td>
-        	&nbsp;&nbsp;<img src="../../images/flag3_(add)_16x16.gif"/>&nbsp;
+        	&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif"/>&nbsp;
             <span class="title">添加与申请执行人联系信息</span>
         </td>
     </tr>
@@ -61,13 +58,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	
                     	<table class="form_table" align="center" cellpadding="0" cellspacing="0" width="100%" border="0">
                         	<tr class="title">
-                            	<td align="right"><img src="../../images/flag2_16x16.gif" />&nbsp;电话联系</td>
+                            	<td align="right"><img src="/lawyer/images/flag2_16x16.gif" />&nbsp;电话联系</td>
                                 <td colspan="2">&nbsp;</td>
                             </tr>
                             <tr>
                             	<td align="right" width="20%">打电话人员：</td>
                                 <td colspan="2">
-                                	<input type="text" id="pensonname" name="contactTel.ctName" readOnly="true"/>
+                                	<input type="text" id="pensonname" name="contactTel.ctName" value="${contactTel.ctName }" readOnly="readonly"/>
                                 	<select name="penson" id="penson" onchange="selectpenson()">
 										<option >请选择打电话人员</option>
 									</select>
@@ -75,36 +72,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </tr>
                         	<tr>
                             	<td align="right" width="20%">联系人1姓名：</td>
-                                <td colspan="2"><input type="text" name="contactTel.ctName1"/></td>
+                                <td colspan="2"><input type="text" name="contactTel.ctName1" value="${contactTel.ctName1 }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">联系人1电话：</td>
-                                <td colspan="2"><input  type="text" name="contactTel.ctTel1"/></td>
+                                <td colspan="2"><input  type="text" name="contactTel.ctTel1" value="${contactTel.ctTel1 }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">联系人2姓名：</td>
-                                <td colspan="2"><input type="text" name="contactTel.ctName2"/></td>
+                                <td colspan="2"><input type="text" name="contactTel.ctName2" value="${contactTel.ctName2 }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">联系人2电话：</td>
-                                <td colspan="2"><input  type="text" name="contactTel.ctTel2"/></td>
+                                <td colspan="2"><input  type="text" name="contactTel.ctTel2" value="${contactTel.ctTel2 }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">打电话时间：</td>
-                                <td colspan="2"><input type="text" name="contactTel.ctTime" onClick="loadCalendar(this)" readonly="readonly"/></td>
+                                <td colspan="2"><input type="text" name="contactTel.ctTime" value="${contactTel.ctTime }"
+                                 onClick="loadCalendar(this)" readonly="readonly"/></td>
                             </tr>
                             <tr>
                             	<td align="right">打电话结果：</td>
-                                <td colspan="2"><input type="text" name="contactTel.ctResult"/></td>
+                                <td colspan="2"><input type="text" name="contactTel.ctResult" value="${contactTel.ctResult }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">打电话所用电话号码：</td>
-                                <td colspan="2"><input  type="text" name="contactTel.ctTel3"/></td>
+                                <td colspan="2"><input  type="text" name="contactTel.ctTel3" value="${contactTel.ctTel3 }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">备注：</td>
                                 <td colspan="2">
-                                	<textarea class="textarea_remarks" name="contactTel.ctRemark"></textarea>
+                                	<textarea class="textarea_remarks" name="contactTel.ctRemark">${contactTel.ctRemark }</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -112,13 +110,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <td colspan="2"><input type="file" name="attach"/></td>
                             </tr>
                              <tr style="display:none;">
-                            	<td ><input type="text" name="contactTel.ctCasecodeself" value="${param.casecodeself}"/></td>
+                            	<td >
+                            		<c:choose>
+								       <c:when test="${param.casecodeself != null}">
+								            <input type="hidden" name="contactTel.ctCasecodeself"
+												value="${param.casecodeself}" />
+											<input type="hidden" name="caseId"
+													value="${param.caseId}" />
+								       </c:when>
+								       <c:when test="${contactTel.ctCasecodeself != null}">
+								              	<input type="hidden" name="contactTel.ctCasecodeself"
+													value="${contactTel.ctCasecodeself}" />
+												<input type="hidden" name="caseId"
+													value="${caseId}" />
+								       </c:when>
+									</c:choose>
+                            	</td>
                             </tr>
                             <tr>
                             	<td>&nbsp;</td>
                             	<td colspan="2">
-                            	<input type="hidden"
-							name="caseId" value="${param.caseId}" />
                                 	<input type="submit" value="保存" />&nbsp;&nbsp;
                                     <input type="reset" value="重置" />
                                  </td>
