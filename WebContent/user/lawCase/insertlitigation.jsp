@@ -189,11 +189,11 @@ $(document).ready(function() {
 					<tr>
 						<td align="right">案件结果：</td>
 						<td><input type="text"
-							name="litigation.lifollowupresult" value="${litigation.lifollowupresult}" /></td>
+							name="litigation.lifollowupresult"</td>
 					</tr>
 					<tr>
 						<td align="right">备注：</td>
-						<td><textarea rows="5" cols="50" name="litigation.liremark" >${litigation.liremark}</textarea>
+						<td><textarea rows="5" cols="50" name="litigation.liremark" ></textarea>
 						 	<c:choose>
 						       <c:when test="${param.Casecodeself != null}">
 						            <input type="hidden" name="litigation.licasecodeself"

@@ -4,7 +4,7 @@
     "struts-2.0.dtd">
 <struts>
 	<package name="conTalk" extends="struts-default">
-		<action name="showConTalk" class="conFaxAction" method="showConTalk">
+		<action name="showConTalk" class="conTalkAction" method="showConTalk">
 			<result name="success">/user/source/insertStep4_talk.jsp</result>
 			<result name="error">/user/index.jsp</result>
 		</action>

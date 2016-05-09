@@ -193,7 +193,7 @@
 									</tr>
 									<tr>
 										<td align="right">案件跟进结果：</td>
-										<td><input type="text" name="clearClear.ccfollowupresult" value="${clearClear.ccfollowupresult}" />
+										<td><input type="text" name="clearClear.ccfollowupresult"  />
 										</td>
 									</tr>
 									<tr>
@@ -205,7 +205,7 @@
 									<tr>
 										<td align="right">备注：</td>
 										<td><textarea rows="5" cols="50"
-												name="clearClear.ccremark" >${clearClear.ccremark}</textarea>
+												name="clearClear.ccremark" ></textarea>
 											<c:choose>
 										       <c:when test="${param.Casecodeself != null}">
 										            <input type="hidden" name="clearClear.cccasecodeself"

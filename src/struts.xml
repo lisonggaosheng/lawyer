@@ -7,7 +7,7 @@
 	<!-- spring管理struts  Action -->
 	<constant name="struts.objectFactory" value="spring" />
 	<!-- 设置当前模式   开发 -->
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
     <!-- 设置 编码集  UTF-8 -->
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<!-- 设置文件上传大小  1000M-->

@@ -187,11 +187,11 @@ $(document).ready(function() {
 					</tr>
 					<tr>
 						<td align="right">案件进展：</td>
-						<td><input type="text" name="clearRecord.crfollowupresult" value="${clearRecord.crfollowupresult}" /></td>
+						<td><input type="text" name="clearRecord.crfollowupresult"/></td>
 					</tr>
 					<tr>
 						<td align="right">备注：</td>
-						<td><textarea rows="5" cols="50" id="crremark" name="clearRecord.crremark" >${clearRecord.crremark}</textarea>
+						<td><textarea rows="5" cols="50" id="crremark" name="clearRecord.crremark" ></textarea>
 							<c:choose>
 						       <c:when test="${param.Casecodeself != null}">
 						            <input type="hidden" name="clearRecord.crcasecodeself"

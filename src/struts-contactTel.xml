@@ -4,7 +4,7 @@
     "struts-2.0.dtd">
 <struts>
 	<package name="conTel" extends="struts-default">
-		<action name="showConTel" class="conFaxAction" method="showConTel">
+		<action name="showConTel" class="conTelAction" method="showConTel">
 			<result name="success">/user/source/insertStep4_tel.jsp</result>
 			<result name="error">/user/index.jsp</result>
 		</action>

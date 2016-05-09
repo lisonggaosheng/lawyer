@@ -190,11 +190,11 @@ $(document).ready(function() {
 					</tr>
 					<tr>
 						<td align="right">案件结果：</td>
-						<td><input type="text" name="execute.exfollowupresult" value="${execute.exfollowupresult}" /></td>
+						<td><input type="text" name="execute.exfollowupresult" /></td>
 					</tr>
 					<tr>
 						<td align="right">备注：</td>
-						<td><textarea rows="5" cols="50" name="execute.exremark" >${execute.exremark}</textarea>
+						<td><textarea rows="5" cols="50" name="execute.exremark" ></textarea>
 							<c:choose>
 						       <c:when test="${param.Casecodeself != null}">
 						            <input type="hidden" name="execute.excasecodeself"
