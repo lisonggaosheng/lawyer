@@ -189,7 +189,7 @@ $(document).ready(function() {
 					<tr>
 						<td align="right">案件结果：</td>
 						<td><input type="text"
-							name="litigation.lifollowupresult"</td>
+							name="litigation.lifollowupresult" /></td>
 					</tr>
 					<tr>
 						<td align="right">备注：</td>

@@ -434,6 +434,7 @@
 									    <c:when test="${court.ap.usedMark == 1}">是</c:when>
 									    <c:when test="${court.ap.usedMark == 0}">否</c:when>
 									    <c:when test="${court.ap.usedMark == 3}">北京</c:when>
+									    <c:when test="${court.ap.usedMark == 4}">非</c:when>
 									    <c:when test="${court.ap.usedMark == 2}">其他：${court.ap.markRemark }</c:when>
 									    <c:otherwise>
 									    	还没有进行标记
@@ -1435,6 +1436,7 @@
 										    <c:when test="${court.ap.usedMark == 1}">是</c:when>
 										    <c:when test="${court.ap.usedMark == 0}">否</c:when>
 										    <c:when test="${court.ap.usedMark == 3}">北京</c:when>
+										    <c:when test="${court.ap.usedMark == 4}">非</c:when>
 										    <c:when test="${court.ap.usedMark == 2}">其他：${court.ap.markRemark }</c:when>
 										    <c:otherwise>
 										    	还没有进行标记

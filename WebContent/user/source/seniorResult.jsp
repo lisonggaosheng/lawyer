@@ -141,6 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							   <option value="1">是</option>
 							   <option value="0">否</option>
 							   <option value="3">北京</option>
+							   <option value="4">非</option>
 							   <option value="2">其他</option>
 							</select> 
                         </td>
