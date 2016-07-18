@@ -9,6 +9,10 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+<style type="text/css">
+#bg{ display: none; position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; background-color: black; z-index:1001; -moz-opacity: 0.7; opacity:.70; filter: alpha(opacity=70);}
+#show{display: none; position: absolute; top: 25%; left: 22%; width: 53%; height: 49%; padding: 8px; border: 8px solid #E8E9F7; background-color: white; z-index:1002; overflow: auto;}
+</style>
 <script type="text/javascript">
 	function yeshu(cp){
 		document.getElementById("cp").value=cp;
@@ -154,9 +158,17 @@
 				type:"POST",
 				cache:false,
 				url:"/lawyer/insertCourts.action",
+				beforeSend:function(){
+					document.getElementById("bg").style.display ="block";
+					document.getElementById("show").style.display ="block";
+				},
 				success:function(msg){
 					alert(msg);
-				}
+				},
+				complete: function(XMLHttpRequest, textStatus){
+					document.getElementById("bg").style.display ='none';
+					document.getElementById("show").style.display ='none';
+             	},
 			});
 		}
 	}
@@ -168,9 +180,17 @@
 				type:"POST",
 				cache:false,
 				url:"/lawyer/insertNoteCourts.action",
+				beforeSend:function(){
+					document.getElementById("bg").style.display ="block";
+					document.getElementById("show").style.display ="block";
+				},
 				success:function(msg){
 					alert(msg);
-				}
+				},
+				complete: function(XMLHttpRequest, textStatus){
+					document.getElementById("bg").style.display ='none';
+					document.getElementById("show").style.display ='none';
+             	},
 			});
 		}
 	}
@@ -182,9 +202,17 @@
 				type:"POST",
 				cache:false,
 				url:"/lawyer/insertExecutes.action",
+				beforeSend:function(){
+					document.getElementById("bg").style.display ="block";
+					document.getElementById("show").style.display ="block";
+				},
 				success:function(msg){
 					alert(msg);
-				}
+				},
+				complete: function(XMLHttpRequest, textStatus){
+					document.getElementById("bg").style.display ='none';
+					document.getElementById("show").style.display ='none';
+             	}
 			});
 		}
 	}
@@ -197,9 +225,17 @@
 				type:"POST",
 				cache:false,
 				url:"/lawyer/insertApplierinfos.action",
+				beforeSend:function(){
+					document.getElementById("bg").style.display ="block";
+					document.getElementById("show").style.display ="block";
+				},
 				success:function(msg){
 					alert(msg);
-				}
+				},
+				complete: function(XMLHttpRequest, textStatus){
+					document.getElementById("bg").style.display ='none';
+					document.getElementById("show").style.display ='none';
+             	}
 			});
 		}
 	}
@@ -211,9 +247,17 @@
 				type:"POST",
 				cache:false,
 				url:"/lawyer/insertAppNets.action",
+				beforeSend:function(){
+					document.getElementById("bg").style.display ="block";
+					document.getElementById("show").style.display ="block";
+				},
 				success:function(msg){
 					alert(msg);
-				}
+				},
+				complete: function(XMLHttpRequest, textStatus){
+					document.getElementById("bg").style.display ='none';
+					document.getElementById("show").style.display ='none';
+             	}
 			});
 		}
 	}
@@ -227,14 +271,17 @@
 		document.getElementById("fenye").submit();
 	}
 	
+	$(document).ready(function () { $("#loadgif").hide();});
+	
 </script>
 </head>
 <body>
-
+<div id="bg"></div>
+<div id="show"><span style="font-size:16px;position:absolute; z-index:2; left:100px; top:10px">数据处理中...</span><img alt="数据处理中..." src="/lawyer/images/loading.gif" /></div>
 <table cellspacing="0" cellpadding="0" border="0" width="98%"
 	height="100%" class="content_table" style="float: left;">
 	<tr>
-		<td colspan="2">&nbsp;&nbsp;<img src="images/view_16x16.gif" />&nbsp;<span
+		<td colspan="2">&nbsp;&nbsp;<img src="/lawyer/images/view_16x16.gif" />&nbsp;<span
 			class="title">查询案源信息</span></td>
 	</tr>
 	<tr>
@@ -305,7 +352,7 @@
 <table cellpadding="0" cellspacing="0" border="0" align="center"
 	width="98%" class="result_table">
 	<tr>
-		<td colspan="2">&nbsp;&nbsp;<img src="images/view_16x16.gif" />&nbsp;
+		<td colspan="2">&nbsp;&nbsp;<img src="/lawyer/images/view_16x16.gif" />&nbsp;
 		<span class="title">案源信息</span></td>
 	</tr>
 	<tr class="title" align="center">
@@ -346,6 +393,9 @@
 </table>
 <c:if test="${userlp.lp_query_casesource_resultopts==1}">
 	&nbsp;&nbsp;&nbsp;
+	<div id="loadgif" style="width:66px;height:66px;position:absolute;top:50%;left:50%;">
+　　		<img  alt="数据处理中..." src="/lawyer/images/loading.gif"/>
+	</div>
 	<table cellpadding="0" cellspacing="0" border="0" align="center"
 		width="98%" class="result_table">
 		<tr>

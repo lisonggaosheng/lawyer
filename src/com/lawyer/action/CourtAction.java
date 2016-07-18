@@ -3,6 +3,7 @@ package com.lawyer.action;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -452,12 +453,13 @@ public class CourtAction extends ActionSupport{
 	 */
 	public String insertMore(){
 		HttpSession session=ServletActionContext.getRequest().getSession();
+		
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html; charset=utf-8");
+		
 		try {
 			users=(Users) session.getAttribute("admin");
 			int count = courtService.insertMoreCourts(users);
-			
-			HttpServletResponse response = ServletActionContext.getResponse();
-			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.print("批处理数据完成,查询5000条，实际插入"+count+"条数据");
 			out.flush();
@@ -465,6 +467,15 @@ public class CourtAction extends ActionSupport{
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
+			PrintWriter out = null;
+			try {
+				out = response.getWriter();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			out.print("批处理数据异常信息："+e.getMessage());
+			out.flush();
+			out.close();
 			return null;
 		}
 	}

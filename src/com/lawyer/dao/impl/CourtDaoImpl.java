@@ -639,13 +639,13 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		List list = this.getSession().createSQLQuery(sql)
 				.addEntity("CollectCourt", CollectCourt.class).list();
 		if (list.size() > 0) {
-			String sqlstr = "INSERT IGNORE into courtinfo(caseId,pname,partyCardNum,execCourtName,courtcode,casecodeself,caseCreateTime,caseCode,execMoney,caseState,savetime,beijingCourtState,infoType,excludeStatus,executestep) values ";
-			
 			Iterator it = list.iterator();
 			while (it.hasNext()) {
+				String sqlstr = "INSERT IGNORE into courtinfo(caseId,pname,partyCardNum,execCourtName,courtcode,casecodeself,caseCreateTime,caseCode,execMoney,caseState,savetime,beijingCourtState,infoType,excludeStatus,executestep) values ";
+				
 				CollectCourt court = (CollectCourt) it.next();
 				
-				if(court.getPname()==null || court.getCaseCode()==null){
+				if(court.getPname()==null || court.getCaseCode()==null || court.getPname().contains("'")){
 					continue;
 				}
 				List<Court> courts = selectCourtsByNameCasecode(court.getPname(), court.getCaseCode());
@@ -653,9 +653,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 					continue;
 				}
 				
-//				SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
-				SimpleDateFormat df2 = new SimpleDateFormat(
-						"yyyy-MM-dd hh:mm:ss");
+				SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 				sqlstr += "('"
 						+ court.getCaseId()
 						+ "','"
@@ -680,10 +678,11 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 						+ "','"
 						+ df2.format(new Date())
 						+ "','"
-						+ court.getBeijingCourtState() + "','1','0',1),";
+						+ court.getBeijingCourtState() + "','1','0',1)";
+				this.getSession().createSQLQuery(sqlstr).executeUpdate();
+				count++;
 			}
-			sqlstr = sqlstr.substring(0, sqlstr.length()-1);
-			count = this.getSession().createSQLQuery(sqlstr).executeUpdate();
+//			sqlstr = sqlstr.substring(0, sqlstr.length()-1);
 			
 		}
 
