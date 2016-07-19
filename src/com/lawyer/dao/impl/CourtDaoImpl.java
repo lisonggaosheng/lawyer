@@ -685,7 +685,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 //			sqlstr = sqlstr.substring(0, sqlstr.length()-1);
 			
 		}
-
+		System.out.println("批处理数据完成,查询"+list.size()+"条，实际插入"+count+"条数据");
 		String sql2 = "UPDATE courtinfo SET uid = '"
 				+ user.getUId()
 				+ "' WHERE uid is NULL";

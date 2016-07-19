@@ -460,6 +460,7 @@ public class CourtAction extends ActionSupport{
 		try {
 			users=(Users) session.getAttribute("admin");
 			int count = courtService.insertMoreCourts(users);
+			
 			PrintWriter out = response.getWriter();
 			out.print("批处理数据完成,查询5000条，实际插入"+count+"条数据");
 			out.flush();
