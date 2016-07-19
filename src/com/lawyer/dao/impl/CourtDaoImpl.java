@@ -628,8 +628,9 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	 * (可优化 ---李梦翔)
 	 */
 	@SuppressWarnings({ "rawtypes" })
-	public int insertMoreCourts(Users user) throws Exception {
+	public String insertMoreCourts(Users user) throws Exception {
 		int count = 0;
+		String message = "";
 		
 		if(user == null){
 			user = new Users(29);
@@ -683,18 +684,17 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 				count++;
 			}
 //			sqlstr = sqlstr.substring(0, sqlstr.length()-1);
-			
-		}
-		System.out.println("批处理数据完成,查询"+list.size()+"条，实际插入"+count+"条数据");
-		String sql2 = "UPDATE courtinfo SET uid = '"
-				+ user.getUId()
-				+ "' WHERE uid is NULL";
-		this.getSession().createSQLQuery(sql2).executeUpdate();
+			String sql2 = "UPDATE courtinfo SET uid = '"
+					+ user.getUId()
+					+ "' WHERE uid is NULL";
+			this.getSession().createSQLQuery(sql2).executeUpdate();
 
-		String sql3 = "DELETE FROM court limit 5000";
-		this.getSession().createSQLQuery(sql3).executeUpdate();
+			String sql3 = "DELETE FROM court limit 5000";
+			this.getSession().createSQLQuery(sql3).executeUpdate();
+		}
+		message = "批处理数据完成,查询"+list.size()+"条，实际插入"+count+"条数据";
 		
-		return count;
+		return message;
 	}
 
 	@SuppressWarnings("unchecked")

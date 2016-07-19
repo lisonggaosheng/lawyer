@@ -415,7 +415,7 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	@Override
-	public int insertMoreCourts(Users user) throws Exception {
+	public String insertMoreCourts(Users user) throws Exception {
 		return courtDao.insertMoreCourts(user);
 	}
 
