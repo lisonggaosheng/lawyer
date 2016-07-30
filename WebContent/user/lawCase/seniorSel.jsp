@@ -22,6 +22,20 @@
 <link rel="stylesheet" href="/lawyer/css/public.css" />
 
 <script type="text/javascript">
+	document.onkeydown=function(event){
+	  var e = event || window.event || arguments.callee.caller.arguments[0];
+	       
+	   if(e && e.keyCode==13){ // enter 键
+		   //alert("enter 键");
+		   search();
+	  }
+	};
+	
+	function search(){
+		  var form = document.getElementById("searchForm");
+		  form.submit();
+	}
+
 	function loadCalendar(field) {
 		var rtn = window
 				.showModalDialog(
@@ -252,7 +266,7 @@
 						<tr>
 							<td colspan="12" align="right"><input type="hidden"
 								name="flog" value="0"> <input type="hidden" name="flog"
-								value="0"> <input type="submit" value="查询" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								value="0"> <input type="button" value="查询" onclick="search()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						</tr>
 					</table>
 				</form>

@@ -24,6 +24,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  for(var i = 0; i < coll.length; i++)
 	       coll[i].checked = false;
   });
+  
+  document.onkeydown=function(event){
+	  var e = event || window.event || arguments.callee.caller.arguments[0];
+	       
+	   if(e && e.keyCode==13){ // enter 键
+		   //alert("enter 键");
+		   search();
+	  }
+	}; 
 
   function search(){
 	  var form = document.getElementById("searchForm");
