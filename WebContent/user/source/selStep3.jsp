@@ -22,6 +22,7 @@ function clickRaido($item){
 	if(value == 2){
 		document.getElementById("markRemark").style.display = "";
 	}else{
+		$('#markRemark').val("");
 		document.getElementById("markRemark").style.display = "none";
 	}
 }
@@ -46,21 +47,59 @@ function markApplierinfo(){
 				案源信息编号：${applierinfo.appCCasecodeself}
 			</td>
 		</tr>
-		<tr>
-			<td>市场标记操作：
-				<form action="markAppInfo.action" method="post" id="markform">
+		<form action="markAppInfo.action" method="post" id="markform">
+			<tr>
+				<td>市场标记操作：
 					<input type="hidden" id="appCCasecodeself" value="${applierinfo.appCCasecodeself}" name="applierinfo.appCCasecodeself"> 
 					<input type="hidden" id="caseId" value="${caseId}" name="caseId">
-					<!-- <input type="hidden" id="markvalue" name="applierinfo.usedMark"> -->
-					<label><input name="applierinfo.usedMark" type="radio" value="1" onclick="clickRaido(this)"/>是 </label>
+					<label><input name="applierinfo.usedMark" type="radio" value="1" checked="checked" onclick="clickRaido(this)"/>是 </label>
 					<label><input name="applierinfo.usedMark" type="radio" value="0" onclick="clickRaido(this)"/>否</label>
 					<label><input name="applierinfo.usedMark" type="radio" value="3" onclick="clickRaido(this)"/>北京</label>
 					<label><input name="applierinfo.usedMark" type="radio" value="2" onclick="clickRaido(this)"/>其他 </label>
 					<label><input name="applierinfo.usedMark" type="radio" value="4" onclick="clickRaido(this)"/>非</label>
 					<input type="text" name="applierinfo.markRemark" id="markRemark" style="width:300px; display: none;"/>
-					<input type="button" value="确认标记" onclick="markApplierinfo()"/>
-				</form>
-		</td></tr>
+				</td>
+			</tr>
+			<tr>
+				<td>市场处理结果：
+					<select name="applierinfo.disposeResult" id="disposeResult">
+					  <option value="">请选择：</option>
+					  <option value ="A">A</option>
+					  <option value ="B">B</option>
+					  <option value ="C">C</option>
+					  <option value ="D">D</option>
+					  <option value ="E">E</option>
+					  <option value ="F">F</option>
+					  <option value ="G">G</option>
+					  <option value ="H">H</option>
+					  <option value ="I">I</option>
+					  <option value ="J">J</option>
+					  <option value ="K">K</option>
+					  <option value ="L">L</option>
+					  <option value ="M">M</option>
+					  <option value ="N">N</option>
+					  <option value ="O">O</option>
+					  <option value ="P">P</option>
+					  <option value ="Q">Q</option>
+					  <option value ="R">R</option>
+					  <option value ="S">S</option>
+					  <option value ="T">T</option>
+					  <option value ="U">U</option>
+					  <option value ="V">V</option>
+					  <option value ="W">W</option>
+					  <option value ="X">X</option>
+					  <option value ="Y">Y</option>
+					  <option value ="Z">Z</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="确认提交" onclick="markApplierinfo()"/>
+				</td>
+			</tr>
+		</form>
+		
 		<s:iterator value="applierinfos">
 		<tr>
 			<td align="right" class="td">
@@ -137,6 +176,18 @@ function markApplierinfo(){
 		<tr>
 			<td align="right" class="td">备注：</td>
 			<td class="td">${appRemark }</td>
+		</tr>
+		<tr>
+			<td align="right" class="td">市场处理结果：</td>
+			<td class="td">
+				<c:choose>
+				    <c:when test="${disposeResult != null}">${disposeResult}</c:when>
+				    <c:otherwise>
+				    	还没有进行处理
+				    </c:otherwise>
+				</c:choose>
+				
+			</td>
 		</tr>
 		<tr>
 			<td align="right" class="td">市场标记：</td>

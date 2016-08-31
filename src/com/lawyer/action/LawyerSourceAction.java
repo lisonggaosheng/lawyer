@@ -9,7 +9,10 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
+
 import com.lawyer.pojo.Applierinfo;
 import com.lawyer.pojo.ApplierinfoNetwork;
 import com.lawyer.pojo.ApplierinfoOnself;
@@ -958,10 +961,8 @@ public class LawyerSourceAction extends ActionSupport {
 
 	@SuppressWarnings("unchecked")
 	public String seniorSelectSource() throws Exception {
-		String usedmark = "";
-		if(applierinfo.getUsedMark() == null){
-			usedmark = "";
-		}else{
+		String usedmark = null;
+		if(!StringUtils.isBlank(String.valueOf(applierinfo.getUsedMark()))){
 			usedmark = String.valueOf(applierinfo.getUsedMark());
 		}
 		

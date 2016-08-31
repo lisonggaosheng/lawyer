@@ -82,5 +82,8 @@
         <property name="markTime" type="java.lang.String">
             <column name="mark_time" />
         </property>
+        <property name="disposeResult" type="java.lang.String">
+            <column name="dispose_result" />
+        </property>
     </class>
 </hibernate-mapping>

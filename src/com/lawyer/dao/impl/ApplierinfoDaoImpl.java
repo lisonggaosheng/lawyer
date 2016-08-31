@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -34,9 +35,18 @@ public class ApplierinfoDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public void updateAppMark(Applierinfo applierinfo) throws Exception {
-		String sql = "update applierinfo set used_mark= "+applierinfo.getUsedMark()+",mark_remark='"+applierinfo.getMarkRemark()
-				+"',mark_time=DATE_FORMAT(NOW(), '%Y-%m-%d %T') where a_c_casecodeself='"+applierinfo.getAppCCasecodeself()+"'; ";
-		this.getSession().createSQLQuery(sql).executeUpdate();
+		StringBuffer sql = new StringBuffer();
+		sql.append("update applierinfo set ");
+		if(!StringUtils.isBlank(applierinfo.getDisposeResult()) ){
+			sql.append(" dispose_result='"+applierinfo.getDisposeResult()+"',");
+		}
+		if(!StringUtils.isBlank(String.valueOf(applierinfo.getUsedMark())) ){
+			sql.append(" used_mark="+applierinfo.getUsedMark()+",mark_remark='"+applierinfo.getMarkRemark()+"',mark_time=DATE_FORMAT(NOW(), '%Y-%m-%d %T') ");
+		}
+		sql.deleteCharAt(sql.length()-1);  
+		sql.append(" where a_c_casecodeself='"+applierinfo.getAppCCasecodeself()+"';");
+		
+		this.getSession().createSQLQuery(sql.toString()).executeUpdate();
 
 	}
 

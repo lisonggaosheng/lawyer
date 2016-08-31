@@ -32,7 +32,11 @@ public class Applierinfo implements java.io.Serializable {
 	private String markRemark;
 	private String markTime;
 	
-	//被执行人信息
+	/**
+	 * 市场处理结果
+	 */
+	private String disposeResult;
+	
 	private String pname;
 	private String casecode;
 	
@@ -244,6 +248,14 @@ public class Applierinfo implements java.io.Serializable {
 
 	public void setMarkTime(String markTime) {
 		this.markTime = markTime;
+	}
+
+	public String getDisposeResult() {
+		return disposeResult;
+	}
+
+	public void setDisposeResult(String disposeResult) {
+		this.disposeResult = disposeResult;
 	}
 	
 	
