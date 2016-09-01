@@ -961,9 +961,18 @@ public class LawyerSourceAction extends ActionSupport {
 
 	@SuppressWarnings("unchecked")
 	public String seniorSelectSource() throws Exception {
-		String usedmark = null;
-		if(!StringUtils.isBlank(String.valueOf(applierinfo.getUsedMark()))){
+		String usedmark = "";
+		String disposeResult = "";
+		if(applierinfo.getUsedMark() == null){
+			usedmark = "";
+		}else{
 			usedmark = String.valueOf(applierinfo.getUsedMark());
+		}
+		
+		if(applierinfo.getDisposeResult() == null){
+			disposeResult = "";
+		}else{
+			disposeResult = applierinfo.getDisposeResult();
 		}
 		
 		String[] params = null;
@@ -1014,7 +1023,8 @@ public class LawyerSourceAction extends ActionSupport {
 					contactTel.getCtTel1(),//40
 					usedmark,
 					startmarkTime,
-					endmarkTime
+					endmarkTime, //43
+					disposeResult
 					
 			};
 			flog="1";

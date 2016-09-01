@@ -197,7 +197,6 @@
 						<a href="javascript:confirm('确实要删除吗?'){alert('业务不支持删除操作');};">删除</a></td>
 					</tr>
 				</table>
-
 				</td>
 			</tr>
 			<tr class="title">
@@ -426,6 +425,10 @@
 							<tr>
 								<td align="right" class="td">备注：</td>
 								<td class="td">${court.ap.appRemark }</td>
+							</tr>
+							<tr>
+								<td align="right" class="td">市场处理结果：</td>
+								<td class="td">等级  ${court.ap.disposeResult }</td>
 							</tr>
 							<tr>
 								<td align="right" class="td">市场标记：</td>
@@ -1428,6 +1431,10 @@
 								<tr>
 									<td align="right" class="td">吊销、注销日期/年检年度/备注：</td>
 									<td class="td">${court.ap.appRemark }</td>
+								</tr>
+								<tr>
+									<td align="right" class="td">市场处理结果：</td>
+									<td class="td">等级  ${court.ap.disposeResult }</td>
 								</tr>
 								<tr>
 									<td align="right" class="td">市场标记：</td>

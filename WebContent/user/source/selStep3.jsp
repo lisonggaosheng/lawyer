@@ -181,7 +181,7 @@ function markApplierinfo(){
 			<td align="right" class="td">市场处理结果：</td>
 			<td class="td">
 				<c:choose>
-				    <c:when test="${disposeResult != null}">${disposeResult}</c:when>
+				    <c:when test="${disposeResult != null}">等级 ${disposeResult}</c:when>
 				    <c:otherwise>
 				    	还没有进行处理
 				    </c:otherwise>

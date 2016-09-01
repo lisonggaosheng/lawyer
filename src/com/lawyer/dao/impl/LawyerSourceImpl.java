@@ -119,7 +119,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 				
 				mysql.append("from lawyer.courtinfo court0_  ");
 				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())
-						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim())){
+						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim()) || !"".equals(params[44].trim()) ){
 					mysql.append("left join lawyer.applierinfo applierinf1_ ");
 					mysql.append("ON court0_.casecodeself=applierinf1_.a_c_casecodeself ");
 				}
@@ -201,6 +201,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 					mysql.append("AND applierinf1_.a_organ LIKE '%"+params[7]+"%' ");
 				if (!"".equals(params[8].trim()))
 					mysql.append("AND applierinf1_.a_address LIKE '%"+params[8]+"%' ");
+				if (!"".equals(params[44].trim()))
+					mysql.append("AND applierinf1_.dispose_result = '"+params[44]+"' ");
 				if (!"".equals(params[41].trim()))
 					mysql.append("AND applierinf1_.used_mark = "+params[41]+" ");
 				if (!"".equals(params[42].trim()) || !"".equals(params[43].trim())){
@@ -290,7 +292,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 				mysql.append("from lawyer.courtinfo court0_  ");
 				
 				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())
-						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim()) ){
+						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim()) || !"".equals(params[44].trim()) ){
 					mysql.append("left join lawyer.applierinfo applierinf1_ ");
 					mysql.append("ON court0_.casecodeself=applierinf1_.a_c_casecodeself ");
 				}
@@ -371,6 +373,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 					mysql.append("AND applierinf1_.a_organ LIKE '%"+params[7]+"%' ");
 				if (!"".equals(params[8].trim()))
 					mysql.append("AND applierinf1_.a_address LIKE '%"+params[8]+"%' ");
+				if (!"".equals(params[44].trim()))
+					mysql.append("AND applierinf1_.dispose_result = '"+params[44]+"' ");
 				if (!"".equals(params[41].trim()))
 					mysql.append("AND applierinf1_.used_mark = "+params[41]+" ");
 				if (!"".equals(params[42].trim()) || !"".equals(params[43].trim())){
@@ -564,7 +568,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 				mysql.append("select DISTINCT court0_.ID as id,court0_.caseId as caseid,court0_.pname as pname,court0_.execCourtName as execcourtname,court0_.casecodeself as casecodeself,court0_.caseCreateTime as casecreatetime,court0_.caseCode as caseCode ");
 				mysql.append("from lawyer.courtinfo court0_  ");
 				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())
-						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim())){
+						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim()) || !"".equals(params[44].trim()) ){
 					mysql.append("left join lawyer.applierinfo applierinf1_ ");
 					mysql.append("ON court0_.casecodeself=applierinf1_.a_c_casecodeself ");
 				}
@@ -642,6 +646,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 					mysql.append("AND applierinf1_.a_organ LIKE '%"+params[7]+"%' ");
 				if (!"".equals(params[8].trim()))
 					mysql.append("AND applierinf1_.a_address LIKE '%"+params[8]+"%' ");
+				if (!"".equals(params[44].trim()))
+					mysql.append("AND applierinf1_.dispose_result = '"+params[44]+"' ");
 				if (!"".equals(params[41].trim()))
 					mysql.append("AND applierinf1_.used_mark = "+params[41]+" ");
 				if (!"".equals(params[42].trim()) || !"".equals(params[43].trim())){
@@ -754,7 +760,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 				mysql.append("from lawyer.courtinfo court0_  ");
 				
 				if(!"".equals(params[5].trim()) || !"".equals(params[6].trim()) || !"".equals(params[7].trim()) || !"".equals(params[8].trim()) || !"".equals(params[33].trim())
-						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim())){
+						|| !"".equals(params[41].trim()) || !"".equals(params[42].trim()) || !"".equals(params[43].trim()) || !"".equals(params[44].trim()) ){
 					mysql.append("left join lawyer.applierinfo applierinf1_ ");
 					mysql.append("ON court0_.casecodeself=applierinf1_.a_c_casecodeself ");
 				}
@@ -834,6 +840,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 					mysql.append("AND applierinf1_.a_organ LIKE '%"+params[7]+"%' ");
 				if (!"".equals(params[8].trim()))
 					mysql.append("AND applierinf1_.a_address LIKE '%"+params[8]+"%' ");
+				if (!"".equals(params[44].trim()))
+					mysql.append("AND applierinf1_.dispose_result = '"+params[44]+"' ");
 				if (!"".equals(params[41].trim()))
 					mysql.append("AND applierinf1_.used_mark = "+params[41]+" ");
 				if (!"".equals(params[42].trim()) || !"".equals(params[43].trim())){
