@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.net.URLEncoder"%>
+<%@ taglib prefix="selftag"  uri="/dictionaryTag" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -428,7 +429,7 @@
 							</tr>
 							<tr>
 								<td align="right" class="td">市场处理结果：</td>
-								<td class="td">等级  ${court.ap.disposeResult }</td>
+								<td class="td"> ${court.ap.disposeResult }<selftag:dictag type="SYS_DISPOSE_RESULT_TYPE" value="${court.ap.disposeResult}"/></td>
 							</tr>
 							<tr>
 								<td align="right" class="td">市场标记：</td>
@@ -1434,7 +1435,7 @@
 								</tr>
 								<tr>
 									<td align="right" class="td">市场处理结果：</td>
-									<td class="td">等级  ${court.ap.disposeResult }</td>
+									<td class="td"> ${court.ap.disposeResult}<selftag:dictag type="SYS_DISPOSE_RESULT_TYPE" value="${court.ap.disposeResult}"/></td>
 								</tr>
 								<tr>
 									<td align="right" class="td">市场标记：</td>

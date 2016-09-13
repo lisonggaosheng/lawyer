@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="selftag"  uri="/dictionaryTag" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -181,7 +182,7 @@ function markApplierinfo(){
 			<td align="right" class="td">市场处理结果：</td>
 			<td class="td">
 				<c:choose>
-				    <c:when test="${disposeResult != null}">等级 ${disposeResult}</c:when>
+				    <c:when test="${disposeResult != null}"> ${disposeResult}<selftag:dictag type="SYS_DISPOSE_RESULT_TYPE" value="${disposeResult}"/></c:when>
 				    <c:otherwise>
 				    	还没有进行处理
 				    </c:otherwise>
