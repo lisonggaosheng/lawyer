@@ -42,4 +42,16 @@ public class ContractSignDaoImpl extends HibernateDaoSupport implements Contract
 		this.getHibernateTemplate().delete(contractSign);
 	}
 
+	@Override
+	public ContractSign getContractSign(String casecodeself) {
+		// ǩԼ
+		ContractSign contractsign = null;
+		String hqlcs = "from ContractSign cs where cs.csCasecodeself='"
+				+ casecodeself + "'";
+		contractsign = (ContractSign) this.getHibernateTemplate().find(hqlcs)
+				.iterator().next();
+		
+		return contractsign;
+	}
+
 }

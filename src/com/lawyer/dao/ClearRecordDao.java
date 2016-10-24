@@ -8,6 +8,7 @@ import com.lawyer.pojo.CloseRecord;
 import com.lawyer.pojo.ContractSign;
 import com.lawyer.pojo.Execute;
 import com.lawyer.pojo.Litigation;
+import com.lawyer.pojo.MaintainCustomers;
 import com.lawyer.pojo.Material;
 
 public interface ClearRecordDao {
@@ -52,9 +53,15 @@ public interface ClearRecordDao {
 	public Object seniorSelectPageSizeNew(int pageSize, ContractSign cont) throws Exception;
 	
 	//案件步骤添加时显示以前的信息
+	public Material showMaterial(String casecodeself) throws Exception;
+	public MaintainCustomers showMaintainCustomers(String casecodeself) throws Exception;
 	public ClearRecord showclearrecord(String casecodeself) throws Exception;
 	public ClearClear showclearclear(String casecodeself) throws Exception;
 	public Litigation showlitigation(String casecodeself) throws Exception;
 	public Execute showexecute(String casecodeself) throws Exception;
+	public CloseRecord getCloseRecord(String casecodeself)throws Exception;
 	
+	//维护客户
+	public void addCustomers(MaintainCustomers maintainCustomers) throws Exception;
+	public List<MaintainCustomers> selectMaintainCustomers(MaintainCustomers maintainCustomers)throws Exception;
 }

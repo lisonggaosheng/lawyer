@@ -40,6 +40,7 @@ public class ContractSign implements java.io.Serializable {
 	List<Execute> executes;
 	
 	Material material;
+	MaintainCustomers customer;
 	ClearClear clearclear;
 	ClearRecord clearrecord;
 	Litigation litigation;
@@ -334,6 +335,13 @@ public class ContractSign implements java.io.Serializable {
 	public void setContMaxTime(String contMaxTime) {
 		this.contMaxTime = contMaxTime;
 	}
-	
+
+	public MaintainCustomers getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(MaintainCustomers customer) {
+		this.customer = customer;
+	}
 
 }

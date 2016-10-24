@@ -175,7 +175,7 @@ function searchCourtsClear(){
 					<td>
 					<a href="selectCourtById?users.id=${admin.UId}&court.casecodeself=${sign[6]}&court.caseId=${sign[7]}" 
 						target="content">案源详细信息</a>
-					<a href="selectDetal?users.id=${admin.UId}&cont.csCasecodeself=${sign[6]}"
+					<a href="selectDetail?users.id=${admin.UId}&cont.csCasecodeself=${sign[6]}"
 						target="content">案件详细信息</a></td>
 				</tr>
 			</s:iterator>

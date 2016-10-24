@@ -22,8 +22,8 @@
 			<result name="error">/user/index.jsp</result>
 		</action>
 			
-		<action name="selectDetal" class="clearRecordAction" method="selectDetal">
-			<result>/user/lawCase/selectcleardetal.jsp</result>
+		<action name="selectDetail" class="clearRecordAction" method="selectDetail">
+			<result>/user/lawCase/selectcleardetail.jsp</result>
 			<result name="refuse">/user/welcome/welcome.jsp</result>
 			<result name="applying">/user/welcome/welcome.jsp</result>
 			<result name="unapply">/user/welcome/welcome.jsp</result>

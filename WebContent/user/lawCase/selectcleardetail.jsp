@@ -56,16 +56,6 @@
 		if (rtn != null)
 			field.value = rtn;
 		return;
-
-		/*  if(navigator.userAgent.indexOf("Chrome") >0 ){
-			var winOption = "height=250px,width=320px,status:no;help:no;scrolling=no;scrollbars=no";
-			var rtn = window.open("/lawyer/user/source/calender.jsp","", winOption);
-		}else{
-			var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-			if(rtn!=null){
-				$(data).val(rtn);
-			}
-		} */
 	}
 	function sendSms() {
 		var lawyername = document.getElementById("lawyername").value;
@@ -260,7 +250,61 @@
 							</td>
 						</s:else>
 					</tr>
-
+						<tr class="title">
+							<td colspan="6">&nbsp;&nbsp;<img
+								src="/lawyer/images/flag2_16x16.gif" />&nbsp;维护客户</td>
+						</tr>
+						<s:if test="cont.customer!=null">
+							<tr>
+								<td class="padding_td" valign="top" colspan="6">
+									<table cellpadding="0" cellspacing="0" width="100%" border="0"
+										class="step_table">
+										<tr>
+											<td align="right" class="td" width="30%">对方联系人：</td>
+											<td class="td">${cont.customer.contacts}</td>
+										</tr>
+										<tr>
+											<td align="right" class="td" width="30%">对方联系电话：</td>
+											<td class="td">${cont.customer.contactPhone}</td>
+										</tr>
+										<tr>
+											<td align="right" class="td" width="30%">联系日期：</td>
+											<td class="td">${cont.customer.contactDate}</td>
+										</tr>
+										<tr>
+											<td align="right" class="td" width="30%">服务人员：</td>
+											<td class="td">${cont.customer.serviceUser}</td>
+										</tr>
+										<tr>
+											<td align="right" class="td" width="30%">服务人电话：</td>
+											<td class="td">${cont.customer.servicePhone}</td>
+										</tr>
+										<tr>
+											<td align="right" class="td" width="30%">联系内容：</td>
+											<td class="td">${cont.customer.content}</td>
+										</tr>
+										<tr>
+											<td align="right" class="td">记录人员：</td>
+											<td class="td">${cont.customer.users.UName }</td>
+										</tr>
+										<tr>
+											<td align="right" class="td">记录时间：</td>
+											<td class="td">${cont.customer.savetime }</td>
+										</tr>
+										<tr>
+											<td class="td" align="right"><b>可执行操作</b>：</td>
+											<td class="td"><a
+												href="selectcustomer.action?casecodeself=${cont.customer.casecodeself}"
+												target="_blank">查看更多</a></td>
+										</tr>
+										<tr>
+											<td class="td" align="right">
+												<a href="showcustomer.action?casecodeself=${cont.csCasecodeself }">继续添加</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
 					<tr class="title">
 						<td colspan="6">&nbsp;&nbsp;<img
 							src="/lawyer/images/flag2_16x16.gif" />&nbsp;清算阶段</td>

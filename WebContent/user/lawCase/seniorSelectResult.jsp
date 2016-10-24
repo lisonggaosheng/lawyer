@@ -99,7 +99,7 @@ function fanxuan() {
 					<td>${csTel}</td>
 					<td>${csRemark}</td>
 					<td><a
-						href="selectDetal?users.id=${admin.UId}&cont.csCasecodeself=${csCasecodeself}"
+						href="selectDetail?users.id=${admin.UId}&cont.csCasecodeself=${csCasecodeself}"
 						target="content">详情</a></td>
 				</tr>
 			</s:iterator>

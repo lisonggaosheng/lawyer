@@ -1361,7 +1361,11 @@ public class ClearRecordAction extends ActionSupport {
 		}
 	}
 
-	public String selectDetal() {
+	/**
+	 * 查询案件详细信息
+	 * @return
+	 */
+	public String selectDetail() {
 		try {
 			cont = this.crs.selectDetal(cont.getCsCasecodeself());
 		} catch (Exception e) {

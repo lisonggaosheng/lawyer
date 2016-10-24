@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lawyer.dao.ClearRecordDao;
+import com.lawyer.dao.ContractSignDao;
 import com.lawyer.pojo.ClearClear;
 import com.lawyer.pojo.ClearRecord;
 import com.lawyer.pojo.CloseRecord;
@@ -16,6 +17,24 @@ import com.lawyer.service.ClearRecordService;
 
 public class ClearRecordServiceImpl implements ClearRecordService {
 	private ClearRecordDao crd = null;
+	
+	private ContractSignDao signDao = null;
+	
+	public ClearRecordDao getCrd() {
+		return crd;
+	}
+
+	public void setCrd(ClearRecordDao crd) {
+		this.crd = crd;
+	}
+
+	public ContractSignDao getSignDao() {
+		return signDao;
+	}
+
+	public void setSignDao(ContractSignDao signDao) {
+		this.signDao = signDao;
+	}
 	
 	@Override
 	public List<?> seniorSelectNew(int currentPage, int pageSize,
@@ -83,13 +102,6 @@ public class ClearRecordServiceImpl implements ClearRecordService {
 				/ pageSize + 1;
 	}
 
-	public ClearRecordDao getCrd() {
-		return crd;
-	}
-
-	public void setCrd(ClearRecordDao crd) {
-		this.crd = crd;
-	}
 
 	@Override
 	public void insertClearRecord(ClearRecord clearRecord) throws Exception {
@@ -115,7 +127,18 @@ public class ClearRecordServiceImpl implements ClearRecordService {
 	@Override
 	public ContractSign selectDetal(String csCasecodeself) throws Exception {
 
-		return crd.selectDetal(csCasecodeself);
+		ContractSign sign = signDao.getContractSign(csCasecodeself);
+		
+		sign.setMaterial(crd.showMaterial(csCasecodeself));
+		sign.setCustomer(crd.showMaintainCustomers(csCasecodeself));
+		sign.setClearrecord(crd.showclearrecord(csCasecodeself));
+		sign.setClearclear(crd.showclearclear(csCasecodeself));
+		sign.setLitigation(crd.showlitigation(csCasecodeself));
+		sign.setExecute(crd.showexecute(csCasecodeself));
+		sign.setCloserecord(crd.getCloseRecord(csCasecodeself));
+		
+		return sign;
+//		return crd.selectDetal(csCasecodeself);
 	}
 
 	@Override
@@ -249,5 +272,7 @@ public class ClearRecordServiceImpl implements ClearRecordService {
 	public Execute showexecute(String casecodeself) throws Exception {
 		return crd.showexecute(casecodeself);
 	}
+	
+	
 
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lawyer.pojo.MaintainCustomers" table="maintain_customers"  >
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="casecodeself" type="java.lang.String">
+            <column name="casecodeself" length="255" not-null="true" />
+        </property>
+        <property name="contacts" type="java.lang.String">
+            <column name="contacts" />
+        </property>
+        <property name="contactPhone" type="java.lang.String">
+            <column name="contact_phone"/>
+        </property>
+        <property name="contactDate" type="java.lang.String">
+          	<column name="contact_date" />
+        </property>
+        <property name="serviceUser" type="java.lang.String">
+          	<column name="service_user"/>
+        </property>
+        <property name="servicePhone" type="java.lang.String">
+          	<column name="service_phone"/>
+        </property>
+         <property name="content" type="java.lang.String">
+            <column name="content"/>
+        </property>
+        <many-to-one name="users" class="com.lawyer.pojo.Users" fetch="select" lazy="false">
+            <column name="uid" not-null="true" />
+        </many-to-one>
+        <property name="savetime" type="java.lang.String">
+            <column name="savetime" length="128" />
+        </property>
+         
+    </class>
+</hibernate-mapping>

@@ -17,6 +17,7 @@ import com.lawyer.pojo.CloseRecord;
 import com.lawyer.pojo.ContractSign;
 import com.lawyer.pojo.Execute;
 import com.lawyer.pojo.Litigation;
+import com.lawyer.pojo.MaintainCustomers;
 import com.lawyer.pojo.Material;
 
 public class ClearRecordDaoImpl extends HibernateDaoSupport implements
@@ -1091,6 +1092,58 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 		}else{
 			return executes.get(0);
 		}
+	}
+
+	@Override
+	public MaintainCustomers showMaintainCustomers(String casecodeself)
+			throws Exception {
+		String hqlli = "from MaintainCustomers  mc  where mc.licasecodeself='"
+				+ casecodeself + "' order by mc.saveTime desc";
+		List<MaintainCustomers> maintainCustomers = this.getHibernateTemplate().find(hqlli);
+		if(maintainCustomers.size()<1){
+			return null;
+		}else{
+			return maintainCustomers.get(0);
+		}
+	}
+
+	@Override
+	public void addCustomers(MaintainCustomers maintainCustomers)
+			throws Exception {
+		this.getHibernateTemplate().save(maintainCustomers);
+	}
+
+	@Override
+	public List<MaintainCustomers> selectMaintainCustomers(
+			MaintainCustomers maintainCustomer) throws Exception {
+		String hqlcc = "from MaintainCustomers mc  where mc.casecodeself='"
+				+ maintainCustomer.getCasecodeself() + "' order by mc.savetime desc";
+			List<MaintainCustomers> maintainCustomers = this.getHibernateTemplate().find(hqlcc);
+			return maintainCustomers;
+	}
+
+	@Override
+	public Material showMaterial(String casecodeself) throws Exception {
+		String hqlme = "from Material m where m.casecodeself='"
+				+ casecodeself + "' order by savetime desc limit 1";
+		List<Material> materials = this.getHibernateTemplate().find(hqlme);
+		if(materials.size()<1){
+			return null;
+		}else{
+			return materials.get(0);
+		}
+	}
+
+	@Override
+	public CloseRecord getCloseRecord(String casecodeself) throws Exception {
+		CloseRecord closerecord = null;
+		String hqlcl = "from CloseRecord  cl  where cl.crcasecodeself='"
+				+ casecodeself + "'";
+		List<?> closerecords = this.getHibernateTemplate().find(hqlcl);
+		if (closerecords != null && closerecords.size() > 0) {
+			closerecord = (CloseRecord) closerecords.iterator().next();
+		}
+		return closerecord;
 	}
 	
 	
