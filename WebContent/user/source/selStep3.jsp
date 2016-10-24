@@ -63,7 +63,8 @@ function markApplierinfo(){
 			</tr>
 			<tr>
 				<td>市场处理结果：
-					<select name="applierinfo.disposeResult" id="disposeResult">
+					<selftag:selecttag id="disposeResult" name="applierinfo.disposeResult" value=""  type="SYS_DISPOSE_RESULT_TYPE"/>
+					<%-- <select name="applierinfo.disposeResult" id="disposeResult">
 					  <option value="">请选择：</option>
 					  <option value ="A">A</option>
 					  <option value ="B">B</option>
@@ -91,7 +92,7 @@ function markApplierinfo(){
 					  <option value ="X">X</option>
 					  <option value ="Y">Y</option>
 					  <option value ="Z">Z</option>
-					</select>
+					</select> --%>
 				</td>
 			</tr>
 			<tr>

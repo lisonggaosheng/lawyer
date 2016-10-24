@@ -35,48 +35,7 @@
 	    <description>  
 	        data dictionary convert. 
 	    </description>  
-	    <name>uopSelectTag</name>  
-	    <tag-class>com.lawyer.utils.taglib.SelectDictionaryTag</tag-class>  
-	    <body-content>scriptless</body-content>  
-	    <attribute>  
-	        <description>  
-	            data dictionary type.
-	        </description>  
-	        <name>type</name>  
-	        <required>true</required>  
-	        <rtexprvalue>true</rtexprvalue>  
-	    </attribute>  
-	    <attribute>  
-	        <description>  
-	            data dictionary type.
-	        </description>  
-	        <name>name</name>  
-	        <required>true</required>  
-	        <rtexprvalue>true</rtexprvalue>  
-	    </attribute>
-	    <attribute>  
-	        <description>  
-	            data dictionary type.
-	        </description>  
-	        <name>id</name>  
-	        <required>true</required>  
-	        <rtexprvalue>true</rtexprvalue>  
-	    </attribute>  
-	    <attribute>  
-	        <description>  
-	            data dictionary type.
-	        </description>  
-	        <name>value</name>  
-	        <required>true</required>  
-	        <rtexprvalue>true</rtexprvalue>  
-	    </attribute>  
-	  </tag> 
-	  
-	  <tag>  
-	    <description>  
-	        data dictionary convert. 
-	    </description>  
-	    <name>uopselecttag</name>  
+	    <name>selecttag</name>  
 	    <tag-class>com.lawyer.utils.taglib.SelectDictionaryTag</tag-class>  
 	    <body-content>scriptless</body-content>  
 	    <attribute>  

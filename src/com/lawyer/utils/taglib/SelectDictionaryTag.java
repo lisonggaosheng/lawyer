@@ -27,9 +27,9 @@ public class SelectDictionaryTag extends SimpleTagSupport {
 		out.print("<option value=''>--«Î—°‘Ò--</option>");
 		for (Map<String, String> type : selectDic) {
 			if (value.toUpperCase().equals(type.keySet().iterator().next())) {
-				out.print("<option value=" + type.get("value") + " selected='selected'>" + type.values().iterator().next() + "</option>");
+				out.print("<option value=" + type.get("value") + " selected='selected'>"+ type.get("value")+ type.values().iterator().next() + "</option>");
 			} else
-				out.print("<option value=" + type.get("value") + " >" + type.values().iterator().next() + "</option>");
+				out.print("<option value=" + type.get("value") + " >" + type.get("value") + type.values().iterator().next() + "</option>");
 
 		}
 
