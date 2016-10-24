@@ -617,8 +617,8 @@ public class CourtAction extends ActionSupport{
 		String noticeTime = null;
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		 SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddHHmmss");
 		String[] str = { "0", "1", "2", "3", "4", "5", "6", "7", "8","9"};
 		String CaseId = "";
 		for (int i = 0; i < 8; i++) {

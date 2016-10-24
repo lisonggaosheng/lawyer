@@ -68,7 +68,7 @@ public class ApplierinfoNetworkDaoImpl extends HibernateDaoSupport implements Ap
 		String sql = "SELECT ID as an_id, business_name AS an_name,address AS an_address,lianxiren AS an_conname,phone AS an_phone,fax AS an_fax,email AS an_mail,unique_code AS an_casecodeself,savetime as an_savetime,uid as an_uid from searchengine WHERE unique_code in(SELECT casecodeself AS unique_code FROM `"+user.getUName()+"step4start` )";
 		List list = this.getSession().createSQLQuery(sql).addEntity(
 				"applierinfo_network", ApplierinfoNetwork.class).list();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		if (list.size() > 0) {
 			Iterator it = list.iterator();
 			while (it.hasNext()) {

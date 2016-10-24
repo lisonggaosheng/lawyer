@@ -164,7 +164,7 @@ public class ExecutebusinessDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public void Executebusiness(List<com.lawyer.pojo.Executebusiness> list) {
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (int i = 0; i < list.size(); i++) {
 			Executebusiness exb = list.get(i);
 			String sqlstr = "UPDATE executebusiness SET  e_status = '"+exb.getEStatus()+"',e_savetime='"+df1.format(new Date())+"' WHERE e_name='"+exb.getEName()+"' AND e_status != '"+exb.getEStatus()+"'";

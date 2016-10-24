@@ -72,7 +72,7 @@ public class ApplierinfoServiceImpl implements ApplierinfoService {
 	public void excelInsertApplierinfo(List<Applierinfo> dataList)
 			throws Exception {
 		HttpSession session=ServletActionContext.getRequest().getSession();
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Users admin=(Users) session.getAttribute("admin");	
 		
 		for (int i = 0; i < dataList.size(); i++) {

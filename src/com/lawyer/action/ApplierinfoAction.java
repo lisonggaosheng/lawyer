@@ -245,7 +245,7 @@ public class ApplierinfoAction extends ActionSupport{
 	 */
 	public String insert(){
 		HttpSession session=ServletActionContext.getRequest().getSession();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			Users admin=(Users) session.getAttribute("admin");
 			applierinfo.setUsers(admin);

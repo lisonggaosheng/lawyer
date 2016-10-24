@@ -654,7 +654,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 					continue;
 				}
 				
-				SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+				SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				sqlstr += "('"
 						+ court.getCaseId()
 						+ "','"
@@ -954,7 +954,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	public void insertNoteCourts(Users user) {
 		try{
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddhhmmss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyƒÍMM‘¬dd»’");
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");

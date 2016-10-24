@@ -91,7 +91,7 @@ public class ContactExpressAction extends ActionSupport{
 	 */
 	public String insert(){
 		HttpSession session=ServletActionContext.getRequest().getSession();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyyƒÍMM‘¬dd»’");
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");

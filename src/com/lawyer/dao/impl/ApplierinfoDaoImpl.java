@@ -60,7 +60,7 @@ public class ApplierinfoDaoImpl extends HibernateDaoSupport implements
 		String sql = "SELECT ID as a_id, registration_mark AS a_renumber,business_name AS a_name,business_type AS a_type,corporation AS a_repname,certificate_number AS a_repid,administrative_area AS a_district,establishmen_date AS a_date,registered_capital AS a_fund,operating_period_since AS a_dfrom,operating_period_to AS a_dto,redistration_authority AS a_organ,address AS a_address,enterprise_status AS a_status,business_scope AS a_remark,casecodeself AS a_c_casecodeself,savetime as a_savetime,inspection_annual as a_inspection_annual,inspection_results as a_inspection_results,cancellation_date as a_cancellation_date,revoke_date as a_revoke_date,uid as a_uid  FROM enterprise_info";
 		List list = this.getSession().createSQLQuery(sql).addEntity(
 				"applierinfo", Applierinfo.class).list();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		if (list.size() > 0) {
 			Iterator it = list.iterator();
 			while (it.hasNext()) {

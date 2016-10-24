@@ -614,7 +614,7 @@ public class CourtServiceImpl implements CourtService {
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		Users admin=(Users) session.getAttribute("admin");	
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyƒÍMM‘¬dd»’");
 		for (int i = 0; i < dataList.size(); i++) {
 			Court court = dataList.get(i);

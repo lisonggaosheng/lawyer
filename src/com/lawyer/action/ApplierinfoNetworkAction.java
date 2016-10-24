@@ -92,7 +92,7 @@ public class ApplierinfoNetworkAction extends ActionSupport {
 	 */
 	public String insert() {
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			System.out.println("开始添加申请执行人企业信息--网络信息");
 			Users admin = (Users) session.getAttribute("admin");
