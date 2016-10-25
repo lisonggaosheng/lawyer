@@ -1,7 +1,13 @@
 package com.lawyer.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 
 import com.lawyer.dao.ClearRecordDao;
 import com.lawyer.dao.ContractSignDao;
@@ -11,6 +17,7 @@ import com.lawyer.pojo.CloseRecord;
 import com.lawyer.pojo.ContractSign;
 import com.lawyer.pojo.Execute;
 import com.lawyer.pojo.Litigation;
+import com.lawyer.pojo.MaintainCustomers;
 import com.lawyer.pojo.Material;
 import com.lawyer.pojo.Users;
 import com.lawyer.service.ClearRecordService;
@@ -207,6 +214,12 @@ public class ClearRecordServiceImpl implements ClearRecordService {
 	}
 
 	@Override
+	public List<MaintainCustomers> selectCustomers(String casecodeself)
+			throws Exception {
+		return crd.selectCustomers(casecodeself);
+	}
+	
+	@Override
 	public List<ClearRecord> selectClearRecord(ClearRecord clearRecord)
 			throws Exception {
 		return crd.selectClearRecord(clearRecord);
@@ -272,7 +285,21 @@ public class ClearRecordServiceImpl implements ClearRecordService {
 	public Execute showexecute(String casecodeself) throws Exception {
 		return crd.showexecute(casecodeself);
 	}
-	
-	
 
+	@Override
+	public MaintainCustomers showcustomer(String casecodeself) throws Exception {
+		return crd.showMaintainCustomers(casecodeself);
+	}
+
+	@Override
+	public void addCustomers(MaintainCustomers maintainCustomers)
+			throws Exception {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		maintainCustomers.setSavetime(sdf.format(new Date()));
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Users user = (Users) session.getAttribute("admin");
+		maintainCustomers.setUsers(user);
+		
+		crd.addCustomers(maintainCustomers);
+	}
 }

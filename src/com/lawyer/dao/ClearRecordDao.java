@@ -35,7 +35,7 @@ public interface ClearRecordDao {
 	public List<ContractSign> selectClearsNew(final int currentPage,ContractSign cont,String startDate,String endDate) throws Exception;//查询全部案件---张磊
 	public Object selectClearsPageSizeNew(ContractSign cont,String startDate,String endDate) throws Exception;
 	
-	
+	public List<MaintainCustomers> selectCustomers(String casecodeself) throws Exception;
 	public List<ClearRecord> selectClearRecord(ClearRecord clearRecord)throws Exception;
 	public List<ClearClear> selectClearClear(ClearClear clearClear)throws Exception;
 	public List<Litigation> selectLitigation(Litigation litigation)throws Exception;

@@ -24,7 +24,6 @@ public class Users  implements java.io.Serializable {
      private Set clearClears = new HashSet(0);
      private Set fileses = new HashSet(0);
      private Set addrecords = new HashSet(0);
-     private Set logs = new HashSet(0);
      private Set addrecordCopies = new HashSet(0);
      private Set contactMails = new HashSet(0);
      private Set contractSigns = new HashSet(0);
@@ -158,14 +157,6 @@ public class Users  implements java.io.Serializable {
     
     public void setAddrecords(Set addrecords) {
         this.addrecords = addrecords;
-    }
-
-    public Set getLogs() {
-        return this.logs;
-    }
-    
-    public void setLogs(Set logs) {
-        this.logs = logs;
     }
 
     public Set getAddrecordCopies() {

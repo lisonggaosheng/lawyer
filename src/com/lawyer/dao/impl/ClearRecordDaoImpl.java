@@ -1097,8 +1097,8 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 	@Override
 	public MaintainCustomers showMaintainCustomers(String casecodeself)
 			throws Exception {
-		String hqlli = "from MaintainCustomers  mc  where mc.licasecodeself='"
-				+ casecodeself + "' order by mc.saveTime desc";
+		String hqlli = "from MaintainCustomers  mc  where mc.casecodeself='"
+				+ casecodeself + "' order by mc.savetime desc";
 		List<MaintainCustomers> maintainCustomers = this.getHibernateTemplate().find(hqlli);
 		if(maintainCustomers.size()<1){
 			return null;
@@ -1144,6 +1144,15 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 			closerecord = (CloseRecord) closerecords.iterator().next();
 		}
 		return closerecord;
+	}
+
+	@Override
+	public List<MaintainCustomers> selectCustomers(String casecodeself)
+			throws Exception {
+		String hqlli = "from MaintainCustomers  mc  where mc.casecodeself='"
+				+ casecodeself + "' order by mc.savetime desc";
+		List<MaintainCustomers> maintainCustomers = this.getHibernateTemplate().find(hqlli);
+		return maintainCustomers;
 	}
 	
 	

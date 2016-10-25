@@ -305,6 +305,21 @@
 									</table>
 								</td>
 							</tr>
+							</s:if>
+							<s:else>
+							<tr>
+								<td class="padding_td" valign="top" colspan="3">
+									<table cellpadding="0" cellspacing="0" width="100%" border="0"
+										class="step_table">
+										<tr>
+											<td class="td" align="left">
+												<a href="/lawyer/user/lawCase/insertcustomer.jsp?Casecodeself=${cont.csCasecodeself }">点击添加</a>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</s:else>
 					<tr class="title">
 						<td colspan="6">&nbsp;&nbsp;<img
 							src="/lawyer/images/flag2_16x16.gif" />&nbsp;清算阶段</td>

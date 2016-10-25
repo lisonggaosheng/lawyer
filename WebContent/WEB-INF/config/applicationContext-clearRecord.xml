@@ -9,11 +9,19 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="contractSignDao" class="com.lawyer.dao.impl.ContractSignDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 
 	<!-- service层 -->
 	<bean id="clearRecordService" class="com.lawyer.service.impl.ClearRecordServiceImpl">
 		<property name="crd">
 			<ref bean="clearRecordDao" />
+		</property>
+		<property name="signDao">
+			<ref bean="contractSignDao" />
 		</property>
 	</bean>
 

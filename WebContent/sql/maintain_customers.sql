@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2016-10-24 17:19:01
+Date: 2016-10-25 15:51:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,7 +24,7 @@ CREATE TABLE `maintain_customers` (
   `casecodeself` varchar(50) DEFAULT NULL,
   `contacts` varchar(50) DEFAULT NULL COMMENT '对方联系人',
   `contact_phone` varchar(11) DEFAULT NULL COMMENT '对方联系电话',
-  `contact_time` varchar(50) DEFAULT NULL COMMENT '联系时间',
+  `contact_date` varchar(50) DEFAULT NULL COMMENT '联系时间',
   `service_user` varchar(50) DEFAULT NULL COMMENT '服务人员',
   `service_phone` varchar(11) DEFAULT NULL COMMENT '服务人员电话',
   `content` text COMMENT '内容',

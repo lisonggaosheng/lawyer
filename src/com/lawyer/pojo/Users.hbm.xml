@@ -28,12 +28,5 @@
         <property name="mobile" type="java.lang.String">
             <column name="mobile" length="30" not-null="true" />
         </property>
-        
-          <set name="logs" inverse="true">
-            <key>
-                <column name="log_uid" not-null="true" />
-            </key>
-            <one-to-many class="com.lawyer.pojo.Log" />
-        </set>
     </class>
 </hibernate-mapping>

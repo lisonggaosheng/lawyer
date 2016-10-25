@@ -23,6 +23,7 @@ import com.lawyer.pojo.ContractSign;
 import com.lawyer.pojo.Execute;
 import com.lawyer.pojo.Files;
 import com.lawyer.pojo.Litigation;
+import com.lawyer.pojo.MaintainCustomers;
 import com.lawyer.pojo.Material;
 import com.lawyer.pojo.Users;
 import com.lawyer.service.ClearRecordService;
@@ -37,6 +38,8 @@ public class ClearRecordAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private ExcelLoadAndPut excelLoadandput;
 	private ClearRecordService crs = null;
+	
+	private MaintainCustomers customer;
 	private ClearRecord clearRecord;
 	private ClearClear clearClear;
 	private Litigation litigation;
@@ -73,7 +76,7 @@ public class ClearRecordAction extends ActionSupport {
 	private String[] edayin;
 	private String[] fdayin;
 	
-	
+	List<MaintainCustomers> customers;
 	List<ClearClear> clearclears;
 	List<ClearRecord> clearrecords;
 	List<Litigation> litigations;
@@ -81,6 +84,17 @@ public class ClearRecordAction extends ActionSupport {
 	List<Material> materials;
 	
 	private String casecodeself;
+	
+	public String showCustomer(){
+		try {
+			customer=this.crs.showcustomer(casecodeself);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+		
+	}
 	
 	public String showclearrecord(){
 		try {
@@ -118,6 +132,18 @@ public class ClearRecordAction extends ActionSupport {
 	public String showexecute(){
 		try {
 			execute=this.crs.showexecute(casecodeself);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+		
+	}
+	
+	public String selectCustomer(){
+		try {
+			customer = new MaintainCustomers();
+			customers=this.crs.selectCustomers(casecodeself);
 			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1801,7 +1827,22 @@ public class ClearRecordAction extends ActionSupport {
 		this.material = material;
 	}
 	
-	
+	public MaintainCustomers getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(MaintainCustomers customer) {
+		this.customer = customer;
+	}
+
+	public List<MaintainCustomers> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<MaintainCustomers> customers) {
+		this.customers = customers;
+	}
+
 	public List<Material> getMaterials() {
 		return materials;
 	}
@@ -1830,6 +1871,20 @@ public class ClearRecordAction extends ActionSupport {
 			material = new Material();
 			material.setCasecodeself(casecodeself);
 			materials=this.crs.selectMaterial(material);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+	}
+	
+	/**
+	 * 添加案件维护客户
+	 * @return
+	 */
+	public String addCustomer() {
+		try {
+			this.crs.addCustomers(customer);
 			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();

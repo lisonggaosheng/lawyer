@@ -30,6 +30,14 @@
 			<result name="error">/user/index.jsp</result>
 		</action>
 		
+		<action name="showcustomer" class="clearRecordAction" method="showCustomer">
+			<result name="success">/user/lawCase/insertcustomer.jsp</result>
+			<result name="refuse">/user/welcome/welcome.jsp</result>
+			<result name="applying">/user/welcome/welcome.jsp</result>
+			<result name="unapply">/user/welcome/welcome.jsp</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
+		
 		<action name="showclearrecord" class="clearRecordAction" method="showclearrecord">
 			<result name="success">/user/lawCase/insertclearrecord.jsp</result>
 			<result name="refuse">/user/welcome/welcome.jsp</result>
@@ -62,29 +70,33 @@
 			<result name="error">/user/index.jsp</result>
 		</action>
 		
+		<action name="addcustomer" class="clearRecordAction" method="addCustomer">
+			<result type="redirect">selectDetail.action?cont.csCasecodeself=${customer.casecodeself}</result>
+			<result name="error">/user/index.jsp</result>
+		</action>
 		<action name="addclearrecord" class="clearRecordAction" method="addClearrecord">
-			<result type="redirect">selectDetal.action?cont.csCasecodeself=${clearRecord.crcasecodeself}</result>
+			<result type="redirect">selectDetail.action?cont.csCasecodeself=${clearRecord.crcasecodeself}</result>
 			<result name="error">/user/index.jsp</result>
 		</action>
 		
 		<action name="addclearclear" class="clearRecordAction" method="addClearclear">
-			<result type="redirect">selectDetal.action?cont.csCasecodeself=${clearClear.cccasecodeself}</result>
+			<result type="redirect">selectDetail.action?cont.csCasecodeself=${clearClear.cccasecodeself}</result>
 			<result name="error">/user/index.jsp</result>
 		</action>
 		
 		<action name="addlitigation" class="clearRecordAction" method="addLitigation">
-			<result type="redirect">selectDetal.action?cont.csCasecodeself=${litigation.licasecodeself}</result>
+			<result type="redirect">selectDetail.action?cont.csCasecodeself=${litigation.licasecodeself}</result>
 			<result name="error">/user/index.jsp</result>
 		</action>
 			
 		<action name="addexecute" class="clearRecordAction" method="addExecute">
-			<result type="redirect">selectDetal.action?cont.csCasecodeself=${execute.excasecodeself}</result>
+			<result type="redirect">selectDetail.action?cont.csCasecodeself=${execute.excasecodeself}</result>
 			<result name="error">/user/index.jsp</result>
 		</action>
 		
 				
 		<action name="addclearclose" class="clearRecordAction" method="addClearClose">
-			<result type="redirect">selectDetal.action?cont.csCasecodeself=${closeRecord.crcasecodeself}</result>
+			<result type="redirect">selectDetail.action?cont.csCasecodeself=${closeRecord.crcasecodeself}</result>
 			<result name="error">/user/index.jsp</result>
 		</action>
 			
@@ -93,6 +105,9 @@
 			<result name="error">/user/index.jsp</result>
 		</action>
 		
+		<action name="selectcustomer" class="clearRecordAction" method="selectCustomer">
+			<result>/user/lawCase/selectCustomers.jsp</result>
+		</action>
 		<action name="selectclearrecord" class="clearRecordAction" method="selectClearRecord">
 			<result>/user/lawCase/selectclearrecord.jsp</result>
 		</action>
@@ -111,7 +126,7 @@
 		</action>
 			
 		<action name="addMaterial" class="clearRecordAction" method="addMaterial">
-			<result type="redirect">selectDetal.action?cont.csCasecodeself=${material.casecodeself}</result>
+			<result type="redirect">selectDetail.action?cont.csCasecodeself=${material.casecodeself}</result>
 			<result name="error">/user/index.jsp</result>
 		</action>
 		<action name="selectMaterial" class="clearRecordAction" method="selectMaterial">

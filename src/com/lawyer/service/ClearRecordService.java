@@ -8,6 +8,7 @@ import com.lawyer.pojo.CloseRecord;
 import com.lawyer.pojo.ContractSign;
 import com.lawyer.pojo.Execute;
 import com.lawyer.pojo.Litigation;
+import com.lawyer.pojo.MaintainCustomers;
 import com.lawyer.pojo.Material;
 
 public interface ClearRecordService {
@@ -37,7 +38,6 @@ public interface ClearRecordService {
 	public List<Execute> DaYinExecute(String trim)throws Exception;
 	public CloseRecord DaYinCloseRecord(String trim)throws Exception;
 	
-	
 	public List<ClearRecord> selectClearRecord(ClearRecord clearRecord)throws Exception;
 	public List<ClearClear> selectClearClear(ClearClear clearClear)throws Exception;
 	public List<Litigation> selectLitigation(Litigation litigation)throws Exception;
@@ -52,8 +52,13 @@ public interface ClearRecordService {
 	public List<Material> selectMaterial(Material material)throws Exception;
 	
 	//案件步骤添加时显示以前的信息
+	public MaintainCustomers showcustomer(String casecodeself) throws Exception;
 	public ClearRecord showclearrecord(String casecodeself) throws Exception;
 	public ClearClear showclearclear(String casecodeself) throws Exception;
 	public Litigation showlitigation(String casecodeself) throws Exception;
 	public Execute showexecute(String casecodeself) throws Exception;
+	
+	//维护客户
+	public void addCustomers(MaintainCustomers maintainCustomers) throws Exception;
+	public List<MaintainCustomers> selectCustomers(String casecodeself) throws Exception;
 }

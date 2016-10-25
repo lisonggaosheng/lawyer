@@ -13,65 +13,43 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加维护客户</title>
-<link rel="stylesheet" href="../../css/public.css" />
-<link rel="stylesheet" href="/lawyer/css/demo.css" type="text/css">
-<link rel="stylesheet" href="/lawyer/css/zTreeStyle/zTreeStyle.css"
-	type="text/css">
+<link rel="stylesheet" href="/lawyer/css/public.css" />
+<link rel="stylesheet" href="/lawyer/js/laydate/css/lq.datetimepick.css" />
 
-<script type="text/javascript" src="/lawyer/js/selectlawyer.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/js/jquery.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/js/selectUi.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/js/lq.datetimepick.js"></script>
+<!-- <script type="text/javascript"
+	src="/lawyer/js/jquery-1.6.4.min.js"></script> -->
+<script type="text/javascript" src="/lawyer/js/selectpenson.js"></script>
 </style>
 
 <script language="javascript">
-	function loadCalendar(data) {
-		var rtn = window
-				.showModalDialog(
-						"/lawyer/user/lawCase/calender.jsp",
-						"",
-						"dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if (rtn != null) {
-			$(data).val(rtn);
-		}
-		return;
-	}
+$(function (){
+	$("#contactDate").on("click",function(e){
+		e.stopPropagation();
+		$(this).lqdatetimepicker({
+			css : 'datetime-day',
+			dateType : 'D',
+			selectback : function(){
 
-	function selectlawyer() {
-		$("#lawyername").val($("#lawyerinfo").find("option:selected").text());
-		$("#lawyermobil").val($("#lawyerinfo").val());
-	}
-	function selectassisting() {
-		$("#assistingName").val(
-				$("#assistinglawyer").find("option:selected").text());
-		$("#assistingTel").val($("#assistinglawyer").val());
-	}
-	function showdiv() {
-		createTree();
-		document.getElementById("bg").style.display = "block";
-		document.getElementById("dtree").style.display = "block";
-	}
-	function hidediv() {
-		document.getElementById("bg").style.display = 'none';
-		document.getElementById("dtree").style.display = 'none';
-	}
-	$(document).ready(function() {
-		ruler.init("ruler");
-
+			}
+		});
 	});
+});
+	function selectlawyer() {
+		$("#serviceName").val($("#penson").find("option:selected").text());
+		$("#servicePhone").val($("#penson").val());
+	}
 </script>
 </head>
 
 <body>
-<div id="bg"></div>
-<div id="dtree">
-	<ul id="treeDemo" class="ztree"></ul>
-	<form id="courtForm" action="findCourts.action">
-		<input id="court_number" type="hidden" value="" />
-	</form>
-</div>
 	<table cellspacing="0" cellpadding="0" border="0" width="100%"
 		height="100%" class="content_table">
 
 		<tr>
-			<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_(add)_16x16.gif" />&nbsp;
+			<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif" />&nbsp;
 				<span class="title">添加维护客户信息</span>
 			</td>
 		</tr>
@@ -84,8 +62,8 @@
 					       <c:when test="${param.Casecodeself != null}">
 					            <td align="left">案件信息编号：${param.Casecodeself}</td>
 					       </c:when>
-					       <c:when test="${clearRecord.crcasecodeself != null}">
-					              	<td align="left">案件信息编号：${clearClear.cccasecodeself}</td>
+					       <c:when test="${customer.casecodeself != null}">
+					              	<td align="left">案件信息编号：${customer.casecodeself}</td>
 					       </c:when>
 						</c:choose>
 					</tr>
@@ -98,89 +76,56 @@
 					<tr>
 						<td>
 							<form name="form3" method="post" enctype="multipart/form-data"
-								action="addclearclear">
+								action="addcustomer">
 								<table class="form_table" align="center" cellpadding="0"
 									cellspacing="0" width="100%" border="0">
 									<tr>
-										<td align="right" width="20%">案号：</td>
-										<td><input type="text" name="clearClear.ccnumber" value="${clearClear.ccnumber}" />
+										<td align="right" width="20%">对方联系人：</td>
+										<td><input type="text" name="customer.contacts" value="${customer.contacts}" />
 										</td>
 									</tr>
 									<tr>
-										<td align="right" width="20%">承办法官：</td>
-										<td><input type="text" name="clearClear.ccjudge" value="${clearClear.ccjudge}" />
+										<td align="right" width="20%">对方联系电话：</td>
+										<td><input type="text" name="customer.contactPhone" value="${customer.contactPhone}" />
 										</td>
 									</tr>
 									<tr>
-										<td align="right">法官电话：</td>
-										<td><input type="text" name="clearClear.ccjudgetel" value="${clearClear.ccjudgetel}" />
+										<td align="right" width="20%">联系日期：</td>
+										<td><input type="text" id="contactDate" class="form-control" name="customer.contactDate" value="${customer.contactDate}" />
 										</td>
 									</tr>
 									<tr>
-										<td align="right">承办律师：</td>
-										<td><input type="text" id="lawyername"
-											name="clearClear.cclawname" readOnly="true" value="${clearClear.cclawname}" /> <select
-											name="lawyerinfo" id="lawyerinfo" onchange="selectlawyer()">
-												<option>请选择办案律师</option>
-										</select></td>
-									</tr>
-									<tr>
-										<td align="right">律师电话：</td>
-										<td><input type="text" id="lawyermobil"
-											name="clearClear.cclawnametel" readOnly="true" value="${clearClear.cclawnametel}" />
+										<td align="right" width="20%">服务人员：</td>
+										<td>
+											<input type="text" id="serviceName" name="customer.serviceUser" value="${customer.serviceUser}" />
+											<select name="lawyerinfo" id="penson" onchange="selectlawyer()">
+												<option >请选择办案律师</option>
+											</select>
 										</td>
 									</tr>
 									<tr>
-										<td align="right">协办人员：</td>
-										<td><input type="text" id="assistingName"
-											name="clearClear.assistingName" readOnly="true" value="${clearClear.assistingName}" /> <select
-											name="assistinglawyer" id="assistinglawyer"
-											onchange="selectassisting()">
-												<option>请选择办案律师</option>
-										</select></td>
-									</tr>
-									<tr>
-										<td align="right">协办联系方式：</td>
-										<td><input type="text" id="assistingTel"
-											name="clearClear.assistingTel" readOnly="true" value="${clearClear.assistingTel}" />
+										<td align="right" width="20%">服务人电话：</td>
+										<td><input type="text" id="servicePhone" name="customer.servicePhone" value="${customer.servicePhone}" />
 										</td>
 									</tr>
 									<tr>
-										<td align="right">管辖法院：</td>
-										<td><input type="text" name="clearClear.competentCourt"
-											id="competentCourt" onClick="showdiv()" readOnly="readonly" value="${clearClear.competentCourt}" />
+										<td align="right" width="20%">联系内容：</td>
+										<td>
+											<textarea rows="5" cols="50" name="customer.content" >${customer.content}</textarea>
 										</td>
 									</tr>
 									<tr>
-										<td align="right">案件跟进结果：</td>
-										<td><input type="text" name="clearClear.ccfollowupresult"  />
-										</td>
-									</tr>
-									<tr>
-										<td align="right">时间：</td>
-										<td><input type="text" name="clearClear.ccTime"
-											onClick="loadCalendar(this)" value="${clearClear.ccTime}" />
-										</td>
-									</tr>
-									<tr>
-										<td align="right">备注：</td>
-										<td><textarea rows="5" cols="50"
-												name="clearClear.ccremark" ></textarea>
+										<td>
 											<c:choose>
 										       <c:when test="${param.Casecodeself != null}">
-										            <input type="hidden" name="clearClear.cccasecodeself"
+										            <input type="hidden" name="customer.casecodeself"
 														value="${param.Casecodeself}" />
 										       </c:when>
-										       <c:when test="${clearClear.cccasecodeself != null}">
-										              	<input type="hidden" name="clearClear.cccasecodeself"
-															value="${clearClear.cccasecodeself}" />
+										       <c:when test="${customer.casecodeself != null}">
+										              	<input type="hidden" name="customer.casecodeself"
+															value="${customer.casecodeself}" />
 										       </c:when>
 											</c:choose>
-										</td>
-									</tr>
-									<tr>
-										<td align="right">附件：</td>
-										<td><input type="file" name="attach" />
 										</td>
 									</tr>
 									<tr>
