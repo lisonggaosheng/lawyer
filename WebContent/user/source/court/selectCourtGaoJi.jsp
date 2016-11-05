@@ -105,7 +105,7 @@
 					<td><s:property value="caseCode"></s:property></td>
 					<td width="50"><a
 						href="selectCourtById?users.id=${admin.UId}&&court.casecodeself=<s:property value="casecodeself"/>&court.caseId=<s:property value="caseId"/>"
-						target="content">详情</a></td>
+						target="_blank">详情</a></td>
 				</tr>
 			</s:iterator>
 		</table>

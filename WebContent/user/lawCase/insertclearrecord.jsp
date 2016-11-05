@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加清算立案信息</title>
-<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="/lawyer/css/public.css" />
 <link rel="stylesheet" href="/lawyer/css/demo.css" type="text/css">
 <link rel="stylesheet" href="/lawyer/css/zTreeStyle/zTreeStyle.css"
 	type="text/css">
@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	src="/lawyer/js/ztree/jquery.ztree.excheck-3.5.js"></script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.exedit-3.5.js"></script>
-
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectlawyer.js"></script>
 <script type="text/javascript" src="/lawyer/js/createztree.js"></script>
 
@@ -61,14 +61,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 
 <script language="javascript">
-function loadCalendar(data)
-{
-	var rtn=window.showModalDialog("/lawyer/user/lawCase/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-	if(rtn!=null){
-		$(data).val(rtn);
-	}		
-   return;
-}
 function selectlawyer(){
 	$("#lawyername").val($("#lawyerinfo").find("option:selected").text());	
 	$("#lawyermobil").val($("#lawyerinfo").val());
@@ -105,7 +97,7 @@ $(document).ready(function() {
 	height="100%" class="content_table">
 
 	<tr>
-		<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_(add)_16x16.gif" />&nbsp;
+		<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif" />&nbsp;
 		<span class="title">添加清算立案信息</span></td>
 	</tr>
 	<tr>
@@ -137,7 +129,7 @@ $(document).ready(function() {
 					<tr>
 						<td align="right" width="20%">材料递交时间：</td>
 						<td><input type="text" name="clearRecord.crdate"
-							onclick="loadCalendar(this)" readonly="readonly" value="${clearRecord.crdate}" /></td>
+							onClick="laydate()" readonly="readonly" value="${clearRecord.crdate}" /></td>
 					</tr>
 					<tr>
 						<td align="right">立案案号：</td>

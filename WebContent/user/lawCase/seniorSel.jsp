@@ -20,13 +20,12 @@
 <meta http-equiv="description" content="This is my page">
 
 <link rel="stylesheet" href="/lawyer/css/public.css" />
-
+ <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript">
 	document.onkeydown=function(event){
 	  var e = event || window.event || arguments.callee.caller.arguments[0];
 	       
 	   if(e && e.keyCode==13){ // enter 键
-		   //alert("enter 键");
 		   search();
 	  }
 	};
@@ -59,9 +58,14 @@
 		</tr>
 		<tr>
 			<td>
-				<form name="searchForm" method="post" action="seniorSelect">
+				<form id="searchForm" name="searchForm" method="post" action="seniorSelect">
 					<table cellpadding="0" cellspacing="0" width="98%" align="center"
 						class="search_table" border="0">
+						<tr>
+							<td colspan="6" align="right">
+								<input style="font-size:24" type="button" value="查询" onclick="search()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</td>
+						</tr>
 						<tr>
 							<td colspan="6" class="title">&nbsp;&nbsp;签约信息</td>
 						</tr>
@@ -266,7 +270,7 @@
 						<tr>
 							<td colspan="12" align="right"><input type="hidden"
 								name="flog" value="0"> <input type="hidden" name="flog"
-								value="0"> <input type="button" value="查询" onclick="search()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								value="0"> </td>
 						</tr>
 					</table>
 				</form>

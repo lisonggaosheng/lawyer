@@ -11,10 +11,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加诉讼阶段</title>
-<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="/lawyer/css/public.css" />
 <link rel="stylesheet" href="/lawyer/css/demo.css" type="text/css">
 <link rel="stylesheet" href="/lawyer/css/zTreeStyle/zTreeStyle.css"
 	type="text/css">
+<link rel="stylesheet" href="/lawyer/js/laydate/css/lq.datetimepick.css" />
 
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery-1.4.4.min.js"></script>
@@ -24,9 +25,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	src="/lawyer/js/ztree/jquery.ztree.excheck-3.5.js"></script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.exedit-3.5.js"></script>
+<script type="text/javascript" src="/lawyer/js/createztree.js"></script>
+	
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 
 <script type="text/javascript" src="/lawyer/js/selectlawyer.js"></script>
-<script type="text/javascript" src="/lawyer/js/createztree.js"></script>
+
 
 
 <style type="text/css">
@@ -87,13 +91,12 @@ function hidediv() {
 }
 $(document).ready(function() {
 	ruler.init("ruler");
-
 });
  </script>
 </head>
 
 <body>
-<div id="bg"></div>
+<div id="bg" onclick="hidediv()"></div>
 <div id="dtree">
 	<ul id="treeDemo" class="ztree"></ul>
 	<form id="courtForm" action="findCourts.action">
@@ -104,7 +107,7 @@ $(document).ready(function() {
 	height="100%" class="content_table">
 
 	<tr>
-		<td>&nbsp;&nbsp;<img src="../../images/flag3_(add)_16x16.gif" />&nbsp;
+		<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif" />&nbsp;
 		<span class="title">添加诉讼阶段</span></td>
 	</tr>
 	<tr>
@@ -139,8 +142,7 @@ $(document).ready(function() {
 					</tr>
 					<tr>
 						<td align="right" width="20%">诉讼时间：</td>
-						<td><input type="text" name="litigation.lidate" value="${litigation.lidate}"
-							onclick="loadCalendar(this)" readonly="readonly" /></td>
+						<td><input type="text" onClick="laydate()" name="litigation.lidate" value="${litigation.lidate}" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td align="right" width="20%">诉讼费用：</td>

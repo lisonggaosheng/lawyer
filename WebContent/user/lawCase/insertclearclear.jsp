@@ -12,8 +12,8 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加案件清算</title>
-<link rel="stylesheet" href="../../css/public.css" />
+<title>添加案件清算结束</title>
+<link rel="stylesheet" href="/lawyer/css/public.css" />
 <link rel="stylesheet" href="/lawyer/css/demo.css" type="text/css">
 <link rel="stylesheet" href="/lawyer/css/zTreeStyle/zTreeStyle.css"
 	type="text/css">
@@ -26,7 +26,7 @@
 	src="/lawyer/js/ztree/jquery.ztree.excheck-3.5.js"></script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.exedit-3.5.js"></script>
-
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectlawyer.js"></script>
 <script type="text/javascript" src="/lawyer/js/createztree.js"></script>
 
@@ -62,18 +62,6 @@
 </style>
 
 <script language="javascript">
-	function loadCalendar(data) {
-		var rtn = window
-				.showModalDialog(
-						"/lawyer/user/lawCase/calender.jsp",
-						"",
-						"dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if (rtn != null) {
-			$(data).val(rtn);
-		}
-		return;
-	}
-
 	function selectlawyer() {
 		$("#lawyername").val($("#lawyerinfo").find("option:selected").text());
 		$("#lawyermobil").val($("#lawyerinfo").val());
@@ -111,8 +99,8 @@
 		height="100%" class="content_table">
 
 		<tr>
-			<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_(add)_16x16.gif" />&nbsp;
-				<span class="title">添加清算阶段清算信息</span>
+			<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif" />&nbsp;
+				<span class="title">添加清算阶段清算结束信息</span>
 			</td>
 		</tr>
 		<tr>
@@ -197,9 +185,9 @@
 										</td>
 									</tr>
 									<tr>
-										<td align="right">时间：</td>
+										<td align="right">结束时间：</td>
 										<td><input type="text" name="clearClear.ccTime"
-											onClick="loadCalendar(this)" value="${clearClear.ccTime}" />
+											onClick="laydate()" value="${clearClear.ccTime}" readonly="readonly"/>
 										</td>
 									</tr>
 									<tr>

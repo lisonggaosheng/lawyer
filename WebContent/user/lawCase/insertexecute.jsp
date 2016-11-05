@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	src="/lawyer/js/ztree/jquery.ztree.excheck-3.5.js"></script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.exedit-3.5.js"></script>
-
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectlawyer.js"></script>
 <script type="text/javascript" src="/lawyer/js/createztree.js"></script>
 
@@ -60,14 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 
 <script language="javascript">
-function loadCalendar(data)
-{
-	var rtn=window.showModalDialog("/lawyer/user/lawCase/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-	if(rtn!=null){
-		$(data).val(rtn);
-	}		
-   return;
-}
+
 function selectlawyer(){
 	$("#lawyername").val($("#lawyerinfo").find("option:selected").text());	
 	$("#lawyermobil").val($("#lawyerinfo").val());
@@ -138,7 +131,7 @@ $(document).ready(function() {
 					<tr>
 						<td align="right" width="20%">执行时间：</td>
 						<td><input type="text" name="execute.exdate" 
-							onclick="loadCalendar(this)" readonly="readonly" value="${execute.exdate}" /></td>
+							onClick="laydate()" readonly="readonly" value="${execute.exdate}" /></td>
 					</tr>
 					<tr>
 						<td align="right">承办法官：</td>

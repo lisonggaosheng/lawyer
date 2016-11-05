@@ -15,18 +15,7 @@
 <link rel="stylesheet" href="../../css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectlawyer.js"></script>
-
-<script language="javascript">
-function loadCalendar(data)
-{
-	var rtn=window.showModalDialog("/lawyer/user/lawCase/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-	if(rtn!=null){
-		$(data).val(rtn);
-	}		
-   return;
-}
-
-</script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 </head>
 
 <body>
@@ -73,11 +62,11 @@ function loadCalendar(data)
 					</tr>
 					<tr>
 						<td align="right">邮寄时间：</td>
-						<td><input type="text" name="material.sendDate" onClick="loadCalendar(this)"/></td>
+						<td><input type="text" name="material.sendDate" onClick="laydate()" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td align="right">材料返回时间：</td>
-						<td><input type="text" name="material.receiveDate" onClick="loadCalendar(this)"/></td>
+						<td><input type="text" name="material.receiveDate"  onClick="laydate()" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td align="right">备注：</td>

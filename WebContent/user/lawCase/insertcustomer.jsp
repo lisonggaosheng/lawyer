@@ -14,29 +14,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加维护客户</title>
 <link rel="stylesheet" href="/lawyer/css/public.css" />
-<link rel="stylesheet" href="/lawyer/js/laydate/css/lq.datetimepick.css" />
-
-<script type="text/javascript" src="/lawyer/js/laydate/js/jquery.js"></script>
-<script type="text/javascript" src="/lawyer/js/laydate/js/selectUi.js"></script>
-<script type="text/javascript" src="/lawyer/js/laydate/js/lq.datetimepick.js"></script>
-<!-- <script type="text/javascript"
-	src="/lawyer/js/jquery-1.6.4.min.js"></script> -->
+<script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectpenson.js"></script>
-</style>
 
 <script language="javascript">
-$(function (){
-	$("#contactDate").on("click",function(e){
-		e.stopPropagation();
-		$(this).lqdatetimepicker({
-			css : 'datetime-day',
-			dateType : 'D',
-			selectback : function(){
-
-			}
-		});
-	});
-});
 	function selectlawyer() {
 		$("#serviceName").val($("#penson").find("option:selected").text());
 		$("#servicePhone").val($("#penson").val());
@@ -91,7 +73,7 @@ $(function (){
 									</tr>
 									<tr>
 										<td align="right" width="20%">联系日期：</td>
-										<td><input type="text" id="contactDate" class="form-control" name="customer.contactDate" value="${customer.contactDate}" />
+										<td><input type="text" onClick="laydate()" class="form-control" name="customer.contactDate" value="${customer.contactDate}" readonly="readonly"/>
 										</td>
 									</tr>
 									<tr>

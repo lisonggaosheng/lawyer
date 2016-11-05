@@ -12,17 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>添加结案阶段</title>
 <link rel="stylesheet" href="../../css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
-
-<script language="javascript">
-function loadCalendar(data)
-{
-	var rtn=window.showModalDialog("/lawyer/user/lawCase/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-	if(rtn!=null){
-		$(data).val(rtn);
-	}		
-   return;
-}
- </script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 </head>
 <body>
 <table cellspacing="0" cellpadding="0" border="0" width="100%"
@@ -54,7 +44,7 @@ function loadCalendar(data)
 					<tr>
 						<td align="right" width="20%">结案时间：</td>
 						<td><input type="text" name="closeRecord.crtime"
-							onclick="loadCalendar(this)" readonly="readonly" /></td>
+							onClick="laydate()" readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<td align="right">结案人：</td>
