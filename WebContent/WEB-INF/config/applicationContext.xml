@@ -7,56 +7,6 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-	<!-- <bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-		<property name="hibernateProperties">
-			<value>
-				hibernate.connection.driver_class=com.mysql.jdbc.Driver
-				hibernate.connection.url=jdbc:mysql://localhost:3306/lawyer
-				hibernate.connection.useUnicode=true
-				hibernate.connection.characterEncoding=UTF-8
-				hibernate.connection.username=root
-				hibernate.connection.password=root
-				hibernate.dialect=org.hibernate.dialect.MySQLDialect
-				hibernate.show_sql=true
-				hibernate.format_sql=true
-				hibernate.connection.pool_size = 20
-			</value>
-		</property>
-		<property name="mappingResources">
-			<list>
-				<value>com/lawyer/pojo/LimitPower.hbm.xml</value>
-				<value>com/lawyer/pojo/LawyerCourt.hbm.xml</value>
-				<value>com/lawyer/pojo/Users.hbm.xml</value>
-				<value>com/lawyer/pojo/Log.hbm.xml</value>
-				<value>com/lawyer/pojo/Apply.hbm.xml</value>
-				<value>com/lawyer/pojo/Filelibrary.hbm.xml</value>
-				<value>com/lawyer/pojo/Files.hbm.xml</value>				
-				<value>com/lawyer/pojo/Addrecord.hbm.xml</value>
-				<value>com/lawyer/pojo/ContactMail.hbm.xml</value>
-				<value>com/lawyer/pojo/ContactExpress.hbm.xml</value>
-				<value>com/lawyer/pojo/Applierinfo.hbm.xml</value>
-				<value>com/lawyer/pojo/ApplierinfoNetwork.hbm.xml</value>
-				<value>com/lawyer/pojo/ApplierinfoOnself.hbm.xml</value>
-				<value>com/lawyer/pojo/ContactTel.hbm.xml</value>
-				<value>com/lawyer/pojo/Executebusiness.hbm.xml</value>
-				<value>com/lawyer/pojo/Court.hbm.xml</value>
-				<value>com/lawyer/pojo/CollectCourt.hbm.xml</value>
-				<value>com/lawyer/pojo/ContractSign.hbm.xml</value>		
-				<value>com/lawyer/pojo/ContactFax.hbm.xml</value>
-				<value>com/lawyer/pojo/ContactSee.hbm.xml</value>
-				<value>com/lawyer/pojo/ClearRecord.hbm.xml</value> 
-				<value>com/lawyer/pojo/ClearClear.hbm.xml</value> 
-				<value>com/lawyer/pojo/Litigation.hbm.xml</value> 
-				<value>com/lawyer/pojo/Execute.hbm.xml</value> 
-				<value>com/lawyer/pojo/CloseRecord.hbm.xml</value> 
-				<value>com/lawyer/pojo/noteInfo.hbm.xml</value> 
-				<value>com/lawyer/pojo/LawyerCourtName.hbm.xml</value> 
-				<value>com/lawyer/pojo/CollectExecutebusiness.hbm.xml</value> 
-			</list>
-		</property>
-	</bean> -->
-
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="mappingDirectoryLocations">

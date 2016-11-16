@@ -194,6 +194,28 @@
 			});
 		}
 	}
+	//被执行人失信信息
+	function insertDishonestyCourts(){
+		var mes = "确定进行被执行人（债务人）失信信息导入操作？ ";
+		if(confirm(mes)){
+			$.ajax({
+				type:"POST",
+				cache:false,
+				url:"/lawyer/insertDishonestyCourts.action",
+				beforeSend:function(){
+					document.getElementById("bg").style.display ="block";
+					document.getElementById("show").style.display ="block";
+				},
+				success:function(msg){
+					alert(msg);
+				},
+				complete: function(XMLHttpRequest, textStatus){
+					document.getElementById("bg").style.display ='none';
+					document.getElementById("show").style.display ='none';
+             	}
+			});
+		}
+	}
 	//被执行人企业信息批处理
 	function insertEbs(){
 		var mes = "确定进行被执行人企业信息批量操作？ ";
@@ -407,10 +429,12 @@
 					src="/lawyer/images/flag2_16x16.gif" />&nbsp;被执行人(债务人)执行信息</td>
 			</tr>
 			<tr>
-				<td align="center"><input type="button" value="被执行人(债务人)公告信息"
-					onclick="insertNoteCourts()" /></td>
-				<td><input type="button" value="被执行人(债务人)执行信息"
+				<td><input type="button" value="被执行人执行信息"
 					onclick="insertCourts()" /></td>
+				<td align="center"><input type="button" value="被执行人公告信息"
+					onclick="insertNoteCourts()" /></td>
+				<td><input type="button" value="被执行人失信信息"
+					onclick="insertDishonestyCourts()" /></td>
 			</tr>
 			<tr class="title">
 				<td colspan="6">&nbsp;&nbsp;<img

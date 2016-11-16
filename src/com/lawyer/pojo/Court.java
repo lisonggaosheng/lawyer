@@ -26,8 +26,8 @@ public class Court implements java.io.Serializable {
 	private String noticeCourt;
 	private String noticeTime;
 	private String lawDocumentNum;  //公告文书号
-	private String infoType;   //案源类型
-	private String excludeStatus;   //排除状态
+	private String infoType;   //案源类型   1执行    2公告   3失信
+	private String excludeStatus;   //排除状态      0正常   1临时排除    2永久排除
 
 	private Executebusiness eb;
 	private Applierinfo ap;

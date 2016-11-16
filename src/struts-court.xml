@@ -17,8 +17,18 @@
 		<action name="createUpdateData" class="courtAction" method="createUpdateData">
 		</action>
 	
+		<action name="insertCourt" class="courtAction" method="insertCourt">
+			<result type="redirect">/user/source/court/selectCourt.jsp</result>
+			<result name="error">/user/welcome/error.jsp</result>
+			<result name="filed">/user/welcome/welcome.jsp</result>
+		</action>
+		<action name="insertCourts" class="courtAction" method="insertMore">
+		</action>
 		<!-- 债务人公告信息批处理导入 -->
 		<action name="insertNoteCourts" class="courtAction" method="insertNoteCourts">
+		</action>
+		<!-- 债务人失信信息批处理导入 -->
+		<action name="insertDishonestyCourts" class="courtAction" method="insertDishonestyCourts">
 		</action>
 		
 		<!-- 数据暂时排除 -->
@@ -63,12 +73,6 @@
 			<result>/user/source/court/result.jsp</result>
 		</action>
 		
-		<action name="insertCourt" class="courtAction" method="insertCourt">
-			<result type="redirect">/user/source/court/selectCourt.jsp</result>
-			<result name="error">/user/welcome/error.jsp</result>
-			<result name="filed">/user/welcome/welcome.jsp</result>
-		</action>
-		
 		<action name="court2" class="courtAction" method="court1">
 			<result name="success">/user/source/court/insertCourt.jsp</result>
 			<result name="refuse">/user/welcome/welcome.jsp</result>
@@ -104,11 +108,6 @@
 		<action name="upd1" class="courtAction" method="upd">
 			<result type="redirect">/user/source/court/insertCourt.jsp</result>
 		</action>
-		
-		<action name="insertCourts" class="courtAction" method="insertMore">
-			<result type="redirect">/user/source/court/insertCourt.jsp</result>
-		</action>
-		
 		
 		<action name="updCourt1" class="courtAction" method="updCourt1">
 			<result name="success">/user/source/court/updateCourt.jsp</result>

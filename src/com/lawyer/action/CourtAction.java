@@ -425,6 +425,29 @@ public class CourtAction extends ActionSupport{
 			return null;
 		}
 	}
+	
+	/**
+	 * 债务人失信信息批处理导入——郭志鹏
+	 * @return
+	 */
+	public String insertDishonestyCourts(){
+		HttpSession session=ServletActionContext.getRequest().getSession();
+		try {
+			users=(Users) session.getAttribute("admin");
+			courtService.insertDishonestyCourts(users);
+			
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print("批处理债务人公告数据完成！");
+			out.flush();
+			out.close();
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	/**
 	 * 企业状态更新——郭志鹏
 	 * @return
@@ -634,7 +657,7 @@ public class CourtAction extends ActionSupport{
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
-					int n = courtService.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime(),court.getExecCourtName()) + 1;
+					int n = courtService.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime()) + 1;
 					StringBuffer count = new StringBuffer();	
 					if(n >= 0&&n<10){
 						count.append('0');
@@ -653,7 +676,7 @@ public class CourtAction extends ActionSupport{
 						e.printStackTrace();
 					}
 					
-					int n = courtService.countCourtByCC(court.getCourtcode(), court.getNoticeTime(),court.getExecCourtName()) + 1;
+					int n = courtService.countCourtByCC(court.getCourtcode(), court.getNoticeTime()) + 1;
 					StringBuffer count = new StringBuffer();	
 					if(n >= 0&&n<10){
 						count.append('0');

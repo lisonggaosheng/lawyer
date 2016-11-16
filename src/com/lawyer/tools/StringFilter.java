@@ -16,4 +16,11 @@ public class StringFilter {
 		return m.replaceAll("").trim();
 	}
 	
+	public static void main(String[] args) {
+		int num = 23;
+		String str = String.format("%3d", num).replace(" ", "0");
+		System.out.println(str);
+	}
+	
+	
 }

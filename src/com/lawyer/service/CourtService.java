@@ -43,6 +43,10 @@ public interface CourtService {
 	 */
 	public void insertNoteCourts(Users users)throws Exception;
 	/**
+	 * 债务人公告信息批处理导入
+	 */
+	public void insertDishonestyCourts(Users users)throws Exception;
+	/**
 	 * 数据暂时排除
 	 */
 	public int presentExclude(Court court);
@@ -91,7 +95,7 @@ public interface CourtService {
 	public Apply selectCourt3(Apply apply,Users users) throws Exception;//新建案源信息——何静
 	public List selectCourtAll(Court court)throws Exception;//查询案源信息——何静
 	public void updateCourt(Court court)throws Exception;//修改案源信息（被执行人执行信息） ——何静
-	public int countCourtByCC(String courtcode,String caseCreateTime,String execCourtName) throws Exception; //根据法院编号和时间获取案件数量——郭志鹏
+	public int countCourtByCC(String courtcode,String caseCreateTime) throws Exception; //根据法院编号和时间获取案件数量——郭志鹏
 	
 	public String insertMoreCourts(Users user) throws Exception;//案源的批处理操作——郭志鹏
 	/** 

@@ -408,10 +408,10 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	@Override
-	public int countCourtByCC(String courtcode, String caseCreateTime,String execCourtName)
+	public int countCourtByCC(String courtcode, String caseCreateTime)
 			throws Exception {
 
-		return courtDao.countCourtByCC(courtcode, caseCreateTime,execCourtName);
+		return courtDao.countCourtByCC(courtcode, caseCreateTime);
 	}
 
 	@Override
@@ -554,6 +554,11 @@ public class CourtServiceImpl implements CourtService {
 	public void insertNoteCourts(Users users) throws Exception {
 		courtDao.insertNoteCourts(users);
 	}
+	
+	@Override
+	public void insertDishonestyCourts(Users users) throws Exception {
+		courtDao.insertDishonestyCourts(users);
+	}
 
 	@Override
 	public void updateStutas(Users users) throws Exception {
@@ -629,7 +634,9 @@ public class CourtServiceImpl implements CourtService {
 			Date resultDate = simpleDateFormat.parse(court.getCaseCreateTime());
 			String casedatetime  = sdf.format(resultDate);
 			
-			String casecodeself = court.getCourtcode() + casedatetime + (int)((Math.random()*9+1)*100000) +System.currentTimeMillis();
+			int count = courtDao.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime());
+			
+			String casecodeself = court.getCourtcode() + casedatetime + count +System.currentTimeMillis();
 			court.setCasecodeself(casecodeself);
 			court.setSavetime(df1.format(new Date()));
 			court.setUid(admin.getUId());
