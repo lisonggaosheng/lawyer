@@ -19,6 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
   <link rel="stylesheet" href="/lawyer/css/public.css"/>
   <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+  <script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
   <script type="text/javascript">
   $(function(){
 	  var coll = document.getElementsByName("exclude");
@@ -30,7 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  var e = event || window.event || arguments.callee.caller.arguments[0];
 	       
 	   if(e && e.keyCode==13){ // enter 键
-		   //alert("enter 键");
 		   search();
 	  }
 	}; 
@@ -48,13 +48,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  }
 	  form.submit();
 }
-  function loadCalendar(field)
-	{
-		var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if(rtn!=null)
-			field.value=rtn;
-	   return;
-	}
   </script>
 </head>
 <body>
@@ -109,10 +102,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<input type="text" name="court.caseState"  />
                         </td>
                         <td align="right">立案时间：</td>
-                        <!--  <td><input type="text" name="court.caseCreateTime" /></td>-->
                         <td colspan="3">
-                        	<input type="text" name="startliantime" id="startliantime" /><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.startliantime)">至
-                        	<input type="text" name="endliantime" id="endliantime"/><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.endliantime)">
+                        	<input type="text" name="startliantime" id="startliantime" onClick="laydate()"/>至
+                        	<input type="text" name="endliantime" id="endliantime" onClick="laydate()"/>
                         </td>
                     </tr>
                     <tr>
@@ -161,8 +153,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </td>
                         <td align="right">标记时间：</td>
                         <td colspan="3">
-                        	<input type="text" name="startmarkTime" id="startmarkTime" /><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.startmarkTime)">至
-                        	<input type="text" name="endmarkTime" id="endmarkTime"><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.endmarkTime)">
+                        	<input type="text" name="startmarkTime" id="startmarkTime" onClick="laydate()" />至
+                        	<input type="text" name="endmarkTime" id="endmarkTime" onClick="laydate()" />
                         </td>
                     </tr>
                     <tr>
@@ -201,8 +193,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td><input type="text" name="contactExpress.ceName" /></td>
                         <td align="right">快递发送时间：</td>
                         <td>
-                        	<input type="text" name="startSentEmstime" id="startSentEmstime" /><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.startSentEmstime)">至
-                        	<input type="text" name="endSentEmstime" id="endSentEmstime"><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.endSentEmstime)">
+                        	<input type="text" name="startSentEmstime" id="startSentEmstime" onClick="laydate()"/>至
+                        	<input type="text" name="endSentEmstime" id="endSentEmstime" onClick="laydate()" />
                         </td>
                         <td align="right">快递号：</td>
                         <td><input type="text" name="contactExpress.ceNumber" /></td>
@@ -212,9 +204,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td><input type="text" name="contactTel.ctName" /></td>
                         <td align="right">打电话时间：</td>
                         <td>
-                        	<input type="text" name="startctTime" id="startctTime" /><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.startctTime)">至
-                        	<input type="text" name="endctTime" id="endctTime"><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.endctTime)">
-                        	<!-- <input type="text" name="contactTel.ctTime" /> -->
+                        	<input type="text" name="startctTime" id="startctTime" onClick="laydate()"/>至
+                        	<input type="text" name="endctTime" id="endctTime" onClick="laydate()" />
                         </td>
                     </tr>
                     <tr>
@@ -230,8 +221,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td><input type="text" name="contractSign.csNo" /></td>
                         <td align="right">签约时间：</td>
                         <td>
-                        	<input type="text" name="startqianyuetime" id="startqianyuetime" /><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.startqianyuetime)">至
-                        	<input type="text" name="endqianyuetime" id="endqianyuetime"><img src="/lawyer/images/date.gif" width="20" height="20" onClick="loadCalendar(searchForm.endqianyuetime)">
+                        	<input type="text" name="startqianyuetime" id="startqianyuetime" onClick="laydate()"/>至
+                        	<input type="text" name="endqianyuetime" id="endqianyuetime" onClick="laydate()" />
                         </td>
                     </tr>
                    

@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.lawyer.dao.LawyerSourceDao;
 import com.lawyer.pojo.Applierinfo;
-import com.lawyer.pojo.ApplierinfoNetwork;
 import com.lawyer.pojo.ApplierinfoOnself;
 import com.lawyer.pojo.ContactExpress;
 import com.lawyer.pojo.ContactMail;
@@ -22,8 +21,7 @@ public class LawyerSourceServiceImpl implements LawyerSourceService {
 			throws Exception {
 
 		List<Court> courts = new ArrayList<Court>();
-		List<Object[]> objs = lawyerSource.seniorSelect(currentPage,showNote, pageSize,
-				params);
+		List<Object[]> objs = lawyerSource.seniorSelect(currentPage,showNote, pageSize,params);
 
 		for (Object[] objects : objs) {
 			if(objects!=null){
@@ -57,10 +55,8 @@ public class LawyerSourceServiceImpl implements LawyerSourceService {
 
 	public String seniorSelectPageSize(int pageSize,String showNote, String... params)
 			throws Exception {
-		
 		return (Integer.parseInt(lawyerSource.seniorSelectPageSize(
 				pageSize,showNote, params).toString()) - 1)/ pageSize + 1 + "";
-
 	}
 
 	private LawyerSourceDao lawyerSource;
@@ -73,7 +69,6 @@ public class LawyerSourceServiceImpl implements LawyerSourceService {
 		this.lawyerSource = lawyerSource;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List seniorSelectSourceByApplierinfo(
 			Applierinfo applierinfo) throws Exception {
 		return this.lawyerSource

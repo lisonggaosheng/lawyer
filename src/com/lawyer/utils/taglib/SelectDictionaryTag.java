@@ -24,7 +24,7 @@ public class SelectDictionaryTag extends SimpleTagSupport {
 		JspWriter out = getJspContext().getOut();
 
 		out.print("<select name=\"" + name + "\" class=\"fufong mt10\" id=\"" + id + "\">");
-		out.print("<option value=''>--ÇëÑ¡Ôñ--</option>");
+		out.print("<option value=''>--è¯·é€‰æ‹©--</option>");
 		for (Map<String, String> type : selectDic) {
 			if (value.toUpperCase().equals(type.keySet().iterator().next())) {
 				out.print("<option value=" + type.get("value") + " selected='selected'>"+ type.get("value")+ type.values().iterator().next() + "</option>");

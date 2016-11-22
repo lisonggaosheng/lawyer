@@ -167,19 +167,16 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 					+ "' and c.excludeStatus='0' and eb.EStatus like '%"+exb.getEStatus()+"%' ";
 		}
 		if(user != null && user.getURole().contains("市场")){
-			hql += " and c.execMoney >= 70000";
+			hql += " and c.execMoney >= 70000 ";
 		}
-		
 		hql += " order by c.caseCreateTime desc";
 		
-		Query query = this.getSession().createSQLQuery(hql);
-		query.setFirstResult((currentPage - 1) * 12);
-		query.setMaxResults(12);
-		Iterator<?> iterator =  query.iterate();
-		while(iterator.hasNext()){  
-            Court courtNew=(Court)iterator.next();  
-            courts.add(courtNew);
-        }  
+		Query query = this.getSession().createQuery(hql);
+		List courtList =  query.setFirstResult((currentPage - 1) * 12).setMaxResults(12).list();
+		 for (Iterator iterator = courtList.iterator(); iterator.hasNext();) {  
+			 Court courtNew=(Court)iterator.next();  
+			 courts.add(courtNew);
+	     } 
 		return courts;
 //		return this.getHibernateTemplate().executeFind(new HibernateCallback() {
 //			@Override

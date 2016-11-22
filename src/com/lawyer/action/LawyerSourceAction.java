@@ -263,10 +263,10 @@ public class LawyerSourceAction extends ActionSupport {
 	}
 
 	/*
-	 * ÕÅÀÚÏÂÔØ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public InputStream getDownloadFile() {
-		if(filename.equals("°¸¼þÐÅÏ¢´òÓ¡.xls")){
+		if(filename.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ó¡.xls")){
 			InputStream  in = ServletActionContext.getServletContext()
 				.getResourceAsStream("\\file\\dayin3.xls");
 			return in;
@@ -283,15 +283,15 @@ public class LawyerSourceAction extends ActionSupport {
 	}
 
 	/*
-	 * ÕÅÀÚ´òÓ¡
+	 * ï¿½ï¿½ï¿½Ú´ï¿½Ó¡
 	 */
 
 	public String daYin() throws Exception {
 
 		List<Court> courtlist = new ArrayList<Court>();
 		List<Object[]> listdayin = new ArrayList<Object[]>();
-		listdayin.add(new Object[] { "´òÓ¡µÄ°¸Ô´ÐÅÏ¢" });
-		// ´«µ½Ò³Ãæ´òÓ¡
+		listdayin.add(new Object[] { "ï¿½ï¿½Ó¡ï¿½Ä°ï¿½Ô´ï¿½ï¿½Ï¢" });
+		// ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½Ó¡
 
 		Map<String, Object> request = ActionContext.getContext()
 				.getContextMap();
@@ -313,86 +313,86 @@ public class LawyerSourceAction extends ActionSupport {
 				Court cour = lawyerSourceServicer.DaYinCourt(
 						courts [i].trim());
 				Court cou = new Court();
-				cou.setCasecodeself("°¸Ô´±àºÅ:" + cour.getCasecodeself());
+				cou.setCasecodeself("ï¿½ï¿½Ô´ï¿½ï¿½ï¿½:" + cour.getCasecodeself());
 				listdayin
-						.add(new Object[] { "°¸Ô´±àºÅ:", cour.getCasecodeself() });
+						.add(new Object[] { "ï¿½ï¿½Ô´ï¿½ï¿½ï¿½:", cour.getCasecodeself() });
 				int ob = 0;
 				if (adayin != null && adayin.length > 0) {
 					Object[] obja = new Object[14];
 					for (int a = 0; a < adayin.length; a++) {
-						listdayin.add(new Object[] { "±»Ö´ÐÐÈËÖ´ÐÐÐÅÏ¢" });
+						listdayin.add(new Object[] { "ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½Ï¢" });
 						if (adayin[a].equals("1")) {
-							cou.setPname("±»Ö´ÐÐÈËÐÕÃû£º" + cour.getPname());
-							obja[ob] = "±»Ö´ÐÐÈËÐÕÃû£º";
+							cou.setPname("ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + cour.getPname());
+							obja[ob] = "ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 							ob++;
 							obja[ob] = cour.getPname();
 							if ("".equals(cour.getPname())) {
-								obja[ob] = "Î´ÌîÐ´";
+								obja[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (adayin[a].equals("2")) {
-							cou.setPartyCardNum("Éí·ÝÖ¤ºÅÂë£º"
+							cou.setPartyCardNum("ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ë£º"
 									+ cour.getPartyCardNum());
-							obja[ob] = "Éí·ÝÖ¤ºÅÂë£º";
+							obja[ob] = "ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ë£º";
 							ob++;
 							obja[ob] = cour.getPartyCardNum();
 							if ("".equals(cour.getPartyCardNum())) {
-								obja[ob] = "Î´ÌîÐ´";
+								obja[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (adayin[a].equals("3")) {
-							cou.setExecCourtName("Ö´ÐÐ·¨Ôº£º"
+							cou.setExecCourtName("Ö´ï¿½Ð·ï¿½Ôºï¿½ï¿½"
 									+ cour.getExecCourtName());
-							obja[ob] = "Ö´ÐÐ·¨Ôº£º";
+							obja[ob] = "Ö´ï¿½Ð·ï¿½Ôºï¿½ï¿½";
 							ob++;
 							obja[ob] = cour.getExecCourtName();
 							if ("".equals(cour.getExecCourtName())) {
-								obja[ob] = "Î´ÌîÐ´";
+								obja[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 
 						if (adayin[a].equals("4")) {
-							cou.setCaseCreateTime("Á¢°¸Ê±¼ä£º"
+							cou.setCaseCreateTime("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º"
 									+ cour.getCaseCreateTime());
-							obja[ob] = "Á¢°¸Ê±¼ä£º";
+							obja[ob] = "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º";
 							ob++;
 							obja[ob] = cour.getCaseCreateTime();
 							if ("".equals(cour.getCaseCreateTime())) {
-								obja[ob] = "Î´ÌîÐ´";
+								obja[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 
 						}
 						if (adayin[a].equals("5")) {
-							cou.setCaseCode("°¸¼þ±àºÅ£º" + cour.getCaseCode());
-							obja[ob] = "°¸¼þ±àºÅ£º";
+							cou.setCaseCode("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½" + cour.getCaseCode());
+							obja[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½";
 							ob++;
 							obja[ob] = cour.getCaseCode();
 							if ("".equals(cour.getCaseCode())) {
-								obja[ob] = "Î´ÌîÐ´";
+								obja[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (adayin[a].equals("6")) {
-							cou.setExecMoney("Ö´ÐÐ±êµÄ£º" + cour.getExecMoney());
-							obja[ob] = "Ö´ÐÐ±êµÄ£º";
+							cou.setExecMoney("Ö´ï¿½Ð±ï¿½Ä£ï¿½" + cour.getExecMoney());
+							obja[ob] = "Ö´ï¿½Ð±ï¿½Ä£ï¿½";
 							ob++;
 							obja[ob] = cour.getExecMoney();
 							if ("".equals(cour.getExecMoney())) {
-								obja[ob] = "Î´ÌîÐ´";
+								obja[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (adayin[a].equals("7")) {
-							cou.setCaseState("°¸¼þ×´Ì¬£º" + cour.getCaseState());
-							obja[ob] = "°¸¼þ×´Ì¬£º";
+							cou.setCaseState("ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½" + cour.getCaseState());
+							obja[ob] = "ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½";
 							ob++;
 							obja[ob] = cour.getCaseState();
 							if ("".equals(cour.getCaseState())) {
-								obja[ob] = "Î´ÌîÐ´";
+								obja[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
@@ -412,112 +412,112 @@ public class LawyerSourceAction extends ActionSupport {
 					Object[] objb = new Object[16];
 					excu = new Executebusiness();
 					Executebusiness excut = cour.getEb();
-					listdayin.add(new Object[] { "±»Ö´ÐÐÈËÆóÒµÐÅÏ¢" });
+					listdayin.add(new Object[] { "ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ï¢" });
 
 					if (excut == null) {
 						excut = new Executebusiness();
 					}
 					for (int a = 0; a < bdayin.length; a++) {
 						if (bdayin[a].equals("1")) {
-							objb[ob] = "±»Ö´ÐÐÈË×¢²áºÅ£º";
+							objb[ob] = "ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Å£ï¿½";
 							ob++;
 							if (excut.getERenumber() != null) {
-								excu.setERenumber("±»Ö´ÐÐÈË×¢²áºÅ£º"
+								excu.setERenumber("ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Å£ï¿½"
 										+ excut.getERenumber());
 								objb[ob] = excut.getERenumber();
 							} else {
-								excu.setERenumber("±»Ö´ÐÐÈË×¢²áºÅ£ºÎ´ÌîÐ´");
-								objb[ob] = "Î´ÌîÐ´";
+								excu.setERenumber("ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Å£ï¿½Î´ï¿½ï¿½Ð´");
+								objb[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (bdayin[a].equals("2")) {
-							objb[ob] = "ÆóÒµÀàÐÍ£º";
+							objb[ob] = "ï¿½ï¿½Òµï¿½ï¿½ï¿½Í£ï¿½";
 							ob++;
 							if (excut.getEType() != null) {
-								excu.setEType("ÆóÒµÀàÐÍ£º" + excut.getEType());
+								excu.setEType("ï¿½ï¿½Òµï¿½ï¿½ï¿½Í£ï¿½" + excut.getEType());
 								objb[ob] = excut.getEType();
 							} else {
-								excu.setEType("ÆóÒµÀàÐÍ£ºÎ´ÌîÐ´");
-								objb[ob] = "Î´ÌîÐ´";
+								excu.setEType("ï¿½ï¿½Òµï¿½ï¿½ï¿½Í£ï¿½Î´ï¿½ï¿½Ð´");
+								objb[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (bdayin[a].equals("3")) {
-							objb[ob] = "Ö÷ÌåÃû³Æ£º";
+							objb[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½";
 							ob++;
 							if (excut.getEName() != null) {
-								excu.setEName("Ö÷ÌåÃû³Æ£º" + excut.getEName());
+								excu.setEName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½" + excut.getEName());
 								objb[ob] = excut.getEName();
 							} else {
-								excu.setEName("Ö÷ÌåÃû³Æ£ºÎ´ÌîÐ´");
-								objb[ob] = "Î´ÌîÐ´";
+								excu.setEName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½Î´ï¿½ï¿½Ð´");
+								objb[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 
 						if (bdayin[a].equals("4")) {
-							objb[ob] = "·¨¶¨´ú±íÈË£º";
+							objb[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½";
 							ob++;
 							if (excut.getERepname() != null) {
 								excu
-										.setERepname("·¨¶¨´ú±íÈË£º"
+										.setERepname("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½"
 												+ excut.getERepname());
 								objb[ob] = excut.getERepname();
 							} else {
-								excu.setERepname("·¨¶¨´ú±íÈË£ºÎ´ÌîÐ´");
-								objb[ob] = "Î´ÌîÐ´";
+								excu.setERepname("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Î´ï¿½ï¿½Ð´");
+								objb[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (bdayin[a].equals("5")) {
-							objb[ob] = "ÐÐÕþÇø»®£º";
+							objb[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 							ob++;
 							if (excut.getEDistrict() != null) {
-								excu.setEDistrict("ÐÐÕþÇø»®£º"
+								excu.setEDistrict("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
 										+ excut.getEDistrict());
 								objb[ob] = excut.getEDistrict();
 							} else {
-								excu.setEDistrict("ÐÐÕþÇø»®£ºÎ´ÌîÐ´");
-								objb[ob] = "Î´ÌîÐ´";
+								excu.setEDistrict("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Ð´");
+								objb[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (bdayin[a].equals("6")) {
-							objb[ob] = "µÇ¼Ç»ú¹Ø£º";
+							objb[ob] = "ï¿½Ç¼Ç»ï¿½Ø£ï¿½";
 							ob++;
 							if (excut.getEOrgan() != null) {
-								excu.setEOrgan("µÇ¼Ç»ú¹Ø£º" + excut.getEOrgan());
+								excu.setEOrgan("ï¿½Ç¼Ç»ï¿½Ø£ï¿½" + excut.getEOrgan());
 								objb[ob] = excut.getEOrgan();
 							} else {
-								excu.setEOrgan("µÇ¼Ç»ú¹Ø£ºÎ´ÌîÐ´");
-								objb[ob] = "Î´ÌîÐ´";
+								excu.setEOrgan("ï¿½Ç¼Ç»ï¿½Ø£ï¿½Î´ï¿½ï¿½Ð´");
+								objb[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (bdayin[a].equals("7")) {
-							objb[ob] = "µØÖ·/×¡Ëù£º";
+							objb[ob] = "ï¿½ï¿½Ö·/×¡ï¿½ï¿½";
 							ob++;
 							if (excut.getEAddress() != null) {
 								excu
-										.setEAddress("µØÖ·/×¡Ëù£º"
+										.setEAddress("ï¿½ï¿½Ö·/×¡ï¿½ï¿½"
 												+ excut.getEAddress());
 								objb[ob] = excut.getEAddress();
 							} else {
-								excu.setEAddress("µØÖ·/×¡Ëù£ºÎ´ÌîÐ´");
-								objb[ob] = "Î´ÌîÐ´";
+								excu.setEAddress("ï¿½ï¿½Ö·/×¡ï¿½ï¿½Î´ï¿½ï¿½Ð´");
+								objb[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (bdayin[a].equals("8")) {
-							objb[ob] = "ÆóÒµ×´Ì¬£º";
+							objb[ob] = "ï¿½ï¿½Òµ×´Ì¬ï¿½ï¿½";
 							ob++;
 							if (excut.getEStatus() != null) {
-								excu.setEStatus("ÆóÒµ×´Ì¬£º" + excut.getEStatus());
+								excu.setEStatus("ï¿½ï¿½Òµ×´Ì¬ï¿½ï¿½" + excut.getEStatus());
 								objb[ob] = excut.getEStatus();
 							} else {
-								excu.setEStatus("ÆóÒµ×´Ì¬£ºÎ´ÌîÐ´");
-								objb[ob] = "Î´ÌîÐ´";
+								excu.setEStatus("ï¿½ï¿½Òµ×´Ì¬ï¿½ï¿½Î´ï¿½ï¿½Ð´");
+								objb[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
@@ -536,7 +536,7 @@ public class LawyerSourceAction extends ActionSupport {
 				ApplierinfoOnself apsel = null;
 				Applierinfo ap = null;
 				if (cdayin != null && cdayin.length > 0) {
-					listdayin.add(new Object[] { "ÉêÇëÖ´ÐÐÈËÆóÒµÐÅÏ¢" });
+					listdayin.add(new Object[] { "ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ï¢" });
 					Object[] objc = new Object[16];
 					ApplierinfoOnself appsel = cour.getAo();
 					Applierinfo app = cour.getAp();
@@ -553,108 +553,108 @@ public class LawyerSourceAction extends ActionSupport {
 					for (int a = 0; a < cdayin.length; a++) {
 
 						if (cdayin[a].equals("1")) {
-							objc[ob] = "ÉêÇëÈËÃû³Æ£º";
+							objc[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½";
 							ob++;
 							if (apsel.getAoName() != null) {
-								apsel.setAoName("ÉêÇëÈËÃû³Æ£º" + appsel.getAoName());
+								apsel.setAoName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½" + appsel.getAoName());
 								objc[ob] = appsel.getAoName();
 							} else {
-								apsel.setAoName("ÉêÇëÈËÃû³Æ£ºÎ´ÌîÐ´");
-								objc[ob] = "Î´ÌîÐ´";
+								apsel.setAoName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½Î´ï¿½ï¿½Ð´");
+								objc[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (cdayin[a].equals("2")) {
-							objc[ob] = "ÉêÇëÈËµØÖ·£º";
+							objc[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Ö·ï¿½ï¿½";
 							ob++;
 							if (appsel.getAoAddress() != null) {
-								apsel.setAoAddress("ÉêÇëÈËµØÖ·£º"
+								apsel.setAoAddress("ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Ö·ï¿½ï¿½"
 										+ appsel.getAoAddress());
 								objc[ob] = appsel.getAoAddress();
 							} else {
-								apsel.setAoAddress("ÉêÇëÈËµØÖ·£ºÎ´ÌîÐ´");
-								objc[ob] = "Î´ÌîÐ´";
+								apsel.setAoAddress("ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Ö·ï¿½ï¿½Î´ï¿½ï¿½Ð´");
+								objc[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (cdayin[a].equals("3")) {
-							objc[ob] = "ÁªÏµÈËÐÕÃû£º";
+							objc[ob] = "ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 							ob++;
 							if (appsel.getAoName1() != null) {
 								apsel
-										.setAoName1("ÁªÏµÈËÐÕÃû£º"
+										.setAoName1("ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
 												+ appsel.getAoName1());
 								objc[ob] = appsel.getAoName1();
 							} else {
-								apsel.setAoName1("ÁªÏµÈËÐÕÃû£ºÎ´ÌîÐ´");
-								objc[ob] = "Î´ÌîÐ´";
+								apsel.setAoName1("ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Ð´");
+								objc[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 
 						if (cdayin[a].equals("4")) {
-							objc[ob] = "ÉêÇëÈËÃû³Æ£º";
+							objc[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½";
 							ob++;
 							if (appsel.getAoPhone1() != null) {
-								apsel.setAoPhone1("ÁªÏµÈËµç»°£º"
+								apsel.setAoPhone1("ï¿½ï¿½Ïµï¿½Ëµç»°ï¿½ï¿½"
 										+ appsel.getAoPhone1());
 								objc[ob] = appsel.getAoPhone1();
 							} else {
-								apsel.setAoPhone1("ÁªÏµÈËµç»°£ºÎ´ÌîÐ´");
-								objc[ob] = "Î´ÌîÐ´";
+								apsel.setAoPhone1("ï¿½ï¿½Ïµï¿½Ëµç»°ï¿½ï¿½Î´ï¿½ï¿½Ð´");
+								objc[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (cdayin[a].equals("5")) {
-							objc[ob] = "·¨¶¨´ú±íÈË£º";
+							objc[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½";
 							ob++;
 							if (app.getAppRepname() != null) {
 								ap
-										.setAppRepname("·¨¶¨´ú±íÈË£º"
+										.setAppRepname("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½"
 												+ app.getAppRepname());
 								objc[ob] = app.getAppRepname();
 							} else {
-								ap.setAppRepname("·¨¶¨´ú±íÈË£ºÎ´ÌîÐ´");
-								objc[ob] = "Î´ÌîÐ´";
+								ap.setAppRepname("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Î´ï¿½ï¿½Ð´");
+								objc[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (cdayin[a].equals("6")) {
-							objc[ob] = "ÐÐÕþÇø»®£º";
+							objc[ob] = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 							ob++;
 							if (app.getAppDistrict() != null) {
-								ap.setAppDistrict("ÐÐÕþÇø»®£º"
+								ap.setAppDistrict("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
 										+ app.getAppDistrict());
 								objc[ob] = app.getAppDistrict();
 							} else {
-								ap.setAppDistrict("ÐÐÕþÇø»®£ºÎ´ÌîÐ´");
-								objc[ob] = "Î´ÌîÐ´";
+								ap.setAppDistrict("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Ð´");
+								objc[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (cdayin[a].equals("7")) {
-							objc[ob] = "µÇ¼Ç»ú¹Ø£º";
+							objc[ob] = "ï¿½Ç¼Ç»ï¿½Ø£ï¿½";
 							ob++;
 							if (app.getAppOrgan() != null) {
-								ap.setAppOrgan("µÇ¼Ç»ú¹Ø£º" + app.getAppOrgan());
+								ap.setAppOrgan("ï¿½Ç¼Ç»ï¿½Ø£ï¿½" + app.getAppOrgan());
 								objc[ob] = app.getAppOrgan();
 							} else {
-								ap.setAppOrgan("µÇ¼Ç»ú¹Ø£ºÎ´ÌîÐ´");
-								objc[ob] = "Î´ÌîÐ´";
+								ap.setAppOrgan("ï¿½Ç¼Ç»ï¿½Ø£ï¿½Î´ï¿½ï¿½Ð´");
+								objc[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
 						if (cdayin[a].equals("8")) {
-							objc[ob] = "µØÖ·/×¡Ëù£º";
+							objc[ob] = "ï¿½ï¿½Ö·/×¡ï¿½ï¿½";
 							ob++;
 							if (app.getAppAddress() != null) {
 								ap
-										.setAppAddress("µØÖ·/×¡Ëù£º"
+										.setAppAddress("ï¿½ï¿½Ö·/×¡ï¿½ï¿½"
 												+ app.getAppAddress());
 								objc[ob] = app.getAppAddress();
 							} else {
-								ap.setAppAddress("µØÖ·/×¡Ëù£ºÎ´ÌîÐ´");
-								objc[ob] = "Î´ÌîÐ´";
+								ap.setAppAddress("ï¿½ï¿½Ö·/×¡ï¿½ï¿½Î´ï¿½ï¿½Ð´");
+								objc[ob] = "Î´ï¿½ï¿½Ð´";
 							}
 							ob++;
 						}
@@ -674,7 +674,7 @@ public class LawyerSourceAction extends ActionSupport {
 				ContractSign consin = null;
 				ob = 0;
 				if (ddayin != null && ddayin.length > 0) {
-					listdayin.add(new Object[] { "ÓëÉêÇëÖ´ÐÐÈËÁªÏµÐÅÏ¢" });
+					listdayin.add(new Object[] { "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Ï¢" });
 					consin = new ContractSign();
 					List<ContactMail> conmailist = cour.getListcm();
 					List<ContactExpress> conexlist = cour.getListce();
@@ -700,22 +700,22 @@ public class LawyerSourceAction extends ActionSupport {
 							conmaillist = new ArrayList<ContactMail>();
 							ContactMail conmail = null;
 							Object[] objmail = null;
-							listdayin.add(new Object[] { "ÓÊ¼þÐÅÏ¢" });
+							listdayin.add(new Object[] { "ï¿½Ê¼ï¿½ï¿½ï¿½Ï¢" });
 							int mai = 0;
 							if (conmailist.size() > 0) {
 								for (ContactMail conmai : conmailist) {
 									
 									objmail = new Object[2];
 									conmail = new ContactMail();
-									objmail[mai] = "ÓÊ¼þµØÖ·£º";
+									objmail[mai] = "ï¿½Ê¼ï¿½ï¿½ï¿½Ö·ï¿½ï¿½";
 									mai++;
 									if (conmai.getCmMail() != null) {
-										conmail.setCmMail("ÓÊ¼þµØÖ·£º"
+										conmail.setCmMail("ï¿½Ê¼ï¿½ï¿½ï¿½Ö·ï¿½ï¿½"
 												+ conmai.getCmMail() + "<br/>");
 										objmail[mai] = conmai.getCmMail();
 									} else {
-										conmail.setCmMail("ÓÊ¼þµØÖ·£ºÎ´ÌîÐ´<br/>");
-										objmail[mai] = "Î´ÌîÐ´";
+										conmail.setCmMail("ï¿½Ê¼ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Î´ï¿½ï¿½Ð´<br/>");
+										objmail[mai] = "Î´ï¿½ï¿½Ð´";
 									}
 									conmaillist.add(conmail);
 									listdayin.add(objmail);
@@ -724,11 +724,11 @@ public class LawyerSourceAction extends ActionSupport {
 							} else {
 								objmail = new Object[2];
 								conmail = new ContactMail();
-								conmail.setCmMail("ÓÊ¼þµØÖ·£ºÎ´ÌîÐ´<br/>");
+								conmail.setCmMail("ï¿½Ê¼ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Î´ï¿½ï¿½Ð´<br/>");
 								conmaillist.add(conmail);
-								objmail[mai] = "ÓÊ¼þµØÖ·£º";
+								objmail[mai] = "ï¿½Ê¼ï¿½ï¿½ï¿½Ö·ï¿½ï¿½";
 								mai++;
-								objmail[mai] = "Î´ÌîÐ´";
+								objmail[mai] = "Î´ï¿½ï¿½Ð´";
 								listdayin.add(objmail);
 							}
 						}
@@ -737,22 +737,22 @@ public class LawyerSourceAction extends ActionSupport {
 							conmaillist = new ArrayList<ContactMail>();
 							ContactMail conmail = null;
 							Object[] objmail = null;
-							listdayin.add(new Object[] { "ÓÊ¼þÐÅÏ¢" });
+							listdayin.add(new Object[] { "ï¿½Ê¼ï¿½ï¿½ï¿½Ï¢" });
 							int mai = 0;
 							if (conmailist.size() > 0) {
 								for (ContactMail conmai : conmailist) {
 									
 									objmail = new Object[2];
 									conmail = new ContactMail();
-									objmail[mai] = "ÓÊ¼þ·¢¼þÈË£º";
+									objmail[mai] = "ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½";
 									mai++;
 									if (conmai.getCmMsender() != null) {
-										conmail.setCmMsender("ÓÊ¼þ·¢¼þÈË£º"
+										conmail.setCmMsender("ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½"
 												+ conmai.getCmMsender() + "<br/>");
 										objmail[mai] = conmai.getCmMsender();
 									} else {
-										conmail.setCmMsender("ÓÊ¼þ·¢¼þÈË£ºÎ´ÌîÐ´<br/>");
-										objmail[mai] = "Î´ÌîÐ´";
+										conmail.setCmMsender("ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Î´ï¿½ï¿½Ð´<br/>");
+										objmail[mai] = "Î´ï¿½ï¿½Ð´";
 									}
 									conmaillist.add(conmail);
 									listdayin.add(objmail);
@@ -761,11 +761,11 @@ public class LawyerSourceAction extends ActionSupport {
 							} else {
 								objmail = new Object[2];
 								conmail = new ContactMail();
-								conmail.setCmMsender("ÓÊ¼þ·¢¼þÈË£ºÎ´ÌîÐ´<br/>");
+								conmail.setCmMsender("ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Î´ï¿½ï¿½Ð´<br/>");
 								conmaillist.add(conmail);
-								objmail[mai] = "ÓÊ¼þ·¢¼þÈË£º";
+								objmail[mai] = "ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½";
 								mai++;
-								objmail[mai] = "Î´ÌîÐ´";
+								objmail[mai] = "Î´ï¿½ï¿½Ð´";
 								listdayin.add(objmail);
 							}
 						}
@@ -774,22 +774,22 @@ public class LawyerSourceAction extends ActionSupport {
 							conmaillist = new ArrayList<ContactMail>();
 							ContactMail conmail = null;
 							Object[] objmail = null;
-							listdayin.add(new Object[] { "ÓÊ¼þÐÅÏ¢" });
+							listdayin.add(new Object[] { "ï¿½Ê¼ï¿½ï¿½ï¿½Ï¢" });
 							int mai = 0;
 							if (conmailist.size() > 0) {
 								for (ContactMail conmai : conmailist) {
 									
 									objmail = new Object[2];
 									conmail = new ContactMail();
-									objmail[mai] = "·¢¼þÊ±¼ä£º";
+									objmail[mai] = "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º";
 									mai++;
 									if (conmai.getCmDate() != null) {
-										conmail.setCmDate("·¢¼þÊ±¼ä£º"
+										conmail.setCmDate("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º"
 												+ conmai.getCmDate() + "<br/>");
 										objmail[mai] = conmai.getCmDate();
 									} else {
-										conmail.setCmDate("·¢¼þÊ±¼ä£ºÎ´ÌîÐ´<br/>");
-										objmail[mai] = "Î´ÌîÐ´";
+										conmail.setCmDate("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£ºÎ´ï¿½ï¿½Ð´<br/>");
+										objmail[mai] = "Î´ï¿½ï¿½Ð´";
 									}
 									conmaillist.add(conmail);
 									listdayin.add(objmail);
@@ -798,17 +798,17 @@ public class LawyerSourceAction extends ActionSupport {
 							} else {
 								objmail = new Object[2];
 								conmail = new ContactMail();
-								conmail.setCmDate("·¢¼þÊ±¼ä£ºÎ´ÌîÐ´<br/>");
+								conmail.setCmDate("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£ºÎ´ï¿½ï¿½Ð´<br/>");
 								conmaillist.add(conmail);
-								objmail[mai] = "·¢¼þÊ±¼ä£º";
+								objmail[mai] = "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º";
 								mai++;
-								objmail[mai] = "Î´ÌîÐ´";
+								objmail[mai] = "Î´ï¿½ï¿½Ð´";
 								listdayin.add(objmail);
 							}
 						}
 						
 						if (ddayin[a].equals("2")) {
-							listdayin.add(new Object[] { "¿ìµÝÐÅÏ¢" });
+							listdayin.add(new Object[] { "ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢" });
 							conexplist = new ArrayList<ContactExpress>();
 							ContactExpress conexp = null;
 							Object[] objexp = null;
@@ -817,17 +817,17 @@ public class LawyerSourceAction extends ActionSupport {
 								for (ContactExpress conex : conexlist) {
 									objexp = new Object[2];
 									conexp = new ContactExpress();
-									objexp[exp] = "¿ìµÝºÅ£º";
+									objexp[exp] = "ï¿½ï¿½ÝºÅ£ï¿½";
 									exp++;
 									if (conex.getCeNumber() != null) {
 										conexp
-												.setCeNumber("¿ìµÝºÅ£º"
+												.setCeNumber("ï¿½ï¿½ÝºÅ£ï¿½"
 														+ conex.getCeNumber()
 														+ "<br/>");
 										objexp[exp] = conex.getCeNumber();
 									} else {
-										conexp.setCeNumber("¿ìµÝºÅ£ºÎ´ÌîÐ´<br/>");
-										objexp[exp] = "Î´ÌîÐ´";
+										conexp.setCeNumber("ï¿½ï¿½ÝºÅ£ï¿½Î´ï¿½ï¿½Ð´<br/>");
+										objexp[exp] = "Î´ï¿½ï¿½Ð´";
 									}
 									exp = 0;
 									conexplist.add(conexp);
@@ -836,17 +836,17 @@ public class LawyerSourceAction extends ActionSupport {
 							} else {
 								objexp = new Object[2];
 								conexp = new ContactExpress();
-								conexp.setCeNumber("¿ìµÝºÅ£ºÎ´ÌîÐ´<br/>");
+								conexp.setCeNumber("ï¿½ï¿½ÝºÅ£ï¿½Î´ï¿½ï¿½Ð´<br/>");
 								conexplist.add(conexp);
-								objexp[exp] = "¿ìµÝºÅ£º";
+								objexp[exp] = "ï¿½ï¿½ÝºÅ£ï¿½";
 								exp++;
-								objexp[exp] = "Î´ÌîÐ´";
+								objexp[exp] = "Î´ï¿½ï¿½Ð´";
 								listdayin.add(objexp);
 							}
 							exp = 0;
 						}
 						if (ddayin[a].equals("3")) {
-							listdayin.add(new Object[] { "µç»°ÁªÏµÐÅÏ¢" });
+							listdayin.add(new Object[] { "ï¿½ç»°ï¿½ï¿½Ïµï¿½ï¿½Ï¢" });
 							int tel = 0;
 							Object[] objtel = null;
 							contellist = new ArrayList<ContactTel>();
@@ -856,18 +856,18 @@ public class LawyerSourceAction extends ActionSupport {
 
 								for (ContactTel conte : contelist) {
 									objtel = new Object[2];
-									objtel[tel] = "µç»°ÁªÏµ½á¹û£º";
+									objtel[tel] = "ï¿½ç»°ï¿½ï¿½Ïµï¿½ï¿½ï¿½";
 									tel++;
 									contel = new ContactTel();
 									if (conte.getCtResult() != null) {
 										contel
-												.setCtResult("µç»°ÁªÏµ½á¹û£º"
+												.setCtResult("ï¿½ç»°ï¿½ï¿½Ïµï¿½ï¿½ï¿½"
 														+ conte.getCtResult()
 														+ "<br/>");
 										objtel[tel] = conte.getCtResult();
 									} else {
-										contel.setCtResult("µç»°ÁªÏµ½á¹û£ºÎ´ÌîÐ´<br/>");
-										objtel[tel] = "Î´ÌîÐ´";
+										contel.setCtResult("ï¿½ç»°ï¿½ï¿½Ïµï¿½ï¿½ï¿½Î´ï¿½ï¿½Ð´<br/>");
+										objtel[tel] = "Î´ï¿½ï¿½Ð´";
 									}
 									tel = 0;
 									contellist.add(contel);
@@ -875,11 +875,11 @@ public class LawyerSourceAction extends ActionSupport {
 								}
 							} else {
 								objtel = new Object[2];
-								objtel[tel] = "µç»°ÁªÏµ½á¹û£º";
+								objtel[tel] = "ï¿½ç»°ï¿½ï¿½Ïµï¿½ï¿½ï¿½";
 								tel++;
-								objtel[tel] = "Î´ÌîÐ´";
+								objtel[tel] = "Î´ï¿½ï¿½Ð´";
 								contel = new ContactTel();
-								contel.setCtResult("µç»°ÁªÏµ½á¹û£ºÎ´ÌîÐ´<br/>");
+								contel.setCtResult("ï¿½ç»°ï¿½ï¿½Ïµï¿½ï¿½ï¿½Î´ï¿½ï¿½Ð´<br/>");
 								contellist.add(contel);
 								listdayin.add(objtel);
 							}
@@ -888,38 +888,38 @@ public class LawyerSourceAction extends ActionSupport {
 						Object[] objsin = new Object[6];
 						int sin = 0;
 						if (ddayin[a].equals("4")) {
-							objsin[sin] = "Ç©Ô¼Ê±¼ä£º";
+							objsin[sin] = "Ç©Ô¼Ê±ï¿½ä£º";
 							sin++;
 							if (consi.getCsDate() != null) {
 								objsin[sin] = consi.getCsDate();
-								consin.setCsDate("Ç©Ô¼Ê±¼ä£º" + consi.getCsDate());
+								consin.setCsDate("Ç©Ô¼Ê±ï¿½ä£º" + consi.getCsDate());
 							} else {
-								objsin[sin] = "Î´ÌîÐ´";
-								consin.setCsDate("Ç©Ô¼Ê±¼ä£ºÎ´ÌîÐ´");
+								objsin[sin] = "Î´ï¿½ï¿½Ð´";
+								consin.setCsDate("Ç©Ô¼Ê±ï¿½ä£ºÎ´ï¿½ï¿½Ð´");
 							}
 							sin++;
 						}
 						if (ddayin[a].equals("5")) {
-							objsin[sin] = "Ç©Ô¼ÁªÏµÈË£º";
+							objsin[sin] = "Ç©Ô¼ï¿½ï¿½Ïµï¿½Ë£ï¿½";
 							sin++;
 							if (consi.getCsName() != null) {
 								objsin[sin]=consi.getCsName();
-								consin.setCsName("Ç©Ô¼ÁªÏµÈË£º" + consi.getCsName());
+								consin.setCsName("Ç©Ô¼ï¿½ï¿½Ïµï¿½Ë£ï¿½" + consi.getCsName());
 							} else {
-								objsin[sin]="Î´ÌîÐ´";
-								consin.setCsName("Ç©Ô¼ÁªÏµÈË£ºÎ´ÌîÐ´");
+								objsin[sin]="Î´ï¿½ï¿½Ð´";
+								consin.setCsName("Ç©Ô¼ï¿½ï¿½Ïµï¿½Ë£ï¿½Î´ï¿½ï¿½Ð´");
 							}
 							sin++;
 						}
 						if (ddayin[a].equals("6")) {
-							objsin[sin]="Ç©Ô¼ºÅ£º";
+							objsin[sin]="Ç©Ô¼ï¿½Å£ï¿½";
 							sin++;
 							if (consi.getCsNo() != null) {
 								objsin[sin]=consi.getCsNo();
-								consin.setCsNo("Ç©Ô¼ºÅ£º" + consi.getCsNo());
+								consin.setCsNo("Ç©Ô¼ï¿½Å£ï¿½" + consi.getCsNo());
 							} else {
-								objsin[sin]="Î´ÌîÐ´";
-								consin.setCsNo("Ç©Ô¼ºÅ£ºÎ´ÌîÐ´");
+								objsin[sin]="Î´ï¿½ï¿½Ð´";
+								consin.setCsNo("Ç©Ô¼ï¿½Å£ï¿½Î´ï¿½ï¿½Ð´");
 							}
 							sin++;
 						}
@@ -963,15 +963,11 @@ public class LawyerSourceAction extends ActionSupport {
 	public String seniorSelectSource() throws Exception {
 		String usedmark = "";
 		String disposeResult = "";
-		if(applierinfo.getUsedMark() == null){
-			usedmark = "";
-		}else{
+		if(applierinfo.getUsedMark() != null){
 			usedmark = String.valueOf(applierinfo.getUsedMark());
 		}
 		
-		if(applierinfo.getDisposeResult() == null){
-			disposeResult = "";
-		}else{
+		if(applierinfo.getDisposeResult() != null){
 			disposeResult = applierinfo.getDisposeResult();
 		}
 		
@@ -1042,7 +1038,7 @@ public class LawyerSourceAction extends ActionSupport {
 		if (exclude != null && exclude.size() > 0) {	
 				PageSize = lawyerSourceServicer.excludeSeniorSelectPageSize(100,exclude,showNote, params);
 				if(Page.equals("")){
-					Page=1+"";
+					Page="1";
 				}
 				if(Integer
 						.parseInt(Page)>Integer
@@ -1051,14 +1047,13 @@ public class LawyerSourceAction extends ActionSupport {
 				}
 				List<Court> rs = lawyerSourceServicer.excludeSeniorSelect(Integer
 						.parseInt(Page),showNote, 100,exclude, params);
-				Map<String, Object> request = ActionContext.getContext()
-				.getContextMap();
+				Map<String, Object> request = ActionContext.getContext().getContextMap();
 				request.put("showNote", showNote);
 				request.put("rs", rs);
 		}else{
 			PageSize = lawyerSourceServicer.seniorSelectPageSize(100,showNote, params);
 			if(Page.equals("")){
-				Page=1+"";
+				Page="1";
 			}
 			if(Integer.parseInt(Page)>Integer.parseInt(PageSize)){
 				Page=PageSize;

@@ -387,14 +387,14 @@
 	</tr>
 	<s:iterator id="c" value="courts" status="courtstatus">
 		<tr align="center">
-			<td><s:property value="#c[0].casecodeself" /></td>
-				<td><s:property value="#c[0].pname" /></td>
-				<td><s:property value="#c[0].execCourtName" /></td>
-				<td><s:property value="#c[0].caseCreateTime" /></td>
-				<td><s:property value="#c[0].caseCode" /></td>
+			<td><s:property value="#c.casecodeself" /></td>
+				<td><s:property value="#c.pname" /></td>
+				<td><s:property value="#c.execCourtName" /></td>
+				<td><s:property value="#c.caseCreateTime" /></td>
+				<td><s:property value="#c.caseCode" /></td>
 				<td>
 				<c:if test="${userlp.lp_query_casesource_detail==1}">
-					<a href="selectCourtById?users.id=${admin.UId}&court.casecodeself=<s:property value="#c[0].casecodeself"/>&court.caseId=<s:property value="#c[0].caseId"/>" target="content">查看详细信息</a>&nbsp;&nbsp; 
+					<a href="selectCourtById?users.id=${admin.UId}&court.casecodeself=<s:property value="#c.casecodeself"/>&court.caseId=<s:property value="#c.caseId"/>" target="content">查看详细信息</a>&nbsp;&nbsp; 
 				</c:if>
 				<c:if test="${userlp.lp_del==1}">
 					<a href="#">删除</a>

@@ -8,25 +8,25 @@ import com.lawyer.utils.taglib.JspTagUtil;
 public class SystemContents {
 	
 	public enum SYS_DISPOSE_RESULT_TYPE{
-		DISPOSE_RESULT_A("A", "ÓĞÃæÌ¸¡¢Ç©Ô¼ÒâÏò"), 
-		DISPOSE_RESULT_B("B", "½¨Òé½øÒ»²½¸ú½øÁªÏµ"), 
-		DISPOSE_RESULT_C("C", "ÒÑÃæÌ¸µ«Î´Ç©Ô¼"), 
-		DISPOSE_RESULT_D("D", "½¨ÒéµÇÃÅ°İ·Ã"),
+		DISPOSE_RESULT_A("A", "æœ‰é¢è°ˆã€ç­¾çº¦æ„å‘"), 
+		DISPOSE_RESULT_B("B", "å»ºè®®è¿›ä¸€æ­¥è·Ÿè¿›è”ç³»"), 
+		DISPOSE_RESULT_C("C", "å·²é¢è°ˆä½†æœªç­¾çº¦"), 
+		DISPOSE_RESULT_D("D", "å»ºè®®ç™»é—¨æ‹œè®¿"),
 		DISPOSE_RESULT_E("E", ""),
 		DISPOSE_RESULT_F("F", ""),
 		DISPOSE_RESULT_G("G", ""),
-		DISPOSE_RESULT_H("H", "Õ®È¨ÈË±íÊ¾ÔİÇÒ²»¼Æ»®Òª´Ë±ÊÕ®È¨ÁË"),
-		DISPOSE_RESULT_I("I", "ÔİÇÒÕÒ²»µ½ÕæÕıµÄÕ®È¨ÈË"),
-		DISPOSE_RESULT_J("J", "ÒÑ½ÓÍ¬Ò»Õ®ÎñÈËÆäËû°¸¼ş"),
-		DISPOSE_RESULT_K("K", "Õ®ÎñÈË£¨ÒÑ×¢Ïú³¬¹ıÁ½Äê£©"),
-		DISPOSE_RESULT_L("L", "Õ®ÎñÈË£¨ÒÑ½øÈëÆÆ²ú³ÌĞò£©"),
-		DISPOSE_RESULT_M("M", "Õ®È¨ÈË(ÒÑÖ´ĞĞÍê±Ï)"),
-		DISPOSE_RESULT_N("N", "Õ®È¨ÈË£¨ÒÑÁĞÈëÊ§ĞÅÃûµ¥¡¢ÏÔÊ¾±»Ö´ĞĞºÜ¶àÕ®Îñ£©"),
-		DISPOSE_RESULT_O("O", "Õ®È¨ÈË£¨ÒÑ½øÈëÇåËã³ÌĞò¡¢ÒÑ×¢Ïú¡¢ÒÑµõÏú£©"),
-		DISPOSE_RESULT_P("P", "Õ®È¨ÈËÎª£¨Õş¸®£¬ÒøĞĞ£¬ÂÉËù¡¢´åÎ¯»á£©"),
-		DISPOSE_RESULT_Q("Q", "Õ®È¨ÈË¹É¶«ÓëÕ®ÎñÈË¹É¶«ÓĞÖØºÏ¡¢Õ®È¨ÈËÊÇÕ®ÎñÈËµÄ¹É¶«"),
-		DISPOSE_RESULT_R("R", "Õ®È¨ÈË£¨Ã»ÓĞµØÖ·¼°ÁªÏµµç»°µÄ¸öÈËµÈ£©"),
-		DISPOSE_RESULT_S("S", "ÒÑÇ©Ô¼"),
+		DISPOSE_RESULT_H("H", "å€ºæƒäººè¡¨ç¤ºæš‚ä¸”ä¸è®¡åˆ’è¦æ­¤ç¬”å€ºæƒäº†"),
+		DISPOSE_RESULT_I("I", "æš‚ä¸”æ‰¾ä¸åˆ°çœŸæ­£çš„å€ºæƒäºº"),
+		DISPOSE_RESULT_J("J", "å·²æ¥åŒä¸€å€ºåŠ¡äººå…¶ä»–æ¡ˆä»¶"),
+		DISPOSE_RESULT_K("K", "å€ºåŠ¡äººï¼ˆå·²æ³¨é”€è¶…è¿‡ä¸¤å¹´ï¼‰"),
+		DISPOSE_RESULT_L("L", "å€ºåŠ¡äººï¼ˆå·²è¿›å…¥ç ´äº§ç¨‹åºï¼‰"),
+		DISPOSE_RESULT_M("M", "å€ºæƒäºº(å·²æ‰§è¡Œå®Œæ¯•)"),
+		DISPOSE_RESULT_N("N", "å€ºæƒäººï¼ˆå·²åˆ—å…¥å¤±ä¿¡åå•ã€æ˜¾ç¤ºè¢«æ‰§è¡Œå¾ˆå¤šå€ºåŠ¡ï¼‰"),
+		DISPOSE_RESULT_O("O", "å€ºæƒäººï¼ˆå·²è¿›å…¥æ¸…ç®—ç¨‹åºã€å·²æ³¨é”€ã€å·²åŠé”€ï¼‰"),
+		DISPOSE_RESULT_P("P", "å€ºæƒäººä¸ºï¼ˆæ”¿åºœï¼Œé“¶è¡Œï¼Œå¾‹æ‰€ã€æ‘å§”ä¼šï¼‰"),
+		DISPOSE_RESULT_Q("Q", "å€ºæƒäººè‚¡ä¸œä¸å€ºåŠ¡äººè‚¡ä¸œæœ‰é‡åˆã€å€ºæƒäººæ˜¯å€ºåŠ¡äººçš„è‚¡ä¸œ"),
+		DISPOSE_RESULT_R("R", "å€ºæƒäººï¼ˆæ²¡æœ‰åœ°å€åŠè”ç³»ç”µè¯çš„ä¸ªäººç­‰ï¼‰"),
+		DISPOSE_RESULT_S("S", "å·²ç­¾çº¦"),
 		DISPOSE_RESULT_T("T", ""),
 		DISPOSE_RESULT_U("U", ""),
 		DISPOSE_RESULT_V("V", ""),
@@ -53,8 +53,8 @@ public class SystemContents {
 	}
 	
 	/**
-	 * È¡×ÖµäÃèÊö£º
-	 * ÓÃ»§×´Ì¬->ÀàĞÍ
+	 * å–å­—å…¸æè¿°ï¼š
+	 * ç”¨æˆ·çŠ¶æ€->ç±»å‹
 	 * @param value
 	 * @return
 	 */
@@ -70,7 +70,7 @@ public class SystemContents {
 	}
 
 	/**
-	 * ÒÀ¾İÀàĞÍ¼°×ÖµäÁĞ±í
+	 * ä¾æ®ç±»å‹åŠå­—å…¸åˆ—è¡¨
 	 */
 	public static List<Map<String,String>> getSelectDic(String type){
 		return JspTagUtil.getSelectTag(new SystemContents().getClass().getName()+"$"+type);
