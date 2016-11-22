@@ -28,7 +28,7 @@ public class FilterAll implements javax.servlet.Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession(true);
-		if (((session.getAttribute("admin") != null || (req.getRequestURI().endsWith("login.jsp"))))//ÇëÇó×ÊÔ´URLÒÔLogin.jsp   Login_Action½áÎ²Ôò²»ÓèÀ¹½Ø
+		if (((session.getAttribute("admin") != null || (req.getRequestURI().endsWith("login.jsp"))))//è¯·æ±‚èµ„æºURLä»¥Login.jsp   Login_Actionç»“å°¾åˆ™ä¸äºˆæ‹¦æˆª
 				|| (session.getAttribute("admin") != null || (req.getRequestURI().endsWith("usersLogin")))
 				|| (session.getAttribute("admin") != null || (req.getRequestURI().endsWith(".jpg") || req.getRequestURI().endsWith(".gif")))
 				|| (session.getAttribute("admin") != null || req.getRequestURI().endsWith("usersQuit"))
@@ -37,8 +37,8 @@ public class FilterAll implements javax.servlet.Filter {
 		) {
 			chain.doFilter(request, response);
 			return;
-		} else if (session.getAttribute("admin") == null) {    //'user'ÎªµÇÂ¼Ê±ºó±£´æµÄsessionÊôĞÔÃû
-			System.out.println("¹ıÂËÆ÷¹¤×÷...");
+		} else if (session.getAttribute("admin") == null) {    //'user'ä¸ºç™»å½•æ—¶åä¿å­˜çš„sessionå±æ€§å
+			System.out.println("è¿‡æ»¤å™¨å·¥ä½œ...");
 			ServletContext ctx = filterConfig.getServletContext();
 			setForwordURI(req);
 			ctx.getRequestDispatcher(loginPage).forward(req, res); 
@@ -49,7 +49,7 @@ public class FilterAll implements javax.servlet.Filter {
 	public void init(FilterConfig config) throws ServletException {
 		filterConfig = config;
 		if (filterConfig.getInitParameter("loginPage") != null)
-			loginPage = filterConfig.getInitParameter("loginPage");//'loginPa.xmlÖĞÅäÖÃµÄ²ÎÊı ¸Ã²ÎÊıÎªÒªÌø×ªµ½µÄÒ³Ãæ
+			loginPage = filterConfig.getInitParameter("loginPage");//'loginPa.xmlä¸­é…ç½®çš„å‚æ•° è¯¥å‚æ•°ä¸ºè¦è·³è½¬åˆ°çš„é¡µé¢
 	}
 
 	private void setForwordURI(HttpServletRequest request) {

@@ -19,111 +19,96 @@ import com.lawyer.pojo.Users;
 public interface CourtService {
 	
 	/**
-	 * excelµ¼Èë±»Ö´ĞĞÈËĞÅÏ¢
+	 * excelå¯¼å…¥è¢«æ‰§è¡Œäººä¿¡æ¯
 	 * @throws Exception 
 	 */
 	public void excelInsertCourt(List<Court> dataList) throws Exception;
 	
 	/**
-	 * ÏòÊı¾İ¿â²åÈëÆóÒµ¸üĞÂËùĞèÒªµÄÊı¾İ
+	 * å‘æ•°æ®åº“æ’å…¥ä¼ä¸šæ›´æ–°æ‰€éœ€è¦çš„æ•°æ®
 	 */
 	public void createUpdateData(Court court, String startDate, String endDate,String instartDate,String inendDate,String minMoney,String maxMoney);
 	
 	/**
-	 * ·¨Ôº±àÂë¸üĞÂ
+	 * æ³•é™¢ç¼–ç æ›´æ–°
 	 */
 	public void courtcodeUpdate(Users users)throws Exception;
 	
 	/**
-	 * ÆóÒµ×´Ì¬¸üĞÂ
+	 * ä¼ä¸šçŠ¶æ€æ›´æ–°
 	 */
 	public void updateStutas(Users users)throws Exception;
 	/**
-	 * Õ®ÎñÈË¹«¸æĞÅÏ¢Åú´¦Àíµ¼Èë
+	 * å€ºåŠ¡äººå…¬å‘Šä¿¡æ¯æ‰¹å¤„ç†å¯¼å…¥
 	 */
 	public void insertNoteCourts(Users users)throws Exception;
 	/**
-	 * Õ®ÎñÈË¹«¸æĞÅÏ¢Åú´¦Àíµ¼Èë
+	 * å€ºåŠ¡äººå…¬å‘Šä¿¡æ¯æ‰¹å¤„ç†å¯¼å…¥
 	 */
 	public void insertDishonestyCourts(Users users)throws Exception;
 	/**
-	 * Êı¾İÔİÊ±ÅÅ³ı
+	 * æ•°æ®æš‚æ—¶æ’é™¤
 	 */
 	public int presentExclude(Court court);
 	/**
-	 * Êı¾İÓÀ¾ÃÅÅ³ı
+	 * æ•°æ®æ°¸ä¹…æ’é™¤
 	 */
 	public int perpetualExclude(Court court);
 	/**
-	 * Êı¾İ»Ö¸´
+	 * æ•°æ®æ¢å¤
 	 */
 	public int dataRecover(Court court);
 	/**
-	 * ÏòÊı¾İ¿â²åÈëÍâ²¿Èí¼şËùĞèÒªµÄÊı¾İ
+	 * å‘æ•°æ®åº“æ’å…¥å¤–éƒ¨è½¯ä»¶æ‰€éœ€è¦çš„æ•°æ®
 	 */
 	public void createDate(Court court, String startDate, String endDate,String instartDate,String inendDate,String minMoney,String maxMoney);
 	/**
-	 * ¸Ä±äÒ»¸ö°¸Ô´ĞÅÏ¢Ö´ĞĞ²½Öè
+	 * æ”¹å˜ä¸€ä¸ªæ¡ˆæºä¿¡æ¯æ‰§è¡Œæ­¥éª¤
 	 */
 	public void changeOneStep(Court court,String courtStep);
 	/**
-	 * ¸Ä±ä°¸Ô´ĞÅÏ¢Ö´ĞĞ²½Öè
+	 * æ”¹å˜æ¡ˆæºä¿¡æ¯æ‰§è¡Œæ­¥éª¤
 	 */
 	public void changeStep(Court court, String startDate, String endDate,String instartDate,String inendDate,String minMoney,String maxMoney,String courtStep);
 	/**
-	 *°´Ìõ¼ş·ÖÒ³²éÑ¯courtĞÅÏ¢ 
+	 *æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢courtä¿¡æ¯ 
 	 */
 	public List<Court> selectCourts(Court court,Executebusiness exb,int currentPage ,String startDate,String endDate,String instartDate,String inendDate,String minMoney,String maxMoney)throws Exception;
 	/**
-	 *°´Ìõ¼ş·ÖÒ³²éÑ¯µÄ×ÜÒ³Êı 
+	 *æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢çš„æ€»é¡µæ•° 
 	 */
 	public int  selectTatolPage(Court court,Executebusiness exb,String startDate,String endDate,String instartDate,String inendDate,String minMoney,String maxMoney)throws Exception;
 	
 	/**
-	 *°´Ìõ¼ş·ÖÒ³²éÑ¯¹«¸æĞÅÏ¢ 
+	 *æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢å…¬å‘Šä¿¡æ¯ 
 	 */
 	public List<Court> selectNoteCourts(Court court,int currentPage ,String startDate,String endDate,String instartDate,String inendDate,String minMoney,String maxMoney)throws Exception;
 	/**
-	 *°´Ìõ¼ş·ÖÒ³²éÑ¯¹«¸æµÄ×ÜÒ³Êı 
+	 *æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢å…¬å‘Šçš„æ€»é¡µæ•° 
 	 */
 	public int  selectNoteTatolPage(Court court,String startDate,String endDate,String instartDate,String inendDate,String minMoney,String maxMoney)throws Exception;
 	
 	
 	
-	public void insertCourt(Court court) throws Exception;//ĞÂ½¨°¸Ô´ĞÅÏ¢¡ª¡ªÌï×ÏºØ
-	public Apply selectApply(Users users)throws Exception;//ÉêÇëÈ¨ÏŞ£¬²éÑ¯ÓĞÎŞ¶ÔÏó¡ª¡ªÌï×ÏºØ
-	public Apply selectCourt3(Apply apply,Users users) throws Exception;//ĞÂ½¨°¸Ô´ĞÅÏ¢¡ª¡ªºÎ¾²
-	public List selectCourtAll(Court court)throws Exception;//²éÑ¯°¸Ô´ĞÅÏ¢¡ª¡ªºÎ¾²
-	public void updateCourt(Court court)throws Exception;//ĞŞ¸Ä°¸Ô´ĞÅÏ¢£¨±»Ö´ĞĞÈËÖ´ĞĞĞÅÏ¢£© ¡ª¡ªºÎ¾²
-	public int countCourtByCC(String courtcode,String caseCreateTime) throws Exception; //¸ù¾İ·¨Ôº±àºÅºÍÊ±¼ä»ñÈ¡°¸¼şÊıÁ¿¡ª¡ª¹ùÖ¾Åô
+	public void insertCourt(Court court) throws Exception;//æ–°å»ºæ¡ˆæºä¿¡æ¯â€”â€”ç”°ç´«è´º
+	public Apply selectApply(Users users)throws Exception;//ç”³è¯·æƒé™ï¼ŒæŸ¥è¯¢æœ‰æ— å¯¹è±¡â€”â€”ç”°ç´«è´º
+	public Apply selectCourt3(Apply apply,Users users) throws Exception;//æ–°å»ºæ¡ˆæºä¿¡æ¯â€”â€”ä½•é™
+	public List selectCourtAll(Court court)throws Exception;//æŸ¥è¯¢æ¡ˆæºä¿¡æ¯â€”â€”ä½•é™
+	public void updateCourt(Court court)throws Exception;//ä¿®æ”¹æ¡ˆæºä¿¡æ¯ï¼ˆè¢«æ‰§è¡Œäººæ‰§è¡Œä¿¡æ¯ï¼‰ â€”â€”ä½•é™
+	public int countCourtByCC(String courtcode,String caseCreateTime) throws Exception; //æ ¹æ®æ³•é™¢ç¼–å·å’Œæ—¶é—´è·å–æ¡ˆä»¶æ•°é‡â€”â€”éƒ­å¿—é¹
 	
-	public String insertMoreCourts(Users user) throws Exception;//°¸Ô´µÄÅú´¦Àí²Ù×÷¡ª¡ª¹ùÖ¾Åô
-	/** 
-     * ·ÖÒ³²éÑ¯
-     * @param hql ²éÑ¯µÄÌõ¼ş
-     * @param offset ¿ªÊ¼¼ÇÂ¼
-     * @param length Ò»´Î²éÑ¯¼¸Ìõ¼ÇÂ¼
-     * @return
-     */
-    public List queryForPage(final String hql,final int offset,final int length);
+	public String insertMoreCourts(Users user) throws Exception;//æ¡ˆæºçš„æ‰¹å¤„ç†æ“ä½œâ€”â€”éƒ­å¿—é¹
     
     /**
-     * ²éÑ¯ËùÓĞ¼ÇÂ¼Êı
-     * @param hql ²éÑ¯µÄÌõ¼ş
-     * @return ×Ü¼ÇÂ¼Êı
+     * æŸ¥è¯¢æ‰€æœ‰è®°å½•æ•°
+     * @param hql æŸ¥è¯¢çš„æ¡ä»¶
+     * @return æ€»è®°å½•æ•°
      */
     public int getAllRowCount(String hql);
     
-	/**
-     * ·ÖÒ³²éÑ¯
-     * @param page µ±Ç°µÚ¼¸Ò³
-     * @param pageSize Ã¿Ò³´óĞ¡
-     * @return ·â±ÕÁË·ÖÒ³ĞÅÏ¢(°üÀ¨¼ÇÂ¼¼¯list)µÄBean
-     */
-    public PageBean queryForPage(int pageSize,int page);
     
-    public Apply appSelectById(Apply apply,Users users)throws Exception;  //ÉêÇë   °¸Ô´¹ÜÀí   ²é¿´ÏêÏ¸ĞÅÏ¢ È¨ÏŞ   --Ìï×ÏºØ
-    public Court selectCourtById(Court court)throws Exception;    //°´id  ²éÑ¯  °¸Ô´  ÏêÏ¸ĞÅÏ¢   ---Ìï×ÏºØ
+    public Apply appSelectById(Apply apply,Users users)throws Exception;  //ç”³è¯·   æ¡ˆæºç®¡ç†   æŸ¥çœ‹è¯¦ç»†ä¿¡æ¯ æƒé™   --ç”°ç´«è´º
+    public Court selectCourtById(Court court)throws Exception;    //æŒ‰id  æŸ¥è¯¢  æ¡ˆæº  è¯¦ç»†ä¿¡æ¯   ---ç”°ç´«è´º
    
     public void toupdCourt1(Court court)throws Exception;
     

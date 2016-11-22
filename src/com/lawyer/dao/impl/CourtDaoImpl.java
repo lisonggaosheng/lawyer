@@ -2,6 +2,7 @@ package com.lawyer.dao.impl;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
@@ -41,20 +42,21 @@ import com.lawyer.pojo.LawyerCourtName;
 import com.lawyer.pojo.NoteInfo;
 import com.lawyer.pojo.PageBean;
 import com.lawyer.pojo.Users;
+import com.lawyer.tools.Parser;
 import com.lawyer.tools.StringFilter;
 
 @Entity
 public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	/**
-	 * ÏòÊı¾İ¿â²åÈëÍâ²¿Èí¼şËùĞèÒªµÄÊı¾İ
+	 * å‘æ•°æ®åº“æ’å…¥å¤–éƒ¨è½¯ä»¶æ‰€éœ€è¦çš„æ•°æ®
 	 */
 	public void createDate(Court court, String startDate, String endDate,
 			String instartDate, String inendDate, String minMoney,
 			String maxMoney) {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		Users user = (Users) session.getAttribute("admin");
-		// ÓÉ°¸Ô´µÚÒ»²½Éú³ÉÅúÁ¿²Ù×÷µÚ¶ş²½ËùĞèÒªµÄÊı¾İ
-		// 1.²éÑ¯µ±Ç°Ö´ĞĞ×´Ì¬ÎªµÚÒ»²½µÄËùÓĞ°¸Ô´ ²¢½«½á¹ûÑ¡ÔñĞÔµÄµ¼ÈëÅúÁ¿Ìí¼ÓµÚ¶ş²¿Ëù²Ù×÷µÄ±íÖĞ
+		// ç”±æ¡ˆæºç¬¬ä¸€æ­¥ç”Ÿæˆæ‰¹é‡æ“ä½œç¬¬äºŒæ­¥æ‰€éœ€è¦çš„æ•°æ®
+		// 1.æŸ¥è¯¢å½“å‰æ‰§è¡ŒçŠ¶æ€ä¸ºç¬¬ä¸€æ­¥çš„æ‰€æœ‰æ¡ˆæº å¹¶å°†ç»“æœé€‰æ‹©æ€§çš„å¯¼å…¥æ‰¹é‡æ·»åŠ ç¬¬äºŒéƒ¨æ‰€æ“ä½œçš„è¡¨ä¸­
 		String sql = "";
 		if (court.getExecutestep().equals("1")) {
 			sql = "DROP TABLE IF EXISTS `" + user.getUName() + "step2start`";
@@ -74,7 +76,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 					+ "' and '" + inendDate + "' and execmoney between '"
 					+ minMoney + "' and '" + maxMoney + "'";
 		}
-		// 3.ÅúÁ¿²Ù×÷µÚÈı²½½á¹ûĞÅÏ¢
+		// 3.æ‰¹é‡æ“ä½œç¬¬ä¸‰æ­¥ç»“æœä¿¡æ¯
 		if (court.getExecutestep().equals("3")) {
 			// sql = "delete from step4start";
 			sql = "DROP TABLE IF EXISTS `" + user.getUName() + "step4start`";
@@ -98,7 +100,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 
 	/**
-	 * ¸Ä±ä°¸Ô´ĞÅÏ¢Ö´ĞĞ²½Öè
+	 * æ”¹å˜æ¡ˆæºä¿¡æ¯æ‰§è¡Œæ­¥éª¤
 	 */
 	public void changeStep(Court court, String startDate, String endDate,
 			String instartDate, String inendDate, String minMoney,
@@ -115,21 +117,38 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 
 	/**
-	 * °´Ìõ¼ş·ÖÒ³²éÑ¯courtĞÅÏ¢
+	 * æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢courtä¿¡æ¯
 	 */
-	@SuppressWarnings("unchecked")
 	public List<Court> selectCourts(final Court court,final Executebusiness exb, final int currentPage,
 			final String startDate, final String endDate,
 			final String instartDate, final String inendDate,
 			final String minMoney, final String maxMoney) throws Exception {
-		return this.getHibernateTemplate().executeFind(new HibernateCallback() {
-			@Override
-			public Object doInHibernate(Session session)
-					throws HibernateException, SQLException {
-				if(exb.getEStatus() == null){
-					exb.setEStatus("");
-				}
-				String hql = "from Court c, Executebusiness eb  where c.casecodeself=eb.ECCasecodeself and c.courtcode like '%"
+		String hql = "";
+		List<Court> courts = new ArrayList<Court>();
+		
+		HttpSession session=ServletActionContext.getRequest().getSession();
+		Users user=(Users) session.getAttribute("admin");
+		
+		if(Parser.getInt(court.getExecutestep()) == 1){
+			hql = "from Court c where c.courtcode like '%"
+					+ court.getCourtcode()
+					+ "%'  and c.executestep like '%"
+					+ court.getExecutestep()
+					+ "%' and c.caseCreateTime between '"
+					+ startDate
+					+ "' and '"
+					+ endDate
+					+ "' and c.savetime between '"
+					+ instartDate
+					+ "' and '"
+					+ inendDate
+					+ "' and c.execMoney between '"
+					+ minMoney
+					+ "' and '"
+					+ maxMoney
+					+ "' and c.excludeStatus='0' ";
+		}else{
+			hql = "from Court c, Executebusiness eb  where c.casecodeself=eb.ECCasecodeself and c.courtcode like '%"
 					+ court.getCourtcode()
 					+ "%'  and c.executestep like '%"
 					+ court.getExecutestep()
@@ -146,38 +165,123 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 					+ "' and '"
 					+ maxMoney
 					+ "' and c.excludeStatus='0' and eb.EStatus like '%"+exb.getEStatus()+"%' ";
-			hql += " order by c.caseCreateTime desc";
-				Query query = session.createQuery(hql);
-				query.setFirstResult((currentPage - 1) * 12);
-				query.setMaxResults(12);
-				return query.list();
-			}
-		});
+		}
+		if(user != null && user.getURole().contains("å¸‚åœº")){
+			hql += " and c.execMoney >= 70000";
+		}
+		
+		hql += " order by c.caseCreateTime desc";
+		
+		Query query = this.getSession().createSQLQuery(hql);
+		query.setFirstResult((currentPage - 1) * 12);
+		query.setMaxResults(12);
+		Iterator<?> iterator =  query.iterate();
+		while(iterator.hasNext()){  
+            Court courtNew=(Court)iterator.next();  
+            courts.add(courtNew);
+        }  
+		return courts;
+//		return this.getHibernateTemplate().executeFind(new HibernateCallback() {
+//			@Override
+//			public Object doInHibernate(Session session)
+//					throws HibernateException, SQLException {
+//				if(exb.getEStatus() == null){
+//					exb.setEStatus("");
+//				}
+//				String hql = "";
+//				if(Parser.getInt(court.getExecutestep()) == 1){
+//					hql = "from Court c where c.courtcode like '%"
+//							+ court.getCourtcode()
+//							+ "%'  and c.executestep like '%"
+//							+ court.getExecutestep()
+//							+ "%' and c.caseCreateTime between '"
+//							+ startDate
+//							+ "' and '"
+//							+ endDate
+//							+ "' and c.savetime between '"
+//							+ instartDate
+//							+ "' and '"
+//							+ inendDate
+//							+ "' and c.execMoney between '"
+//							+ minMoney
+//							+ "' and '"
+//							+ maxMoney
+//							+ "' and c.excludeStatus='0' ";
+//				}else{
+//					hql = "from Court c, Executebusiness eb  where c.casecodeself=eb.ECCasecodeself and c.courtcode like '%"
+//							+ court.getCourtcode()
+//							+ "%'  and c.executestep like '%"
+//							+ court.getExecutestep()
+//							+ "%' and c.caseCreateTime between '"
+//							+ startDate
+//							+ "' and '"
+//							+ endDate
+//							+ "' and c.savetime between '"
+//							+ instartDate
+//							+ "' and '"
+//							+ inendDate
+//							+ "' and c.execMoney between '"
+//							+ minMoney
+//							+ "' and '"
+//							+ maxMoney
+//							+ "' and c.excludeStatus='0' and eb.EStatus like '%"+exb.getEStatus()+"%' ";
+//				}
+//				hql += " order by c.caseCreateTime desc";
+//				Query query = session.createQuery(hql);
+//				query.setFirstResult((currentPage - 1) * 12);
+//				query.setMaxResults(12);
+//				return query.list();
+//			}
+//		});
 	}
 
 	/**
-	 * °´Ìõ¼ş·ÖÒ³²éÑ¯µÄ×ÜÒ³Êı
+	 * æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢çš„æ€»é¡µæ•°
 	 */
 	public int selectTatolPage(Court court,Executebusiness exb, String startDate, String endDate,
 			String instartDate, String inendDate, String minMoney,
 			String maxMoney) throws Exception {
+		HttpSession session=ServletActionContext.getRequest().getSession();
+		Users user=(Users) session.getAttribute("admin");
+		
 		if(exb.getEStatus() == null){
 			exb.setEStatus("");
 		}
-		String hql = "select count(*) from Court c, Executebusiness eb " +
-				" where c.casecodeself=eb.ECCasecodeself and c.courtcode like ? and c.executestep like ? and c.caseCreateTime between '"
-				+ startDate
-				+ "' and '"
-				+ endDate
-				+ "' and c.savetime between '"
-				+ instartDate
-				+ "' and '"
-				+ inendDate
-				+ "' and c.execMoney between '"
-				+ minMoney
-				+ "' and '"
-				+ maxMoney
-				+ "' and c.excludeStatus='0' and eb.EStatus like '%"+exb.getEStatus()+"%' ";
+		String hql = "";
+		if(Parser.getInt(court.getExecutestep()) == 1){
+			hql = "select count(*) from Court c " +
+					" where c.courtcode like ? and c.executestep like ? and c.caseCreateTime between '"
+					+ startDate
+					+ "' and '"
+					+ endDate
+					+ "' and c.savetime between '"
+					+ instartDate
+					+ "' and '"
+					+ inendDate
+					+ "' and c.execMoney between '"
+					+ minMoney
+					+ "' and '"
+					+ maxMoney
+					+ "' and c.excludeStatus='0' ";
+		}else{
+			hql = "select count(*) from Court c, Executebusiness eb " +
+					" where c.casecodeself=eb.ECCasecodeself and c.courtcode like ? and c.executestep like ? and c.caseCreateTime between '"
+					+ startDate
+					+ "' and '"
+					+ endDate
+					+ "' and c.savetime between '"
+					+ instartDate
+					+ "' and '"
+					+ inendDate
+					+ "' and c.execMoney between '"
+					+ minMoney
+					+ "' and '"
+					+ maxMoney
+					+ "' and c.excludeStatus='0' and eb.EStatus like '%"+exb.getEStatus()+"%' ";
+		}
+		if(user != null && user.getURole().contains("å¸‚åœº")){
+			hql += " and c.execMoney >= 70000";
+		}
 		int totalRec = Integer.parseInt((this.getObj(hql,
 				"%" + court.getCourtcode() + "%", "%" + court.getExecutestep()
 						+ "%").toString()));
@@ -186,7 +290,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	
 	
 	/**
-	 * °´Ìõ¼ş·ÖÒ³²éÑ¯courtĞÅÏ¢
+	 * æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢courtä¿¡æ¯
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Court> selectNoteCourts(final Court court, final int currentPage,
@@ -227,7 +331,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 
 	/**
-	 * °´Ìõ¼ş·ÖÒ³²éÑ¯µÄ×ÜÒ³Êı
+	 * æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢çš„æ€»é¡µæ•°
 	 */
 	public int selectNoteTatolPage(Court court, String startDate, String endDate,
 			String instartDate, String inendDate, String minMoney,
@@ -255,7 +359,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 
 	/**
-	 * ²éÑ¯µÃµ½Ò»¸ö¶ÔÏó
+	 * æŸ¥è¯¢å¾—åˆ°ä¸€ä¸ªå¯¹è±¡
 	 */
 	public Object getObj(final String hql, final String... params) {
 
@@ -281,8 +385,8 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 
 	@SuppressWarnings("unchecked")
 	public Apply selectApply(Users users) throws Exception {
-		String str1 = "°¸Ô´¹ÜÀí±»Ö´ĞĞÈËÖ´ĞĞĞÅÏ¢";
-		String str2 = "ĞÂÔö";
+		String str1 = "æ¡ˆæºç®¡ç†è¢«æ‰§è¡Œäººæ‰§è¡Œä¿¡æ¯";
+		String str2 = "æ–°å¢";
 		Apply app = null;
 
 		Iterator<Apply> it = this
@@ -308,8 +412,8 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 
 	@SuppressWarnings("unchecked")
 	public Apply selectCourt3(Apply apply, Users users) throws Exception {
-		String str1 = "°¸Ô´¹ÜÀí";
-		String str2 = "²éÑ¯";
+		String str1 = "æ¡ˆæºç®¡ç†";
+		String str2 = "æŸ¥è¯¢";
 		Apply app = null;
 		Iterator<Apply> it = this
 				.getHibernateTemplate()
@@ -341,7 +445,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 
 	@SuppressWarnings("rawtypes")
 	public List queryForPage(String hql, int offset, int length) {
-		// Hibernate·ÖÒ³
+		// Hibernateåˆ†é¡µ
 		Query q = this.getSession().createQuery(hql);
 		q.setFirstResult(offset);
 		q.setMaxResults(length);
@@ -351,20 +455,20 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 
 	@SuppressWarnings("unchecked")
 	public PageBean queryForPage(int pageSize, int page) {
-		// Ò³Ãæ·ÖÒ³
+		// é¡µé¢åˆ†é¡µ
 		String hql = "from Court order by id desc";
-		// ×ÜÌõÊı
+		// æ€»æ¡æ•°
 		int allRow = getAllRowCount(hql);
-		// ×ÜÒ³Êı
+		// æ€»é¡µæ•°
 		int totalPage = PageBean.countTotalPage(pageSize, allRow);
-		// µ±Ç°Ò³
+		// å½“å‰é¡µ
 		int currentPage = PageBean.countCurrentPage(page);
-		// µ±Ç°Ò³¿ªÊ¼¼ÇÂ¼
+		// å½“å‰é¡µå¼€å§‹è®°å½•
 		int offset = PageBean.countOffset(pageSize, currentPage);
 
 		List<Court> list = queryForPage(hql, offset, pageSize);
 
-		// °Ñ¸÷¸öÊôĞÔ·â×°µ½PageBean
+		// æŠŠå„ä¸ªå±æ€§å°è£…åˆ°PageBean
 		PageBean pb = new PageBean();
 		pb.setAllRow(allRow);
 		pb.setCurrentPage(currentPage);
@@ -377,8 +481,8 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 
 	@SuppressWarnings("unchecked")
 	public Apply appSelectById(Apply apply, Users users) throws Exception {
-		String str1 = "°¸Ô´¹ÜÀí²é¿´ÏêÏ¸ĞÅÏ¢";
-		String str2 = "²éÑ¯";
+		String str1 = "æ¡ˆæºç®¡ç†æŸ¥çœ‹è¯¦ç»†ä¿¡æ¯";
+		String str2 = "æŸ¥è¯¢";
 		Apply app = null;
 		Iterator<Apply> it = this
 				.getHibernateTemplate()
@@ -404,7 +508,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			c = it.next();
 		}
 
-		// ±»Ö´ĞĞÈËÆóÒµĞÅÏ¢
+		// è¢«æ‰§è¡Œäººä¼ä¸šä¿¡æ¯
 		Executebusiness eb = null;
 		Iterator<Executebusiness> iteb = this
 				.getHibernateTemplate()
@@ -413,7 +517,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		while (iteb.hasNext()) {
 			eb = iteb.next();
 			if(eb.getEType() != null){
-				if(!(eb.getEType().indexOf("·Ö¹«Ë¾")!=-1)){
+				if(!(eb.getEType().indexOf("åˆ†å…¬å¸")!=-1)){
 					c.setEb(eb);
 				}
 			}else{
@@ -422,7 +526,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			
 		}
 
-		// ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢
+		// ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯
 		Applierinfo ap = null;
 		Iterator<Applierinfo> itap = this
 				.getHibernateTemplate()
@@ -431,7 +535,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		while (itap.hasNext()) {
 			ap = itap.next();
 			if(ap.getAppType() != null){
-				if(!(ap.getAppType().indexOf("·Ö¹«Ë¾")!=-1)){
+				if(!(ap.getAppType().indexOf("åˆ†å…¬å¸")!=-1)){
 					c.setAp(ap);
 				}
 			}else{
@@ -439,7 +543,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			}
 		}
 
-		// ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢£¨ÍøÂçĞÅÏ¢applierinfo_ network£©
+		// ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯ï¼ˆç½‘ç»œä¿¡æ¯applierinfo_ networkï¼‰
 		ApplierinfoNetwork an = null;
 		Iterator<ApplierinfoNetwork> itan = this
 				.getHibernateTemplate()
@@ -486,7 +590,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			c.setAn(an);
 		}
 
-		// ÉêÇëÖ´ĞĞÈËĞÅÏ¢£¨×ÔÓĞĞÅÏ¢applierinfo_ oneself£©
+		// ç”³è¯·æ‰§è¡Œäººä¿¡æ¯ï¼ˆè‡ªæœ‰ä¿¡æ¯applierinfo_ oneselfï¼‰
 		ApplierinfoOnself ao = null;
 		Iterator<ApplierinfoOnself> itao = this
 				.getHibernateTemplate()
@@ -497,7 +601,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			c.setAo(ao);
 		}
 
-		// ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨µç×ÓÓÊ¼şcontact_mail£©
+		// ä¸ç”³è¯·æ‰§è¡Œäººè”ç³»ä¿¡æ¯ï¼ˆç”µå­é‚®ä»¶contact_mailï¼‰
 		ContactMail cm = null;
 		Iterator<ContactMail> itcm = this
 				.getHibernateTemplate()
@@ -508,7 +612,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			c.setCm(cm);
 		}
 
-		// ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨µç»°ÁªÏµcontact_tel£©
+		// ä¸ç”³è¯·æ‰§è¡Œäººè”ç³»ä¿¡æ¯ï¼ˆç”µè¯è”ç³»contact_telï¼‰
 		ContactTel ct = null;
 		Iterator<ContactTel> itct = this
 				.getHibernateTemplate()
@@ -519,7 +623,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			c.setCt(ct);
 		}
 
-		// ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨¿ìµİcontact_express£©
+		// ä¸ç”³è¯·æ‰§è¡Œäººè”ç³»ä¿¡æ¯ï¼ˆå¿«é€’contact_expressï¼‰
 		ContactExpress ce = null;
 		Iterator<ContactExpress> itce = this
 				.getHibernateTemplate()
@@ -530,7 +634,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			c.setCe(ce);
 		}
 
-		// ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨´«Õæcontact_fax£©
+		// ä¸ç”³è¯·æ‰§è¡Œäººè”ç³»ä¿¡æ¯ï¼ˆä¼ çœŸcontact_faxï¼‰
 		ContactFax cf = null;
 		Iterator<ContactFax> itcf = this
 				.getHibernateTemplate()
@@ -541,7 +645,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			c.setCf(cf);
 		}
 
-		// ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨µÇÃÅ°İ·Ãcontact_see£©
+		// ä¸ç”³è¯·æ‰§è¡Œäººè”ç³»ä¿¡æ¯ï¼ˆç™»é—¨æ‹œè®¿contact_seeï¼‰
 		ContactSee csee = null;
 		Iterator<ContactSee> itcsee = this
 				.getHibernateTemplate()
@@ -564,7 +668,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		}
 		
 
-		// Ç©Ô¼Çé¿ö(contract_sign)
+		// ç­¾çº¦æƒ…å†µ(contract_sign)
 		ContractSign csign = null;
 		Iterator<ContractSign> itcsign = this
 				.getHibernateTemplate()
@@ -582,7 +686,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 	
 	/**
-	 * ¸ù¾İ·¨ÔºidºÍÁ¢°¸Ê±¼ä»ñÈ¡°¸¼şÊıÁ¿
+	 * æ ¹æ®æ³•é™¢idå’Œç«‹æ¡ˆæ—¶é—´è·å–æ¡ˆä»¶æ•°é‡
 	 */
 	private int countCourtByCourtcode(String courtcode, String caseCreateTime) {
 		String hql = "select count(*) from Court where caseCreateTime='"+caseCreateTime+"' and courtcode='"+courtcode+"'";
@@ -591,7 +695,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 	
 	/**
-	 * ¸ù¾İ·¨ÔºÃû³Æ»ñÈ¡·¨Ôº±àºÅ
+	 * æ ¹æ®æ³•é™¢åç§°è·å–æ³•é™¢ç¼–å·
 	 */
 	private String getCourtNumberByName(String courtName) {
 		String hql = "select lc.number from lawyer_court lc "+
@@ -605,7 +709,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 
 	/**
-	 * ¸ù¾İ·¨Ôº±àºÅºÍÊ±¼ä»ñÈ¡°¸¼şÊıÁ¿ ¹ùÖ¾Åô
+	 * æ ¹æ®æ³•é™¢ç¼–å·å’Œæ—¶é—´è·å–æ¡ˆä»¶æ•°é‡ éƒ­å¿—é¹
 	 */
 	public int countCourtByCC(String courtcode,String caseCreateTime) {
 		String sql = "select count(*) from courtinfo where caseCreateTime='"+caseCreateTime+"' and courtcode='"+courtcode+"'";
@@ -614,7 +718,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 	
 	/**
-	 * ¸ù¾İ¹«¸æ·¨ÔººÍÊ±¼ä»ñÈ¡°¸¼şÊıÁ¿ ¹ùÖ¾Åô
+	 * æ ¹æ®å…¬å‘Šæ³•é™¢å’Œæ—¶é—´è·å–æ¡ˆä»¶æ•°é‡ éƒ­å¿—é¹
 	 */
 	public int countCourtBynote(final String noticeCourt,
 			final String noticeTime) {
@@ -635,9 +739,9 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 
 	/**
-	 * °¸Ô´µÄÅú´¦Àí²Ù×÷¡ª¡ª¹ùÖ¾Åô
+	 * æ¡ˆæºçš„æ‰¹å¤„ç†æ“ä½œâ€”â€”éƒ­å¿—é¹
 	 * 
-	 * (¿ÉÓÅ»¯ ---ÀîÃÎÏè)
+	 * (å¯ä¼˜åŒ– ---ææ¢¦ç¿”)
 	 */
 	@SuppressWarnings({ "rawtypes" })
 	public String insertMoreCourts(Users user) throws Exception {
@@ -701,7 +805,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			String sql3 = "DELETE FROM court limit 5000";
 			this.getSession().createSQLQuery(sql3).executeUpdate();
 		}
-		message = "Åú´¦ÀíÊı¾İÍê³É,²éÑ¯"+list.size()+"Ìõ£¬Êµ¼Ê²åÈë"+count+"ÌõÊı¾İ";
+		message = "æ‰¹å¤„ç†æ•°æ®å®Œæˆ,æŸ¥è¯¢"+list.size()+"æ¡ï¼Œå®é™…æ’å…¥"+count+"æ¡æ•°æ®";
 		
 		return message;
 	}
@@ -964,7 +1068,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		try{
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddhhmmss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy.MM.dd");
@@ -1027,7 +1131,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 				court.setExecutestep("1");
 				court.setExcludeStatus("0");
 				court.setInfoType("2");
-				court.setCaseCreateTime("1111Äê11ÔÂ12ÈÕ");
+				court.setCaseCreateTime("1111å¹´11æœˆ12æ—¥");
 				court.setExecMoney("1");
 				court.setCourtcode("");
 				court.setSavetime(df1.format(new Date()));
@@ -1057,7 +1161,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 				court.setExecutestep("1");
 				court.setExcludeStatus("0");
 				court.setInfoType("2");
-				court.setCaseCreateTime("1111Äê11ÔÂ12ÈÕ");
+				court.setCaseCreateTime("1111å¹´11æœˆ12æ—¥");
 				court.setExecMoney("1");
 				court.setCourtcode("");
 				court.setSavetime(df1.format(new Date()));
@@ -1077,7 +1181,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	public void insertDishonestyCourts(Users user) {
 		try{
 			SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 			SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd");
 			DishonestyCourt dCourt = null;
 			String casecodeself = null;
@@ -1124,7 +1228,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 //					court.setExecutestep("1");
 //					court.setExcludeStatus("0");
 //					court.setInfoType("3");
-//					court.setCaseCreateTime("1111Äê11ÔÂ12ÈÕ");
+//					court.setCaseCreateTime("1111å¹´11æœˆ12æ—¥");
 //					court.setExecMoney("1");
 //					court.setCourtcode("");
 //					court.setSavetime(df1.format(new Date()));
@@ -1144,7 +1248,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 
 	@Override
 	/**
-	 * ÆóÒµ×´Ì¬¸üĞÂ
+	 * ä¼ä¸šçŠ¶æ€æ›´æ–°
 	 */
 	public void updateStutas(Users user) throws Exception {
 		String sql = "SELECT ID,courtcode,casecodeself,caseCode,business_name,registration_mark,address,corporation,registered_capital,paid_in_capital,business_type,enterprise_status,business_scope_mark,operating_period_since,operating_period_to,establishmen_date,redistration_authority,cancellation_date,revoke_date,organization_code,organization_code_issuing_agencies,inspection_annual,inspection_results,savetime FROM enterprise_info WHERE casecodeself IN (SELECT casecodeself from `"+user.getUName()+"step2start`)";
@@ -1184,13 +1288,13 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 
 	/**
-	 * ·¨Ôº±àÂë¸üĞÂ
+	 * æ³•é™¢ç¼–ç æ›´æ–°
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void courtcodeUpdate(Users users) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		String hql = "from Court WHERE courtcode = '110101' and casecodeself = '11010120101206010'";
 		Query query = this.getSession().createQuery(hql);
 		query.setFirstResult(0);
@@ -1204,7 +1308,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			String execCourtName = court.getExecCourtName();
 			String casecode = court.getCaseCode();
 			//String savetimestr = casecodeself.substring(18, casecodeself.length());	
-			//Éú³É·¨ÔºÄ³Ò»ÌìÊÜÀíµÄ°¸¼şÊı
+			//ç”Ÿæˆæ³•é™¢æŸä¸€å¤©å—ç†çš„æ¡ˆä»¶æ•°
 			int n = countCourtByCC(courtcode, caseCreateTime) + 1;
 			StringBuffer count = new StringBuffer();	
 			if(n >= 0&&n<10){
@@ -1320,8 +1424,8 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			String maxMoney) {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		Users user = (Users) session.getAttribute("admin");
-		// ÓÉ°¸Ô´µÚÒ»²½Éú³ÉÅúÁ¿²Ù×÷µÚ¶ş²½ËùĞèÒªµÄÊı¾İ
-		// 1.²éÑ¯µ±Ç°Ö´ĞĞ×´Ì¬ÎªµÚÒ»²½µÄËùÓĞ°¸Ô´ ²¢½«½á¹ûÑ¡ÔñĞÔµÄµ¼ÈëÅúÁ¿Ìí¼ÓµÚ¶ş²¿Ëù²Ù×÷µÄ±íÖĞ
+		// ç”±æ¡ˆæºç¬¬ä¸€æ­¥ç”Ÿæˆæ‰¹é‡æ“ä½œç¬¬äºŒæ­¥æ‰€éœ€è¦çš„æ•°æ®
+		// 1.æŸ¥è¯¢å½“å‰æ‰§è¡ŒçŠ¶æ€ä¸ºç¬¬ä¸€æ­¥çš„æ‰€æœ‰æ¡ˆæº å¹¶å°†ç»“æœé€‰æ‹©æ€§çš„å¯¼å…¥æ‰¹é‡æ·»åŠ ç¬¬äºŒéƒ¨æ‰€æ“ä½œçš„è¡¨ä¸­
 		String sql = "";
 		sql = "DROP TABLE IF EXISTS `" + user.getUName() + "step2start`";
 		this.getSession().createSQLQuery(sql).executeUpdate();

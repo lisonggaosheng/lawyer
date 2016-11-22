@@ -20,14 +20,14 @@ public class Court implements java.io.Serializable {
 	private Integer uid;
 	private String executestep;
 	private String remark;
-	private String creditor;  //Õ®È¨ÈË
-	private String creditorAddress;  //Õ®È¨ÈË×¡Ëù
+	private String creditor;  //å€ºæƒäºº
+	private String creditorAddress;  //å€ºæƒäººä½æ‰€
 	
 	private String noticeCourt;
 	private String noticeTime;
-	private String lawDocumentNum;  //¹«¸æÎÄÊéºÅ
-	private String infoType;   //°¸Ô´ÀàĞÍ   1Ö´ĞĞ    2¹«¸æ   3Ê§ĞÅ
-	private String excludeStatus;   //ÅÅ³ı×´Ì¬      0Õı³£   1ÁÙÊ±ÅÅ³ı    2ÓÀ¾ÃÅÅ³ı
+	private String lawDocumentNum;  //å…¬å‘Šæ–‡ä¹¦å·
+	private String infoType;   //æ¡ˆæºç±»å‹   1æ‰§è¡Œ    2å…¬å‘Š   3å¤±ä¿¡
+	private String excludeStatus;   //æ’é™¤çŠ¶æ€      0æ­£å¸¸   1ä¸´æ—¶æ’é™¤    2æ°¸ä¹…æ’é™¤
 
 	private Executebusiness eb;
 	private Applierinfo ap;

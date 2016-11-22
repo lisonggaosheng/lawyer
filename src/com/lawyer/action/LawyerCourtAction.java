@@ -20,11 +20,10 @@ public class LawyerCourtAction extends ActionSupport{
 	
 	@SuppressWarnings("unchecked")
 	public String findAll() throws Exception{
-		//²éÕÒËùÓĞµÄ·¨Ôº
+		//æŸ¥æ‰¾æ‰€æœ‰çš„æ³•é™¢
 		lawyerCourts = (List<LawyerCourt>) lawyerCourtService.findAllLawyerCourt();
-		//·â×°³Éjson ×Ö·û´®  ÏìÓ¦¸ø¿Í»§¶Ë
+		//å°è£…æˆjson å­—ç¬¦ä¸²  å“åº”ç»™å®¢æˆ·ç«¯
 		String jsonarr = ObjAndList2Json.list2jsonarr(lawyerCourts);
-		System.out.println(jsonarr);
 		HttpServletResponse response =  ServletActionContext.getResponse();
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -35,12 +34,12 @@ public class LawyerCourtAction extends ActionSupport{
 		return null;
 	}
 	/**
-	 * ²éÕÒËùÓĞµÄÒ»¼¶·¨Ôº
+	 * æŸ¥æ‰¾æ‰€æœ‰çš„ä¸€çº§æ³•é™¢
 	 * @return
 	 */
 	public String findFirst() throws Exception{
 		List<LawyerCourt> firstLawyerCourts = lawyerCourtService.findFirstLawyerCourt();
-		//·â×°³Éjson ×Ö·û´®  ÏìÓ¦¸ø¿Í»§¶Ë
+		//å°è£…æˆjson å­—ç¬¦ä¸²  å“åº”ç»™å®¢æˆ·ç«¯
 		String jsonarr = ObjAndList2Json.list2jsonarr(firstLawyerCourts);
 		System.out.println(jsonarr);
 		HttpServletResponse response =  ServletActionContext.getResponse();
@@ -52,7 +51,7 @@ public class LawyerCourtAction extends ActionSupport{
 		return null;
 	}
 	/**
-	 * ¸ù¾İÒ»¼¶·¨Ôº²éÕÒ¶ÔÓ¦µÄ¶ş¼¶·¨Ôº
+	 * æ ¹æ®ä¸€çº§æ³•é™¢æŸ¥æ‰¾å¯¹åº”çš„äºŒçº§æ³•é™¢
 	 * @return
 	 */
 	public String findSecondByFirst() throws Exception{
@@ -63,7 +62,7 @@ public class LawyerCourtAction extends ActionSupport{
 		System.out.println(fir_id);
 		
 		List<LawyerCourt> secondLawyerCourts = lawyerCourtService.findSecondLawyerCourt(fir_id);
-		//·â×°³Éjson ×Ö·û´®  ÏìÓ¦¸ø¿Í»§¶Ë
+		//å°è£…æˆjson å­—ç¬¦ä¸²  å“åº”ç»™å®¢æˆ·ç«¯
 		String jsonarr = ObjAndList2Json.list2jsonarr(secondLawyerCourts);
 		HttpServletResponse response =  ServletActionContext.getResponse();
 		response.setContentType("text/html; charset=utf-8");
@@ -75,7 +74,7 @@ public class LawyerCourtAction extends ActionSupport{
 		return null;
 	}
 	/**
-	 *	¸ù¾İ¶ş¼¶·¨Ôº²éÕÒ¶ÔÓ¦µÄÈı¼¶·¨Ôº
+	 *	æ ¹æ®äºŒçº§æ³•é™¢æŸ¥æ‰¾å¯¹åº”çš„ä¸‰çº§æ³•é™¢
 	 * @return
 	 */
 	public String findThirdBySecond() throws Exception{
@@ -95,13 +94,6 @@ public class LawyerCourtAction extends ActionSupport{
 		out.close();
 		return null;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	public List<LawyerCourt> getLawyerCourts() {
 		return lawyerCourts;

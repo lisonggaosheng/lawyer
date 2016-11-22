@@ -62,21 +62,21 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	/**
-	 * ÏòÊı¾İ¿â²åÈëÍâ²¿Èí¼şËùĞèÒªµÄÊı¾İ
+	 * å‘æ•°æ®åº“æ’å…¥å¤–éƒ¨è½¯ä»¶æ‰€éœ€è¦çš„æ•°æ®
 	 */
 	public void createDate(Court court, String startDate, String endDate,
 			String instartDate, String inendDate, String minMoney,
 			String maxMoney) {
 		if (startDate == null || "".equals(startDate.trim()))
-			startDate = "1111Äê11ÔÂ11ÈÕ";
+			startDate = "1111å¹´11æœˆ11æ—¥";
 		if (endDate == null || "".equals(endDate.trim()))
-			endDate = "2222Äê22ÔÂ22ÈÕ";
+			endDate = "2222å¹´22æœˆ22æ—¥";
 		if (instartDate == null || "".equals(instartDate.trim()))
 			instartDate = "1111-11-11 00:00:00";
 		else {
 			instartDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(instartDate);
@@ -90,7 +90,7 @@ public class CourtServiceImpl implements CourtService {
 		else {
 			inendDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(inendDate);
@@ -108,21 +108,21 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	/**
-	 * ¸Ä±äÖ´ĞĞ²½Öè
+	 * æ”¹å˜æ‰§è¡Œæ­¥éª¤
 	 */
 	public void changeStep(Court court, String startDate, String endDate,
 			String instartDate, String inendDate, String minMoney,
 			String maxMoney, String courtStep) {
 		if (startDate == null || "".equals(startDate.trim()))
-			startDate = "1111Äê11ÔÂ11ÈÕ";
+			startDate = "1111å¹´11æœˆ11æ—¥";
 		if (endDate == null || "".equals(endDate.trim()))
-			endDate = "2222Äê22ÔÂ22ÈÕ";
+			endDate = "2222å¹´22æœˆ22æ—¥";
 		if (instartDate == null || "".equals(instartDate.trim()))
 			instartDate = "1111-11-11 00:00:00";
 		else {
 			instartDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(instartDate);
@@ -136,7 +136,7 @@ public class CourtServiceImpl implements CourtService {
 		else {
 			inendDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(inendDate);
@@ -154,22 +154,22 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	/**
-	 * °´Ìõ¼ş·ÖÒ³²éÑ¯courtĞÅÏ¢
+	 * æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢courtä¿¡æ¯
 	 */
 	public List<Court> selectCourts(Court court,Executebusiness exb, int currentPage,
 			String startDate, String endDate, String instartDate,
 			String inendDate, String minMoney, String maxMoney)
 			throws Exception {
 		if (startDate == null || "".equals(startDate.trim()))
-			startDate = "1111Äê11ÔÂ11ÈÕ";
+			startDate = "1111å¹´11æœˆ11æ—¥";
 		if (endDate == null || "".equals(endDate.trim()))
-			endDate = "2222Äê22ÔÂ22ÈÕ";
+			endDate = "2222å¹´22æœˆ22æ—¥";
 		if (instartDate == null || "".equals(instartDate.trim()))
 			instartDate = "1111-11-11 00:00:00";
 		else {
 			instartDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(instartDate);
@@ -183,7 +183,7 @@ public class CourtServiceImpl implements CourtService {
 		else {
 			inendDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(inendDate);
@@ -201,21 +201,21 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	/**
-	 * °´Ìõ¼ş·ÖÒ³²éÑ¯µÄ×ÜÒ³Êı
+	 * æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢çš„æ€»é¡µæ•°
 	 */
 	public int selectTatolPage(Court court,Executebusiness exb, String startDate, String endDate,
 			String instartDate, String inendDate, String minMoney,
 			String maxMoney) throws Exception {
 		if (startDate == null || "".equals(startDate.trim()))
-			startDate = "1111Äê11ÔÂ11ÈÕ";
+			startDate = "1111å¹´11æœˆ11æ—¥";
 		if (endDate == null || "".equals(endDate.trim()))
-			endDate = "2222Äê22ÔÂ22ÈÕ";
+			endDate = "2222å¹´22æœˆ22æ—¥";
 		if (instartDate == null || "".equals(instartDate.trim()))
 			instartDate = "1111-11-11 00:00:00";
 		else {
 			instartDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(instartDate);
@@ -229,7 +229,7 @@ public class CourtServiceImpl implements CourtService {
 		else {
 			inendDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(inendDate);
@@ -247,22 +247,22 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	/**
-	 * °´Ìõ¼ş·ÖÒ³²éÑ¯¹«¸æĞÅÏ¢
+	 * æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢å…¬å‘Šä¿¡æ¯
 	 */
 	public List<Court> selectNoteCourts(Court court, int currentPage,
 			String startDate, String endDate, String instartDate,
 			String inendDate, String minMoney, String maxMoney)
 			throws Exception {
 		if (startDate == null || "".equals(startDate.trim()))
-			startDate = "1111Äê11ÔÂ11ÈÕ";
+			startDate = "1111å¹´11æœˆ11æ—¥";
 		if (endDate == null || "".equals(endDate.trim()))
-			endDate = "2222Äê22ÔÂ22ÈÕ";
+			endDate = "2222å¹´22æœˆ22æ—¥";
 		if (instartDate == null || "".equals(instartDate.trim()))
 			instartDate = "1111-11-11 00:00:00";
 		else {
 			instartDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(instartDate);
@@ -276,7 +276,7 @@ public class CourtServiceImpl implements CourtService {
 		else {
 			inendDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(inendDate);
@@ -294,21 +294,21 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	/**
-	 * °´Ìõ¼ş·ÖÒ³²éÑ¯¹«¸æµÄ×ÜÒ³Êı
+	 * æŒ‰æ¡ä»¶åˆ†é¡µæŸ¥è¯¢å…¬å‘Šçš„æ€»é¡µæ•°
 	 */
 	public int selectNoteTatolPage(Court court, String startDate, String endDate,
 			String instartDate, String inendDate, String minMoney,
 			String maxMoney) throws Exception {
 		if (startDate == null || "".equals(startDate.trim()))
-			startDate = "1111Äê11ÔÂ11ÈÕ";
+			startDate = "1111å¹´11æœˆ11æ—¥";
 		if (endDate == null || "".equals(endDate.trim()))
-			endDate = "2222Äê22ÔÂ22ÈÕ";
+			endDate = "2222å¹´22æœˆ22æ—¥";
 		if (instartDate == null || "".equals(instartDate.trim()))
 			instartDate = "1111-11-11 00:00:00";
 		else {
 			instartDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(instartDate);
@@ -322,7 +322,7 @@ public class CourtServiceImpl implements CourtService {
 		else {
 			inendDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(inendDate);
@@ -340,7 +340,7 @@ public class CourtServiceImpl implements CourtService {
 	}
 	
 	/**
-	 * ĞÂ½¨°¸Ô´ĞÅÏ¢
+	 * æ–°å»ºæ¡ˆæºä¿¡æ¯
 	 */
 	public void insertCourt(Court court) throws Exception {
 		this.courtDao.insertCourt(court);
@@ -353,7 +353,7 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	/**
-	 * ²éÑ¯°¸Ô´ĞÅÏ¢
+	 * æŸ¥è¯¢æ¡ˆæºä¿¡æ¯
 	 * 
 	 * @since 13-3-20
 	 */
@@ -364,7 +364,7 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	/**
-	 * ÑéÖ¤²éÑ¯°¸Ô´È¨ÏŞ
+	 * éªŒè¯æŸ¥è¯¢æ¡ˆæºæƒé™
 	 */
 	public Apply selectCourt3(Apply apply, Users users) throws Exception {
 		apply = this.courtDao.selectCourt3(apply, users);
@@ -375,31 +375,22 @@ public class CourtServiceImpl implements CourtService {
 		return this.courtDao.getAllRowCount(hql);
 	}
 
-	@SuppressWarnings("rawtypes")
-	public List queryForPage(String hql, int offset, int length) {
-		return this.courtDao.queryForPage(hql, offset, length);
-	}
-
-	public PageBean queryForPage(int pageSize, int page) {
-		return this.courtDao.queryForPage(pageSize, page);
-	}
-
 	/**
-	 * ÑéÖ¤ °¸Ô´¹ÜÀí ²é¿´ÏêÏ¸ĞÅÏ¢ È¨ÏŞ
+	 * éªŒè¯ æ¡ˆæºç®¡ç† æŸ¥çœ‹è¯¦ç»†ä¿¡æ¯ æƒé™
 	 */
 	public Apply appSelectById(Apply apply, Users users) throws Exception {
 		return this.courtDao.appSelectById(apply, users);
 	}
 
 	/**
-	 * °´id ²é¿´°¸Ô´ ÏêÏ¸ĞÅÏ¢
+	 * æŒ‰id æŸ¥çœ‹æ¡ˆæº è¯¦ç»†ä¿¡æ¯
 	 */
 	public Court selectCourtById(Court court) throws Exception {
 		return this.courtDao.selectCourtById(court);
 	}
 
 	/**
-	 * ĞŞ¸Ä°¸Ô´ĞÅÏ¢£¨±»Ö´ĞĞÈËÖ´ĞĞĞÅÏ¢£©
+	 * ä¿®æ”¹æ¡ˆæºä¿¡æ¯ï¼ˆè¢«æ‰§è¡Œäººæ‰§è¡Œä¿¡æ¯ï¼‰
 	 * 
 	 * @since 13-3-21
 	 */
@@ -575,15 +566,15 @@ public class CourtServiceImpl implements CourtService {
 			String instartDate, String inendDate, String minMoney,
 			String maxMoney) {
 		if (startDate == null || "".equals(startDate.trim()))
-			startDate = "1111Äê11ÔÂ11ÈÕ";
+			startDate = "1111å¹´11æœˆ11æ—¥";
 		if (endDate == null || "".equals(endDate.trim()))
-			endDate = "2222Äê22ÔÂ22ÈÕ";
+			endDate = "2222å¹´22æœˆ22æ—¥";
 		if (instartDate == null || "".equals(instartDate.trim()))
 			instartDate = "1111-11-11 00:00:00";
 		else {
 			instartDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(instartDate);
@@ -597,7 +588,7 @@ public class CourtServiceImpl implements CourtService {
 		else {
 			inendDate += " 00:00:00";
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ hh:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ hh:mm:ss");
 			Date d;
 			try {
 				d = df2.parse(inendDate);
@@ -620,7 +611,7 @@ public class CourtServiceImpl implements CourtService {
 		Users admin=(Users) session.getAttribute("admin");	
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		for (int i = 0; i < dataList.size(); i++) {
 			Court court = dataList.get(i);
 			if(court.getCaseCode() == null){

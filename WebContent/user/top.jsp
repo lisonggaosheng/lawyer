@@ -88,7 +88,7 @@ $(document).ready(function(){
                 <span class="menu_div" id="otherservice">其他服务</span>
             </td>
             <td width="50">
-            	<a href="usersQuit?admin.UId=${admin.UId }" style=" font-size:16px;color:white; font-family:Microsoft YaHei; font-weight:700;" target="_top">退出</a>
+            	<a href="usersQuit" style=" font-size:16px;color:white; font-family:Microsoft YaHei; font-weight:700;" target="_top">退出</a>
             </td>
         </tr>
         <tr height="30" style="background-color:rgb(37,131,231); color:white; font-size:14px;">
