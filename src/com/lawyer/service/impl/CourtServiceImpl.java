@@ -547,8 +547,8 @@ public class CourtServiceImpl implements CourtService {
 	}
 	
 	@Override
-	public void insertDishonestyCourts(Users users) throws Exception {
-		courtDao.insertDishonestyCourts(users);
+	public String insertDishonestyCourts(Users users) throws Exception {
+		return courtDao.insertDishonestyCourts(users);
 	}
 
 	@Override

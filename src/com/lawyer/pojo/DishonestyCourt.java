@@ -6,15 +6,15 @@ public class DishonestyCourt implements Serializable {
 	
 	private Integer id;
 	private String caseId;
-	private String iname;			//±»Ö´ĞĞÈËĞÕÃû/Ãû³Æ
-	private String cardNum;			//Éí·İÖ¤ºÅÂë/×éÖ¯»ú¹¹´úÂë
-	private String courtName;		//Ö´ĞĞ·¨Ôº
-	private String gistId;			//Ö´ĞĞÒÀ¾İÎÄºÅ£¨·¨ÂÉÎÄÊéºÅ£©
-	private String regDate;			//Á¢°¸Ê±¼ä
-	private String caseCode;		//°¸ºÅ
-	private String performance;		//±»Ö´ĞĞÈËµÄÂÄĞĞÇé¿ö£¨°¸¼ş×´Ì¬£©
-	private String publishDate;		//·¢²¼Ê±¼ä£¨¹«¸æÊ±¼ä£©
-	private String  duty;			//ÉúĞ§·¨ÂÉÎÄÊéÈ·¶¨µÄÒåÎñ£¨±¸×¢£©
+	private String iname;			//è¢«æ‰§è¡Œäººå§“å/åç§°
+	private String cardNum;			//èº«ä»½è¯å·ç /ç»„ç»‡æœºæ„ä»£ç 
+	private String courtName;		//æ‰§è¡Œæ³•é™¢
+	private String gistId;			//æ‰§è¡Œä¾æ®æ–‡å·ï¼ˆæ³•å¾‹æ–‡ä¹¦å·ï¼‰
+	private String regDate;			//ç«‹æ¡ˆæ—¶é—´
+	private String caseCode;		//æ¡ˆå·
+	private String performance;		//è¢«æ‰§è¡Œäººçš„å±¥è¡Œæƒ…å†µï¼ˆæ¡ˆä»¶çŠ¶æ€ï¼‰
+	private String publishDate;		//å‘å¸ƒæ—¶é—´ï¼ˆå…¬å‘Šæ—¶é—´ï¼‰
+	private String  duty;			//ç”Ÿæ•ˆæ³•å¾‹æ–‡ä¹¦ç¡®å®šçš„ä¹‰åŠ¡ï¼ˆå¤‡æ³¨ï¼‰
 	
 	public Integer getId() {
 		return id;

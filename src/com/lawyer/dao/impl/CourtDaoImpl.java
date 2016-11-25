@@ -42,6 +42,7 @@ import com.lawyer.pojo.LawyerCourtName;
 import com.lawyer.pojo.NoteInfo;
 import com.lawyer.pojo.PageBean;
 import com.lawyer.pojo.Users;
+import com.lawyer.tools.CommonUtil;
 import com.lawyer.tools.Parser;
 import com.lawyer.tools.StringFilter;
 
@@ -806,6 +807,86 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		
 		return message;
 	}
+	
+	@Override
+	public String insertDishonestyCourts(Users user) {
+		String message = null;
+		try{
+			SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd");
+			if(user == null){
+				user = new Users(29);
+			}
+			int dealCount = 0;
+			
+			String sql = "SELECT ID,caseId,iname,cardNum,courtName,gistId,regDate,"+
+							"caseCode,duty,performance,publishDate "+
+							"from court_shixin limit 0,10";
+			List list = this.getSession().createSQLQuery(sql)
+					.addEntity("DishonestyCourt", DishonestyCourt.class).list();
+			if (list.size() > 0) {
+				Iterator it = list.iterator();
+				while (it.hasNext()) {
+					DishonestyCourt dcourt = (DishonestyCourt) it.next();
+					List<Court> courts = selectCourtsByNameCasecode(dcourt.getIname(), dcourt.getCaseCode());
+					if(courts.size()>0){
+						for (Court court2 : courts) {
+							if(Parser.getInt(court2.getExecutestep()) > 2){
+								continue;
+							}
+							String courtNumber = String.format("%4d", getCourtNumberByName(dcourt.getCourtName())).replace(" ", "0");
+							court2.setPartyCardNum(dcourt.getCardNum());
+							court2.setExecCourtName(dcourt.getCourtName());
+							court2.setCourtcode(courtNumber);
+							court2.setLawDocumentNum(dcourt.getGistId());
+							court2.setCaseCreateTime(dcourt.getRegDate());
+							court2.setCaseState(dcourt.getPerformance());
+							court2.setNoticeTime(dcourt.getPublishDate());
+							court2.setRemark(dcourt.getDuty());
+							court2.setSavetime(df1.format(new Date()));
+							court2.setUid(user.getUId());
+							this.getHibernateTemplate().update(court2);
+						}
+					}else{
+						String courtNumber = String.format("%4d", getCourtNumberByName(dcourt.getCourtName())).replace(" ", "0");
+						int count = countCourtByCourtcode(courtNumber, dcourt.getRegDate());
+						String casecodeself = "S"+courtNumber+sdfDate.format(dcourt.getRegDate())+count+System.currentTimeMillis();
+						
+						Court court = new Court();
+						court.setCasecodeself(casecodeself);
+						court.setCaseId(CommonUtil.generateString(8));
+						court.setPname(dcourt.getIname());
+						court.setCaseCode(dcourt.getCaseCode());
+						court.setPartyCardNum(dcourt.getCardNum());
+						court.setExecCourtName(dcourt.getCourtName());
+						court.setCourtcode(courtNumber);
+						court.setLawDocumentNum(dcourt.getGistId());
+						court.setCaseCreateTime(dcourt.getRegDate());
+						court.setCaseState(dcourt.getPerformance());
+						court.setNoticeTime(dcourt.getPublishDate());
+						court.setExecutestep("1");
+						court.setExcludeStatus("0");
+						court.setInfoType("3");
+						court.setExecMoney("1");
+						court.setRemark(dcourt.getDuty());
+						court.setSavetime(df1.format(new Date()));
+						court.setUid(user.getUId());
+						this.getHibernateTemplate().save(court);
+					}
+					dealCount++;
+				}
+			}
+			String deleteSql = "DELETE FROM court_shixin limit 10";
+			this.getSession().createSQLQuery(deleteSql).executeUpdate();
+			
+			message = "批处理数据完成,查询"+list.size()+"条，实际插入更新"+dealCount+"条数据";
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+		
+		return message;
+		
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -1174,74 +1255,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		this.getSession().createSQLQuery(sql).executeUpdate();
 	}
 	
-	@Override
-	public void insertDishonestyCourts(Users user) {
-		try{
-			SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-			SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd");
-			DishonestyCourt dCourt = null;
-			String casecodeself = null;
-			
-			if(user == null){
-				user = new Users(29);
-			}
-			
-			int dealCount = 0;
-			
-			String sql = "SELECT ID,caseId,iname,cardNum,courtName,gistId,regDate,"+
-							"caseCode,duty,performance,publishDate "+
-							"from court_shixin limit 0,10";
-			List list = this.getSession().createSQLQuery(sql)
-					.addEntity("DishonestyCourt", DishonestyCourt.class).list();
-			if (list.size() > 0) {
-				Iterator it = list.iterator();
-				while (it.hasNext()) {
-					boolean isGo = true;
-					
-					DishonestyCourt dcourt = (DishonestyCourt) it.next();
-					List<Court> courts = selectCourtsByNameCasecode(dcourt.getIname(), dcourt.getCaseCode());
-					if(courts.size()>0){
-						for (Court court2 : courts) {
-							if(!court2.getExecutestep().equals("1")){
-								isGo = false;
-							}
-						}
-					}
-					if(!isGo){
-						continue;
-					}
-					
-					String courtNumber = String.format("%4d", getCourtNumberByName(dcourt.getCourtName())).replace(" ", "0");
-					int count = countCourtByCourtcode(courtNumber, dcourt.getRegDate());
-					String casecodefelf = "S"+courtNumber+sdfDate.format(dcourt.getRegDate())+count+System.currentTimeMillis();
-					
-//					Court court = new Court();
-//					court.setCasecodeself(casecodeself);
-//					court.setPname(note.getDebtor_name());
-//					court.setNoticeCourt(noticeCourt);
-//					court.setNoticeTime(noticeTime);
-//					court.setCaseId(CaseId);
-//					court.setExecutestep("1");
-//					court.setExcludeStatus("0");
-//					court.setInfoType("3");
-//					court.setCaseCreateTime("1111年11月12日");
-//					court.setExecMoney("1");
-//					court.setCourtcode("");
-//					court.setSavetime(df1.format(new Date()));
-//					court.setUid(user.getUId());
-//					court.setRemark(note.getBak());
-//					this.getHibernateTemplate().save(court);
-					
-					dealCount++;
-				}
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}	
-		
-		
-	}
+	
 
 	@Override
 	/**

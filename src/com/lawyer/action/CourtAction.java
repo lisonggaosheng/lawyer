@@ -434,12 +434,12 @@ public class CourtAction extends ActionSupport{
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		try {
 			users=(Users) session.getAttribute("admin");
-			courtService.insertDishonestyCourts(users);
+			String message = courtService.insertDishonestyCourts(users);
 			
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print("批处理债务人公告数据完成！");
+			out.print(message);
 			out.flush();
 			out.close();
 			return null;
@@ -563,7 +563,6 @@ public class CourtAction extends ActionSupport{
 	public void setPage(int page) {
 		this.page = page;
 	}
-	@SuppressWarnings("rawtypes")
 	public List getList() {
 		return list;
 	}
@@ -641,7 +640,6 @@ public class CourtAction extends ActionSupport{
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		 SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddHHmmss");
 		String[] str = { "0", "1", "2", "3", "4", "5", "6", "7", "8","9"};
 		String CaseId = "";
 		for (int i = 0; i < 8; i++) {
@@ -657,16 +655,8 @@ public class CourtAction extends ActionSupport{
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
-					int n = courtService.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime()) + 1;
-					StringBuffer count = new StringBuffer();	
-					if(n >= 0&&n<10){
-						count.append('0');
-						count.append('0');
-						count.append(String.valueOf(n));
-					}else if( n >= 10&&n<100){
-						count.append('0');
-						count.append(String.valueOf(n));
-					}	
+					int num = courtService.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime()) + 1;
+					String count = String.format("%3d", num).replace(" ", "0");
 					court.setCasecodeself(court.getCourtcode() + casedatetime + count +System.currentTimeMillis());
 				}else{
 					try {
@@ -676,21 +666,13 @@ public class CourtAction extends ActionSupport{
 						e.printStackTrace();
 					}
 					
-					int n = courtService.countCourtByCC(court.getCourtcode(), court.getNoticeTime()) + 1;
-					StringBuffer count = new StringBuffer();	
-					if(n >= 0&&n<10){
-						count.append('0');
-						count.append('0');
-						count.append(String.valueOf(n));
-					}else if( n >= 10&&n<100){
-						count.append('0');
-						count.append(String.valueOf(n));
-					}	
+					int num = courtService.countCourtByCC(court.getCourtcode(), court.getNoticeTime()) + 1;
+					String count = String.format("%3d", num).replace(" ", "0");	
 					court.setCasecodeself("G" + court.getCourtcode() + noticeTime + count + System.currentTimeMillis());
 					court.setCaseCreateTime("1111年11月12日");
 				}
 				if(court.getExecMoney().equals("")){
-					court.setExecMoney("0.1");
+					court.setExecMoney("1");
 				}
 				court.setCaseId(CaseId);
 				court.setSavetime(df1.format(new Date()));	

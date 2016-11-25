@@ -10,8 +10,8 @@ public class TestDate {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String datestr = "2016Äê1ÔÂ21ÈÕ";
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		String datestr = "2016å¹´1æœˆ21æ—¥";
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date date = sdf2.parse(datestr.toString());

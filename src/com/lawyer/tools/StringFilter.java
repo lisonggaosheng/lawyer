@@ -7,10 +7,10 @@ import java.util.regex.PatternSyntaxException;
 public class StringFilter {
 	
 	public static String stringFilter(String str) throws PatternSyntaxException {
-		// Ö»ÔÊĞí×ÖÄ¸ºÍÊı×Ö
+		// åªå…è®¸å­—æ¯å’Œæ•°å­—
 		// String regEx = "[^a-zA-Z0-9]";
-		// Çå³ıµôËùÓĞÌØÊâ×Ö·û
-		String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
+		// æ¸…é™¤æ‰æ‰€æœ‰ç‰¹æ®Šå­—ç¬¦
+		String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~ï¼@#ï¿¥%â€¦â€¦&*ï¼ˆï¼‰â€”â€”+|{}ã€ã€‘â€˜ï¼›ï¼šâ€â€œâ€™ã€‚ï¼Œã€ï¼Ÿ]";
 		Pattern p = Pattern.compile(regEx);
 		Matcher m = p.matcher(str);
 		return m.replaceAll("").trim();

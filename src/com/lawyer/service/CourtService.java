@@ -43,9 +43,10 @@ public interface CourtService {
 	 */
 	public void insertNoteCourts(Users users)throws Exception;
 	/**
-	 * 债务人公告信息批处理导入
+	 * 债务人失信信息批处理导入
+	 * @return 
 	 */
-	public void insertDishonestyCourts(Users users)throws Exception;
+	public String insertDishonestyCourts(Users users)throws Exception;
 	/**
 	 * 数据暂时排除
 	 */
