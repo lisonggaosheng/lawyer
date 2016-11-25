@@ -686,10 +686,10 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	/**
 	 * 根据法院id和立案时间获取案件数量
 	 */
-	private int countCourtByCourtcode(String courtcode, String caseCreateTime) {
+	private long countCourtByCourtcode(String courtcode, String caseCreateTime) {
 		String hql = "select count(*) from Court where caseCreateTime='"+caseCreateTime+"' and courtcode='"+courtcode+"'";
-		Integer query = (Integer) this.getHibernateTemplate().iterate(hql).next();
-		return query.intValue();  
+		Long query = (Long) this.getHibernateTemplate().iterate(hql).next();
+		return query.longValue();  
 	}
 	
 	/**
@@ -698,9 +698,8 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	private String getCourtNumberByName(String courtName) {
 		String hql = "select lc.number from lawyer_court lc "+
 				" inner join lawyer_court_name lcn  on lcn.court_id=lc.Id "+
-				" where lcn.same_name like '%?%' group by number";
+				" where lcn.same_name like '%"+courtName+"%' group by number";
 		SQLQuery query = this.getSession().createSQLQuery(hql);
-		query.setParameter(0, courtName);
 		Object object = query.uniqueResult();
 		String number = object.getClass().getName();
 		return number;
@@ -821,7 +820,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			
 			String sql = "SELECT ID,caseId,iname,cardNum,courtName,gistId,regDate,"+
 							"caseCode,duty,performance,publishDate "+
-							"from court_shixin limit 0,10";
+							"from court_shixin limit 0,5000";
 			List list = this.getSession().createSQLQuery(sql)
 					.addEntity("DishonestyCourt", DishonestyCourt.class).list();
 			if (list.size() > 0) {
@@ -834,7 +833,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 							if(Parser.getInt(court2.getExecutestep()) > 2){
 								continue;
 							}
-							String courtNumber = String.format("%4d", getCourtNumberByName(dcourt.getCourtName())).replace(" ", "0");
+							String courtNumber = getCourtNumberByName(dcourt.getCourtName());
 							court2.setPartyCardNum(dcourt.getCardNum());
 							court2.setExecCourtName(dcourt.getCourtName());
 							court2.setCourtcode(courtNumber);
@@ -848,8 +847,8 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 							this.getHibernateTemplate().update(court2);
 						}
 					}else{
-						String courtNumber = String.format("%4d", getCourtNumberByName(dcourt.getCourtName())).replace(" ", "0");
-						int count = countCourtByCourtcode(courtNumber, dcourt.getRegDate());
+						String courtNumber = getCourtNumberByName(dcourt.getCourtName());
+						String count = String.format("%4d", countCourtByCourtcode(courtNumber, dcourt.getRegDate())).replace(" ", "0");
 						String casecodeself = "S"+courtNumber+sdfDate.format(dcourt.getRegDate())+count+System.currentTimeMillis();
 						
 						Court court = new Court();
@@ -876,7 +875,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 					dealCount++;
 				}
 			}
-			String deleteSql = "DELETE FROM court_shixin limit 10";
+			String deleteSql = "DELETE FROM court_shixin limit 5000";
 			this.getSession().createSQLQuery(deleteSql).executeUpdate();
 			
 			message = "批处理数据完成,查询"+list.size()+"条，实际插入更新"+dealCount+"条数据";

@@ -429,11 +429,11 @@
 					src="/lawyer/images/flag2_16x16.gif" />&nbsp;被执行人(债务人)执行信息</td>
 			</tr>
 			<tr>
-				<td><input type="button" value="被执行人执行信息"
+				<td align="center"><input type="button" value="被执行人执行信息"
 					onclick="insertCourts()" /></td>
 				<td align="center"><input type="button" value="被执行人公告信息"
 					onclick="insertNoteCourts()" /></td>
-				<td><input type="button" value="被执行人失信信息"
+				<td align="center"><input type="button" value="被执行人失信信息"
 					onclick="insertDishonestyCourts()" /></td>
 			</tr>
 			<tr class="title">
