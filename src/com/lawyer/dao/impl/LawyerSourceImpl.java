@@ -775,6 +775,9 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 	@Override
 	public Object excludeSeniorSelectPageSize(int pageSize,final List exclude,final String showNote, final String... params)
 			throws Exception {
+		HttpSession session=ServletActionContext.getRequest().getSession();
+		Users user=(Users) session.getAttribute("admin");
+		
 		StringBuffer mysql = new StringBuffer();
 		mysql.append("select count(DISTINCT court0_.casecodeself) ");
 		mysql.append("from lawyer.courtinfo court0_  ");
@@ -822,6 +825,11 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		}
 		
 		if(showNote.endsWith("1")){
+			//市场部人员查询
+			if(user != null && user.getURole().contains("市场")){
+				mysql.append(" and court0_.executestep<7 ");
+			}
+			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
 			if("".equals(params[29].trim())) params[29]="2222年22月22日";
 			mysql.append("court0_.noticeTime between '"+params[28]+"' and '"+params[29]+"' ");
@@ -832,6 +840,11 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			if(!"".equals(params[3].trim()))
 				mysql.append("AND court0_.lawDocumentNum LIKE '%"+params[3]+"%' ");
 		}else{
+			//市场部人员查询
+			if(user != null && user.getURole().contains("市场")){
+				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+			}
+			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
 			if("".equals(params[29].trim())) params[29]="2222年22月22日";
 			mysql.append("court0_.caseCreateTime between '"+params[28]+"' and '"+params[29]+"' ");
