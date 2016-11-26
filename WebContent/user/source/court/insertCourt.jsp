@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+ <script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <title>新建案源</title>
 
 <link rel="stylesheet" href="/lawyer/css/public.css" type="text/css"></link>
@@ -111,14 +112,7 @@
 			$("#courtcode").val($("#lawyer_three1").val());
 		});
 	});
-	//日历显示
-	function loadCalendar(field)
-	{
-		var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if(rtn!=null)
-			field.value=rtn;
-	    return;
-	}
+	
 	function yanzhen() {
 		var val=$("#infoType").val();
 		var val3=$("#execCourtName").val();
@@ -204,7 +198,7 @@
 					<tr>
 						<td align="right" width="40%">公告时间：</td>
 						<td width="50%"><input type="text" id="noticeTime" name="court.noticeTime" 
-						 onClick="loadCalendar(courtform.noticeTime)" readonly="readonly"/></td>
+						 onClick="laydate()" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td align="right" width="40%">法律文书号：</td>
@@ -239,7 +233,7 @@
 						<td align="right">立案时间：</td>
 						<td><input type="text" name="court.caseCreateTime"
 							id="caseCreateTime"
-							onClick="loadCalendar(courtform.caseCreateTime)" readonly="readonly" /></td>
+							onClick="laydate()" readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<td align="right">案号：</td>

@@ -9,6 +9,7 @@
 <title></title>
 <link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+ <script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script type="text/javascript">
 	function yeshu(cp){
 		document.getElementById("cp").value=cp;
@@ -17,13 +18,6 @@
 	function fenyebycourt(courtcode){
 		document.getElementById("courtcode").value=courtcode;
 		document.getElementById("fenye").submit();
-	}
-	function loadCalendar(field)
-	{
-		var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:350px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if(rtn!=null)
-			field.value=rtn;
-	   return;
 	}
 	
 	function resultopt(){
@@ -261,22 +255,14 @@
 						<s:if test="%{court.executestep==7}" >selected</s:if>>7.已签约</option>
 				</select>&nbsp;&nbsp;&nbsp; 
 				公告时间从：<input name="startDate"
-					value="${startDate }" type="text" id="strTimeEvection" size="20"
-					readonly="readonly" /> <img src="/lawyer/images/date.gif"
-					width="20" height="20"
-					onClick="loadCalendar(fenye.strTimeEvection)"> 至：<input
-					name="endDate" value="${endDate }" type="text" readonly="readonly"
-					id="endTimeEvection" size="20" /> <img
-					src="/lawyer/images/date.gif" width="20" height="20"
-					onClick="loadCalendar(fenye.endTimeEvection)" /><br />
+					value="${startDate }" type="text" id="strTimeEvection" size="20" onClick="laydate()"
+					readonly="readonly" /> 
+					至：<input name="endDate" value="${endDate }" type="text" readonly="readonly"
+					id="endTimeEvection" size="20" onClick="laydate()"/> <br />
 				入库时间从：<input name="instartDate" value="${instartDate }" type="text"
-					id="instrTimeEvection" size="20" readonly="readonly" /> <img
-					src="/lawyer/images/date.gif" width="20" height="20"
-					onClick="loadCalendar(fenye.instrTimeEvection)"> 至：<input
-					name="inendDate" value="${inendDate }" type="text"
-					readonly="readonly" id="inendTimeEvection" size="20" /> <img
-					src="/lawyer/images/date.gif" width="20" height="20"
-					onClick="loadCalendar(fenye.inendTimeEvection)" /> 
+					id="instrTimeEvection" size="20" readonly="readonly" onClick="laydate()"/>
+					至：<input name="inendDate" value="${inendDate }" type="text"
+					readonly="readonly" id="inendTimeEvection" size="20" onClick="laydate()"/> 
 					执行标的:<input
 					type="text" id="minMoney" name="minMoney" value="${minMoney }" />元----<input
 					type="text" id="maxMoney" name="maxMoney" value="${maxMoney }" />元

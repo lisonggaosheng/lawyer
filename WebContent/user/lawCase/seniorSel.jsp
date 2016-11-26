@@ -21,6 +21,7 @@
 
 <link rel="stylesheet" href="/lawyer/css/public.css" />
  <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+ <script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script type="text/javascript">
 	document.onkeydown=function(event){
 	  var e = event || window.event || arguments.callee.caller.arguments[0];
@@ -35,19 +36,8 @@
 		  form.submit();
 	}
 
-	function loadCalendar(field) {
-		var rtn = window
-				.showModalDialog(
-						"/lawyer/user/lawCase/calender.jsp",
-						field.id,
-						"dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if (rtn != null)
-			field.value = rtn;
-		return;
-	}
 </script>
 </head>
-
 <body>
 
 	<table cellspacing="0" cellpadding="0" border="0" width="100%"
@@ -80,9 +70,9 @@
 						<tr>
 							<td align="center" colspan="3">签约时间： <input type="text"
 								name="cont.contMinTime" id="contMinTime"
-								onclick="loadCalendar(this)" readonly="readonly" />至 <input
+								onClick="laydate()" readonly="readonly" />至 <input
 								type="text" name="cont.contMaxTime" id="contMaxTime"
-								onclick="loadCalendar(this)" readonly="readonly" /></td>
+								onClick="laydate()" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<td colspan="6" class="title">&nbsp;&nbsp;清算立案</td>
@@ -122,10 +112,10 @@
 						<tr>
 							<td align="center" colspan="3" width="40%">材料递交时间： <input
 								type="text" name="cont.clearrecord.clearrecordMinTime"
-								id="clearrecordMinTime" onclick="loadCalendar(this)"
+								id="clearrecordMinTime" onClick="laydate()"
 								readonly="readonly" />至 <input type="text"
 								name="cont.clearrecord.clearrecordMaxTime"
-								id="clearrecordMaxTime" onclick="loadCalendar(this)"
+								id="clearrecordMaxTime" onClick="laydate()"
 								readonly="readonly" /></td>
 						</tr>
 						<tr>
@@ -196,10 +186,10 @@
 						<tr>
 							<td align="center" colspan="3">立案时间： <input type="text"
 								id="litigationMinTime" name="cont.litigation.litigationMinTime"
-								onclick="loadCalendar(this)" readonly="readonly" />至 <input
+								onClick="laydate()" readonly="readonly" />至 <input
 								type="text" id="litigationMaxTime"
 								name="cont.litigation.litigationMaxTime"
-								onclick="loadCalendar(this)" readonly="readonly" /></td>
+								onClick="laydate()" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<td align="center" colspan="3">立案费用： <input type="text"
@@ -239,9 +229,9 @@
 						<tr>
 							<td align="center" colspan="3">执行时间： <input type="text"
 								name="cont.execute.executeMinTime" id="executeMinTime"
-								onclick="loadCalendar(this)" readonly="readonly" />至 <input
+								onClick="laydate()" readonly="readonly" />至 <input
 								type="text" name="cont.execute.executeMaxTime"
-								id="executeMaxTime" onclick="loadCalendar(this)"
+								id="executeMaxTime" onClick="laydate()"
 								readonly="readonly" /></td>
 						</tr>
 						<tr>
@@ -263,9 +253,9 @@
 						<tr>
 							<td align="center" colspan="3">结案时间： <input type="text"
 								name="cont.closerecord.closerecordMinTime" id="closerecordMinTime"
-								onclick="loadCalendar(this)" readonly="readonly" />至 <input
+								onClick="laydate()" readonly="readonly" />至 <input
 								type="text" name="cont.closerecord.closerecordMaxTime" id="closerecordMaxTime"
-								onclick="loadCalendar(this)" readonly="readonly" /></td>
+								onClick="laydate()" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<td colspan="12" align="right"><input type="hidden"

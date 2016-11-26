@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
-<title>新建案源</title>
+ <script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
+<title>修改案源</title>
 
 <link rel="stylesheet" href="/lawyer/css/public.css" type="text/css"></link>
 </head>
@@ -126,7 +127,7 @@
 						<td align="right">立案时间：</td>
 						<td><input type="text" name="court.caseCreateTime"
 							id="caseCreateTime"
-							onClick="loadCalendar(courtform.caseCreateTime)" readonly="readonly" value="${court.caseCreateTime}" /></td>
+							onClick="laydate()" readonly="readonly" value="${court.caseCreateTime}" /></td>
 					</tr>
 					<tr>
 						<td align="right">案号：</td>

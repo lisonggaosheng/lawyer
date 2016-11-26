@@ -15,6 +15,7 @@
 <title>查看案件详细信息</title>
 <link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <style type="text/css">
 #bg {
 	display: none;
@@ -46,17 +47,7 @@
 </style>
 
 <script type="text/javascript">
-	//日历显示
-	function loadCalendar(field) {
-		var rtn = window
-				.showModalDialog(
-						"/lawyer/user/lawCase/calender.jsp",
-						"",
-						"dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if (rtn != null)
-			field.value = rtn;
-		return;
-	}
+	
 	function sendSms() {
 		var lawyername = document.getElementById("lawyername").value;
 		var lawyermobile = document.getElementById("lawyermobile").value;
@@ -117,7 +108,7 @@
 				<tr>
 					<td>日期：</td>
 					<td><input type="text" id="remindTime" name="remindTime"
-						onClick="loadCalendar(smsform.remindTime)" readonly="readonly" />
+						onClick="laydate()" readonly="readonly" />
 					</td>
 				</tr>
 				<tr>

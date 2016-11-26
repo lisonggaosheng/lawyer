@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
+
 <style type="text/css">
 #bg{ display: none; position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; background-color: black; z-index:1001; -moz-opacity: 0.7; opacity:.70; filter: alpha(opacity=70);}
 #show{display: none; position: absolute; top: 20%; left: 22%; width: 53%; height: 49%; padding: 8px; border: 8px solid #E8E9F7; background-color: white; z-index:1002; overflow: auto;}
@@ -21,13 +23,6 @@
 	function fenyebycourt(courtcode){
 		document.getElementById("courtcode").value=courtcode;
 		document.getElementById("fenye").submit();
-	}
-	function loadCalendar(field)
-	{
-		var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:350px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if(rtn!=null)
-			field.value=rtn;
-	   return;
 	}
 	
 	function resultopt(){
@@ -145,11 +140,6 @@
 		}
 	}
 
-	//开启第一个软件
-	function Run() 
-	{ 
-		alert("抱歉，请手动打开你所使用的软件");
-	}  
 	//被执行人执行信息批处理
 	function insertCourts(){
 		var mes = "确定进行被执行人执行信息批量操作？ ";
@@ -331,22 +321,14 @@
 						<s:if test="%{court.executestep==7}" >selected</s:if>>7.已签约</option>
 				</select>&nbsp;&nbsp;&nbsp; 
 				立案时间从：<input name="startDate"
-					value="${startDate }" type="text" id="strTimeEvection" size="20"
-					readonly="readonly" /> <img src="/lawyer/images/date.gif"
-					width="20" height="20"
-					onClick="loadCalendar(fenye.strTimeEvection)"> 至：<input
-					name="endDate" value="${endDate }" type="text" readonly="readonly"
-					id="endTimeEvection" size="20" /> <img
-					src="/lawyer/images/date.gif" width="20" height="20"
-					onClick="loadCalendar(fenye.endTimeEvection)" /><br />
+					value="${startDate }" type="text" id="strTimeEvection" size="20" onClick="laydate()"
+					readonly="readonly" /> 至：<input
+					name="endDate" value="${endDate }" type="text" readonly="readonly" onClick="laydate()"
+					id="endTimeEvection" size="20" /> <br />
 				入库时间从：<input name="instartDate" value="${instartDate }" type="text"
-					id="instrTimeEvection" size="20" readonly="readonly" /> <img
-					src="/lawyer/images/date.gif" width="20" height="20"
-					onClick="loadCalendar(fenye.instrTimeEvection)"> 至：<input
-					name="inendDate" value="${inendDate }" type="text"
-					readonly="readonly" id="inendTimeEvection" size="20" /> <img
-					src="/lawyer/images/date.gif" width="20" height="20"
-					onClick="loadCalendar(fenye.inendTimeEvection)" /> 
+					id="instrTimeEvection" size="20" readonly="readonly" onClick="laydate()"/> 
+					至：<input name="inendDate" value="${inendDate }" type="text"
+					readonly="readonly" id="inendTimeEvection" size="20" onClick="laydate()"/> 
 					执行标的:<input
 					type="text" id="minMoney" name="minMoney" value="${minMoney }" />元----<input
 					type="text" id="maxMoney" name="maxMoney" value="${maxMoney }" />元
@@ -449,8 +431,6 @@
 					src="/lawyer/images/flag2_16x16.gif" />&nbsp;申请执行人企业信息</td>
 			</tr>
 			<tr>
-				<td align="center"><input type="button" value="打开第二个软件"
-					onclick="Run()" /></td>
 				<td ><input type="button" value="申请执行人企业信息"
 					onclick="insertApplierinfos()" /></td>
 			</tr>
