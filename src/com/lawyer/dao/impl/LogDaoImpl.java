@@ -12,9 +12,9 @@ import com.lawyer.pojo.Users;
 public class LogDaoImpl extends HibernateDaoSupport implements LogDao{
 
 	/**
-	 * »ñµÃµ±Ç°ÏµÍ³Ê±¼ä·½·¨
-	 * ·µ»ØÖµÎª×Ö·û´®µÄ Äê-ÔÂ-ÈÕ  Ê±£º·Ö£ºÃë
-	 * ÁõÌÚÉı
+	 * è·å¾—å½“å‰ç³»ç»Ÿæ—¶é—´æ–¹æ³•
+	 * è¿”å›å€¼ä¸ºå­—ç¬¦ä¸²çš„ å¹´-æœˆ-æ—¥  æ—¶ï¼šåˆ†ï¼šç§’
+	 * åˆ˜è…¾å‡
 	 * */
 	public String getDataTime() throws Exception {
 		Date date=new Date();
@@ -23,26 +23,26 @@ public class LogDaoImpl extends HibernateDaoSupport implements LogDao{
 		return dateTime;
 	}
 	/**
-	 * ËùÓĞµÄ²Ù×÷£¬¼ÇÂ¼ÈëÈÕÖ¾±í£¨°üÀ¨µÇÂ½£¬ÍË³ö£©
+	 * æ‰€æœ‰çš„æ“ä½œï¼Œè®°å½•å…¥æ—¥å¿—è¡¨ï¼ˆåŒ…æ‹¬ç™»é™†ï¼Œé€€å‡ºï¼‰
 	 * 
 	 * */
 	public void insert(Log log) throws Exception {
 		this.getHibernateTemplate().save(log);
 	}
 	/**
-	 * Í¨¹ıÓÃ»§ÃûÃÔºı²éÑ¯ÆÕÍ¨ÓÃ»§ÈÕÖ¾¼ÇÂ¼
-	 * ÁõÌÚÉı
+	 * é€šè¿‡ç”¨æˆ·åè¿·ç³ŠæŸ¥è¯¢æ™®é€šç”¨æˆ·æ—¥å¿—è®°å½•
+	 * åˆ˜è…¾å‡
 	 * */
 	@SuppressWarnings("unchecked")
 	public List selectUsersName(Users users) throws Exception {
-		return this.getHibernateTemplate().find("from Log where logUrole='ÆÕÍ¨ÓÃ»§' and logUname like '%"+users.getUName()+"%'");
+		return this.getHibernateTemplate().find("from Log where logUrole='æ™®é€šç”¨æˆ·' and logUname like '%"+users.getUName()+"%'");
 	}
 	/**
-	 * Í¨¹ıÓÃ»§ÃûÃÔºı²éÑ¯¹ÜÀíÔ±ÈÕÖ¾¼ÇÂ¼
-	 * ÁõÌÚÉı
+	 * é€šè¿‡ç”¨æˆ·åè¿·ç³ŠæŸ¥è¯¢ç®¡ç†å‘˜æ—¥å¿—è®°å½•
+	 * åˆ˜è…¾å‡
 	 * */
 	@SuppressWarnings("unchecked")
 	public List selectUsersName2(Users users) throws Exception {
-		return this.getHibernateTemplate().find("from Log where logUrole='¹ÜÀíÔ±' and logUname like '%"+users.getUName()+"%'");
+		return this.getHibernateTemplate().find("from Log where logUrole='ç®¡ç†å‘˜' and logUname like '%"+users.getUName()+"%'");
 	}
 }

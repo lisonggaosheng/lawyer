@@ -22,13 +22,13 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UsersAction extends ActionSupport{
 	
 	private static final long serialVersionUID = 1L;
-	//·â×°µÄlimitpower·şÎñ²ã½Ó¿Ú
+	//å°è£…çš„limitpoweræœåŠ¡å±‚æ¥å£
 	private LimitPowerService lpService;
-	//:·â×°µÄUsers·şÎñ²ã½Ó¿Ú
+	//:å°è£…çš„UsersæœåŠ¡å±‚æ¥å£
 	private UsersService usersService;
-	//:·â×°µÄÆÕÍ¨ÓÃ»§ÓÃUsers¶ÔÏó
+	//:å°è£…çš„æ™®é€šç”¨æˆ·ç”¨Userså¯¹è±¡
 	private Users users;
-	//:·â×°µÄ¹ÜÀíÔ±ÓÃUsers¶ÔÏó
+	//:å°è£…çš„ç®¡ç†å‘˜ç”¨Userså¯¹è±¡
 	private Users admin;
 	
 	
@@ -55,17 +55,17 @@ public class UsersAction extends ActionSupport{
 	public void setList(List list) {
 		this.list = list;
 	}
-	//:·â×°µÄLog·şÎñ²ã½Ó¿Ú
+	//:å°è£…çš„LogæœåŠ¡å±‚æ¥å£
 	private LogService logService;
-	//:·â×°µÄLog¶ÔÏó
+	//:å°è£…çš„Logå¯¹è±¡
 	private Log log;
 	
-	//:·â×°µÄList¶ÔÏó
+	//:å°è£…çš„Listå¯¹è±¡
 	private List list;
 	
 	/**
-	 * Í¨ÓÃ·ÖÒ³·½·¨ËùÓÃ·â×°ÊôĞÔ
-	 * ÁõÌÚÉı
+	 * é€šç”¨åˆ†é¡µæ–¹æ³•æ‰€ç”¨å°è£…å±æ€§
+	 * åˆ˜è…¾å‡
 	 * */
 	private PageService pageService;
 	private PageBean pageBean;
@@ -127,7 +127,7 @@ public class UsersAction extends ActionSupport{
 	public UsersService getUsersService() {
 		return usersService;
 	}
-	//ÓÃ»§¶ÔÓ¦µÄÈ¨ÏŞ¶ÔÏó
+	//ç”¨æˆ·å¯¹åº”çš„æƒé™å¯¹è±¡
 	private LimitPower lp;
 	
 	public LimitPower getLp() {
@@ -137,7 +137,7 @@ public class UsersAction extends ActionSupport{
 	public void setLp(LimitPower lp) {
 		this.lp = lp;
 	}
-	//²Ù×÷½á¹û
+	//æ“ä½œç»“æœ
 	private String result;
 	
 	public String getResult() {
@@ -149,37 +149,37 @@ public class UsersAction extends ActionSupport{
 	}
 
 	/**
-	 * ¸ù¾İÓÃ»§Ãû²éÑ¯ÓÃ»§µÄÈ¨ÏŞ
+	 * æ ¹æ®ç”¨æˆ·åæŸ¥è¯¢ç”¨æˆ·çš„æƒé™
 	 */
 	public String findlp(){
 		lp = lpService.findLPByUserName(lp.getLp_user_name());
 		return SUCCESS;
 	}
 	/**
-	 * ĞŞ¸ÄÓÃ»§È¨ÏŞ
+	 * ä¿®æ”¹ç”¨æˆ·æƒé™
 	 * @return
 	 */
 	public String updlp(){
 		lpService.updLP(lp);
-		result="ÓÃ»§È¨ÏŞ±£´æ³É¹¦£¡";
+		result="ç”¨æˆ·æƒé™ä¿å­˜æˆåŠŸï¼";
 		return SUCCESS;
 	}
 	/**
-	 * ¹ÜÀíÔ±ÓëÓÃ»§µÇÂ½ÑéÖ¤·½·¨
+	 * ç®¡ç†å‘˜ä¸ç”¨æˆ·ç™»é™†éªŒè¯æ–¹æ³•
 	 * */
 	public String login() {
-		//:µÃµ½Ò»¸öSession¶ÔÏó
+		//:å¾—åˆ°ä¸€ä¸ªSessionå¯¹è±¡
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		try {
 			admin=usersService.login(admin);
 			if(admin!=null){
 		//		System.out.println(admin+"=============>"+admin.getURole());
-				if(admin.getURole().equals("¹ÜÀíÔ±")){
+				if(admin.getURole().equals("ç®¡ç†å‘˜")){
 					session.setAttribute("admin", admin);
 					return "admin";
 				}else {
-					if(admin.getUSta().equals("ÆôÓÃ")){
-						//²éÑ¯ÓÃ»§µÄÈ¨ÏŞ·ÅÈësessionÖĞ 
+					if(admin.getUSta().equals("å¯ç”¨")){
+						//æŸ¥è¯¢ç”¨æˆ·çš„æƒé™æ”¾å…¥sessionä¸­ 
 						LimitPower userlp = lpService.findLPByUserName(admin.getUName());
 						session.setAttribute("admin", admin);
 						session.setAttribute("userlp", userlp);
@@ -198,7 +198,7 @@ public class UsersAction extends ActionSupport{
 	}
 
 	/**
-	 * ¹ÜÀíÔ±ÓëÓÃ»§ÍË³ö·½·¨
+	 * ç®¡ç†å‘˜ä¸ç”¨æˆ·é€€å‡ºæ–¹æ³•
 	 * */
 	public String quit(){
 		try {
@@ -212,18 +212,18 @@ public class UsersAction extends ActionSupport{
 	}
 	
 	/**
-	 * ¹ÜÀíÔ±Ìí¼ÓÓÃ»§·½·¨£¬Ìí¼ÓÍê³É²éÑ¯ËùÓĞÓÃ»§ĞÅÏ¢£¬Ìø×ªÖÁSHOWÒ³Ãæ£¬·ÖÒ³ÏÔÊ¾
+	 * ç®¡ç†å‘˜æ·»åŠ ç”¨æˆ·æ–¹æ³•ï¼Œæ·»åŠ å®ŒæˆæŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ä¿¡æ¯ï¼Œè·³è½¬è‡³SHOWé¡µé¢ï¼Œåˆ†é¡µæ˜¾ç¤º
 	 * */
 	public String insert(){
 		try {
-			//:¹ÜÀíÔ±Ìí¼ÓÓÃ»§¼ÇÂ¼
+			//:ç®¡ç†å‘˜æ·»åŠ ç”¨æˆ·è®°å½•
 			admin = usersService.SelectID(admin);
 			usersService.insert(users);
-			//ÎªÓÃ»§Ìí¼Ó¶ÔÓ¦µÄÈ¨ÏŞ
+			//ä¸ºç”¨æˆ·æ·»åŠ å¯¹åº”çš„æƒé™
 			lpService.addLP(new LimitPower(users.getUName(),"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"));
 			
 			/**
-			 * Ìí¼ÓÍê³Éºó£¬µ½ËùÓĞÓÃ»§ÏÔÊ¾Ò³Ãæ
+			 * æ·»åŠ å®Œæˆåï¼Œåˆ°æ‰€æœ‰ç”¨æˆ·æ˜¾ç¤ºé¡µé¢
 			 * */
 			pageBean=pageService.queryForPage(5,page,"Users","UId","where UName <> 'admin'");
 			return "show";
@@ -234,11 +234,11 @@ public class UsersAction extends ActionSupport{
 	}
 
 	/**
-	 * ·ÖÒ³ÏÔÊ¾ËùÓĞÓÃ»§ĞÅÏ¢£¬µ¹Ğğ
+	 * åˆ†é¡µæ˜¾ç¤ºæ‰€æœ‰ç”¨æˆ·ä¿¡æ¯ï¼Œå€’å™
 	 * */
 	public String SelectShow(){
 		try {
-			//:¹ÜÀíÔ±²éÑ¯ÓÃ»§¼ÇÂ¼
+			//:ç®¡ç†å‘˜æŸ¥è¯¢ç”¨æˆ·è®°å½•
 			admin = (Users) ServletActionContext.getRequest().getSession().getAttribute("admin");
 
 			pageBean=pageService.queryForPage(10,page,"Users","UId","where UName <> 'admin'");
@@ -250,11 +250,11 @@ public class UsersAction extends ActionSupport{
 	}
 	
 	/**
-	 * Í¨¹ıÓÃ»§ÃûÄ£ºı²éÑ¯
+	 * é€šè¿‡ç”¨æˆ·åæ¨¡ç³ŠæŸ¥è¯¢
 	 * */
 	public String selectName(){
 		try {
-			//:¹ÜÀíÔ±²éÑ¯ÓÃ»§¼ÇÂ¼
+			//:ç®¡ç†å‘˜æŸ¥è¯¢ç”¨æˆ·è®°å½•
 			list=usersService.selectName(users);
 			return "usersShow";
 		} catch (Exception e) {
@@ -263,7 +263,7 @@ public class UsersAction extends ActionSupport{
 		}
 	}
 	/**
-	 * ¹ÜÀíÔ±ĞŞ¸ÄÓÃ»§ĞÅÏ¢(1),Í¨¹ı·¢ËÍµÄÒªĞŞ¸ÄÓÃ»§ID£¬µÃµ½ÓÃ»§ËùÓĞĞÅÏ¢£¬·¢ËÍµ½ĞŞ¸ÄÒ³Ãæ
+	 * ç®¡ç†å‘˜ä¿®æ”¹ç”¨æˆ·ä¿¡æ¯(1),é€šè¿‡å‘é€çš„è¦ä¿®æ”¹ç”¨æˆ·IDï¼Œå¾—åˆ°ç”¨æˆ·æ‰€æœ‰ä¿¡æ¯ï¼Œå‘é€åˆ°ä¿®æ”¹é¡µé¢
 	 * */
 	public String update1(){
 		try {
@@ -275,7 +275,7 @@ public class UsersAction extends ActionSupport{
 		}
 	} 
 	/**
-	 * ¹ÜÀíÔ±ĞŞ¸ÄÓÃ»§ĞÅÏ¢(2),ĞŞ¸ÄÓÃ»§ĞÅÏ¢£¬Íê³ÉºóÄ£ºı²éÑ¯ÓÃ»§ĞÅÏ¢£¬Ìø×ªÖÁSHOWÒ³Ãæ£¬·ÖÒ³ÏÔÊ¾
+	 * ç®¡ç†å‘˜ä¿®æ”¹ç”¨æˆ·ä¿¡æ¯(2),ä¿®æ”¹ç”¨æˆ·ä¿¡æ¯ï¼Œå®Œæˆåæ¨¡ç³ŠæŸ¥è¯¢ç”¨æˆ·ä¿¡æ¯ï¼Œè·³è½¬è‡³SHOWé¡µé¢ï¼Œåˆ†é¡µæ˜¾ç¤º
 	 * */
 	public String update2(){
 		try {
@@ -288,13 +288,13 @@ public class UsersAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Í¨¹ıIDÉ¾³ıÓÃ»§ĞÅÏ¢
+	 * é€šè¿‡IDåˆ é™¤ç”¨æˆ·ä¿¡æ¯
 	 * */
 	public String delete(){
 		
 		try {
 			users=usersService.SelectID(users);
-			//É¾³ıÓÃ»§È¨ÏŞ
+			//åˆ é™¤ç”¨æˆ·æƒé™
 			lpService.removeLP(lpService.findLPByUserName(users.getUName()));
 			usersService.delete(users);
 			pageBean=pageService.queryForPage(5,page,"Users","UId","where UName <> 'admin'");
@@ -305,16 +305,16 @@ public class UsersAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Í¨¹ıIDĞŞ¸ÄÓÃ»§ÕËºÅ×´Ì¬
+	 * é€šè¿‡IDä¿®æ”¹ç”¨æˆ·è´¦å·çŠ¶æ€
 	 * */
 	public String updateUSta(){
 		try {
 			
 			users=usersService.SelectID(users);
-			if(users.getUSta().equals("ÆôÓÃ")){
-				users.setUSta("½ûÓÃ");
+			if(users.getUSta().equals("å¯ç”¨")){
+				users.setUSta("ç¦ç”¨");
 			}else{
-				users.setUSta("ÆôÓÃ");
+				users.setUSta("å¯ç”¨");
 			}
 			usersService.update(users);
 			list=usersService.selectName(users);
@@ -326,7 +326,7 @@ public class UsersAction extends ActionSupport{
 	}
 	
 	/**
-	 * ·ÖÒ³ÏÔÊ¾ËùÓĞÓÃ»§ĞÅÏ¢£¬µ¹Ğğ
+	 * åˆ†é¡µæ˜¾ç¤ºæ‰€æœ‰ç”¨æˆ·ä¿¡æ¯ï¼Œå€’å™
 	 * @throws Exception 
 	 * */
 	public String selectLawyers() throws Exception{
@@ -343,7 +343,7 @@ public class UsersAction extends ActionSupport{
 	}
 	
 	/**
-	 * ·ÖÒ³ÏÔÊ¾ËùÓĞÓÃ»§ĞÅÏ¢£¬µ¹Ğğ
+	 * åˆ†é¡µæ˜¾ç¤ºæ‰€æœ‰ç”¨æˆ·ä¿¡æ¯ï¼Œå€’å™
 	 * @throws Exception 
 	 * */
 	public String selectPensons() throws Exception{

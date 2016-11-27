@@ -98,6 +98,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <label>
           	<input type="radio" name="users.URole"  value="办案律师" id="role">办案律师
         </label>
+        <label>
+          	<input type="radio" name="users.URole"  value="市场办案律师" id="role">市场办案律师
+        </label>
         </td>
       </tr>
       <tr>

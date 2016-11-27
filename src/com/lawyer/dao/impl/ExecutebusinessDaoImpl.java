@@ -44,7 +44,7 @@ public class ExecutebusinessDaoImpl extends HibernateDaoSupport implements
 	}
 
 	/**
-	 * °¸Ô´µÚ¶ş²½±»Ö´ĞĞÈËÆóÒµĞÅÏ¢µÄÅú´¦Àí²Ù×÷¡ª¡ª¹ùÖ¾Åô
+	 * æ¡ˆæºç¬¬äºŒæ­¥è¢«æ‰§è¡Œäººä¼ä¸šä¿¡æ¯çš„æ‰¹å¤„ç†æ“ä½œâ€”â€”éƒ­å¿—é¹
 	 */
 	@SuppressWarnings("rawtypes")
 	public void insertMoreExecutes(Users user) throws Exception {
@@ -53,7 +53,7 @@ public class ExecutebusinessDaoImpl extends HibernateDaoSupport implements
 		String invesInfo = "";
 		String reinvesInfo = "";
 	//	String registration_mark = "";
-		// Á¬½Ó²éÑ¯enterprise_info ºÍ step2start ¹«Ë¾ÃûÏàÍ¬
+		// è¿æ¥æŸ¥è¯¢enterprise_info å’Œ step2start å…¬å¸åç›¸åŒ
 		String sql = "SELECT ID,courtcode,casecodeself,caseCode,business_name,registration_mark,address,corporation,registered_capital,paid_in_capital,business_type,enterprise_status,business_scope_mark,operating_period_since,operating_period_to,establishmen_date,redistration_authority,cancellation_date,revoke_date,organization_code,organization_code_issuing_agencies,inspection_annual,inspection_results,savetime FROM enterprise_info WHERE casecodeself IN (SELECT casecodeself from `"+user.getUName()+"step2start`)";
 		List list = this.getSession().createSQLQuery(sql).addEntity(
 				"CollectExecutebusiness", CollectExecutebusiness.class).list();
@@ -68,7 +68,7 @@ public class ExecutebusinessDaoImpl extends HibernateDaoSupport implements
 					int i=1;
 					while (itasi.hasNext()) {
 						AdministrativeSanctionInformation asi = (AdministrativeSanctionInformation) itasi.next();
-						asiInfo += "("+i+") µ±ÊÂÈËÃû³Æ£º"+asi.getLitigant()+"£»´¦·£¾ö¶¨ÊéÎÄºÅ£º"+asi.getPaperID()+"£»»ù±¾ÊÂÊµ£º"+asi.getBasic_facts()+"£»ÈÏ¶¨ÒÀ¾İ:"+asi.getAsserting_basis()+"£»´¦·£ÒÀ¾İ:"+asi.getPunishment_basis()+"£»´¦·£½á¹û:"+asi.getDisciplinary_action()+"£»°ì°¸»ú¹Ø:"+asi.getCase_handling_organ()+"£»¹«Ê¾ÈÕÆÚ:"+asi.getPublication_date()+"<br>"; 
+						asiInfo += "("+i+") å½“äº‹äººåç§°ï¼š"+asi.getLitigant()+"ï¼›å¤„ç½šå†³å®šä¹¦æ–‡å·ï¼š"+asi.getPaperID()+"ï¼›åŸºæœ¬äº‹å®ï¼š"+asi.getBasic_facts()+"ï¼›è®¤å®šä¾æ®:"+asi.getAsserting_basis()+"ï¼›å¤„ç½šä¾æ®:"+asi.getPunishment_basis()+"ï¼›å¤„ç½šç»“æœ:"+asi.getDisciplinary_action()+"ï¼›åŠæ¡ˆæœºå…³:"+asi.getCase_handling_organ()+"ï¼›å…¬ç¤ºæ—¥æœŸ:"+asi.getPublication_date()+"<br>"; 
 						i++;
 					}
 				}
@@ -78,7 +78,7 @@ public class ExecutebusinessDaoImpl extends HibernateDaoSupport implements
 					int i=1;
 					while (itaji.hasNext()) {
 						AdverseJudicialInformation aji = (AdverseJudicialInformation) itaji.next();
-						ajiInfo += "("+i+") Ö÷ÌåÃû³Æ£º"+aji.getLitigant()+"£»´¦·£¾ö¶¨ÊéÎÄºÅ£º"+aji.getPaperID()+"£»°¸ºÅ£º"+aji.getCaseid()+"£»ÉúĞ§·¨ÂÉÎÄÊéÈ·¶¨µÄÒåÎñ:"+aji.getObligation()+"£»Ê§ĞÅ±»Ö´ĞĞÈËĞĞÎª¾ßÌåÇéĞÎ:"+aji.getCircumstances()+"£»×ö³öÖ´ĞĞÒÀ¾İµ¥Î»:"+aji.getBasis_unit()+"£»±»Ö´ĞĞÈËµÄÂÄĞĞÇé¿ö:"+aji.getPerformance()+"£»Ö´ĞĞ·¨Ôº:"+aji.getImplementation_court()+"£»·¢²¼Ê±¼ä:"+aji.getPublication_date()+"<br>"; 
+						ajiInfo += "("+i+") ä¸»ä½“åç§°ï¼š"+aji.getLitigant()+"ï¼›å¤„ç½šå†³å®šä¹¦æ–‡å·ï¼š"+aji.getPaperID()+"ï¼›æ¡ˆå·ï¼š"+aji.getCaseid()+"ï¼›ç”Ÿæ•ˆæ³•å¾‹æ–‡ä¹¦ç¡®å®šçš„ä¹‰åŠ¡:"+aji.getObligation()+"ï¼›å¤±ä¿¡è¢«æ‰§è¡Œäººè¡Œä¸ºå…·ä½“æƒ…å½¢:"+aji.getCircumstances()+"ï¼›åšå‡ºæ‰§è¡Œä¾æ®å•ä½:"+aji.getBasis_unit()+"ï¼›è¢«æ‰§è¡Œäººçš„å±¥è¡Œæƒ…å†µ:"+aji.getPerformance()+"ï¼›æ‰§è¡Œæ³•é™¢:"+aji.getImplementation_court()+"ï¼›å‘å¸ƒæ—¶é—´:"+aji.getPublication_date()+"<br>"; 
 						i++;
 					}
 				}
@@ -88,7 +88,7 @@ public class ExecutebusinessDaoImpl extends HibernateDaoSupport implements
 					int i=1;
 					while (itin.hasNext()) {
 						InvestorInformation ini = (InvestorInformation) itin.next();
-						invesInfo += "("+i+") Ãû³Æ£º"+ini.getLitigant()+"£»³ö×Ê½ğ¶î£º"+ini.getCapital_contribution()+"£»ÀàĞÍ£º"+ini.getType()+"<br>"; 
+						invesInfo += "("+i+") åç§°ï¼š"+ini.getLitigant()+"ï¼›å‡ºèµ„é‡‘é¢ï¼š"+ini.getCapital_contribution()+"ï¼›ç±»å‹ï¼š"+ini.getType()+"<br>"; 
 						i++;
 					}
 				}
@@ -98,7 +98,7 @@ public class ExecutebusinessDaoImpl extends HibernateDaoSupport implements
 					int i=1;
 					while (itrein.hasNext()) {
 						ReinvestmentInformation reini = (ReinvestmentInformation) itrein.next();
-						reinvesInfo += "("+i+") Ãû³Æ£º"+reini.getLitigant()+"£»³ö×Ê½ğ¶î£º"+reini.getCapital_contribution()+"£»ÀàĞÍ£º"+reini.getType()+"<br>";  
+						reinvesInfo += "("+i+") åç§°ï¼š"+reini.getLitigant()+"ï¼›å‡ºèµ„é‡‘é¢ï¼š"+reini.getCapital_contribution()+"ï¼›ç±»å‹ï¼š"+reini.getType()+"<br>";  
 						i++;
 					}
 				}*/

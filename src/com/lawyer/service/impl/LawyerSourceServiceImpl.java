@@ -13,6 +13,7 @@ import com.lawyer.pojo.ContractSign;
 import com.lawyer.pojo.Court;
 import com.lawyer.pojo.Executebusiness;
 import com.lawyer.service.LawyerSourceService;
+import com.lawyer.tools.Parser;
 
 public class LawyerSourceServiceImpl implements LawyerSourceService {
 	@SuppressWarnings("unchecked")
@@ -27,25 +28,25 @@ public class LawyerSourceServiceImpl implements LawyerSourceService {
 			if(objects!=null){
 				Court court = new Court();
 				if(objects[0] != null){
-					court.setId(Integer.parseInt(objects[0].toString()));
+					court.setId(Parser.getInt(objects[0]));
 				}
 				if(objects[1] != null){
-					court.setCaseId(objects[1].toString());
+					court.setCaseId(Parser.getString(objects[1]));
 				}
 				if(objects[2] != null){
-					court.setPname(objects[2].toString());			
+					court.setPname(Parser.getString(objects[2]));			
 				}
 				if(objects[3] != null){
-					court.setExecCourtName(objects[3].toString());		
+					court.setExecCourtName(Parser.getString(objects[3]));		
 				}
 				if(objects[4] != null){
-					court.setCasecodeself(objects[4].toString());		
+					court.setCasecodeself(Parser.getString(objects[4]));		
 				}
 				if(objects[5] != null){
-					court.setCaseCreateTime(objects[5].toString());		
+					court.setCaseCreateTime(Parser.getString(objects[5]));		
 				}
 				if(objects[6] != null){
-					court.setCaseCode(objects[6].toString());		
+					court.setCaseCode(Parser.getString(objects[6]));		
 				}
 				courts.add(court);
 			}
@@ -130,11 +131,19 @@ public class LawyerSourceServiceImpl implements LawyerSourceService {
 		List<Object[]> objs = lawyerSource.excludeSeniorSelect(currentPage,showNote, pageSize,exclude,
 				params);
 
+//		for (int i = 0; i < objs.size(); i++) {
+//			Object[] objects = objs.get(i);
+//			if(objects.length>0 && objects!=null){
+//				courts.add(new Court(Parser.getString(objects[0]),
+//						Parser.getString(objects[1]), Parser.getString(objects[2]), Parser.getString(objects[3]),
+//						Parser.getString(objects[4]),Parser.getString(objects[5]), Parser.getString(objects[6])));
+//			}
+//			
+//		}
 		for (Object[] objects : objs) {
-			courts.add(new Court(Integer.parseInt(objects[0].toString()),
-					objects[1].toString(), objects[2].toString(), objects[3]
-							.toString(), objects[4].toString(), objects[5]
-							.toString(), objects[6].toString()));
+			courts.add(new Court(Parser.getInt(objects[0]),
+					Parser.getString(objects[1]), Parser.getString(objects[2]), Parser.getString(objects[3]),
+					Parser.getString(objects[4]),Parser.getString(objects[5]), Parser.getString(objects[6])));
 		}
 
 		return courts;

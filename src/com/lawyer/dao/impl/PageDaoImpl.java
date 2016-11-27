@@ -10,9 +10,9 @@ import com.lawyer.pojo.PageBean;
 public class PageDaoImpl extends HibernateDaoSupport implements IPageDao {
 
 	/**
-	 * ²éÑ¯ËùÓĞ¼ÇÂ¼Êı 
-	 * @param hql ²éÑ¯µÄÌõ¼ş
-	 * @return ×Ü¼ÇÂ¼Êı
+	 * æŸ¥è¯¢æ‰€æœ‰è®°å½•æ•° 
+	 * @param hql æŸ¥è¯¢çš„æ¡ä»¶
+	 * @return æ€»è®°å½•æ•°
 	 */
 	public int getAllRowCount(String hql) throws Exception {
 		List list=this.getHibernateTemplate().find(hql);
@@ -20,10 +20,10 @@ public class PageDaoImpl extends HibernateDaoSupport implements IPageDao {
 	}
 
 	/**
-	 * ·ÖÒ³²éÑ¯
-     * @param hql ²éÑ¯µÄÌõ¼ş
-     * @param offset ¿ªÊ¼¼ÇÂ¼
-     * @param length Ò»´Î²éÑ¯¼¸Ìõ¼ÇÂ¼
+	 * åˆ†é¡µæŸ¥è¯¢
+     * @param hql æŸ¥è¯¢çš„æ¡ä»¶
+     * @param offset å¼€å§‹è®°å½•
+     * @param length ä¸€æ¬¡æŸ¥è¯¢å‡ æ¡è®°å½•
      * @return list
 	 */
 	public List queryForPage(String hql, int offset, int length)
@@ -36,29 +36,29 @@ public class PageDaoImpl extends HibernateDaoSupport implements IPageDao {
 	}
 
 	/**
-	 * ÁõÌÚÉı
-	 * Í¨ÓÃ·ÖÒ³·½·¨µ÷ÓÃ·½Ê½
-	 * ×îºóÒ»¸ö×Ö·û´® where ÖĞĞ´²éÑ¯ÒªÓÃµÄÌõ¼ş
+	 * åˆ˜è…¾å‡
+	 * é€šç”¨åˆ†é¡µæ–¹æ³•è°ƒç”¨æ–¹å¼
+	 * æœ€åä¸€ä¸ªå­—ç¬¦ä¸² where ä¸­å†™æŸ¥è¯¢è¦ç”¨çš„æ¡ä»¶
 	 * */
 	/**
-	 * ·ÖÒ³²éÑ¯
-     * @param page µ±Ç°µÚ¼¸Ò³
-     * @param pageSize Ã¿Ò³´óĞ¡
-     * @return ·â±ÕÁË·ÖÒ³ĞÅÏ¢(°üÀ¨¼ÇÂ¼¼¯list)µÄBean
+	 * åˆ†é¡µæŸ¥è¯¢
+     * @param page å½“å‰ç¬¬å‡ é¡µ
+     * @param pageSize æ¯é¡µå¤§å°
+     * @return å°é—­äº†åˆ†é¡µä¿¡æ¯(åŒ…æ‹¬è®°å½•é›†list)çš„Bean
 	 */
 	public PageBean queryForPage(int pageSize, int page, String object,
 			String id,String where) throws Exception {
 		String hql="from "+object+" "+where+" order by "+id+" desc";
-		//×ÜÌõÊı
+		//æ€»æ¡æ•°
 		int allRow=getAllRowCount(hql);
-		//×ÜÒ³Êı
+		//æ€»é¡µæ•°
 		int totalPage=PageBean.countTotalPage(pageSize, allRow);
-		//µ±Ç°Ò³
+		//å½“å‰é¡µ
 		int currentPage=PageBean.countCurrentPage(page);
-		//µ±Ç°Ò³¿ªÊ¼¼ÇÂ¼
+		//å½“å‰é¡µå¼€å§‹è®°å½•
 		int offset=PageBean.countOffset(pageSize, currentPage);
 		List list=queryForPage(hql,offset,pageSize);
-		//°Ñ¸÷¸öÊôĞÔ·â×°µ½PageBean
+		//æŠŠå„ä¸ªå±æ€§å°è£…åˆ°PageBean
 		PageBean pb=new PageBean();
 		pb.setAllRow(allRow);
 		pb.setCurrentPage(currentPage);

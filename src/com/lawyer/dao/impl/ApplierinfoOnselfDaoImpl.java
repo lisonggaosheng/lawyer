@@ -22,8 +22,8 @@ public class ApplierinfoOnselfDaoImpl extends HibernateDaoSupport implements App
 	@SuppressWarnings("unchecked")
 	public ApplierinfoOnself selectAppOnself(
 			ApplierinfoOnself applierinfoOnself, Users users) throws Exception {
-		String str1="°¸Ô´¹ÜÀíÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢£¨×ÔÓĞĞÅÏ¢£©";
-		String str2="ĞÂÔö";
+		String str1="æ¡ˆæºç®¡ç†ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯ï¼ˆè‡ªæœ‰ä¿¡æ¯ï¼‰";
+		String str2="æ–°å¢";
 		ApplierinfoOnself appOne=null;
 		Iterator<ApplierinfoOnself> it = this.getHibernateTemplate().find("from Apply where app_uid="+users.getUId() +" and appTarget='"+str1+"' and app_content='"+str2+"'").iterator();
 		while(it.hasNext()){

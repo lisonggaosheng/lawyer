@@ -612,7 +612,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			mysql.append("left join lawyer.contact_express contact_ce_express ");
 			mysql.append("ON court0_.casecodeself=contact_ce_express.ce_casecodeself ");
 		}
-		mysql.append("where ");
+		mysql.append("where 1 ");
 		if(showNote.endsWith("1")){  //公告信息
 			//市场部人员查询
 			if(user != null && user.getURole().contains("市场")){
@@ -620,7 +620,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			}
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
 			if("".equals(params[29].trim())) params[29]="2222年22月22日";
-			mysql.append("court0_.noticeTime between '"+params[28]+"' and '"+params[29]+"' ");
+			mysql.append(" and court0_.noticeTime between '"+params[28]+"' and '"+params[29]+"' ");
 			if(!"".equals(params[0].trim()))
 				mysql.append("and court0_.pname LIKE '%"+params[0]+"%' ");
 			if(!"".equals(params[2].trim()))
@@ -635,7 +635,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
 			if("".equals(params[29].trim())) params[29]="2222年22月22日";
-			mysql.append("court0_.caseCreateTime between '"+params[28]+"' and '"+params[29]+"' ");
+			mysql.append(" and court0_.caseCreateTime between '"+params[28]+"' and '"+params[29]+"' ");
 			if(!"".equals(params[30].trim()) || !"".equals(params[31].trim())){
 				if("".equals(params[30].trim())) params[30]="0";
 				if("".equals(params[31].trim())) params[31]="111111111111";
@@ -811,7 +811,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			mysql.append("left join lawyer.contact_express contact_ce_express ");
 			mysql.append("ON court0_.casecodeself=contact_ce_express.ce_casecodeself ");
 		}
-		mysql.append("where ");
+		mysql.append("where 1 ");
 		
 		if (!"".equals(params[26].trim()) || !"".equals(params[27].trim())){
 			if("".equals(params[26].trim())) params[26]="1111年11月11日";
@@ -832,7 +832,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
 			if("".equals(params[29].trim())) params[29]="2222年22月22日";
-			mysql.append("court0_.noticeTime between '"+params[28]+"' and '"+params[29]+"' ");
+			mysql.append(" and court0_.noticeTime between '"+params[28]+"' and '"+params[29]+"' ");
 			if(!"".equals(params[0].trim()))
 				mysql.append("and court0_.pname LIKE '%"+params[0]+"%' ");
 			if(!"".equals(params[2].trim()))
@@ -847,7 +847,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
 			if("".equals(params[29].trim())) params[29]="2222年22月22日";
-			mysql.append("court0_.caseCreateTime between '"+params[28]+"' and '"+params[29]+"' ");
+			mysql.append(" and court0_.caseCreateTime between '"+params[28]+"' and '"+params[29]+"' ");
 			if(!"".equals(params[30].trim()) || !"".equals(params[31].trim())){
 				if("".equals(params[30].trim())) params[30]="0";
 				if("".equals(params[31].trim())) params[31]="111111111111";

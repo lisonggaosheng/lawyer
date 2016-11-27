@@ -73,7 +73,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				tongji.setNum(Integer.parseInt(obj + ""));
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countCourt() )+"")+"") + "%";
 				tongji.setBili(bili);
-				tongji.setInfo("±»Ö´ĞĞÈËÖ´ĞĞĞÅÏ¢");
+				tongji.setInfo("è¢«æ‰§è¡Œäººæ‰§è¡Œä¿¡æ¯");
 				tlist.add(tongji);
 			}		
 		}
@@ -106,7 +106,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countExeBussess() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji.setBili(bili);
-				tongji.setInfo("±»Ö´ĞĞÈËÆóÒµĞÅÏ¢");
+				tongji.setInfo("è¢«æ‰§è¡Œäººä¼ä¸šä¿¡æ¯");
 				tlist.add(tongji);
 			}		
 		}
@@ -117,7 +117,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 	public List<Tongji> countCourtUserFour() throws Exception {	
 		List<Tongji> tlist = new ArrayList<Tongji>();
 		Object obj = null;
-		//µç×ÓÓÊ¼ş
+		//ç”µå­é‚®ä»¶
 		List<ContactMail> list1 = this.getHibernateTemplate().find("FROM ContactMail  GROUP BY users.UId");					
 		for (ContactMail cm : list1) {
 			Users user = null;
@@ -140,11 +140,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countMail() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("µç×ÓÓÊ¼ş");
+				tongji1.setInfo("ç”µå­é‚®ä»¶");
 				tlist.add(tongji1);
 			}		
 		}
-		//ÁªÏµµç»°
+		//è”ç³»ç”µè¯
 		List<ContactTel> list2 = this.getHibernateTemplate().find("FROM ContactTel  GROUP BY users.UId");					
 		for (ContactTel ct : list2) {
 			Users user = null;
@@ -167,11 +167,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countTel() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("µç»°ÁªÏµ");
+				tongji1.setInfo("ç”µè¯è”ç³»");
 				tlist.add(tongji1);
 			}		
 		}
-		//´«Õæ
+		//ä¼ çœŸ
 		List<ContactFax> list3 = this.getHibernateTemplate().find("FROM ContactFax  GROUP BY users.UId");					
 		for (ContactFax cf : list3) {
 			Users user = null;
@@ -194,11 +194,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countFax() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("´«Õæ");
+				tongji1.setInfo("ä¼ çœŸ");
 				tlist.add(tongji1);
 			}		
 		}
-		//¿ìµİ
+		//å¿«é€’
 		List<ContactExpress> list4 = this.getHibernateTemplate().find("FROM ContactExpress  GROUP BY users.UId");					
 		for (ContactExpress ce : list4) {
 			Users user = null;
@@ -221,11 +221,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countEx() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("¿ìµİ");
+				tongji1.setInfo("å¿«é€’");
 				tlist.add(tongji1);
 			}		
 		}
-		//µÇÃÅ°İ·Ã
+		//ç™»é—¨æ‹œè®¿
 		List<ContactSee> list5 = this.getHibernateTemplate().find("FROM ContactSee  GROUP BY users.UId");					
 		for (ContactSee cse : list5) {
 			Users user = null;
@@ -248,11 +248,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countSee() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("µÇÃÅ°İ·Ã");
+				tongji1.setInfo("ç™»é—¨æ‹œè®¿");
 				tlist.add(tongji1);
 			}		
 		}
-		//Ç©Ô¼Çé¿ö
+		//ç­¾çº¦æƒ…å†µ
 		List<ContractSign> list6 = this.getHibernateTemplate().find("FROM ContractSign  GROUP BY users.UId");					
 		for (ContractSign csi : list6) {
 			Users user = null;
@@ -275,7 +275,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countSign() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("Ç©Ô¼Çé¿ö");
+				tongji1.setInfo("ç­¾çº¦æƒ…å†µ");
 				tlist.add(tongji1);
 			}		
 		}
@@ -288,7 +288,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 	public List<Tongji> countCourtUserThree() throws Exception {
 		List<Tongji> tlist = new ArrayList<Tongji>();
 		Object obj = null;
-		//°¸Ô´ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢
+		//æ¡ˆæºç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯
 		List<Applierinfo> list1 = this.getHibernateTemplate().find("FROM Applierinfo  GROUP BY users.UId");				
 		
 		for (Applierinfo app : list1) {
@@ -312,11 +312,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countApp() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢");
+				tongji1.setInfo("ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯");
 				tlist.add(tongji1);
 			}		
 		}
-		//°¸Ô´ÉêÇëÖ´ĞĞÈËÆóÒµÍøÂçĞÅÏ¢
+		//æ¡ˆæºç”³è¯·æ‰§è¡Œäººä¼ä¸šç½‘ç»œä¿¡æ¯
 		List<ApplierinfoNetwork> list2 = this.getHibernateTemplate().find("FROM ApplierinfoNetwork GROUP BY users.UId");	
 		for (ApplierinfoNetwork an : list2) {
 			Users user = null;
@@ -339,12 +339,12 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countAppNet() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji2.setBili(bili);
-				tongji2.setInfo("ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢(ÍøÂçĞÅÏ¢)");
+				tongji2.setInfo("ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯(ç½‘ç»œä¿¡æ¯)");
 				tlist.add(tongji2);
 			}		
 		}
 		
-		//°¸Ô´ÉêÇëÖ´ĞĞÈËÆóÒµ×ÔÓĞĞÅÏ¢
+		//æ¡ˆæºç”³è¯·æ‰§è¡Œäººä¼ä¸šè‡ªæœ‰ä¿¡æ¯
 		List<ApplierinfoOnself> list3 = this.getHibernateTemplate().find("FROM ApplierinfoOnself GROUP BY users.UId");	
 		for (ApplierinfoOnself ao : list3) {
 			Users user = null;
@@ -367,7 +367,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countAppOnselt() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji3.setBili(bili);
-				tongji3.setInfo("ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢(×ÔÓĞĞÅÏ¢)");
+				tongji3.setInfo("ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯(è‡ªæœ‰ä¿¡æ¯)");
 				tlist.add(tongji3);
 			}		
 		}
@@ -380,7 +380,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 			throws Exception {
 		List<Tongji> tlist = new ArrayList<Tongji>();
 		Object obj = null;
-		//µç×ÓÓÊ¼ş
+		//ç”µå­é‚®ä»¶
 		List<ContactMail> list1 = this.getHibernateTemplate().find("FROM ContactMail  GROUP BY users.UId");					
 		for (ContactMail cm : list1) {
 			Users user = null;
@@ -403,11 +403,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countMail() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("µç×ÓÓÊ¼ş");
+				tongji1.setInfo("ç”µå­é‚®ä»¶");
 				tlist.add(tongji1);
 			}		
 		}
-		//ÁªÏµµç»°
+		//è”ç³»ç”µè¯
 		List<ContactTel> list2 = this.getHibernateTemplate().find("FROM ContactTel  GROUP BY users.UId");					
 		for (ContactTel ct : list2) {
 			Users user = null;
@@ -430,11 +430,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countTel() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("µç»°ÁªÏµ");
+				tongji1.setInfo("ç”µè¯è”ç³»");
 				tlist.add(tongji1);
 			}		
 		}
-		//´«Õæ
+		//ä¼ çœŸ
 		List<ContactFax> list3 = this.getHibernateTemplate().find("FROM ContactFax  GROUP BY users.UId");					
 		for (ContactFax cf : list3) {
 			Users user = null;
@@ -457,11 +457,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countFax() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("´«Õæ");
+				tongji1.setInfo("ä¼ çœŸ");
 				tlist.add(tongji1);
 			}		
 		}
-		//¿ìµİ
+		//å¿«é€’
 		List<ContactExpress> list4 = this.getHibernateTemplate().find("FROM ContactExpress  GROUP BY users.UId");					
 		for (ContactExpress ce : list4) {
 			Users user = null;
@@ -484,11 +484,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countEx() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("¿ìµİ");
+				tongji1.setInfo("å¿«é€’");
 				tlist.add(tongji1);
 			}		
 		}
-		//µÇÃÅ°İ·Ã
+		//ç™»é—¨æ‹œè®¿
 		List<ContactSee> list5 = this.getHibernateTemplate().find("FROM ContactSee  GROUP BY users.UId");					
 		for (ContactSee cse : list5) {
 			Users user = null;
@@ -511,11 +511,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countSee() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("µÇÃÅ°İ·Ã");
+				tongji1.setInfo("ç™»é—¨æ‹œè®¿");
 				tlist.add(tongji1);
 			}		
 		}
-		//Ç©Ô¼Çé¿ö
+		//ç­¾çº¦æƒ…å†µ
 		List<ContractSign> list6 = this.getHibernateTemplate().find("FROM ContractSign  GROUP BY users.UId");					
 		for (ContractSign csi : list6) {
 			Users user = null;
@@ -538,7 +538,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countSign() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("Ç©Ô¼Çé¿ö");
+				tongji1.setInfo("ç­¾çº¦æƒ…å†µ");
 				tlist.add(tongji1);
 			}		
 		}
@@ -573,7 +573,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				tongji.setNum(Integer.parseInt(obj + ""));
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countCourt() )+"")+"") + "%";
 				tongji.setBili(bili);
-				tongji.setInfo("±»Ö´ĞĞÈËÖ´ĞĞĞÅÏ¢");
+				tongji.setInfo("è¢«æ‰§è¡Œäººæ‰§è¡Œä¿¡æ¯");
 				tlist.add(tongji);
 			}		
 		}
@@ -586,7 +586,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 			throws Exception {
 		List<Tongji> tlist = new ArrayList<Tongji>();
 		Object obj = null;
-		//°¸Ô´ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢
+		//æ¡ˆæºç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯
 		List<Applierinfo> list1 = this.getHibernateTemplate().find("FROM Applierinfo  GROUP BY users.UId");				
 		
 		for (Applierinfo app : list1) {
@@ -610,11 +610,11 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countApp() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji1.setBili(bili);
-				tongji1.setInfo("ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢");
+				tongji1.setInfo("ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯");
 				tlist.add(tongji1);
 			}		
 		}
-		//°¸Ô´ÉêÇëÖ´ĞĞÈËÆóÒµÍøÂçĞÅÏ¢
+		//æ¡ˆæºç”³è¯·æ‰§è¡Œäººä¼ä¸šç½‘ç»œä¿¡æ¯
 		List<ApplierinfoNetwork> list2 = this.getHibernateTemplate().find("FROM ApplierinfoNetwork GROUP BY users.UId");	
 		for (ApplierinfoNetwork an : list2) {
 			Users user = null;
@@ -637,12 +637,12 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countAppNet() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji2.setBili(bili);
-				tongji2.setInfo("ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢(ÍøÂçĞÅÏ¢)");
+				tongji2.setInfo("ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯(ç½‘ç»œä¿¡æ¯)");
 				tlist.add(tongji2);
 			}		
 		}
 		
-		//°¸Ô´ÉêÇëÖ´ĞĞÈËÆóÒµ×ÔÓĞĞÅÏ¢
+		//æ¡ˆæºç”³è¯·æ‰§è¡Œäººä¼ä¸šè‡ªæœ‰ä¿¡æ¯
 		List<ApplierinfoOnself> list3 = this.getHibernateTemplate().find("FROM ApplierinfoOnself GROUP BY users.UId");	
 		for (ApplierinfoOnself ao : list3) {
 			Users user = null;
@@ -665,7 +665,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countAppOnselt() )+"")+"") + "%";
 		//		String bili = "11%";
 				tongji3.setBili(bili);
-				tongji3.setInfo("ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢(×ÔÓĞĞÅÏ¢)");
+				tongji3.setInfo("ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯(è‡ªæœ‰ä¿¡æ¯)");
 				tlist.add(tongji3);
 			}		
 		}
@@ -699,7 +699,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 				tongji.setNum(Integer.parseInt(obj + ""));
 				String bili = (Double.parseDouble((Integer.parseInt(obj + "") * 100 / countExeBussess() )+"")+"") + "%";
 				tongji.setBili(bili);
-				tongji.setInfo("±»Ö´ĞĞÈËÆóÒµĞÅÏ¢");
+				tongji.setInfo("è¢«æ‰§è¡Œäººä¼ä¸šä¿¡æ¯");
 				tlist.add(tongji);
 			}		
 		}
@@ -707,7 +707,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 	}
 
 	/**
-	 * ±»Ö´ĞĞÈËĞÅÏ¢×ÜÊı
+	 * è¢«æ‰§è¡Œäººä¿¡æ¯æ€»æ•°
 	 */
 	@Override
 	public long countCourt() throws Exception {
@@ -724,7 +724,7 @@ public class CourtCountDaoImpl extends HibernateDaoSupport implements CourtCount
 		return Integer.parseInt(obj + "");
 	}
 	/**
-	 * ±»Ö´ĞĞÈËÆóÒµĞÅÏ¢×ÜÊı
+	 * è¢«æ‰§è¡Œäººä¼ä¸šä¿¡æ¯æ€»æ•°
 	 */
 	@Override
 	public long countExeBussess() throws Exception {

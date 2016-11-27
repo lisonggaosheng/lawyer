@@ -10,7 +10,7 @@ import com.lawyer.pojo.Users;
 
 public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 	/**
-	 * ¹ÜÀíÔ±ÓÃ»§µÇÂ½·½·¨
+	 * ç®¡ç†å‘˜ç”¨æˆ·ç™»é™†æ–¹æ³•
 	 */
 	public Users login(Users users)throws Exception  {
 		Users u = null;
@@ -21,7 +21,7 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 		return u;
 	}
 	/**
-	 * ¹ÜÀíÔ±Ìí¼ÓÓÃ»§·½·¨£¬Ìí¼ÓÍê³É²éÑ¯ËùÓĞÓÃ»§ĞÅÏ¢£¬Ìø×ªÖÁSHOWÒ³Ãæ£¬·ÖÒ³ÏÔÊ¾
+	 * ç®¡ç†å‘˜æ·»åŠ ç”¨æˆ·æ–¹æ³•ï¼Œæ·»åŠ å®ŒæˆæŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ä¿¡æ¯ï¼Œè·³è½¬è‡³SHOWé¡µé¢ï¼Œåˆ†é¡µæ˜¾ç¤º
 	 * */
 	public void insert(Users users) throws Exception {
 		this.getHibernateTemplate().save(users);
@@ -49,12 +49,12 @@ public class UsersDaoImpl extends HibernateDaoSupport implements UsersDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Users> selectLawyers() throws Exception {
-		return this.getHibernateTemplate().find("from Users where URole='°ì°¸ÂÉÊ¦'");
+		return this.getHibernateTemplate().find("from Users where URole like '%åŠæ¡ˆå¾‹å¸ˆ%' and USta like '%å¯ç”¨%' ");
 	}
 	
 	@Override
 	public List<Users> selectPensons() throws Exception {
-		return this.getHibernateTemplate().find("from Users where USta like '%ÆôÓÃ%' and length(trim(roleName))>1 ");
+		return this.getHibernateTemplate().find("from Users where USta like '%å¯ç”¨%' and length(trim(roleName))>1 ");
 	}
 
 }

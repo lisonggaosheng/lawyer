@@ -23,7 +23,7 @@ import com.lawyer.pojo.Material;
 public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 		ClearRecordDao {
 	/**
-	 * ¸ß¼¶²éÑ¯°¸¼şĞÅÏ¢ĞŞ¸Ä¡ª¡ª¹ùÖ¾Åô
+	 * é«˜çº§æŸ¥è¯¢æ¡ˆä»¶ä¿¡æ¯ä¿®æ”¹â€”â€”éƒ­å¿—é¹
 	 */
 	public List<?> seniorSelectNew(final int currentPage, final int pageSize,
 			final ContractSign cont) throws Exception {
@@ -351,7 +351,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 	}
 	
 	/**
-	 * ¸ß¼¶²éÑ¯°¸¼şĞÅÏ¢¡ª¡ªÀîÃÎÏè
+	 * é«˜çº§æŸ¥è¯¢æ¡ˆä»¶ä¿¡æ¯â€”â€”ææ¢¦ç¿”
 	 */
 	public List<?> seniorSelect(final int currentPage, final int pageSize,
 			final String... params) throws Exception {
@@ -453,19 +453,19 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 					mysql.append("and closerecor5_.cr_persontel like '%"+params[29]+"%' ");
 				
 				if(!"".equals(params[30].trim()) || !"".equals(params[31].trim())){
-					if("".equals(params[30].trim())) params[30]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[31].trim())) params[31]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[30].trim())) params[30]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[31].trim())) params[31]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and contractsi0_.cs_date BETWEEN '"+params[30]+"' and '"+params[31]+"' ");
 				}
 				if(!"".equals(params[32].trim()) || !"".equals(params[33].trim())){
-					if("".equals(params[32].trim())) params[32]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[33].trim())) params[33]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[32].trim())) params[32]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[33].trim())) params[33]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and clearrecor1_.cr_date BETWEEN '"+params[32]+"' and '"+params[33]+"' ");
 				}
 				
 				if(!"".equals(params[34].trim()) || !"".equals(params[35].trim())){
-					if("".equals(params[34].trim())) params[34]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[35].trim())) params[35]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[34].trim())) params[34]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[35].trim())) params[35]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and litigation3_.li_date BETWEEN '"+params[34]+"' and '"+params[35]+"' ");
 				}
 				
@@ -476,14 +476,14 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 				}
 				
 				if(!"".equals(params[38].trim()) || !"".equals(params[39].trim())){
-					if("".equals(params[38].trim())) params[38]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[39].trim())) params[39]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[38].trim())) params[38]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[39].trim())) params[39]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and execute4_.ex_date BETWEEN '"+params[38]+"' and '"+params[39]+"' ");
 				}
 				
 				if(!"".equals(params[40].trim()) || !"".equals(params[41].trim())){
-					if("".equals(params[40].trim())) params[40]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[41].trim())) params[41]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[40].trim())) params[40]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[41].trim())) params[41]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and closerecor5_.cr_time BETWEEN '"+params[40]+"' and '"+params[41]+"' ");
 				}
 				
@@ -599,19 +599,19 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 					mysql.append("and closerecor5_.cr_persontel like '%"+params[29]+"%' ");
 				
 				if(!"".equals(params[30].trim()) || !"".equals(params[31].trim())){
-					if("".equals(params[30].trim())) params[30]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[31].trim())) params[31]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[30].trim())) params[30]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[31].trim())) params[31]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and contractsi0_.cs_date BETWEEN '"+params[30]+"' and '"+params[31]+"' ");
 				}
 				if(!"".equals(params[32].trim()) || !"".equals(params[33].trim())){
-					if("".equals(params[32].trim())) params[32]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[33].trim())) params[33]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[32].trim())) params[32]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[33].trim())) params[33]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and clearrecor1_.cr_date BETWEEN '"+params[32]+"' and '"+params[33]+"' ");
 				}
 				
 				if(!"".equals(params[34].trim()) || !"".equals(params[35].trim())){
-					if("".equals(params[34].trim())) params[34]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[35].trim())) params[35]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[34].trim())) params[34]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[35].trim())) params[35]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and litigation3_.li_date BETWEEN '"+params[34]+"' and '"+params[35]+"' ");
 				}
 				
@@ -622,14 +622,14 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 				}
 				
 				if(!"".equals(params[38].trim()) || !"".equals(params[39].trim())){
-					if("".equals(params[38].trim())) params[38]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[39].trim())) params[39]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[38].trim())) params[38]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[39].trim())) params[39]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and execute4_.ex_date BETWEEN '"+params[38]+"' and '"+params[39]+"' ");
 				}
 				
 				if(!"".equals(params[40].trim()) || !"".equals(params[41].trim())){
-					if("".equals(params[40].trim())) params[40]="1111Äê11ÔÂ11ÈÕ";
-					if("".equals(params[41].trim())) params[41]="2222Äê02ÔÂ02ÈÕ";
+					if("".equals(params[40].trim())) params[40]="1111å¹´11æœˆ11æ—¥";
+					if("".equals(params[41].trim())) params[41]="2222å¹´02æœˆ02æ—¥";
 					mysql.append("and closerecor5_.cr_time BETWEEN '"+params[40]+"' and '"+params[41]+"' ");
 				}
 				
@@ -646,7 +646,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 	
 	
 	/**
-	 * Ìí¼Ó Á¢°¸ĞÅÏ¢¡ª¡ª¹ùÖ¾Åô
+	 * æ·»åŠ  ç«‹æ¡ˆä¿¡æ¯â€”â€”éƒ­å¿—é¹
 	 */
 	public void insertClearRecord(ClearRecord clearRecord) throws Exception {
 		this.getHibernateTemplate().save(clearRecord);
@@ -658,14 +658,14 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 	@Override
 	public ContractSign selectDetal(String csCasecodeself) throws Exception {
 
-		// Ç©Ô¼
+		// ç­¾çº¦
 		ContractSign contractsign = null;
 		String hqlcs = "from ContractSign cs where cs.csCasecodeself='"
 				+ csCasecodeself + "'";
 		contractsign = (ContractSign) this.getHibernateTemplate().find(hqlcs)
 				.iterator().next();
 
-		//²ÄÁÏÕûÀí
+		//ææ–™æ•´ç†
 		String hqlme = "from Material m where m.casecodeself='"
 				+ csCasecodeself + "' order by savetime desc limit 1";
 		List<Material> materials = this.getHibernateTemplate().find(hqlme);
@@ -675,7 +675,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 			contractsign.setMaterial(materials.get(0));
 		}
 		
-		// Á¢°¸
+		// ç«‹æ¡ˆ
 		String hqlcr = "from ClearRecord cr where cr.crcasecodeself='"
 				+ csCasecodeself + "' order by crSaveTime desc";
 		List<ClearRecord> clearrecords = this.getHibernateTemplate().find(hqlcr);
@@ -684,7 +684,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 		}else{
 			contractsign.setClearrecord(clearrecords.get(0));
 		}
-		// ÇåËã
+		// æ¸…ç®—
 	
 		String hqlcc = "from ClearClear cc  where cc.cccasecodeself='"
 				+ csCasecodeself + "' order by ccsaveTime desc";
@@ -696,7 +696,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 		}
 		
 		
-		// ËßËÏ½×¶Î
+		// è¯‰è®¼é˜¶æ®µ
 		String hqlli = "from Litigation  li  where li.licasecodeself='"
 				+ csCasecodeself + "' order by lisaveTime desc";
 		List<Litigation> litigations = this.getHibernateTemplate().find(hqlli);
@@ -707,7 +707,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 		}
 		
 		
-		// Ö´ĞĞ½×¶Î
+		// æ‰§è¡Œé˜¶æ®µ
 		String hqlex = "from Execute  ex  where ex.excasecodeself='"
 				+ csCasecodeself + "' order by exsavetime desc";
 		List<Execute> executes = this.getHibernateTemplate().find(hqlex);
@@ -717,7 +717,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 			contractsign.setExecute(executes.get(0));
 		}
 
-		// ½á°¸½×¶Î
+		// ç»“æ¡ˆé˜¶æ®µ
 		CloseRecord closerecord = null;
 		String hqlcl = "from CloseRecord  cl  where cl.crcasecodeself='"
 				+ csCasecodeself + "'";
@@ -1056,7 +1056,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public ClearClear showclearclear(String casecodeself) throws Exception {
-		// ÇåËã
+		// æ¸…ç®—
 		String hqlcc = "from ClearClear cc  where cc.cccasecodeself='"
 				+ casecodeself + "' order by ccsaveTime desc";
 		List<ClearClear> clearclears = this.getHibernateTemplate().find(hqlcc);
@@ -1070,7 +1070,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public Litigation showlitigation(String casecodeself) throws Exception {
-		// ËßËÏ½×¶Î
+		// è¯‰è®¼é˜¶æ®µ
 		String hqlli = "from Litigation  li  where li.licasecodeself='"
 				+ casecodeself + "' order by lisaveTime desc";
 		List<Litigation> litigations = this.getHibernateTemplate().find(hqlli);
@@ -1083,7 +1083,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 
 	@Override
 	public Execute showexecute(String casecodeself) throws Exception {
-		// Ö´ĞĞ½×¶Î
+		// æ‰§è¡Œé˜¶æ®µ
 		String hqlex = "from Execute  ex  where ex.excasecodeself='"
 				+ casecodeself + "' order by exsavetime desc";
 		List<Execute> executes = this.getHibernateTemplate().find(hqlex);

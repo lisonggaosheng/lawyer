@@ -7,21 +7,21 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.lawyer.dao.LimitPowerDao;
 import com.lawyer.pojo.LimitPower;
 /**
- * ÓÃ»§È¨ÏŞ³Ö¾Ã²ãÊµÏÖÀà
- * @author ÀîÃÎÏè
+ * ç”¨æˆ·æƒé™æŒä¹…å±‚å®ç°ç±»
+ * @author ææ¢¦ç¿”
  * @date 2013-5-6 19:46:32
  *
  */
 public class LimitPowerDaoImpl extends HibernateDaoSupport implements LimitPowerDao{
 	/**
-	 * Ìí¼ÓÓÃ»§È¨ÏŞ
+	 * æ·»åŠ ç”¨æˆ·æƒé™
 	 */
 	@Override
 	public void addLP(LimitPower limitPower) {
 		this.getHibernateTemplate().save(limitPower);
 	}
 	/**
-	 * ¸ù¾İÓÃ»§Ãû²éÑ¯ÓÃ»§È¨ÏŞ
+	 * æ ¹æ®ç”¨æˆ·åæŸ¥è¯¢ç”¨æˆ·æƒé™
 	 */
 	@Override
 	public LimitPower selectLPByUserName(String userName) {
@@ -33,14 +33,14 @@ public class LimitPowerDaoImpl extends HibernateDaoSupport implements LimitPower
 		return lp;
 	}
 	/**
-	 * ĞŞ¸ÄÓÃ»§È¨ÏŞ
+	 * ä¿®æ”¹ç”¨æˆ·æƒé™
 	 */
 	@Override
 	public void updLP(LimitPower limitPower) {
 		this.getHibernateTemplate().update(limitPower);
 	}
 	/**
-	 * É¾³ıÓÃ»§È¨ÏŞ
+	 * åˆ é™¤ç”¨æˆ·æƒé™
 	 */
 	@Override
 	public void delLP(LimitPower limitPower) {

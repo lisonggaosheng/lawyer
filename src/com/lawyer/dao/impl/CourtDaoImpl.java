@@ -174,10 +174,11 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		
 		Query query = this.getSession().createQuery(hql);
 		List courtList =  query.setFirstResult((currentPage - 1) * 12).setMaxResults(12).list();
-		 for (Iterator iterator = courtList.iterator(); iterator.hasNext();) {  
-			 Court courtNew=(Court)iterator.next();  
+		for (int i = 0; i < courtList.size(); i++) {
+			Object[] objects = (Object[]) courtList.get(i);
+			Court courtNew=(Court)objects[0];  
 			 courts.add(courtNew);
-	     } 
+		}
 		return courts;
 //		return this.getHibernateTemplate().executeFind(new HibernateCallback() {
 //			@Override
@@ -700,9 +701,8 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 				" inner join lawyer_court_name lcn  on lcn.court_id=lc.Id "+
 				" where lcn.same_name like '%"+courtName+"%' group by number";
 		SQLQuery query = this.getSession().createSQLQuery(hql);
-		Object object = query.uniqueResult();
-		String number = object.getClass().getName();
-		return number;
+		List<Object[]> list = query.list();
+		return Parser.getString(query.list().get(0));
 	}
 
 	/**
@@ -812,6 +812,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		String message = null;
 		try{
 			SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日");
 			SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd");
 			if(user == null){
 				user = new Users(29);
@@ -848,8 +849,9 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 						}
 					}else{
 						String courtNumber = getCourtNumberByName(dcourt.getCourtName());
-						String count = String.format("%4d", countCourtByCourtcode(courtNumber, dcourt.getRegDate())).replace(" ", "0");
-						String casecodeself = "S"+courtNumber+sdfDate.format(dcourt.getRegDate())+count+System.currentTimeMillis();
+						String count = String.format("%4d", countCourtByCourtcode(courtNumber, dcourt.getRegDate())+1).replace(" ", "0");
+						String date = sdfDate.format(sdf2.parse(dcourt.getRegDate()));
+						String casecodeself = "S"+courtNumber+date+count+System.currentTimeMillis();
 						
 						Court court = new Court();
 						court.setCasecodeself(casecodeself);

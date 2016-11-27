@@ -6,33 +6,33 @@ import com.lawyer.pojo.Users;
 
 public interface UsersDao {
 	/**
-	 * ¹ÜÀíÔ±ÓÃ»§µÇÂ½·½·¨
-	 * ÁõÌÚÉı
+	 * ç®¡ç†å‘˜ç”¨æˆ·ç™»é™†æ–¹æ³•
+	 * åˆ˜è…¾å‡
 	 */
 	public Users login(Users users)throws Exception ;
 	/**
-	 * ¹ÜÀíÔ±Ìí¼ÓÓÃ»§·½·¨£¬Ìí¼ÓÍê³É²éÑ¯ËùÓĞÓÃ»§ĞÅÏ¢£¬Ìø×ªÖÁSHOWÒ³Ãæ£¬·ÖÒ³ÏÔÊ¾
-	 * ÁõÌÚÉı
+	 * ç®¡ç†å‘˜æ·»åŠ ç”¨æˆ·æ–¹æ³•ï¼Œæ·»åŠ å®ŒæˆæŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ä¿¡æ¯ï¼Œè·³è½¬è‡³SHOWé¡µé¢ï¼Œåˆ†é¡µæ˜¾ç¤º
+	 * åˆ˜è…¾å‡
 	 * */
 	public void insert(Users users)throws Exception ;
 	/**
-	 * Í¨¹ıIdµÃµ½ÓÃ»§ĞÅÏ¢
-	 * ÁõÌÚÉı
+	 * é€šè¿‡Idå¾—åˆ°ç”¨æˆ·ä¿¡æ¯
+	 * åˆ˜è…¾å‡
 	 * */
 	public Users SelectID(Users users)throws Exception ;
 	/**
-	 * Í¨¹ıIdĞŞ¸ÄÓÃ»§ĞÅÏ¢
-	 * ÁõÌÚÉı
+	 * é€šè¿‡Idä¿®æ”¹ç”¨æˆ·ä¿¡æ¯
+	 * åˆ˜è…¾å‡
 	 * */
 	public void update(Users users)throws Exception ;
 	/**
-	 * Í¨¹ıNameµÃµ½ÓÃ»§ĞÅÏ¢
-	 * ÁõÌÚÉı
+	 * é€šè¿‡Nameå¾—åˆ°ç”¨æˆ·ä¿¡æ¯
+	 * åˆ˜è…¾å‡
 	 * */
 	public List selectName(Users users)throws Exception ;
 	/**
-	 * Í¨¹ıIDÉ¾³ıÓÃ»§ĞÅÏ¢
-	 * ÁõÌÚÉı
+	 * é€šè¿‡IDåˆ é™¤ç”¨æˆ·ä¿¡æ¯
+	 * åˆ˜è…¾å‡
 	 * */
 	public void delete(Users users)throws Exception ;
 	
@@ -42,7 +42,7 @@ public interface UsersDao {
 	
 	
 	/**
-	 * »ñÈ¡ËùÓĞµÄ°ì¹«ÈËÔ±
+	 * è·å–æ‰€æœ‰çš„åŠå…¬äººå‘˜
 	 * @return
 	 * @throws Exception
 	 */

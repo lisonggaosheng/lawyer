@@ -17,10 +17,10 @@ public class PagingDaoImpl extends HibernateDaoSupport implements PagingDao{
 	}
 
 	/**
-	 * °ÑÊı¾İ±íÖĞµÄÊı¾İ·ÖÒ³·ÅÈëList
+	 * æŠŠæ•°æ®è¡¨ä¸­çš„æ•°æ®åˆ†é¡µæ”¾å…¥List
 	 */
 	public List queryForPage(String hql, int offset, int length) {
-		//Hibernate·ÖÒ³
+		//Hibernateåˆ†é¡µ
 		Query q=this.getSession().createQuery(hql);
 		q.setFirstResult(offset);
 		q.setMaxResults(length);
@@ -29,10 +29,10 @@ public class PagingDaoImpl extends HibernateDaoSupport implements PagingDao{
 	}
 
 	/**
-	 * ÏÈ°ÑÊı¾İ±íÖĞµÄÊı¾İ·ÖÒ³ÈëList£¬È»ºó°ÑListÔÚÒ³Ãæ·ÖÒ³
+	 * å…ˆæŠŠæ•°æ®è¡¨ä¸­çš„æ•°æ®åˆ†é¡µå…¥Listï¼Œç„¶åæŠŠListåœ¨é¡µé¢åˆ†é¡µ
 	 */
 	public PageBean queryForPage(int pageSize, int page,Object obj,String i,String starttime,String endtime) {
-		// Ò³Ãæ·ÖÒ³
+		// é¡µé¢åˆ†é¡µ
 		String hql=null;
 		
 		if(i.equals("null")){
@@ -47,18 +47,18 @@ public class PagingDaoImpl extends HibernateDaoSupport implements PagingDao{
 			Files f=(Files) obj;
 			hql="from Files where filelibrary.flId = '"+f.getFilelibrary().getFlId()+"' and FTitle like '%"+f.getFTitle()+"%' and FReldate between '"+starttime+"' and '"+endtime+"' ";
 		}
-		//×ÜÌõÊı
+		//æ€»æ¡æ•°
 		int allRow=getAllRowCount(hql);
-		//×ÜÒ³Êı
+		//æ€»é¡µæ•°
 		int totalPage=PageBean.countTotalPage(pageSize, allRow);
-		//µ±Ç°Ò³
+		//å½“å‰é¡µ
 		int currentPage=PageBean.countCurrentPage(page);
-		//µ±Ç°Ò³¿ªÊ¼¼ÇÂ¼
+		//å½“å‰é¡µå¼€å§‹è®°å½•
 		int offset=PageBean.countOffset(pageSize, currentPage);
 		
 		List list=queryForPage(hql,offset,pageSize);
 		
-		//°Ñ¸÷¸öÊôĞÔ·â×°µ½PageBean
+		//æŠŠå„ä¸ªå±æ€§å°è£…åˆ°PageBean
 		PageBean pb=new PageBean();
 		pb.setAllRow(allRow);
 		pb.setCurrentPage(currentPage);

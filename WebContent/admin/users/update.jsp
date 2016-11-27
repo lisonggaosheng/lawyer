@@ -50,6 +50,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <label>
 		          <input type="radio"  name="users.URole" value="办案律师" id="role">办案律师
 		        </label>
+		        <label>
+		          <input type="radio"  name="users.URole" value="市场办案律师" id="role">市场办案律师
+		        </label>
 	        </c:if>
 	        <c:if test="${users.URole=='管理员'}">
 		        <label>
@@ -61,6 +64,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <label>
 		          <input type="radio"  name="users.URole" value="办案律师" id="role">办案律师
 		        </label>
+		        <label>
+		          <input type="radio"  name="users.URole" value="市场办案律师" id="role">市场办案律师
+		        </label>
 	        </c:if>
 	        <c:if test="${users.URole=='办案律师'}">
 		        <label>
@@ -71,6 +77,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        </label>
 		        <label>
 		          <input type="radio"  name="users.URole" value="办案律师" id="role" checked="checked">办案律师
+		        </label>
+		        <label>
+		          <input type="radio"  name="users.URole" value="市场办案律师" id="role">市场办案律师
+		        </label>
+	        </c:if>
+	        <c:if test="${users.URole=='市场办案律师'}">
+		        <label>
+		          <input type="radio"  name="users.URole" value="管理员" id="role">管理员
+		        </label>
+		        <label>  
+		          <input type="radio" name="users.URole"  value="普通用户" id="role">普通用户
+		        </label>
+		        <label>
+		          <input type="radio"  name="users.URole" value="办案律师" id="role" >办案律师
+		        </label>
+		        <label>
+		          <input type="radio"  name="users.URole" value="市场办案律师" id="role" checked="checked">市场办案律师
 		        </label>
 	        </c:if>
         </td>
