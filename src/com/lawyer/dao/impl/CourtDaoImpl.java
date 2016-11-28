@@ -702,7 +702,10 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 				" where lcn.same_name like '%"+courtName+"%' group by number";
 		SQLQuery query = this.getSession().createSQLQuery(hql);
 		List<Object[]> list = query.list();
-		return Parser.getString(query.list().get(0));
+		if(list.size() >0 ){
+			return Parser.getString(list.get(0));
+		}
+		return "000000";
 	}
 
 	/**
