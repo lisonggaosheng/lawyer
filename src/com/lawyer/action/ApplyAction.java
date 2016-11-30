@@ -14,27 +14,27 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ApplyAction extends ActionSupport{
 	
-	//:·â×°µÄApply¶ÔÏóService½Ó¿Ú
+	//:å°è£…çš„Applyå¯¹è±¡Serviceæ¥å£
 	private ApplyService applyService;
-	//:·â×°µÄApply¶ÔÏó
+	//:å°è£…çš„Applyå¯¹è±¡
 	private Apply apply;
 	
-	//:·â×°µÄUsers·şÎñ²ã½Ó¿Ú
+	//:å°è£…çš„UsersæœåŠ¡å±‚æ¥å£
 	private UsersService usersService;
-	//:·â×°µÄÆÕÍ¨ÓÃ»§ÓÃUsers¶ÔÏó
+	//:å°è£…çš„æ™®é€šç”¨æˆ·ç”¨Userså¯¹è±¡
 	private Users users;
-	//:·â×°µÄ¹ÜÀíÔ±ÓÃUsers¶ÔÏó
+	//:å°è£…çš„ç®¡ç†å‘˜ç”¨Userså¯¹è±¡
 	private Users admin;
-	//:·â×°µÄLog·şÎñ²ã½Ó¿Ú
+	//:å°è£…çš„LogæœåŠ¡å±‚æ¥å£
 	private LogService logService;
-	//:·â×°µÄLog¶ÔÏó
+	//:å°è£…çš„Logå¯¹è±¡
 	private Log log;
 	
-	//:·â×°µÄList¶ÔÏó
+	//:å°è£…çš„Listå¯¹è±¡
 	private List list;
 	/**
-	 * Í¨ÓÃ·ÖÒ³·½·¨ËùÓÃ·â×°ÊôĞÔ
-	 * ÁõÌÚÉı
+	 * é€šç”¨åˆ†é¡µæ–¹æ³•æ‰€ç”¨å°è£…å±æ€§
+	 * åˆ˜è…¾å‡
 	 * */
 	private PageService pageService;
 	private PageBean pageBean;
@@ -130,22 +130,22 @@ public class ApplyAction extends ActionSupport{
 	}
 	
 	/**
-	 * ·ÖÒ³ÏÔÊ¾ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢
-	 * ÁõÌÚÉı
+	 * åˆ†é¡µæ˜¾ç¤ºæ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯
+	 * åˆ˜è…¾å‡
 	 * */
 	public String selectShow(){
 		try {
-			//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+			//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 			admin= usersService.SelectID(admin);
 			log=new Log();
 			log.setLogDate(logService.getDataTime());
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("²éÑ¯");
-			log.setLogTarget("ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢");
+			log.setLogContent("æŸ¥è¯¢");
+			log.setLogTarget("æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯");
 			logService.insert(log);
-			pageBean=pageService.queryForPage(5,page,"Apply","appId","where appSta = 'ÉêÇëÖĞ'");
+			pageBean=pageService.queryForPage(5,page,"Apply","appId","where appSta = 'ç”³è¯·ä¸­'");
 			return "show";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -153,20 +153,20 @@ public class ApplyAction extends ActionSupport{
 		}
 	}
 	/**
-	 *Í¨¹ıÓÃ»§ÃûÄ£ºı²éÑ¯ÉêÇëĞÅÏ¢(***********************************************)
-	 *ÁõÌÚÉı
+	 *é€šè¿‡ç”¨æˆ·åæ¨¡ç³ŠæŸ¥è¯¢ç”³è¯·ä¿¡æ¯(***********************************************)
+	 *åˆ˜è…¾å‡
 	 * */
 	public String selectName(){
 		try {
-			//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+			//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 			admin= usersService.SelectID(admin);
 			log=new Log();
 			log.setLogDate(logService.getDataTime());
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("Ä£ºı²éÑ¯");
-			log.setLogTarget("ÓÃ»§ÉêÇëĞÅÏ¢");
+			log.setLogContent("æ¨¡ç³ŠæŸ¥è¯¢");
+			log.setLogTarget("ç”¨æˆ·ç”³è¯·ä¿¡æ¯");
 			logService.insert(log);
 			
 			list=applyService.selectName(users);
@@ -177,11 +177,11 @@ public class ApplyAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Í¨¹ıÓÃ»§IDÅú×¼ÊÚÈ¨
-	 * ÁõÌÚÉı
+	 * é€šè¿‡ç”¨æˆ·IDæ‰¹å‡†æˆæƒ
+	 * åˆ˜è…¾å‡
 	 * */
 	public String authorize(){
-		//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+		//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 		try {
 			admin= usersService.SelectID(admin);
 			users=usersService.SelectID(users);
@@ -190,12 +190,12 @@ public class ApplyAction extends ActionSupport{
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("Åú×¼");
-			log.setLogTarget("ÓÃ»§"+users.getUName()+"µÄÉêÇë");
+			log.setLogContent("æ‰¹å‡†");
+			log.setLogTarget("ç”¨æˆ·"+users.getUName()+"çš„ç”³è¯·");
 			logService.insert(log);
 			
 			apply=applyService.selectID(apply);
-			apply.setAppSta("ÒÑÅú×¼");
+			apply.setAppSta("å·²æ‰¹å‡†");
 			applyService.authorize(apply);
 			list=applyService.selectName(users);
 			return "authorize";
@@ -205,11 +205,11 @@ public class ApplyAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Í¨¹ıÓÃ»§ID¾Ü¾øÊÚÈ¨
-	 * ÁõÌÚÉı
+	 * é€šè¿‡ç”¨æˆ·IDæ‹’ç»æˆæƒ
+	 * åˆ˜è…¾å‡
 	 * */
 	public String decline(){
-		//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+		//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 		try {
 			admin= usersService.SelectID(admin);
 			users=usersService.SelectID(users);
@@ -218,8 +218,8 @@ public class ApplyAction extends ActionSupport{
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("¾Ü¾ø");
-			log.setLogTarget("ÓÃ»§"+users.getUName()+"µÄÉêÇë");
+			log.setLogContent("æ‹’ç»");
+			log.setLogTarget("ç”¨æˆ·"+users.getUName()+"çš„ç”³è¯·");
 			logService.insert(log);
 			
 			apply=applyService.selectID(apply);
@@ -232,22 +232,22 @@ public class ApplyAction extends ActionSupport{
 		}
 	}
 	/**
-	 * ²éÑ¯ÓÃ»§ËùÓĞÈ¨ÏŞ
-	 * ÁõÌÚÉı
+	 * æŸ¥è¯¢ç”¨æˆ·æ‰€æœ‰æƒé™
+	 * åˆ˜è…¾å‡
 	 * */
 	public String declineShow(){
 		try {
-			//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+			//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 			admin= usersService.SelectID(admin);
 			log=new Log();
 			log.setLogDate(logService.getDataTime());
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("²éÑ¯");
-			log.setLogTarget("ËùÓĞÓÃ»§È¨ÏŞĞÅÏ¢");
+			log.setLogContent("æŸ¥è¯¢");
+			log.setLogTarget("æ‰€æœ‰ç”¨æˆ·æƒé™ä¿¡æ¯");
 			logService.insert(log);
-			pageBean=pageService.queryForPage(5,page,"Apply","appId","where appSta = 'ÒÑÅú×¼'");
+			pageBean=pageService.queryForPage(5,page,"Apply","appId","where appSta = 'å·²æ‰¹å‡†'");
 			return "show";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -255,20 +255,20 @@ public class ApplyAction extends ActionSupport{
 		}
 	}
 	/**
-	 *Í¨¹ıÓÃ»§ÃûÄ£ºı²éÑ¯ÉêÇëĞÅÏ¢2(***********************************************)
-	 *ÁõÌÚÉı
+	 *é€šè¿‡ç”¨æˆ·åæ¨¡ç³ŠæŸ¥è¯¢ç”³è¯·ä¿¡æ¯2(***********************************************)
+	 *åˆ˜è…¾å‡
 	 * */
 	public String selectName2(){
 		try {
-			//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+			//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 			admin= usersService.SelectID(admin);
 			log=new Log();
 			log.setLogDate(logService.getDataTime());
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("Ä£ºı²éÑ¯");
-			log.setLogTarget("ÓÃ»§È¨ÏŞĞÅÏ¢");
+			log.setLogContent("æ¨¡ç³ŠæŸ¥è¯¢");
+			log.setLogTarget("ç”¨æˆ·æƒé™ä¿¡æ¯");
 			logService.insert(log);
 			
 			list=applyService.selectName2(users);
@@ -280,11 +280,11 @@ public class ApplyAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Í¨¹ıÓÃ»§ID¾Ü¾øÊÚÈ¨
-	 * ÁõÌÚÉı
+	 * é€šè¿‡ç”¨æˆ·IDæ‹’ç»æˆæƒ
+	 * åˆ˜è…¾å‡
 	 * */
 	public String declineUsers(){
-		//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+		//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 		try {
 			admin= usersService.SelectID(admin);
 			users=usersService.SelectID(users);
@@ -293,13 +293,13 @@ public class ApplyAction extends ActionSupport{
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("ÊÕ»Ø");
-			log.setLogTarget("ÓÃ»§"+users.getUName()+"µÄÈ¨ÏŞ");
+			log.setLogContent("æ”¶å›");
+			log.setLogTarget("ç”¨æˆ·"+users.getUName()+"çš„æƒé™");
 			logService.insert(log);
 			
 			apply=applyService.selectID(apply);
 			applyService.decline(apply);
-			pageBean=pageService.queryForPage(5,page,"Apply","appId","where appSta = 'ÒÑÅú×¼'");
+			pageBean=pageService.queryForPage(5,page,"Apply","appId","where appSta = 'å·²æ‰¹å‡†'");
 			return "show";
 		} catch (Exception e) {
 			e.printStackTrace();

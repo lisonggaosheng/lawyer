@@ -16,7 +16,7 @@ import com.lawyer.pojo.LawyerCourt;
 public class LawyerCourtDaoImpl extends HibernateDaoSupport implements LawyerCourtDao {
 
 	/**
-	 * ²éÕÒËùÓĞ·¨ÔºĞÅÏ¢
+	 * æŸ¥æ‰¾æ‰€æœ‰æ³•é™¢ä¿¡æ¯
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -24,7 +24,7 @@ public class LawyerCourtDaoImpl extends HibernateDaoSupport implements LawyerCou
 		return this.getHibernateTemplate().find("from LawyerCourt");
 	}
 	/**
-	 * ²éÕÒÒ»¼¶µÄ·¨Ôº
+	 * æŸ¥æ‰¾ä¸€çº§çš„æ³•é™¢
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -33,7 +33,7 @@ public class LawyerCourtDaoImpl extends HibernateDaoSupport implements LawyerCou
 		return this.getHibernateTemplate().find("from LawyerCourt c where c.lawyerCourt_pid = 0");
 	}
 	/**
-	 * ¸ù¾İÒ»¼¶²éÕÒ¶ş¼¶
+	 * æ ¹æ®ä¸€çº§æŸ¥æ‰¾äºŒçº§
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -42,7 +42,7 @@ public class LawyerCourtDaoImpl extends HibernateDaoSupport implements LawyerCou
 		return this.getHibernateTemplate().find("from LawyerCourt c where c.lawyerCourt_pid ="+fir_id);
 	}
 	/**
-	 * ¸ù¾İ¶ş¼¶²éÕÒÈı¼¶
+	 * æ ¹æ®äºŒçº§æŸ¥æ‰¾ä¸‰çº§
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -51,7 +51,7 @@ public class LawyerCourtDaoImpl extends HibernateDaoSupport implements LawyerCou
 		return this.getHibernateTemplate().find("from LawyerCourt c where c.lawyerCourt_pid ="+sec_id);
 	}
 	/**
-	 * ¸ù¾İid²éÕÒ·¨Ôº
+	 * æ ¹æ®idæŸ¥æ‰¾æ³•é™¢
 	 */
 	@SuppressWarnings("unchecked")
 	public LawyerCourt selectCourtByID(int courtid) throws Exception {
@@ -60,7 +60,7 @@ public class LawyerCourtDaoImpl extends HibernateDaoSupport implements LawyerCou
 	}
 	
 	/**
-	 * ¸ù¾İnumber²éÕÒ·¨Ôº
+	 * æ ¹æ®numberæŸ¥æ‰¾æ³•é™¢
 	 */
 	public LawyerCourt selectCourtByNumber(String courtnumber) throws Exception {
 		LawyerCourt lawyerCourt = new LawyerCourt();

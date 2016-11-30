@@ -28,7 +28,7 @@ public class UserTaskDaoImpl extends HibernateDaoSupport implements UserTaskDao 
 	@Override
 	public List<SysTask> selectUserTasks(final int currentPage,final SysTask task)
 			throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		final String nowdate = sdf.format(new Date());
 		
 		return this.getHibernateTemplate().executeFind(new HibernateCallback() {
@@ -55,7 +55,7 @@ public class UserTaskDaoImpl extends HibernateDaoSupport implements UserTaskDao 
 
 	@Override
 	public Object selectUserTaskPageSize(final SysTask task) throws Exception {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		final String nowdate = sdf.format(new Date());
 		
 		return this.getHibernateTemplate().execute(new HibernateCallback() {

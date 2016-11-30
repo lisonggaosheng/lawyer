@@ -56,7 +56,7 @@ public class ApplierinfoNetworkAction extends ActionSupport {
 	}
 
 	/**
-	 * ĞŞ¸Ä µÚÈı²½--ÍøÂç²¿·Ö
+	 * ä¿®æ”¹ ç¬¬ä¸‰æ­¥--ç½‘ç»œéƒ¨åˆ†
 	 * 
 	 */
 	public String update() {
@@ -71,7 +71,7 @@ public class ApplierinfoNetworkAction extends ActionSupport {
 	}
 	
 	/**
-	 * É¾³ı µÚÈı²½--ÍøÂç²¿·Ö
+	 * åˆ é™¤ ç¬¬ä¸‰æ­¥--ç½‘ç»œéƒ¨åˆ†
 	 * 
 	 */
 	public String delete() {
@@ -86,7 +86,7 @@ public class ApplierinfoNetworkAction extends ActionSupport {
 	}
 
 	/**
-	 * °¸Ô´µÚÈı²½--Ìí¼ÓÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢ --ÍøÂçĞÅÏ¢ ¹ùÖ¾Åô
+	 * æ¡ˆæºç¬¬ä¸‰æ­¥--æ·»åŠ ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯ --ç½‘ç»œä¿¡æ¯ éƒ­å¿—é¹
 	 * 
 	 * @return
 	 */
@@ -94,7 +94,7 @@ public class ApplierinfoNetworkAction extends ActionSupport {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			System.out.println("¿ªÊ¼Ìí¼ÓÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢--ÍøÂçĞÅÏ¢");
+			System.out.println("å¼€å§‹æ·»åŠ ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯--ç½‘ç»œä¿¡æ¯");
 			Users admin = (Users) session.getAttribute("admin");
 			applierinfoNetwork.setUsers(admin);
 			applierinfoNetwork.setAnSavetime(sdf.format(new Date()));
@@ -117,7 +117,7 @@ public class ApplierinfoNetworkAction extends ActionSupport {
 	}
 
 	/**
-	 * Åú´¦ÀíÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢£¨ÍøÂçĞÅÏ¢£©¡ª¡ª¹ùÖ¾Åô
+	 * æ‰¹å¤„ç†ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯ï¼ˆç½‘ç»œä¿¡æ¯ï¼‰â€”â€”éƒ­å¿—é¹
 	 * 
 	 * @return
 	 */
@@ -130,7 +130,7 @@ public class ApplierinfoNetworkAction extends ActionSupport {
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print("Åú´¦ÀíÊı¾İÍê³É£¡");
+			out.print("æ‰¹å¤„ç†æ•°æ®å®Œæˆï¼");
 			out.flush();
 			out.close();
 			return null;

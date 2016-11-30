@@ -13,27 +13,27 @@ import com.lawyer.service.UsersService;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LogAction extends ActionSupport{
-	//:·â×°µÄApply¶ÔÏóService½Ó¿Ú
+	//:å°è£…çš„Applyå¯¹è±¡Serviceæ¥å£
 	private ApplyService applyService;
-	//:·â×°µÄApply¶ÔÏó
+	//:å°è£…çš„Applyå¯¹è±¡
 	private Apply apply;
 	
-	//:·â×°µÄUsers·şÎñ²ã½Ó¿Ú
+	//:å°è£…çš„UsersæœåŠ¡å±‚æ¥å£
 	private UsersService usersService;
-	//:·â×°µÄÆÕÍ¨ÓÃ»§ÓÃUsers¶ÔÏó
+	//:å°è£…çš„æ™®é€šç”¨æˆ·ç”¨Userså¯¹è±¡
 	private Users users;
-	//:·â×°µÄ¹ÜÀíÔ±ÓÃUsers¶ÔÏó
+	//:å°è£…çš„ç®¡ç†å‘˜ç”¨Userså¯¹è±¡
 	private Users admin;
-	//:·â×°µÄLog·şÎñ²ã½Ó¿Ú
+	//:å°è£…çš„LogæœåŠ¡å±‚æ¥å£
 	private LogService logService;
-	//:·â×°µÄLog¶ÔÏó
+	//:å°è£…çš„Logå¯¹è±¡
 	private Log log;
 	
-	//:·â×°µÄList¶ÔÏó
+	//:å°è£…çš„Listå¯¹è±¡
 	private List list;
 	/**
-	 * Í¨ÓÃ·ÖÒ³·½·¨ËùÓÃ·â×°ÊôĞÔ
-	 * ÁõÌÚÉı
+	 * é€šç”¨åˆ†é¡µæ–¹æ³•æ‰€ç”¨å°è£…å±æ€§
+	 * åˆ˜è…¾å‡
 	 * */
 	private PageService pageService;
 	private PageBean pageBean;
@@ -105,23 +105,23 @@ public class LogAction extends ActionSupport{
 		this.page = page;
 	}
 	/**
-	 * ²éÑ¯ËùÓĞÓÃ»§ÈÕÖ¾¼ÇÂ¼£¬·ÖÒ³ÏÔÊ¾
-	 * ÁõÌÚÉı
+	 * æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·æ—¥å¿—è®°å½•ï¼Œåˆ†é¡µæ˜¾ç¤º
+	 * åˆ˜è…¾å‡
 	 * */
 	public String showUsersLog(){
 		try {
-			//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+			//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 			admin= usersService.SelectID(admin);
 			log=new Log();
 			log.setLogDate(logService.getDataTime());
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("²éÑ¯");
-			log.setLogTarget("ËùÓĞÓÃ»§²Ù×÷ĞÅÏ¢");
+			log.setLogContent("æŸ¥è¯¢");
+			log.setLogTarget("æ‰€æœ‰ç”¨æˆ·æ“ä½œä¿¡æ¯");
 			logService.insert(log);
 			
-			pageBean=pageService.queryForPage(5,page,"Log","logId","where logUrole = 'ÆÕÍ¨ÓÃ»§'");
+			pageBean=pageService.queryForPage(5,page,"Log","logId","where logUrole = 'æ™®é€šç”¨æˆ·'");
 			return "usersLog";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,11 +129,11 @@ public class LogAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Í¨¹ıÓÃ»§ÃûÃÔºı²éÑ¯ÓÃ»§ÈÕÖ¾¼ÇÂ¼
-	 * ÁõÌÚÉı
+	 * é€šè¿‡ç”¨æˆ·åè¿·ç³ŠæŸ¥è¯¢ç”¨æˆ·æ—¥å¿—è®°å½•
+	 * åˆ˜è…¾å‡
 	 * */
 	public String selectUsersName(){
-		//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+		//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 		try {
 			admin= usersService.SelectID(admin);
 			log=new Log();
@@ -141,8 +141,8 @@ public class LogAction extends ActionSupport{
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("Ä£ºı²éÑ¯");
-			log.setLogTarget("ÓÃ»§²Ù×÷ĞÅÏ¢");
+			log.setLogContent("æ¨¡ç³ŠæŸ¥è¯¢");
+			log.setLogTarget("ç”¨æˆ·æ“ä½œä¿¡æ¯");
 			logService.insert(log);
 			
 			list=logService.selectUsersName(users);
@@ -153,11 +153,11 @@ public class LogAction extends ActionSupport{
 		}
 	}
 	/**
-	 * ²éÑ¯ËùÓĞ¹ÜÀíÔ±ÈÕÖ¾¼ÇÂ¼£¬·ÖÒ³ÏÔÊ¾
-	 * ÁõÌÚÉı
+	 * æŸ¥è¯¢æ‰€æœ‰ç®¡ç†å‘˜æ—¥å¿—è®°å½•ï¼Œåˆ†é¡µæ˜¾ç¤º
+	 * åˆ˜è…¾å‡
 	 * */
 	public String showAdminLog(){
-		//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+		//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 		try {
 			admin= usersService.SelectID(admin);
 			log=new Log();
@@ -165,11 +165,11 @@ public class LogAction extends ActionSupport{
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("²éÑ¯");
-			log.setLogTarget("ËùÓĞ¹ÜÀíÔ±²Ù×÷ĞÅÏ¢");
+			log.setLogContent("æŸ¥è¯¢");
+			log.setLogTarget("æ‰€æœ‰ç®¡ç†å‘˜æ“ä½œä¿¡æ¯");
 			logService.insert(log);
 			
-			pageBean=pageService.queryForPage(5,page,"Log","logId","where logUrole = '¹ÜÀíÔ±'");
+			pageBean=pageService.queryForPage(5,page,"Log","logId","where logUrole = 'ç®¡ç†å‘˜'");
 			return "adminLog";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -177,11 +177,11 @@ public class LogAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Í¨¹ıÓÃ»§ÃûÃÔºı²éÑ¯ÓÃ»§ÈÕÖ¾¼ÇÂ¼
-	 * ÁõÌÚÉı
+	 * é€šè¿‡ç”¨æˆ·åè¿·ç³ŠæŸ¥è¯¢ç”¨æˆ·æ—¥å¿—è®°å½•
+	 * åˆ˜è…¾å‡
 	 * */
 	public String selectAdminName(){
-		//:¹ÜÀíÔ±²éÑ¯ËùÓĞÓÃ»§ÉêÇëĞÅÏ¢¼ÇÂ¼
+		//:ç®¡ç†å‘˜æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·ç”³è¯·ä¿¡æ¯è®°å½•
 		try {
 			admin= usersService.SelectID(admin);
 			log=new Log();
@@ -189,8 +189,8 @@ public class LogAction extends ActionSupport{
 			log.setLogUid(admin.getUId());
 			log.setLogUname(admin.getUName());
 			log.setLogUrole(admin.getURole());
-			log.setLogContent("Ä£ºı²éÑ¯");
-			log.setLogTarget("¹ÜÀíÔ±²Ù×÷ĞÅÏ¢");
+			log.setLogContent("æ¨¡ç³ŠæŸ¥è¯¢");
+			log.setLogTarget("ç®¡ç†å‘˜æ“ä½œä¿¡æ¯");
 			logService.insert(log);
 			
 			list=logService.selectUsersName2(users);

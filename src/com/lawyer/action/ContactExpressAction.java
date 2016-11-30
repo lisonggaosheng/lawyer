@@ -85,14 +85,14 @@ public class ContactExpressAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Ìí¼ÓÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢--¿ìµİ
-	 * ¹ùÖ¾Åô
+	 * æ·»åŠ ç”³è¯·æ‰§è¡Œäººè”ç³»ä¿¡æ¯--å¿«é€’
+	 * éƒ­å¿—é¹
 	 * @return
 	 */
 	public String insert(){
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
@@ -103,11 +103,11 @@ public class ContactExpressAction extends ActionSupport{
 			if(attachFileName != null){
 				attachFileName = df2.format(new Date())+attachFileName;
 				contactExpress.setCeAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\°¸Ô´ÎÄ¼ş¿â\\"+attachFileName));
+				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\æ¡ˆæºæ–‡ä»¶åº“\\"+attachFileName));
 				
 				String ftitle = contactExpress.getCeCasecodeself()+"-"+attachFileName;
 				file.setFTitle(ftitle);
-				file.setFType("°¸Ô´ÎÄ¼ş");
+				file.setFType("æ¡ˆæºæ–‡ä»¶");
 				file.setFilelibrary(this.filesService.loadById(6));
 				file.setFReldate(df1.format(new Date()));
 				file.setFAttach(attachFileName);

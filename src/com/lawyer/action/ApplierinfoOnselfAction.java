@@ -19,8 +19,8 @@ public class ApplierinfoOnselfAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private ApplierinfoOnself applierinfoOnself = null;
 	private ApplierinfoOnselfService applierinfoOnselfService = null;
-	private AddRecordService ars;		//record¶ÔÏóµÄserviceÀà
-	private Addrecord record = new Addrecord();			//·â×°Addrecord¶ÔÏó
+	private AddRecordService ars;		//recordå¯¹è±¡çš„serviceç±»
+	private Addrecord record = new Addrecord();			//å°è£…Addrecordå¯¹è±¡
 	private String caseId;
 	
 	public String getCaseId() {
@@ -56,15 +56,15 @@ public class ApplierinfoOnselfAction extends ActionSupport{
 	}
 	
 	/**
-	 * °¸Ô´µÚÈı²½--Ìí¼ÓÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢ --×ÔÓĞĞÅÏ¢
-	 * ¹ùÖ¾Åô
+	 * æ¡ˆæºç¬¬ä¸‰æ­¥--æ·»åŠ ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯ --è‡ªæœ‰ä¿¡æ¯
+	 * éƒ­å¿—é¹
 	 * @return
 	 */
 	public String insertAppOnself(){
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			System.out.println("¿ªÊ¼Ìí¼ÓÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢--ÍøÂçĞÅÏ¢");
+			System.out.println("å¼€å§‹æ·»åŠ ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯--ç½‘ç»œä¿¡æ¯");
 			Users admin=(Users) session.getAttribute("admin");
 			System.out.println(admin.getUId());
 			applierinfoOnself.setUsers(admin);

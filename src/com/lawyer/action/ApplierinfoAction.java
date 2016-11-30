@@ -40,13 +40,13 @@ public class ApplierinfoAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private Applierinfo applierinfo = null;
 	private ApplierinfoService appinfoService = null;
-	private AddRecordService ars;		//record¶ÔÏóµÄserviceÀà
-	private Addrecord record = new Addrecord();			//·â×°Addrecord¶ÔÏó
+	private AddRecordService ars;		//recordå¯¹è±¡çš„serviceç±»
+	private Addrecord record = new Addrecord();			//å°è£…Addrecordå¯¹è±¡
 	private List<Applierinfo> applierinfos;
 	
-	private File upd;// ÉÏ´«µÄÎÄ¼şÔÚ»º´æ
-	private String updFileName;// ÎÄ¼şÃû
-	private String updContentType;// ÎÄ¼şÀàĞÍ
+	private File upd;// ä¸Šä¼ çš„æ–‡ä»¶åœ¨ç¼“å­˜
+	private String updFileName;// æ–‡ä»¶å
+	private String updContentType;// æ–‡ä»¶ç±»å‹
 	
 	private String caseId;
 	
@@ -108,7 +108,7 @@ public class ApplierinfoAction extends ActionSupport{
 	}
 	
 	/*
-	 * excelµ¼Èë¸üĞÂÉêÇëÈËĞÅÏ¢
+	 * excelå¯¼å…¥æ›´æ–°ç”³è¯·äººä¿¡æ¯
 	 */
 	public String excelUpdateApplierinfo(){
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -122,15 +122,15 @@ public class ApplierinfoAction extends ActionSupport{
 				List<Applierinfo> dataList = new ArrayList<Applierinfo>();
 				
 				HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(path));
-				// ÔÚExcelÎÄµµÖĞ£¬µÚÒ»ÕÅ¹¤×÷±íµÄÈ±Ê¡Ë÷ÒıÊÇ0
+				// åœ¨Excelæ–‡æ¡£ä¸­ï¼Œç¬¬ä¸€å¼ å·¥ä½œè¡¨çš„ç¼ºçœç´¢å¼•æ˜¯0
 				HSSFSheet sheet = workbook.getSheetAt(0);
-				// »ñÈ¡µ½ExcelÎÄ¼şÖĞµÄËùÓĞĞĞÊı
+				// è·å–åˆ°Excelæ–‡ä»¶ä¸­çš„æ‰€æœ‰è¡Œæ•°
 				int rows = sheet.getPhysicalNumberOfRows();
-				// ±éÀúĞĞ
+				// éå†è¡Œ
 				for (int i = 1; i < rows; i++) {
 					HSSFRow row = sheet.getRow(i);
 					if (row != null) {
-						// »ñÈ¡µ½ExcelÎÄ¼şÖĞµÄËùÓĞµÄÁĞ
+						// è·å–åˆ°Excelæ–‡ä»¶ä¸­çš„æ‰€æœ‰çš„åˆ—
 //						int cells = row.getPhysicalNumberOfCells();
 						Applierinfo applierinfo = new Applierinfo();
 						
@@ -157,16 +157,16 @@ public class ApplierinfoAction extends ActionSupport{
 				}
 				
 				this.appinfoService.excelUpdateApplierinfo(dataList);
-				request.setAttribute("message","excelµ¼ÈëÉêÇëÈËĞÅÏ¢¸üĞÂ³É¹¦");
+				request.setAttribute("message","excelå¯¼å…¥ç”³è¯·äººä¿¡æ¯æ›´æ–°æˆåŠŸ");
 				return SUCCESS;
 			}else{
-				request.setAttribute("message","excelµ¼ÈëÉêÇëÈËĞÅÏ¢ÎÄ¼şÉÏ´«Ê§°Ü");
+				request.setAttribute("message","excelå¯¼å…¥ç”³è¯·äººä¿¡æ¯æ–‡ä»¶ä¸Šä¼ å¤±è´¥");
 				return SUCCESS;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-				request.setAttribute("message","excel¸üĞÂÉêÇëÈËĞÅÏ¢Ê§°Ü");
+				request.setAttribute("message","excelæ›´æ–°ç”³è¯·äººä¿¡æ¯å¤±è´¥");
 				return SUCCESS;
 			} catch (Exception e1) {
 				e1.printStackTrace();
@@ -176,7 +176,7 @@ public class ApplierinfoAction extends ActionSupport{
 	}
 	
 	/*
-	 * excelµ¼ÈëÉêÇëÈËĞÅÏ¢
+	 * excelå¯¼å…¥ç”³è¯·äººä¿¡æ¯
 	 */
 	public String excelInsertApplierinfo(){
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -194,14 +194,14 @@ public class ApplierinfoAction extends ActionSupport{
 				conn = DriverManager.getConnection(connectionString);
 				Statement stmt = conn.createStatement();
 				ResultSet  rs = stmt.executeQuery("select * from [sheet1$]");
-				// »ñÈ¡ÁĞÃû£¨cnName£©
-				// »ñÈ¡Êı¾İ
+				// è·å–åˆ—åï¼ˆcnNameï¼‰
+				// è·å–æ•°æ®
 				List<Applierinfo> dataList = new ArrayList<Applierinfo>();
 				while (rs.next()) {
-					String pname = rs.getString("±»Ö´ĞĞÈËÃû³Æ");
-					String casecode = rs.getString("Ö´ĞĞ°¸ºÅ");
-					String appName = rs.getString("ÉêÇëÈËÃû³Æ");
-					String appAddress = rs.getString("×¡Ëù");
+					String pname = rs.getString("è¢«æ‰§è¡Œäººåç§°");
+					String casecode = rs.getString("æ‰§è¡Œæ¡ˆå·");
+					String appName = rs.getString("ç”³è¯·äººåç§°");
+					String appAddress = rs.getString("ä½æ‰€");
 					
 					if(pname == null || pname.length() ==0){
 						break;
@@ -219,17 +219,17 @@ public class ApplierinfoAction extends ActionSupport{
 				}
 				this.appinfoService.excelInsertApplierinfo(dataList);
 				conn.close();
-				request.setAttribute("message","excelµ¼ÈëµÚÈı²½ĞÅÏ¢Ö´ĞĞ³É¹¦");
+				request.setAttribute("message","excelå¯¼å…¥ç¬¬ä¸‰æ­¥ä¿¡æ¯æ‰§è¡ŒæˆåŠŸ");
 				return SUCCESS;
 			}else{
-				request.setAttribute("message","excelµ¼ÈëµÚÈı²½ÎÄ¼şÉÏ´«Ê§°Ü");
+				request.setAttribute("message","excelå¯¼å…¥ç¬¬ä¸‰æ­¥æ–‡ä»¶ä¸Šä¼ å¤±è´¥");
 				return SUCCESS;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
 				conn.close(); 
-				request.setAttribute("message","excelµ¼ÈëµÚÈı²½Ö´ĞĞÊ§°Ü");
+				request.setAttribute("message","excelå¯¼å…¥ç¬¬ä¸‰æ­¥æ‰§è¡Œå¤±è´¥");
 				return SUCCESS;
 			} catch (Exception e1) {
 				e1.printStackTrace();
@@ -239,8 +239,8 @@ public class ApplierinfoAction extends ActionSupport{
 	}
 	
 	/**
-	 * °¸Ô´µÚÈı²½--Ìí¼ÓÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢ --×¢²áĞÅÏ¢
-	 * ¹ùÖ¾Åô
+	 * æ¡ˆæºç¬¬ä¸‰æ­¥--æ·»åŠ ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯ --æ³¨å†Œä¿¡æ¯
+	 * éƒ­å¿—é¹
 	 * @return
 	 */
 	public String insert(){
@@ -297,7 +297,7 @@ public class ApplierinfoAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Åú´¦ÀíÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢¡ª¡ª¹ùÖ¾Åô
+	 * æ‰¹å¤„ç†ç”³è¯·æ‰§è¡Œäººä¼ä¸šä¿¡æ¯â€”â€”éƒ­å¿—é¹
 	 * @return
 	 */
 	public String insertMore(){
@@ -309,7 +309,7 @@ public class ApplierinfoAction extends ActionSupport{
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print("Åú´¦ÀíÊı¾İÍê³É£¡");
+			out.print("æ‰¹å¤„ç†æ•°æ®å®Œæˆï¼");
 			out.flush();
 			out.close();
 			return null;

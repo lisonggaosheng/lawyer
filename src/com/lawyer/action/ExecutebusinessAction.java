@@ -33,10 +33,10 @@ public class ExecutebusinessAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private Executebusiness  executebus;
 	private ExecutebusinessService  executebusService;
-	private AddRecordService ars;		//record¶ÔÏóµÄserviceÀà
-	private File upd;// ÉÏ´«µÄÎÄ¼şÔÚ»º´æ
-	private String updFileName;// ÎÄ¼şÃû
-	private String updContentType;// ÎÄ¼şÀàĞÍ
+	private AddRecordService ars;		//recordå¯¹è±¡çš„serviceç±»
+	private File upd;// ä¸Šä¼ çš„æ–‡ä»¶åœ¨ç¼“å­˜
+	private String updFileName;// æ–‡ä»¶å
+	private String updContentType;// æ–‡ä»¶ç±»å‹
 	List<Executebusiness> businlist;
 	String caseId;
 	private String message;
@@ -97,7 +97,7 @@ public class ExecutebusinessAction extends ActionSupport{
 	}
 	
 	/*
-	 * excelµ¼Èë±»Ö´ĞĞÈËĞÅÏ¢
+	 * excelå¯¼å…¥è¢«æ‰§è¡Œäººä¿¡æ¯
 	 */
 	public String excelInsertExecutebusiness(){
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -115,14 +115,14 @@ public class ExecutebusinessAction extends ActionSupport{
 				conn = DriverManager.getConnection(connectionString);
 				Statement stmt = conn.createStatement();
 				ResultSet  rs = stmt.executeQuery("select * from [sheet1$]");
-				// »ñÈ¡ÁĞÃû£¨cnName£©
-				// »ñÈ¡Êı¾İ
+				// è·å–åˆ—åï¼ˆcnNameï¼‰
+				// è·å–æ•°æ®
 				List<Executebusiness> dataList = new ArrayList<Executebusiness>();
 				while (rs.next()) {
-					String pname = rs.getString("Ãû³Æ");
-					String address = rs.getString("×¡Ëù");
-					String status = rs.getString("ÆóÒµ×´Ì¬");
-					String exception = rs.getString("¾­ÓªÒì³£ÃûÂ¼");
+					String pname = rs.getString("åç§°");
+					String address = rs.getString("ä½æ‰€");
+					String status = rs.getString("ä¼ä¸šçŠ¶æ€");
+					String exception = rs.getString("ç»è¥å¼‚å¸¸åå½•");
 					
 					Executebusiness executebusiness = new Executebusiness();
 					executebusiness.setEName(pname);
@@ -136,17 +136,17 @@ public class ExecutebusinessAction extends ActionSupport{
 				}
 				this.executebusService.excelInsertExecutebusiness(dataList);
 				conn.close();
-				request.setAttribute("message","excelµ¼ÈëµÚ¶ş²½ĞÅÏ¢Ö´ĞĞ³É¹¦");
+				request.setAttribute("message","excelå¯¼å…¥ç¬¬äºŒæ­¥ä¿¡æ¯æ‰§è¡ŒæˆåŠŸ");
 				return SUCCESS;
 			}else{
-				request.setAttribute("message","excelµ¼ÈëµÚ¶ş²½ÎÄ¼şÉÏ´«Ê§°Ü");
+				request.setAttribute("message","excelå¯¼å…¥ç¬¬äºŒæ­¥æ–‡ä»¶ä¸Šä¼ å¤±è´¥");
 				return SUCCESS;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
 				conn.close(); 
-				request.setAttribute("message","excelµ¼ÈëµÚ¶ş²½Ö´ĞĞÊ§°Ü");
+				request.setAttribute("message","excelå¯¼å…¥ç¬¬äºŒæ­¥æ‰§è¡Œå¤±è´¥");
 				return SUCCESS;
 			} catch (Exception e1) {
 				e1.printStackTrace();
@@ -171,12 +171,12 @@ public class ExecutebusinessAction extends ActionSupport{
 				Statement stmt = conn.createStatement();
 				ResultSet  rs = stmt.executeQuery("select * from [sheet1$]");
 			//	ResultSet  rs = stmt.executeQuery("select * from [abc$]");
-				// »ñÈ¡ÁĞÃû£¨cnName£©
-				// »ñÈ¡Êı¾İ
+				// è·å–åˆ—åï¼ˆcnNameï¼‰
+				// è·å–æ•°æ®
 				List<Executebusiness> dataList = new ArrayList<Executebusiness>();
 				while (rs.next()) {
-					String eName = rs.getString("ÆóÒµÃû³Æ");
-					String eStatus = rs.getString("ÆóÒµ×´Ì¬");
+					String eName = rs.getString("ä¼ä¸šåç§°");
+					String eStatus = rs.getString("ä¼ä¸šçŠ¶æ€");
 					Executebusiness exb = new Executebusiness();
 					exb.setEName(eName);
 					exb.setEStatus(eStatus);
@@ -184,23 +184,23 @@ public class ExecutebusinessAction extends ActionSupport{
 				}
 				this.executebusService.Executebusiness(dataList);
 				conn.close();
-				message = "excelµ¼ÈëÖ´ĞĞ³É¹¦";
+				message = "excelå¯¼å…¥æ‰§è¡ŒæˆåŠŸ";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
 				conn.close(); 
 			} catch (SQLException e1) {
-				message = "excelµ¼ÈëÖ´ĞĞ´íÎó";
+				message = "excelå¯¼å…¥æ‰§è¡Œé”™è¯¯";
 				e1.printStackTrace();
 			}
-			message = "excelµ¼ÈëÖ´ĞĞ´íÎó";
+			message = "excelå¯¼å…¥æ‰§è¡Œé”™è¯¯";
 		}
 		return SUCCESS;
 	}
 	
 	/**
-	 * »ñÈ¡Êı¾İ¿âÁ´½Ó
+	 * è·å–æ•°æ®åº“é“¾æ¥
 	 * 
 	 * @return
 	 */
@@ -213,7 +213,7 @@ public class ExecutebusinessAction extends ActionSupport{
 	
 	
 	/**
-	 * Åú´¦ÀíÖ´ĞĞÈËÆóÒµĞÅÏ¢¡ª¡ª¹ùÖ¾Åô
+	 * æ‰¹å¤„ç†æ‰§è¡Œäººä¼ä¸šä¿¡æ¯â€”â€”éƒ­å¿—é¹
 	 * @return
 	 */
 	public String insertMore(){
@@ -225,7 +225,7 @@ public class ExecutebusinessAction extends ActionSupport{
 			HttpServletResponse response = ServletActionContext.getResponse();
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.print("Åú´¦ÀíÊı¾İÍê³É£¡");
+			out.print("æ‰¹å¤„ç†æ•°æ®å®Œæˆï¼");
 			out.flush();
 			out.close();
 			return null;
@@ -235,7 +235,7 @@ public class ExecutebusinessAction extends ActionSupport{
 		}
 	}
 	/*
-	 * Ìí¼Ó±»Ö´ĞĞÈËÆóÒµĞÅÏ¢	ÕÅÀÚ
+	 * æ·»åŠ è¢«æ‰§è¡Œäººä¼ä¸šä¿¡æ¯	å¼ ç£Š
 	 * 
 	 */
 	public String insertStep2(){
@@ -278,19 +278,6 @@ public class ExecutebusinessAction extends ActionSupport{
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

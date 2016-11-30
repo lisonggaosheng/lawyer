@@ -99,13 +99,13 @@ public class FilesAction extends ActionSupport {
 	public String selectFile() {
 		HttpServletRequest req=ServletActionContext.getRequest();	
 		files1.setFilelibrary(this.filesService.loadById(files1.getFId()));
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		if(("").equals(starttime)){
-			starttime = "1900Äê01ÔÂ01ÈÕ";
+			starttime = "1900å¹´01æœˆ01æ—¥";
 		}
 		if(("").equals(endtime)){
-			endtime = "2100Äê12ÔÂ30ÈÕ";
+			endtime = "2100å¹´12æœˆ30æ—¥";
 		}
 		 Date resultDate;
 		try {
@@ -131,7 +131,7 @@ public class FilesAction extends ActionSupport {
 		
 	}
 	public String updateInput(){
-		System.out.println(fid+"ĞÅÏ¢ĞÅÏ¢ÏÂ");
+		System.out.println(fid+"ä¿¡æ¯ä¿¡æ¯ä¸‹");
 		files1=this.filesService.filesById(fid);
 		return SUCCESS;
 	}
@@ -145,10 +145,10 @@ public class FilesAction extends ActionSupport {
 		return SUCCESS;
 	}
 	/*
-	 * ÎÄ¼şÉÏ´«
+	 * æ–‡ä»¶ä¸Šä¼ 
 	 */
 	public String add() {
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMdd");
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		Users user=(Users) session.getAttribute("admin");
@@ -204,7 +204,7 @@ public class FilesAction extends ActionSupport {
 	}
 
 	/*
-	 * ÎÄ¼şÏÂÔØ
+	 * æ–‡ä»¶ä¸‹è½½
 	 */
 
 	public String getFileName() {

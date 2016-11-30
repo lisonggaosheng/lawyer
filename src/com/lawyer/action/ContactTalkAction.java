@@ -97,29 +97,29 @@ public class ContactTalkAction extends ActionSupport{
 		}
 	}
 	/**
-	 * Ìí¼ÓÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢--¿ìµİ
-	 * ¹ùÖ¾Åô
+	 * æ·»åŠ ç”³è¯·æ‰§è¡Œäººè”ç³»ä¿¡æ¯--å¿«é€’
+	 * éƒ­å¿—é¹
 	 * @return
 	 */
 	public String insert(){
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
-			System.out.println("¿ªÊ¼Ìí¼ÓÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢--¿ìµİ");
+			System.out.println("å¼€å§‹æ·»åŠ ç”³è¯·æ‰§è¡Œäººè”ç³»ä¿¡æ¯--å¿«é€’");
 			Users admin=(Users) session.getAttribute("admin");
 			contactTalk.setUsers(admin);
 			contactTalk.setCtSavetime(sdf.format(new Date()));
 			if(attachFileName != null){	
 				attachFileName = df2.format(new Date())+attachFileName;
 				contactTalk.setCtAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\°¸Ô´ÎÄ¼ş¿â\\"+attachFileName));
+				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\æ¡ˆæºæ–‡ä»¶åº“\\"+attachFileName));
 			
 				String ftitle = contactTalk.getCtCasecodeself()+"-"+attachFileName;
 				file.setFTitle(ftitle);
-				file.setFType("°¸Ô´ÎÄ¼ş");
+				file.setFType("æ¡ˆæºæ–‡ä»¶");
 				file.setFilelibrary(this.filesService.loadById(6));
 				file.setFReldate(df1.format(new Date()));
 				file.setFAttach(attachFileName);

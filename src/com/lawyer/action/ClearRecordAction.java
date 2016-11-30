@@ -201,14 +201,14 @@ public class ClearRecordAction extends ActionSupport {
 	}
 
 	/*
-	 * ÕÅÀÚ´òÓ¡
+	 * å¼ ç£Šæ‰“å°
 	 */
 
 	public String daYinClearRecord() throws Exception {
 		List<ContractSign> contractsignlist = new ArrayList<ContractSign>();
 		List<Object[]> listdayin = new ArrayList<Object[]>();
-		listdayin.add(new Object[] { "´òÓ¡µÄ°¸¼şĞÅÏ¢" });
-		// ´«µ½Ò³Ãæ´òÓ¡
+		listdayin.add(new Object[] { "æ‰“å°çš„æ¡ˆä»¶ä¿¡æ¯" });
+		// ä¼ åˆ°é¡µé¢æ‰“å°
 		Map<String, Object> request = ActionContext.getContext()
 				.getContextMap();
 		String basePath = ServletActionContext.getServletContext().getRealPath(
@@ -229,66 +229,66 @@ public class ClearRecordAction extends ActionSupport {
 				ContractSign contractsign = crs
 						.DaYinContractSign(contractsigns[i].trim());
 				ContractSign sign = new ContractSign();
-				sign.setCsCasecodeself("°¸¼ş±àºÅ£º"
+				sign.setCsCasecodeself("æ¡ˆä»¶ç¼–å·ï¼š"
 						+ contractsign.getCsCasecodeself());
-				listdayin.add(new Object[] { "°¸¼ş±àºÅ:",
+				listdayin.add(new Object[] { "æ¡ˆä»¶ç¼–å·:",
 						contractsign.getCsCasecodeself() });
 
 				int ob = 0;
 				if (adayin != null && adayin.length > 0) {
-					listdayin.add(new Object[] { "Ç©Ô¼ĞÅÏ¢" });
+					listdayin.add(new Object[] { "ç­¾çº¦ä¿¡æ¯" });
 					Object[] obja = new Object[10];
 					for (int a = 0; a < adayin.length; a++) {
 						if (adayin[a].equals("1")) {
-							sign.setCsNo("Ç©Ô¼ºÅ£º" + contractsign.getCsNo());
-							obja[ob] = "Ç©Ô¼ºÅ£º";
+							sign.setCsNo("ç­¾çº¦å·ï¼š" + contractsign.getCsNo());
+							obja[ob] = "ç­¾çº¦å·ï¼š";
 							ob++;
 							obja[ob] = contractsign.getCsNo();
 							if ("".equals(contractsign.getCsNo())) {
-								obja[ob] = "Î´ÌîĞ´";
+								obja[ob] = "æœªå¡«å†™";
 							}
 							ob++;
 
 						}
 
 						if (adayin[a].equals("2")) {
-							sign.setCsAle("Ç©Ô¼±ÈÀı£º" + contractsign.getCsAle());
-							obja[ob] = "Ç©Ô¼±ÈÀı£º";
+							sign.setCsAle("ç­¾çº¦æ¯”ä¾‹ï¼š" + contractsign.getCsAle());
+							obja[ob] = "ç­¾çº¦æ¯”ä¾‹ï¼š";
 							ob++;
 							obja[ob] = contractsign.getCsAle();
 							if ("".equals(contractsign.getCsAle())) {
-								obja[ob] = "Î´ÌîĞ´";
+								obja[ob] = "æœªå¡«å†™";
 							}
 							ob++;
 						}
 						if (adayin[a].equals("3")) {
-							sign.setCsName("¶Ô·½ÁªÏµÈËÃû³Æ£º"
+							sign.setCsName("å¯¹æ–¹è”ç³»äººåç§°ï¼š"
 									+ contractsign.getCsName());
-							obja[ob] = "¶Ô·½ÁªÏµÈËÃû³Æ£º";
+							obja[ob] = "å¯¹æ–¹è”ç³»äººåç§°ï¼š";
 							ob++;
 							obja[ob] = contractsign.getCsName();
 							if ("".equals(contractsign.getCsName())) {
-								obja[ob] = "Î´ÌîĞ´";
+								obja[ob] = "æœªå¡«å†™";
 							}
 							ob++;
 						}
 						if (adayin[a].equals("4")) {
-							sign.setCsTel("µç»°£º" + contractsign.getCsTel());
-							obja[ob] = "µç»°£º";
+							sign.setCsTel("ç”µè¯ï¼š" + contractsign.getCsTel());
+							obja[ob] = "ç”µè¯ï¼š";
 							ob++;
 							obja[ob] = contractsign.getCsTel();
 							if ("".equals(contractsign.getCsTel())) {
-								obja[ob] = "Î´ÌîĞ´";
+								obja[ob] = "æœªå¡«å†™";
 							}
 							ob++;
 						}
 						if (adayin[a].equals("5")) {
-							sign.setCsDate("Ç©Ô¼Ê±¼ä£º" + contractsign.getCsDate());
-							obja[ob] = "Ç©Ô¼Ê±¼ä£º";
+							sign.setCsDate("ç­¾çº¦æ—¶é—´ï¼š" + contractsign.getCsDate());
+							obja[ob] = "ç­¾çº¦æ—¶é—´ï¼š";
 							ob++;
 							obja[ob] = contractsign.getCsDate();
 							if ("".equals(contractsign.getCsDate())) {
-								obja[ob] = "Î´ÌîĞ´";
+								obja[ob] = "æœªå¡«å†™";
 							}
 							ob++;
 						}
@@ -305,7 +305,7 @@ public class ClearRecordAction extends ActionSupport {
 					List<ClearRecord> clearcecords = crs
 							.DaYinClearRecord(contractsigns[i].trim());
 					List<ClearRecord> clares = new ArrayList<ClearRecord>();
-					listdayin.add(new Object[] { "ÇåËãÁ¢°¸" });
+					listdayin.add(new Object[] { "æ¸…ç®—ç«‹æ¡ˆ" });
 					Object[] obja = null;
 					ClearRecord clare = null;
 					if (clearcecords.size() < 1) {
@@ -318,20 +318,20 @@ public class ClearRecordAction extends ActionSupport {
 						for (int a = 0; a < bdayin.length; a++) {
 							if (bdayin[a].equals("1")) {
 								if (clearcecord.getCrnumber() != null) {
-									clare.setCrnumber("Á¢°¸°¸ºÅ£º"
+									clare.setCrnumber("ç«‹æ¡ˆæ¡ˆå·ï¼š"
 											+ clearcecord.getCrnumber());
-									obja[ob] = "Á¢°¸°¸ºÅ£º";
+									obja[ob] = "ç«‹æ¡ˆæ¡ˆå·ï¼š";
 									ob++;
 									obja[ob] = clearcecord.getCrnumber();
 									if ("".equals(clearcecord.getCrnumber())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clare.setCrnumber("Á¢°¸°¸ºÅ£ºÎ´ÌîĞ´");
-									obja[ob] = "Á¢°¸°¸ºÅ£º";
+									clare.setCrnumber("ç«‹æ¡ˆæ¡ˆå·ï¼šæœªå¡«å†™");
+									obja[ob] = "ç«‹æ¡ˆæ¡ˆå·ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
@@ -339,41 +339,41 @@ public class ClearRecordAction extends ActionSupport {
 
 							if (bdayin[a].equals("2")) {
 								if (clearcecord.getCrcontactjudge() != null) {
-									clare.setCrcontactjudge("ÁªÏµ·¨¹Ù£º"
+									clare.setCrcontactjudge("è”ç³»æ³•å®˜ï¼š"
 											+ clearcecord.getCrcontactjudge());
-									obja[ob] = "ÁªÏµ·¨¹Ù£º";
+									obja[ob] = "è”ç³»æ³•å®˜ï¼š";
 									ob++;
 									obja[ob] = clearcecord.getCrcontactjudge();
 									if ("".equals(clearcecord
 											.getCrcontactjudge())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clare.setCrcontactjudge("ÁªÏµ·¨¹Ù£ºÎ´ÌîĞ´");
-									obja[ob] = "ÁªÏµ·¨¹Ù£º";
+									clare.setCrcontactjudge("è”ç³»æ³•å®˜ï¼šæœªå¡«å†™");
+									obja[ob] = "è”ç³»æ³•å®˜ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
 							}
 							if (bdayin[a].equals("3")) {
 								if (clearcecord.getCrcontacttel() != null) {
-									clare.setCrcontacttel("·¨¹Ùµç»°£º"
+									clare.setCrcontacttel("æ³•å®˜ç”µè¯ï¼š"
 											+ clearcecord.getCrcontacttel());
-									obja[ob] = "·¨¹Ùµç»°£º";
+									obja[ob] = "æ³•å®˜ç”µè¯ï¼š";
 									ob++;
 									obja[ob] = clearcecord.getCrcontacttel();
 									if ("".equals(clearcecord.getCrcontacttel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clare.setCrcontacttel("·¨¹Ùµç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "·¨¹Ùµç»°£º";
+									clare.setCrcontacttel("æ³•å®˜ç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "æ³•å®˜ç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -381,20 +381,20 @@ public class ClearRecordAction extends ActionSupport {
 							}
 							if (bdayin[a].equals("4")) {
 								if (clearcecord.getCrlawname() != null) {
-									clare.setCrlawname("³Ğ°ìÂÉÊ¦£º"
+									clare.setCrlawname("æ‰¿åŠå¾‹å¸ˆï¼š"
 											+ clearcecord.getCrlawname());
-									obja[ob] = "³Ğ°ìÂÉÊ¦£º";
+									obja[ob] = "æ‰¿åŠå¾‹å¸ˆï¼š";
 									ob++;
 									obja[ob] = clearcecord.getCrlawname();
 									if ("".equals(clearcecord.getCrlawname())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clare.setCrlawname("³Ğ°ìÂÉÊ¦£ºÎ´ÌîĞ´");
-									obja[ob] = "³Ğ°ìÂÉÊ¦£º";
+									clare.setCrlawname("æ‰¿åŠå¾‹å¸ˆï¼šæœªå¡«å†™");
+									obja[ob] = "æ‰¿åŠå¾‹å¸ˆï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -403,20 +403,20 @@ public class ClearRecordAction extends ActionSupport {
 							if (bdayin[a].equals("5")) {
 
 								if (clearcecord.getCrlawtel() != null) {
-									clare.setCrlawname("ÂÉÊ¦µç»°£º"
+									clare.setCrlawname("å¾‹å¸ˆç”µè¯ï¼š"
 											+ clearcecord.getCrlawtel());
-									obja[ob] = "ÂÉÊ¦µç»°£º";
+									obja[ob] = "å¾‹å¸ˆç”µè¯ï¼š";
 									ob++;
 									obja[ob] = clearcecord.getCrlawtel();
 									if ("".equals(clearcecord.getCrlawtel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clare.setCrlawname("ÂÉÊ¦µç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "ÂÉÊ¦µç»°£º";
+									clare.setCrlawname("å¾‹å¸ˆç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "å¾‹å¸ˆç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -426,22 +426,22 @@ public class ClearRecordAction extends ActionSupport {
 							if (bdayin[a].equals("6")) {
 
 								if (clearcecord.getCrfollowupresult() != null) {
-									clare.setCrfollowupresult("°¸¼ş½øÕ¹£º"
+									clare.setCrfollowupresult("æ¡ˆä»¶è¿›å±•ï¼š"
 											+ clearcecord.getCrfollowupresult());
-									obja[ob] = "°¸¼ş½øÕ¹£º";
+									obja[ob] = "æ¡ˆä»¶è¿›å±•ï¼š";
 									ob++;
 									obja[ob] = clearcecord
 											.getCrfollowupresult();
 									if ("".equals(clearcecord
 											.getCrfollowupresult())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clare.setCrfollowupresult("°¸¼ş½øÕ¹£ºÎ´ÌîĞ´");
-									obja[ob] = "°¸¼ş½øÕ¹£º";
+									clare.setCrfollowupresult("æ¡ˆä»¶è¿›å±•ï¼šæœªå¡«å†™");
+									obja[ob] = "æ¡ˆä»¶è¿›å±•ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -449,20 +449,20 @@ public class ClearRecordAction extends ActionSupport {
 							}
 							if (bdayin[a].equals("7")) {
 								if (clearcecord.getCrdate() != null) {
-									clare.setCrdate(" ²ÄÁÏµİ½»Ê±¼ä£º"
+									clare.setCrdate(" ææ–™é€’äº¤æ—¶é—´ï¼š"
 											+ clearcecord.getCrdate());
-									obja[ob] = "²ÄÁÏµİ½»Ê±¼ä£º";
+									obja[ob] = "ææ–™é€’äº¤æ—¶é—´ï¼š";
 									ob++;
 									obja[ob] = clearcecord.getCrdate();
 									if ("".equals(clearcecord.getCrdate())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clare.setCrdate(" ²ÄÁÏµİ½»Ê±¼ä£ºÎ´ÌîĞ´");
-									obja[ob] = "²ÄÁÏµİ½»Ê±¼ä£º";
+									clare.setCrdate(" ææ–™é€’äº¤æ—¶é—´ï¼šæœªå¡«å†™");
+									obja[ob] = "ææ–™é€’äº¤æ—¶é—´ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
@@ -492,7 +492,7 @@ public class ClearRecordAction extends ActionSupport {
 							.DaYinClearClear(contractsigns[i].trim());
 					List<ClearClear> clears = new ArrayList<ClearClear>();
 					ClearClear clear = null;
-					listdayin.add(new Object[] { "ÇåËã½áÊø" });
+					listdayin.add(new Object[] { "æ¸…ç®—ç»“æŸ" });
 					Object[] obja = null;
 
 					if (clearclares.size() < 1) {
@@ -505,20 +505,20 @@ public class ClearRecordAction extends ActionSupport {
 						for (int a = 0; a < cdayin.length; a++) {
 							if (cdayin[a].equals("1")) {
 								if (clearclare.getCcnumber() != null) {
-									clear.setCcnumber("Á¢°¸°¸ºÅ£º"
+									clear.setCcnumber("ç«‹æ¡ˆæ¡ˆå·ï¼š"
 											+ clearclare.getCcnumber());
-									obja[ob] = "Á¢°¸°¸ºÅ£º";
+									obja[ob] = "ç«‹æ¡ˆæ¡ˆå·ï¼š";
 									ob++;
 									obja[ob] = clearclare.getCcnumber();
 									if ("".equals(clearclare.getCcnumber())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clear.setCcnumber("Á¢°¸°¸ºÅ£ºÎ´ÌîĞ´");
-									obja[ob] = "Á¢°¸°¸ºÅ£º";
+									clear.setCcnumber("ç«‹æ¡ˆæ¡ˆå·ï¼šæœªå¡«å†™");
+									obja[ob] = "ç«‹æ¡ˆæ¡ˆå·ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
@@ -526,40 +526,40 @@ public class ClearRecordAction extends ActionSupport {
 
 							if (cdayin[a].equals("2")) {
 								if (clearclare.getCcjudge() != null) {
-									clear.setCcjudge("³Ğ°ì·¨¹Ù£º"
+									clear.setCcjudge("æ‰¿åŠæ³•å®˜ï¼š"
 											+ clearclare.getCcjudge());
-									obja[ob] = "³Ğ°ì·¨¹Ù£º";
+									obja[ob] = "æ‰¿åŠæ³•å®˜ï¼š";
 									ob++;
 									obja[ob] = clearclare.getCcjudge();
 									if ("".equals(clearclare.getCcjudge())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clear.setCcjudge("³Ğ°ì·¨¹Ù£ºÎ´ÌîĞ´");
-									obja[ob] = "³Ğ°ì·¨¹Ù£º";
+									clear.setCcjudge("æ‰¿åŠæ³•å®˜ï¼šæœªå¡«å†™");
+									obja[ob] = "æ‰¿åŠæ³•å®˜ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
 							}
 							if (cdayin[a].equals("3")) {
 								if (clearclare.getCcjudgetel() != null) {
-									clear.setCcjudgetel("·¨¹Ùµç»°£º"
+									clear.setCcjudgetel("æ³•å®˜ç”µè¯ï¼š"
 											+ clearclare.getCcjudgetel());
-									obja[ob] = "·¨¹Ùµç»°£º";
+									obja[ob] = "æ³•å®˜ç”µè¯ï¼š";
 									ob++;
 									obja[ob] = clearclare.getCcjudgetel();
 									if ("".equals(clearclare.getCcjudgetel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clear.setCcjudgetel("·¨¹Ùµç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "·¨¹Ùµç»°£º";
+									clear.setCcjudgetel("æ³•å®˜ç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "æ³•å®˜ç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -567,20 +567,20 @@ public class ClearRecordAction extends ActionSupport {
 							}
 							if (cdayin[a].equals("4")) {
 								if (clearclare.getCclawname() != null) {
-									clear.setCclawname("³Ğ°ìÂÉÊ¦£º"
+									clear.setCclawname("æ‰¿åŠå¾‹å¸ˆï¼š"
 											+ clearclare.getCclawname());
-									obja[ob] = "³Ğ°ìÂÉÊ¦£º";
+									obja[ob] = "æ‰¿åŠå¾‹å¸ˆï¼š";
 									ob++;
 									obja[ob] = clearclare.getCclawname();
 									if ("".equals(clearclare.getCclawname())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clear.setCclawname("³Ğ°ìÂÉÊ¦£ºÎ´ÌîĞ´");
-									obja[ob] = "³Ğ°ìÂÉÊ¦£º";
+									clear.setCclawname("æ‰¿åŠå¾‹å¸ˆï¼šæœªå¡«å†™");
+									obja[ob] = "æ‰¿åŠå¾‹å¸ˆï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -589,20 +589,20 @@ public class ClearRecordAction extends ActionSupport {
 							if (cdayin[a].equals("5")) {
 
 								if (clearclare.getCclawnametel() != null) {
-									clear.setCclawnametel("ÂÉÊ¦µç»°£º"
+									clear.setCclawnametel("å¾‹å¸ˆç”µè¯ï¼š"
 											+ clearclare.getCclawnametel());
-									obja[ob] = "ÂÉÊ¦µç»°£º";
+									obja[ob] = "å¾‹å¸ˆç”µè¯ï¼š";
 									ob++;
 									obja[ob] = clearclare.getCclawnametel();
 									if ("".equals(clearclare.getCclawnametel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clear.setCclawnametel("ÂÉÊ¦µç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "ÂÉÊ¦µç»°£º";
+									clear.setCclawnametel("å¾‹å¸ˆç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "å¾‹å¸ˆç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -612,21 +612,21 @@ public class ClearRecordAction extends ActionSupport {
 							if (cdayin[a].equals("6")) {
 
 								if (clearclare.getCcfollowupresult() != null) {
-									clear.setCcfollowupresult("°¸¼ş½øÕ¹£º"
+									clear.setCcfollowupresult("æ¡ˆä»¶è¿›å±•ï¼š"
 											+ clearclare.getCcfollowupresult());
-									obja[ob] = "°¸¼ş½øÕ¹£º";
+									obja[ob] = "æ¡ˆä»¶è¿›å±•ï¼š";
 									ob++;
 									obja[ob] = clearclare.getCcfollowupresult();
 									if ("".equals(clearclare
 											.getCcfollowupresult())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									clear.setCcfollowupresult("°¸¼ş½øÕ¹£ºÎ´ÌîĞ´");
-									obja[ob] = "°¸¼ş½øÕ¹£º";
+									clear.setCcfollowupresult("æ¡ˆä»¶è¿›å±•ï¼šæœªå¡«å†™");
+									obja[ob] = "æ¡ˆä»¶è¿›å±•ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -656,7 +656,7 @@ public class ClearRecordAction extends ActionSupport {
 					List<Litigation> litigations = crs
 							.DaYinLitigation(contractsigns[i].trim());
 					Litigation liti = null;
-					listdayin.add(new Object[] { "ËßËÏĞÅÏ¢" });
+					listdayin.add(new Object[] { "è¯‰è®¼ä¿¡æ¯" });
 					Object[] obja = null;
 					List<Litigation> litis = new ArrayList<Litigation>();
 					if (litigations.size() < 1) {
@@ -670,20 +670,20 @@ public class ClearRecordAction extends ActionSupport {
 
 							if (ddayin[a].equals("1")) {
 								if (litigation.getLinumber() != null) {
-									liti.setLinumber("Á¢°¸°¸ºÅ£º"
+									liti.setLinumber("ç«‹æ¡ˆæ¡ˆå·ï¼š"
 											+ litigation.getLinumber());
-									obja[ob] = "Á¢°¸°¸ºÅ£º";
+									obja[ob] = "ç«‹æ¡ˆæ¡ˆå·ï¼š";
 									ob++;
 									obja[ob] = litigation.getLinumber();
 									if ("".equals(litigation.getLinumber())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									liti.setLinumber("Á¢°¸°¸ºÅ£ºÎ´ÌîĞ´");
-									obja[ob] = "Á¢°¸°¸ºÅ£º";
+									liti.setLinumber("ç«‹æ¡ˆæ¡ˆå·ï¼šæœªå¡«å†™");
+									obja[ob] = "ç«‹æ¡ˆæ¡ˆå·ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
@@ -691,40 +691,40 @@ public class ClearRecordAction extends ActionSupport {
 
 							if (ddayin[a].equals("2")) {
 								if (litigation.getLijudge() != null) {
-									liti.setLijudge("³Ğ°ì·¨¹Ù£º"
+									liti.setLijudge("æ‰¿åŠæ³•å®˜ï¼š"
 											+ litigation.getLijudge());
-									obja[ob] = "³Ğ°ì·¨¹Ù£º";
+									obja[ob] = "æ‰¿åŠæ³•å®˜ï¼š";
 									ob++;
 									obja[ob] = litigation.getLijudge();
 									if ("".equals(litigation.getLijudge())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									liti.setLijudge("³Ğ°ì·¨¹Ù£ºÎ´ÌîĞ´");
-									obja[ob] = "³Ğ°ì·¨¹Ù£º";
+									liti.setLijudge("æ‰¿åŠæ³•å®˜ï¼šæœªå¡«å†™");
+									obja[ob] = "æ‰¿åŠæ³•å®˜ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
 							}
 							if (ddayin[a].equals("3")) {
 								if (litigation.getLijudgetel() != null) {
-									liti.setLijudgetel("·¨¹Ùµç»°£º"
+									liti.setLijudgetel("æ³•å®˜ç”µè¯ï¼š"
 											+ litigation.getLijudgetel());
-									obja[ob] = "·¨¹Ùµç»°£º";
+									obja[ob] = "æ³•å®˜ç”µè¯ï¼š";
 									ob++;
 									obja[ob] = litigation.getLijudgetel();
 									if ("".equals(litigation.getLijudgetel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									liti.setLijudgetel("·¨¹Ùµç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "·¨¹Ùµç»°£º";
+									liti.setLijudgetel("æ³•å®˜ç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "æ³•å®˜ç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -732,20 +732,20 @@ public class ClearRecordAction extends ActionSupport {
 							}
 							if (ddayin[a].equals("4")) {
 								if (litigation.getLilawname() != null) {
-									liti.setLilawname("³Ğ°ìÂÉÊ¦£º"
+									liti.setLilawname("æ‰¿åŠå¾‹å¸ˆï¼š"
 											+ litigation.getLilawname());
-									obja[ob] = "³Ğ°ìÂÉÊ¦£º";
+									obja[ob] = "æ‰¿åŠå¾‹å¸ˆï¼š";
 									ob++;
 									obja[ob] = litigation.getLilawname();
 									if ("".equals(litigation.getLilawname())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									liti.setLilawname("³Ğ°ìÂÉÊ¦£ºÎ´ÌîĞ´");
-									obja[ob] = "³Ğ°ìÂÉÊ¦£º";
+									liti.setLilawname("æ‰¿åŠå¾‹å¸ˆï¼šæœªå¡«å†™");
+									obja[ob] = "æ‰¿åŠå¾‹å¸ˆï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -754,20 +754,20 @@ public class ClearRecordAction extends ActionSupport {
 							if (ddayin[a].equals("5")) {
 
 								if (litigation.getLilawtel() != null) {
-									liti.setLilawtel("ÂÉÊ¦µç»°£º"
+									liti.setLilawtel("å¾‹å¸ˆç”µè¯ï¼š"
 											+ litigation.getLilawtel());
-									obja[ob] = "ÂÉÊ¦µç»°£º";
+									obja[ob] = "å¾‹å¸ˆç”µè¯ï¼š";
 									ob++;
 									obja[ob] = litigation.getLilawtel();
 									if ("".equals(litigation.getLilawtel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									liti.setLilawtel("ÂÉÊ¦µç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "ÂÉÊ¦µç»°£º";
+									liti.setLilawtel("å¾‹å¸ˆç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "å¾‹å¸ˆç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -777,21 +777,21 @@ public class ClearRecordAction extends ActionSupport {
 							if (ddayin[a].equals("6")) {
 
 								if (litigation.getLifollowupresult() != null) {
-									liti.setLifollowupresult("°¸¼ş½øÕ¹£º"
+									liti.setLifollowupresult("æ¡ˆä»¶è¿›å±•ï¼š"
 											+ litigation.getLifollowupresult());
-									obja[ob] = "°¸¼ş½øÕ¹£º";
+									obja[ob] = "æ¡ˆä»¶è¿›å±•ï¼š";
 									ob++;
 									obja[ob] = litigation.getLifollowupresult();
 									if ("".equals(litigation
 											.getLifollowupresult())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									liti.setLifollowupresult("°¸¼ş½øÕ¹£ºÎ´ÌîĞ´");
-									obja[ob] = "°¸¼ş½øÕ¹£º";
+									liti.setLifollowupresult("æ¡ˆä»¶è¿›å±•ï¼šæœªå¡«å†™");
+									obja[ob] = "æ¡ˆä»¶è¿›å±•ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -801,20 +801,20 @@ public class ClearRecordAction extends ActionSupport {
 							if (ddayin[a].equals("7")) {
 
 								if (litigation.getLidate() != null) {
-									liti.setLidate("Á¢°¸Ê±¼ä£º"
+									liti.setLidate("ç«‹æ¡ˆæ—¶é—´ï¼š"
 											+ litigation.getLidate());
-									obja[ob] = "Á¢°¸Ê±¼ä£º";
+									obja[ob] = "ç«‹æ¡ˆæ—¶é—´ï¼š";
 									ob++;
 									obja[ob] = litigation.getLidate();
 									if ("".equals(litigation.getLidate())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									liti.setLidate("Á¢°¸Ê±¼ä£ºÎ´ÌîĞ´");
-									obja[ob] = "Á¢°¸Ê±¼ä£º";
+									liti.setLidate("ç«‹æ¡ˆæ—¶é—´ï¼šæœªå¡«å†™");
+									obja[ob] = "ç«‹æ¡ˆæ—¶é—´ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -824,20 +824,20 @@ public class ClearRecordAction extends ActionSupport {
 							if (ddayin[a].equals("8")) {
 
 								if (litigation.getLifund() != null) {
-									liti.setLiremark("Á¢°¸·ÑÓÃ£º"
+									liti.setLiremark("ç«‹æ¡ˆè´¹ç”¨ï¼š"
 											+ litigation.getLifund());
-									obja[ob] = "Á¢°¸·ÑÓÃ£º";
+									obja[ob] = "ç«‹æ¡ˆè´¹ç”¨ï¼š";
 									ob++;
 									obja[ob] = litigation.getLifund();
 									if ("".equals(litigation.getLifund())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									liti.setLiremark("Á¢°¸·ÑÓÃ£ºÎ´ÌîĞ´");
-									obja[ob] = "Á¢°¸·ÑÓÃ£º";
+									liti.setLiremark("ç«‹æ¡ˆè´¹ç”¨ï¼šæœªå¡«å†™");
+									obja[ob] = "ç«‹æ¡ˆè´¹ç”¨ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -867,7 +867,7 @@ public class ClearRecordAction extends ActionSupport {
 							.trim());
 					Execute exe = null;
 					List<Execute> exes = new ArrayList<Execute>();
-					listdayin.add(new Object[] { "Ö´ĞĞĞÅÏ¢" });
+					listdayin.add(new Object[] { "æ‰§è¡Œä¿¡æ¯" });
 					Object[] obja = null;
 					;
 
@@ -882,20 +882,20 @@ public class ClearRecordAction extends ActionSupport {
 
 							if (edayin[a].equals("1")) {
 								if (execute.getExnumber() != null) {
-									exe.setExnumber("Á¢°¸°¸ºÅ£º"
+									exe.setExnumber("ç«‹æ¡ˆæ¡ˆå·ï¼š"
 											+ execute.getExnumber());
-									obja[ob] = "Á¢°¸°¸ºÅ£º";
+									obja[ob] = "ç«‹æ¡ˆæ¡ˆå·ï¼š";
 									ob++;
 									obja[ob] = execute.getExnumber();
 									if ("".equals(execute.getExnumber())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									exe.setExnumber("Á¢°¸°¸ºÅ£ºÎ´ÌîĞ´");
-									obja[ob] = "Á¢°¸°¸ºÅ£º";
+									exe.setExnumber("ç«‹æ¡ˆæ¡ˆå·ï¼šæœªå¡«å†™");
+									obja[ob] = "ç«‹æ¡ˆæ¡ˆå·ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
@@ -903,40 +903,40 @@ public class ClearRecordAction extends ActionSupport {
 
 							if (edayin[a].equals("2")) {
 								if (execute.getExjudge() != null) {
-									exe.setExjudge("³Ğ°ì·¨¹Ù£º"
+									exe.setExjudge("æ‰¿åŠæ³•å®˜ï¼š"
 											+ execute.getExjudge());
-									obja[ob] = "³Ğ°ì·¨¹Ù£º";
+									obja[ob] = "æ‰¿åŠæ³•å®˜ï¼š";
 									ob++;
 									obja[ob] = execute.getExjudge();
 									if ("".equals(execute.getExjudge())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									exe.setExjudge("³Ğ°ì·¨¹Ù£ºÎ´ÌîĞ´");
-									obja[ob] = "³Ğ°ì·¨¹Ù£º";
+									exe.setExjudge("æ‰¿åŠæ³•å®˜ï¼šæœªå¡«å†™");
+									obja[ob] = "æ‰¿åŠæ³•å®˜ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
 							}
 							if (edayin[a].equals("3")) {
 								if (execute.getExjudgetel() != null) {
-									exe.setExjudgetel("·¨¹Ùµç»°£º"
+									exe.setExjudgetel("æ³•å®˜ç”µè¯ï¼š"
 											+ execute.getExjudgetel());
-									obja[ob] = "·¨¹Ùµç»°£º";
+									obja[ob] = "æ³•å®˜ç”µè¯ï¼š";
 									ob++;
 									obja[ob] = execute.getExjudgetel();
 									if ("".equals(execute.getExjudgetel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									exe.setExjudgetel("·¨¹Ùµç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "·¨¹Ùµç»°£º";
+									exe.setExjudgetel("æ³•å®˜ç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "æ³•å®˜ç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -944,20 +944,20 @@ public class ClearRecordAction extends ActionSupport {
 							}
 							if (edayin[a].equals("4")) {
 								if (execute.getExlawname() != null) {
-									exe.setExlawname("³Ğ°ìÂÉÊ¦£º"
+									exe.setExlawname("æ‰¿åŠå¾‹å¸ˆï¼š"
 											+ execute.getExlawname());
-									obja[ob] = "³Ğ°ìÂÉÊ¦£º";
+									obja[ob] = "æ‰¿åŠå¾‹å¸ˆï¼š";
 									ob++;
 									obja[ob] = execute.getExlawname();
 									if ("".equals(execute.getExlawname())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									exe.setExlawname("³Ğ°ìÂÉÊ¦£ºÎ´ÌîĞ´");
-									obja[ob] = "³Ğ°ìÂÉÊ¦£º";
+									exe.setExlawname("æ‰¿åŠå¾‹å¸ˆï¼šæœªå¡«å†™");
+									obja[ob] = "æ‰¿åŠå¾‹å¸ˆï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -966,20 +966,20 @@ public class ClearRecordAction extends ActionSupport {
 							if (edayin[a].equals("5")) {
 
 								if (execute.getExlawtel() != null) {
-									exe.setExlawtel("ÂÉÊ¦µç»°£º"
+									exe.setExlawtel("å¾‹å¸ˆç”µè¯ï¼š"
 											+ execute.getExlawtel());
-									obja[ob] = "ÂÉÊ¦µç»°£º";
+									obja[ob] = "å¾‹å¸ˆç”µè¯ï¼š";
 									ob++;
 									obja[ob] = execute.getExlawtel();
 									if ("".equals(execute.getExlawtel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									exe.setExlawtel("ÂÉÊ¦µç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "ÂÉÊ¦µç»°£º";
+									exe.setExlawtel("å¾‹å¸ˆç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "å¾‹å¸ˆç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -989,20 +989,20 @@ public class ClearRecordAction extends ActionSupport {
 							if (edayin[a].equals("6")) {
 
 								if (execute.getExfollowupresult() != null) {
-									exe.setExfollowupresult("°¸¼ş½øÕ¹£º"
+									exe.setExfollowupresult("æ¡ˆä»¶è¿›å±•ï¼š"
 											+ execute.getExfollowupresult());
-									obja[ob] = "°¸¼ş½øÕ¹£º";
+									obja[ob] = "æ¡ˆä»¶è¿›å±•ï¼š";
 									ob++;
 									obja[ob] = execute.getExfollowupresult();
 									if ("".equals(execute.getExfollowupresult())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									exe.setExfollowupresult("°¸¼ş½øÕ¹£ºÎ´ÌîĞ´");
-									obja[ob] = "°¸¼ş½øÕ¹£º";
+									exe.setExfollowupresult("æ¡ˆä»¶è¿›å±•ï¼šæœªå¡«å†™");
+									obja[ob] = "æ¡ˆä»¶è¿›å±•ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -1012,19 +1012,19 @@ public class ClearRecordAction extends ActionSupport {
 							if (edayin[a].equals("7")) {
 
 								if (execute.getExdate() != null) {
-									exe.setExdate("Á¢°¸Ê±¼ä£º" + execute.getExdate());
-									obja[ob] = "Á¢°¸Ê±¼ä£º";
+									exe.setExdate("ç«‹æ¡ˆæ—¶é—´ï¼š" + execute.getExdate());
+									obja[ob] = "ç«‹æ¡ˆæ—¶é—´ï¼š";
 									ob++;
 									obja[ob] = execute.getExdate();
 									if ("".equals(execute.getExdate())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									exe.setExdate("Á¢°¸Ê±¼ä£ºÎ´ÌîĞ´");
-									obja[ob] = "Á¢°¸Ê±¼ä£º";
+									exe.setExdate("ç«‹æ¡ˆæ—¶é—´ï¼šæœªå¡«å†™");
+									obja[ob] = "ç«‹æ¡ˆæ—¶é—´ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -1054,27 +1054,27 @@ public class ClearRecordAction extends ActionSupport {
 					CloseRecord closerecord = crs
 							.DaYinCloseRecord(contractsigns[i].trim());
 					CloseRecord close = new CloseRecord();
-					listdayin.add(new Object[] { "½á°¸ĞÅÏ¢" });
+					listdayin.add(new Object[] { "ç»“æ¡ˆä¿¡æ¯" });
 					Object[] obja = new Object[6];
 					
 					if (closerecord!=null) {
 						for (int a = 0; a < fdayin.length; a++) {
 							if (fdayin[a].equals("1")) {
 								if (closerecord.getCrperson() != null) {
-									close.setCrperson("½á°¸ÈË£º"
+									close.setCrperson("ç»“æ¡ˆäººï¼š"
 											+ closerecord.getCrperson());
-									obja[ob] = "½á°¸ÈË£º";
+									obja[ob] = "ç»“æ¡ˆäººï¼š";
 									ob++;
 									obja[ob] = closerecord.getCrperson();
 									if ("".equals(closerecord.getCrperson())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									close.setCrperson("½á°¸ÈË£ºÎ´ÌîĞ´");
-									obja[ob] = "½á°¸ÈË£º";
+									close.setCrperson("ç»“æ¡ˆäººï¼šæœªå¡«å†™");
+									obja[ob] = "ç»“æ¡ˆäººï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
@@ -1082,40 +1082,40 @@ public class ClearRecordAction extends ActionSupport {
 
 							if (fdayin[a].equals("2")) {
 								if (closerecord.getCrpersontel() != null) {
-									close.setCrpersontel("½á°¸ÈËµç»°£º"
+									close.setCrpersontel("ç»“æ¡ˆäººç”µè¯ï¼š"
 											+ closerecord.getCrpersontel());
-									obja[ob] = "½á°¸ÈËµç»°£º";
+									obja[ob] = "ç»“æ¡ˆäººç”µè¯ï¼š";
 									ob++;
 									obja[ob] = closerecord.getCrpersontel();
 									if ("".equals(closerecord.getCrpersontel())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									close.setCrpersontel("½á°¸ÈËµç»°£ºÎ´ÌîĞ´");
-									obja[ob] = "½á°¸ÈËµç»°£º";
+									close.setCrpersontel("ç»“æ¡ˆäººç”µè¯ï¼šæœªå¡«å†™");
+									obja[ob] = "ç»“æ¡ˆäººç”µè¯ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 									ob++;
 								}
 
 							}
 							if (fdayin[a].equals("3")) {
 								if (closerecord.getCrtime() != null) {
-									close.setCrtime("½á°¸Ê±¼ä£º"
+									close.setCrtime("ç»“æ¡ˆæ—¶é—´ï¼š"
 											+ closerecord.getCrtime());
-									obja[ob] = "½á°¸Ê±¼ä£º";
+									obja[ob] = "ç»“æ¡ˆæ—¶é—´ï¼š";
 									ob++;
 									obja[ob] = closerecord.getCrtime();
 									if ("".equals(closerecord.getCrtime())) {
-										obja[ob] = "Î´ÌîĞ´";
+										obja[ob] = "æœªå¡«å†™";
 									}
 									ob++;
 								} else {
-									close.setCrtime("½á°¸Ê±¼ä£ºÎ´ÌîĞ´");
-									obja[ob] = "½á°¸Ê±¼ä£º";
+									close.setCrtime("ç»“æ¡ˆæ—¶é—´ï¼šæœªå¡«å†™");
+									obja[ob] = "ç»“æ¡ˆæ—¶é—´ï¼š";
 									ob++;
-									obja[ob] = "Î´ÌîĞ´";
+									obja[ob] = "æœªå¡«å†™";
 
 									ob++;
 								}
@@ -1236,7 +1236,7 @@ public class ClearRecordAction extends ActionSupport {
 
 	
 
-	// ÉÏ´«ÎÄ¼ş
+	// ä¸Šä¼ æ–‡ä»¶
 	private File attach;
 	private String attachFileName;
 	private String attachContentType;
@@ -1388,7 +1388,7 @@ public class ClearRecordAction extends ActionSupport {
 	}
 
 	/**
-	 * ²éÑ¯°¸¼şÏêÏ¸ĞÅÏ¢
+	 * æŸ¥è¯¢æ¡ˆä»¶è¯¦ç»†ä¿¡æ¯
 	 * @return
 	 */
 	public String selectDetail() {
@@ -1403,7 +1403,7 @@ public class ClearRecordAction extends ActionSupport {
 	public String addClearrecord() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
 		try {
@@ -1416,12 +1416,12 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				clearRecord.setCrattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\°¸¼şÎÄ¼ş¿â\\" + attachFileName));
+						+ "\\uploads\\æ¡ˆä»¶æ–‡ä»¶åº“\\" + attachFileName));
 
 				String ftitle = clearRecord.getCrcasecodeself() + "-"
 						+ attachFileName;
 				file.setFTitle(ftitle);
-				file.setFType("°¸¼şÎÄ¼ş");
+				file.setFType("æ¡ˆä»¶æ–‡ä»¶");
 				file.setFilelibrary(this.filesService.loadById(7));
 				file.setFReldate(df2.format(new Date()));
 				file.setFAttach(attachFileName);
@@ -1438,7 +1438,7 @@ public class ClearRecordAction extends ActionSupport {
 	}
 
 	public String addClearclear() {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
@@ -1453,12 +1453,12 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				clearClear.setCcattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\°¸¼şÎÄ¼ş¿â\\" + attachFileName));
+						+ "\\uploads\\æ¡ˆä»¶æ–‡ä»¶åº“\\" + attachFileName));
 
 				String ftitle = clearClear.getCccasecodeself() + "-"
 						+ attachFileName;
 				file.setFTitle(ftitle);
-				file.setFType("°¸¼şÎÄ¼ş");
+				file.setFType("æ¡ˆä»¶æ–‡ä»¶");
 				file.setFilelibrary(this.filesService.loadById(7));
 				file.setFReldate(simpleDateFormat.format(new Date()));
 				file.setFAttach(attachFileName);
@@ -1476,7 +1476,7 @@ public class ClearRecordAction extends ActionSupport {
 	public String addLitigation() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
 		try {
@@ -1489,12 +1489,12 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				litigation.setLiattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\°¸¼şÎÄ¼ş¿â\\" + attachFileName));
+						+ "\\uploads\\æ¡ˆä»¶æ–‡ä»¶åº“\\" + attachFileName));
 
 				String ftitle = litigation.getLicasecodeself() + "-"
 						+ attachFileName;
 				file.setFTitle(ftitle);
-				file.setFType("°¸¼şÎÄ¼ş");
+				file.setFType("æ¡ˆä»¶æ–‡ä»¶");
 				file.setFilelibrary(this.filesService.loadById(7));
 				file.setFReldate(df2.format(new Date()));
 				file.setFAttach(attachFileName);
@@ -1512,7 +1512,7 @@ public class ClearRecordAction extends ActionSupport {
 	public String addExecute() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
 		try {
@@ -1525,12 +1525,12 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				execute.setExattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\°¸¼şÎÄ¼ş¿â\\" + attachFileName));
+						+ "\\uploads\\æ¡ˆä»¶æ–‡ä»¶åº“\\" + attachFileName));
 
 				String ftitle = execute.getExcasecodeself() + "-"
 						+ attachFileName;
 				file.setFTitle(ftitle);
-				file.setFType("°¸¼şÎÄ¼ş");
+				file.setFType("æ¡ˆä»¶æ–‡ä»¶");
 				file.setFilelibrary(this.filesService.loadById(7));
 				file.setFReldate(df2.format(new Date()));
 				file.setFAttach(attachFileName);
@@ -1551,7 +1551,7 @@ public class ClearRecordAction extends ActionSupport {
 	public String addClearClose() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
 		try {
@@ -1564,12 +1564,12 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				closeRecord.setCrattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\°¸¼şÎÄ¼ş¿â\\" + attachFileName));
+						+ "\\uploads\\æ¡ˆä»¶æ–‡ä»¶åº“\\" + attachFileName));
 
 				String ftitle = closeRecord.getCrcasecodeself() + "-"
 						+ attachFileName;
 				file.setFTitle(ftitle);
-				file.setFType("°¸¼şÎÄ¼ş");
+				file.setFType("æ¡ˆä»¶æ–‡ä»¶");
 				file.setFilelibrary(this.filesService.loadById(7));
 				file.setFReldate(df2.format(new Date()));
 				file.setFAttach(attachFileName);
@@ -1879,7 +1879,7 @@ public class ClearRecordAction extends ActionSupport {
 	}
 	
 	/**
-	 * Ìí¼Ó°¸¼şÎ¬»¤¿Í»§
+	 * æ·»åŠ æ¡ˆä»¶ç»´æŠ¤å®¢æˆ·
 	 * @return
 	 */
 	public String addCustomer() {

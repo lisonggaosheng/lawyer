@@ -102,14 +102,14 @@ public class CourtCountAction extends ActionSupport {
 
 	public String countByTime() {
 		
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			if(("").equals(startDate)){
-				startDate = "1900Äê01ÔÂ01ÈÕ";
+				startDate = "1900å¹´01æœˆ01æ—¥";
 			}
 			if(("").equals(endDate)){
-				endDate = "2100Äê12ÔÂ30ÈÕ";
+				endDate = "2100å¹´12æœˆ30æ—¥";
 			}
 			 Date resultDate = simpleDateFormat.parse(startDate);
 			 startDate  = sdf.format(resultDate);

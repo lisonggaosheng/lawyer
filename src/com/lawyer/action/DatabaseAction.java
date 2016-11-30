@@ -48,11 +48,11 @@ public class DatabaseAction extends ActionSupport{
 		try {
 			FileUtils.copyFile(sqlfile, new File("d:/test.sql"));
 			MySQL.load();
-			result="数据库还原完成！";
+			result="鏁版嵁搴撹繕鍘熷畬鎴愶紒";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			result="数据库还原失败！";
+			result="鏁版嵁搴撹繕鍘熷け璐ワ紒";
 			return SUCCESS;
 		}
 		return SUCCESS;
