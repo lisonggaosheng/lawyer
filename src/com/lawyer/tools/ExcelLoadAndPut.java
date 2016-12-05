@@ -14,10 +14,10 @@ public class ExcelLoadAndPut {
 	
 		
 	 /**
-	  * ½«Êı¾İĞ´Èëµ½Ö¸¶¨µÄÄ¿Â¼µÄexcel±íÀï
-	  * @param fliepath ÎÄ¼şÂ·¾¶
-	  * @param sheetName Ö¸¶¨µÄ±í Ä¬ÈÏÎªsheet1
-	  * @param list<Object[]> Ğ´Èë±í¸ñµÄÊı¾İ¼¯ºÏ 
+	  * å°†æ•°æ®å†™å…¥åˆ°æŒ‡å®šçš„ç›®å½•çš„excelè¡¨é‡Œ
+	  * @param fliepath æ–‡ä»¶è·¯å¾„
+	  * @param sheetName æŒ‡å®šçš„è¡¨ é»˜è®¤ä¸ºsheet1
+	  * @param list<Object[]> å†™å…¥è¡¨æ ¼çš„æ•°æ®é›†åˆ 
 	  */
 	
 	 @SuppressWarnings("hiding")

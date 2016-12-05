@@ -60,7 +60,7 @@ public interface CourtDao {
 	public Apply selectCourt3(Apply apply,Users users) throws Exception;
 	public List selectCourtAll(Court court)throws Exception;
 	public void updateCourt(Court court)throws Exception;
-	public int countCourtByCC(String courtcode,String caseCreateTime) throws Exception; 
+	public long countCourtByCC(String courtcode,String caseCreateTime) throws Exception; 
 	
 	public String insertMoreCourts(Users user) throws Exception;//��Դ���������������־��
 	

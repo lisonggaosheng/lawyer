@@ -399,7 +399,7 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	@Override
-	public int countCourtByCC(String courtcode, String caseCreateTime)
+	public long countCourtByCC(String courtcode, String caseCreateTime)
 			throws Exception {
 
 		return courtDao.countCourtByCC(courtcode, caseCreateTime);
@@ -625,7 +625,7 @@ public class CourtServiceImpl implements CourtService {
 			Date resultDate = simpleDateFormat.parse(court.getCaseCreateTime());
 			String casedatetime  = sdf.format(resultDate);
 			
-			int count = courtDao.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime());
+			long count = courtDao.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime());
 			
 			String casecodeself = court.getCourtcode() + casedatetime + count +System.currentTimeMillis();
 			court.setCasecodeself(casecodeself);

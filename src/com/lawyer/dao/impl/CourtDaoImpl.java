@@ -711,10 +711,10 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	/**
 	 * 根据法院编号和时间获取案件数量 郭志鹏
 	 */
-	public int countCourtByCC(String courtcode,String caseCreateTime) {
-		String sql = "select count(*) from courtinfo where caseCreateTime='"+caseCreateTime+"' and courtcode='"+courtcode+"'";
-		Integer count = (Integer)getHibernateTemplate().find(sql).listIterator().next();  
-		return count.intValue();
+	public long countCourtByCC(String courtcode,String caseCreateTime) {
+		String sql = "select count(*) from Court where caseCreateTime='"+caseCreateTime+"' and courtcode='"+courtcode+"'";
+		Long query = (Long) this.getHibernateTemplate().iterate(sql).next();
+		return query.longValue(); 
 	}
 	
 	/**
@@ -1324,7 +1324,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			String casecode = court.getCaseCode();
 			//String savetimestr = casecodeself.substring(18, casecodeself.length());	
 			//生成法院某一天受理的案件数
-			int n = countCourtByCC(courtcode, caseCreateTime) + 1;
+			long n = countCourtByCC(courtcode, caseCreateTime) + 1;
 			StringBuffer count = new StringBuffer();	
 			if(n >= 0&&n<10){
 				count.append('0');
@@ -1500,6 +1500,11 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 				String sql = "select value,courtcode from casecode_court where INSTR('"+court.getCaseCode()+"',name)>0 ";
 				Query query = session.createSQLQuery(sql);
 				List<Object[]> list = query.list();
+				if(list.size() == 0){
+					court.setExecCourtName(null);
+					court.setCourtcode("000000");
+					return court;
+				}
 				Object[] ob = (Object[]) query.list().get(0);
 				String[] strs  =  Arrays.asList( ob ).toArray( new String[2] );
 				court.setExecCourtName(strs[0]);

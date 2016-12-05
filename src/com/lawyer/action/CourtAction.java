@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -24,7 +25,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 
 import com.lawyer.pojo.Apply;
@@ -37,9 +46,11 @@ import com.lawyer.pojo.Users;
 import com.lawyer.service.AddRecordService;
 import com.lawyer.service.CourtService;
 import com.lawyer.service.LawyerCourtService;
+import com.lawyer.tools.ExcelTools;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.rowset.internal.Row;
 
 @Entity
 public class CourtAction extends ActionSupport{
@@ -151,45 +162,53 @@ public class CourtAction extends ActionSupport{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
-		Connection conn = null;
-		
 		try {
 			if(updFileName != null){
 				String path = basePath+"\\impExcel\\"+updFileName;
 				FileUtils.copyFile(upd, new File(path));
 				
-				Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-				String dburl = "driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=" + path;
-				String connectionString = "jdbc:odbc:" + dburl;
-				conn = DriverManager.getConnection(connectionString);
-				Statement stmt = conn.createStatement();
-				ResultSet  rs = stmt.executeQuery("select * from [sheet1$]");
-				// 获取数据
 				List<Court> dataList = new ArrayList<Court>();
-				while (rs.next()) {
-					String pname = rs.getString("债务人名称");
-					String caseCode = rs.getString("案号");
-					String execMoney = rs.getString("标的");
-					String remark = rs.getString("链接");
-					String creditor = rs.getString("债权人名称");
-					String creditorAddress = rs.getString("债权人地址");
-					String caseCreateTime = "2012年10月10日";
-					
-					Court court = new Court();
-					court.setPname(pname);
-					court.setCaseCode(caseCode);
-					court.setExecMoney(execMoney);
-					court.setRemark(remark);
-					court.setCreditor(creditor);
-					court.setCreditorAddress(creditorAddress);
-					court.setCaseCreateTime(caseCreateTime);
-					court.setExcludeStatus("0");
-					court.setInfoType("1");
-					court.setExecutestep("1");
-					dataList.add(court);
+				InputStream is = new FileInputStream(path);
+				HSSFWorkbook workbook = new HSSFWorkbook(is);
+				//在Excel文档中，第一张工作表的缺省索引是0
+				HSSFSheet sheet = workbook.getSheetAt(0);
+				// 获取到Excel文件中的所有行数
+				int rows = sheet.getPhysicalNumberOfRows();
+				// 遍历行
+				for (int i = 1; i < rows; i++) {
+					// 读取左上端单元格
+					HSSFRow row = sheet.getRow(i);
+					// 行不为空
+					if (row != null) {
+						HSSFCell creditor = row.getCell(0);;
+						HSSFCell creditorAddress = row.getCell(1);;
+						HSSFCell pname = row.getCell(2);
+						HSSFCell caseCode = row.getCell(3);
+						HSSFCell execMoney = row.getCell(4);
+						HSSFCell remark = row.getCell(5);
+						HSSFCell caseCreateTime = row.getCell(6);
+						String caseCreateTimeStr = ExcelTools.getValue(caseCreateTime);
+						if(caseCreateTimeStr == null){
+							SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+							caseCreateTimeStr = sdf.format(new Date());
+						}
+						
+						Court court = new Court();
+						court.setPname(ExcelTools.getValue(pname));
+						court.setCaseCode(ExcelTools.getValue(caseCode));
+						court.setExecMoney(ExcelTools.getValue(execMoney));
+						court.setRemark(ExcelTools.getValue(remark));
+						court.setCreditor(ExcelTools.getValue(creditor));
+						court.setCreditorAddress(ExcelTools.getValue(creditorAddress));
+						court.setCaseCreateTime(caseCreateTimeStr);
+						court.setExcludeStatus("0");
+						court.setInfoType("1");
+						court.setExecutestep("1");
+						dataList.add(court);
+					}
 				}
+				is.close();
 				this.courtService.excelInsertCourt(dataList);
-				conn.close();
 				request.setAttribute("message","excel导入第一步执行成功");
 				return SUCCESS;
 			}else{
@@ -199,7 +218,6 @@ public class CourtAction extends ActionSupport{
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-				conn.close(); 
 				request.setAttribute("message","excel导入第一步执行失败");
 				return SUCCESS;
 			} catch (Exception e1) {
@@ -655,7 +673,7 @@ public class CourtAction extends ActionSupport{
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
-					int num = courtService.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime()) + 1;
+					long num = courtService.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime()) + 1;
 					String count = String.format("%3d", num).replace(" ", "0");
 					court.setCasecodeself(court.getCourtcode() + casedatetime + count +System.currentTimeMillis());
 				}else{
@@ -666,7 +684,7 @@ public class CourtAction extends ActionSupport{
 						e.printStackTrace();
 					}
 					
-					int num = courtService.countCourtByCC(court.getCourtcode(), court.getNoticeTime()) + 1;
+					long num = courtService.countCourtByCC(court.getCourtcode(), court.getNoticeTime()) + 1;
 					String count = String.format("%3d", num).replace(" ", "0");	
 					court.setCasecodeself("G" + court.getCourtcode() + noticeTime + count + System.currentTimeMillis());
 					court.setCaseCreateTime("1111年11月12日");
