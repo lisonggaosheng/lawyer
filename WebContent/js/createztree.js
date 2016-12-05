@@ -128,7 +128,7 @@ var setting = {
 		$("#treeDemo").empty();
 		setting.check.enable = $("#showChk").attr("checked");
 		var time1 = new Date();
-		$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		$ztree.fn.zTree.init($("#treeDemo"), setting, zNodes);
 		var time2 = new Date();
 
 	}

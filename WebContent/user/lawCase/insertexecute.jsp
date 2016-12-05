@@ -11,13 +11,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加执行阶段</title>
-<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="/lawyer/css/public.css" />
 <link rel="stylesheet" href="/lawyer/css/demo.css" type="text/css">
 <link rel="stylesheet" href="/lawyer/css/zTreeStyle/zTreeStyle.css"
 	type="text/css">
 
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+	var $ztree = $;
+</script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript"
@@ -87,6 +90,7 @@ $(document).ready(function() {
 <body>
 <div id="bg"></div>
 <div id="dtree">
+	<span style="float:right;cursor:pointer;" onclick="hidediv()">关闭</span>
 	<ul id="treeDemo" class="ztree"></ul>
 	<form id="courtForm" action="findCourts.action">
 		<input id="court_number" type="hidden" value="" />
@@ -95,7 +99,7 @@ $(document).ready(function() {
 <table cellspacing="0" cellpadding="0" border="0" width="100%"
 	height="100%" class="content_table">
 	<tr>
-		<td>&nbsp;&nbsp;<img src="../../images/flag3_(add)_16x16.gif" />&nbsp;
+		<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif" />&nbsp;
 		<span class="title">添加执行阶段</span></td>
 	</tr>
 	<tr>

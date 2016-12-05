@@ -19,6 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+	var $ztree = $;
+</script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript"
@@ -88,6 +91,7 @@ $(document).ready(function() {
 <body>
 <div id="bg"></div>
 <div id="dtree">
+	<span style="float:right;cursor:pointer;" onclick="hidediv()">关闭</span>
 	<ul id="treeDemo" class="ztree"></ul>
 	<form id="courtForm" action="findCourts.action">
 		<input id="court_number" type="hidden" value="" />

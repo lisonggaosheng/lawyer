@@ -20,12 +20,18 @@
 
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+	var $ztree = $;
+</script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.excheck-3.5.js"></script>
 <script type="text/javascript"
 	src="/lawyer/js/ztree/jquery.ztree.exedit-3.5.js"></script>
+	
+<script type="text/javascript"
+	src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectlawyer.js"></script>
 <script type="text/javascript" src="/lawyer/js/createztree.js"></script>
@@ -90,6 +96,7 @@
 <body>
 <div id="bg"></div>
 <div id="dtree">
+	<span style="float:right;cursor:pointer;" onclick="hidediv()">关闭</span>
 	<ul id="treeDemo" class="ztree"></ul>
 	<form id="courtForm" action="findCourts.action">
 		<input id="court_number" type="hidden" value="" />
