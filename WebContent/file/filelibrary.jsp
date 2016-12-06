@@ -8,24 +8,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
 		<title>无标题文档</title>
+		<link rel="stylesheet" href="/lawyer/css/public.css" />
+		<script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 		<script language="javascript">
+	function clickRaido($item){
+		var value = $item.value;
+		if(value == 3){
+			$("#flCategory").style.display = "";
+		}else{
+			$('#flCategory').val("");
+			$("#flCategory").style.display = "none";
+		}
+	}
 	function addcheck(){	
-		var name=document.getElementById("flName").value;
-		var category=document.getElementById("flCategory").value;
+		var name=$("#flName").value;
+		var category=$('input:radio:checked').val();
 		if(name==""){
 			 alert("文件库名不能为空");
 			 return;
 		}
-		if(category==""){
-			 alert("文件库类别不能为空");
-			 return;
-		}
-		else{
-			fl.submit();
+		if(category != "" && category != null){
+			if(category==3){
+				var flCategory=$('#flCategory').val();
+				if(flCategory == ""){
+					alert("文件库类别选中其他需要重新命名！");
+					return;
+				}
 			}
+		}else{
+			alert("文件库类别不能为空");
+			return;
+		}
+		
+		fl.submit();
 	}
 </script>
-		<link rel="stylesheet" href="/lawyer/css/public.css" />
 	</head>
 	<body>
 		<table cellspacing="0" cellpadding="0" border="0" width="100%"
@@ -48,7 +65,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</tr>
 							<tr>
 								<td align="right">文件库类别：</td>
-								<td><input type="text" id="flCategory" name="filelibrary.flCategory" /></td>
+								<td>
+									<label><input name="filelibrary.flCategory" type="radio" value="1" onclick="clickRaido(this)"/>案源 </label>
+									<label><input name="filelibrary.flCategory" type="radio" value="2" onclick="clickRaido(this)"/>案件 </label>
+									<label><input name="filelibrary.flCategory" type="radio" value="3" onclick="clickRaido(this)"/>其他 </label>
+									<input type="text" id="flCategory" style="width:300px; display: none;"/>
+								</td>
 							</tr>
 							<tr>
 								<td align="right">备注：</td>

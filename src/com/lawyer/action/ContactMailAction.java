@@ -122,7 +122,6 @@ public class ContactMailAction extends ActionSupport{
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
-
 			Users admin=(Users) session.getAttribute("admin");
 			contactMail.setUsers(admin);
 			contactMail.setCmSavetime(sdf.format(new Date()));
