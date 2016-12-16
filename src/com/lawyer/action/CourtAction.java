@@ -30,6 +30,7 @@ import jxl.Sheet;
 import jxl.Workbook;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -188,7 +189,7 @@ public class CourtAction extends ActionSupport{
 						HSSFCell remark = row.getCell(5);
 						HSSFCell caseCreateTime = row.getCell(6);
 						String caseCreateTimeStr = ExcelTools.getValue(caseCreateTime);
-						if(caseCreateTimeStr == null){
+						if(StringUtils.isBlank(caseCreateTimeStr)){
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
 							caseCreateTimeStr = sdf.format(new Date());
 						}
