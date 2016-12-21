@@ -14,10 +14,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function clickRaido($item){
 		var value = $item.value;
 		if(value == 3){
-			$("#flCategory").style.display = "";
+			$("#flCategory").show();
 		}else{
 			$('#flCategory').val("");
-			$("#flCategory").style.display = "none";
+			$("#flCategory").hide();
 		}
 	}
 	function addcheck(){	
@@ -28,7 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 return;
 		}
 		if(category != "" && category != null){
-			if(category==3){
+			if(category==1){
+				$('#flCategory').val("案源");
+			}else if(category==2){
+				$('#flCategory').val("案件");
+			}else if(category==3){
 				var flCategory=$('#flCategory').val();
 				if(flCategory == ""){
 					alert("文件库类别选中其他需要重新命名！");
@@ -50,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 				<td width="15%" colspan="2">
 					&nbsp;&nbsp;
-					<img src="/lawyer/images/flag3_(add)_16x16.gif" />
+					<img src="/lawyer/images/flag3_add_16x16.gif" />
 					&nbsp;
 					<span class="title">新建文件库</span>
 				</td>
@@ -66,10 +70,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<tr>
 								<td align="right">文件库类别：</td>
 								<td>
-									<label><input name="filelibrary.flCategory" type="radio" value="1" onclick="clickRaido(this)"/>案源 </label>
-									<label><input name="filelibrary.flCategory" type="radio" value="2" onclick="clickRaido(this)"/>案件 </label>
-									<label><input name="filelibrary.flCategory" type="radio" value="3" onclick="clickRaido(this)"/>其他 </label>
-									<input type="text" id="flCategory" style="width:300px; display: none;"/>
+									<label><input name="filelibrary.type" type="radio" value="1" onclick="clickRaido(this)"/>案源 </label>
+									<label><input name="filelibrary.type" type="radio" value="2" onclick="clickRaido(this)"/>案件 </label>
+									<label><input name="filelibrary.type" type="radio" value="3" onclick="clickRaido(this)"/>其他 </label>
+									<input type="text" name="filelibrary.flCategory" id="flCategory" style="width:300px; display: none;"/>
 								</td>
 							</tr>
 							<tr>

@@ -13,13 +13,14 @@
 <head>
 <title>无标题文档</title>
 <link rel="stylesheet" href="/lawyer/css/public.css" />
+<script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 </head>
 <body>
 	<table cellspacing="0" cellpadding="0" border="0" width="100%"
 		height="100%" class="content_table">
 		<tr>
 			<td width="15%" colspan="2">&nbsp;&nbsp; <img
-				src="/lawyer/images/flag3_(add)_16x16.gif" /> &nbsp; <span
+				src="/lawyer/images/flag3_add_16x16.gif" /> &nbsp; <span
 				class="title">修改文件库</span></td>
 		</tr>
 		<tr>
@@ -36,15 +37,16 @@
 						</tr>
 						<tr>
 							<td align="right">文件类别：</td>
-							<td><input type="text" name="filelibrary.flCategory"
+							<td><input type="text" id="flCategory" name="filelibrary.flCategory" 
 								value="<s:property value="filelibrary.flCategory"/>" /></td>
 						</tr>
+						<input type="text" id="type" name="filelibrary.type" style="display: none;"
+								value="<s:property value="filelibrary.type"/>" />
 						<tr>
 							<td align="right">备注：</td>
 							<td><textarea cols="60" rows="5" name="filelibrary.beizhu" value="<s:property value="filelibrary.beizhu"/>"></textarea>
 								</td>
 						</tr>
-
 						<tr>
 							<td colspan="2" align="center">
 
@@ -59,4 +61,12 @@
 		</tr>
 	</table>
 </body>
+<script>
+$(document).ready(function() { 
+	var type = $("#type").val();
+	if(type != 3){
+		$('#flCategory').attr("disabled",true); 
+	}
+});
+</script>
 </html>

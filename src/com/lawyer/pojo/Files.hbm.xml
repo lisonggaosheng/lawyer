@@ -28,5 +28,11 @@
         <property name="FAttach" type="java.lang.String">
             <column name="f_attach" length="128" not-null="true" />
         </property>
+        <property name="remark" type="java.lang.String">
+            <column name="remark"  />
+        </property>
+        <property name="casecodeself" type="java.lang.String">
+            <column name="casecodeself"  />
+        </property>
     </class>
 </hibernate-mapping>

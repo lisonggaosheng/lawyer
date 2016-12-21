@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
-  <link href="/lawyer/user/css/public.css" rel="stylesheet" />
+  <link href="/lawyer/css/public.css" rel="stylesheet" />
 </head>
 
 <body>

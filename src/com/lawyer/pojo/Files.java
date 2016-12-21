@@ -10,6 +10,9 @@ public class Files implements java.io.Serializable {
 	private String FType;
 	private String FReldate;
 	private String FAttach;
+	private String remark;
+	private String casecodeself;
+	
 	// Fields	
 	private Integer FId;
 	
@@ -69,5 +72,18 @@ public class Files implements java.io.Serializable {
 	public void setFAttach(String FAttach) {
 		this.FAttach = FAttach;
 	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public String getCasecodeself() {
+		return casecodeself;
+	}
+	public void setCasecodeself(String casecodeself) {
+		this.casecodeself = casecodeself;
+	}
+	
 
 }

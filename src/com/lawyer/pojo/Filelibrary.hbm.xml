@@ -19,5 +19,8 @@
         <property name="beizhu" type="java.lang.String">
             <column name="beizhu" length="255" />
         </property>
+        <property name="type" type="java.lang.Integer">
+            <column name="type"  />
+        </property>
     </class>
 </hibernate-mapping>

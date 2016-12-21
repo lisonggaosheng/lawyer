@@ -10,6 +10,8 @@ public class Filelibrary implements java.io.Serializable {
 	private String flName;
 	private String flCategory;
 	private String beizhu;
+	private int type;
+	
 	/** default constructor */
 	public Filelibrary() {
 	}
@@ -50,6 +52,12 @@ public class Filelibrary implements java.io.Serializable {
 
 	public void setBeizhu(String beizhu) {
 		this.beizhu = beizhu;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
 	}
 	
 }
