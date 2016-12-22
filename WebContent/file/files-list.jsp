@@ -71,12 +71,12 @@
 					class="result_table" border="0">
 
 					<tr class="title">
-						<td width="17%" align="center">所属文件库</td>
-						<td width="17%" align="center">文件编号</td>
-						<td width="17%" align="center">文件类别</td>
-						<td width="17%" align="center">文件标题</td>
-						<td width="17%" align="center">添加时间</td>
-						<td width="9%" align="center">操作</td>
+						<td width="10%" align="center">所属文件库</td>
+						<td width="5%" align="center">文件编号</td>
+						<td width="15%" align="center">文件标题</td>
+						<td width="15%" align="center">添加时间</td>
+						<td width="30%" align="center">备注</td>
+						<td align="center">操作</td>
 					</tr>
 					<s:iterator id="f" value="pageBean.list">
 						<tr align="center">
@@ -84,16 +84,15 @@
 							</td>
 							<td><s:property value="#f.FId" />
 							</td>
-							<td><s:property value="#f.FType" />
-							</td>
 							<td><s:property value="#f.FTitle" />
 							</td>
 							<td><s:property value="#f.FReldate" />
 							</td>
-							<td width="20%"><a
-								href="files-delete?fid=<s:property value="#f.FId"/>">删除</a>&nbsp;&nbsp;
-								<a
-								href="downFile.action?filename=\\uploads\\<s:property value="#f.FType" />\\<s:property value="#f.FAttach" />">下载附件</a>
+							<td><s:property value="#f.remark" />
+							</td>
+							<td width="20%">
+							<%-- <a href="files-delete?fid=<s:property value="#f.FId"/>">删除</a>&nbsp;&nbsp; --%>
+								<a href="downFile.action?filename=\\uploads\\<s:property value="#f.FType" />\\<s:property value="#f.FAttach" />">下载附件</a>
 							</td>
 						</tr>
 					</s:iterator>

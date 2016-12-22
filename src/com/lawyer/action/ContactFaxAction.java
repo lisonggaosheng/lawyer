@@ -91,8 +91,6 @@ public class ContactFaxAction extends ActionSupport{
 	public String insert(){
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
 		
@@ -100,17 +98,17 @@ public class ContactFaxAction extends ActionSupport{
 			contactFax.setUsers(admin);
 			contactFax.setCfSavetime(sdf.format(new Date()));
 			if(attachFileName != null){		
-				attachFileName = df2.format(new Date())+attachFileName;
 				contactFax.setCfAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\案源文件库\\"+attachFileName));
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\anyuan\\"+attachFileName));
 			
-				String ftitle = contactFax.getCfCasecodeself()+"-"+attachFileName;
+				String ftitle = System.currentTimeMillis()+"-"+attachFileName;
 				file.setFTitle(ftitle);
-				file.setFType("案源文件");
-				file.setFilelibrary(this.filesService.loadById(6));
-				file.setFReldate(df1.format(new Date()));
+				file.setFType("案源");
+				file.setFilelibrary(this.filesService.loadById(1001));
+				file.setFReldate(sdf.format(new Date()));
 				file.setFAttach(attachFileName);
 				file.setUsers(admin);
+				file.setCasecodeself(contactFax.getCfCasecodeself());
 				this.filesService.filesUpload(file);
 			}
 			if(contactFax!=null){

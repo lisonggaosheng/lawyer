@@ -25,11 +25,11 @@ public class PinyinTool {
     }
 
     public String toPinYin(String str) throws BadHanyuPinyinOutputFormatCombination{
-        return toPinYin(str, "", Type.UPPERCASE);
+        return toPinYin(str, "", Type.LOWERCASE);
     }
 
     public String toPinYin(String str,String spera) throws BadHanyuPinyinOutputFormatCombination{
-        return toPinYin(str, spera, Type.UPPERCASE);
+        return toPinYin(str, spera, Type.LOWERCASE);
     }
 
     /**
@@ -69,4 +69,10 @@ public class PinyinTool {
         }
         return py.trim();
     }
+    
+    public static void main(String[] args) throws BadHanyuPinyinOutputFormatCombination {
+    	PinyinTool pinyin = new PinyinTool();
+		System.out.println(pinyin.toPinYin("案源"));
+		System.out.println(pinyin.toPinYin("案件"));
+	}
 }

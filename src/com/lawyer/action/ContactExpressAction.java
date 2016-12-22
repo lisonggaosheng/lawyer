@@ -105,13 +105,14 @@ public class ContactExpressAction extends ActionSupport{
 				contactExpress.setCeAttach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\案源文件库\\"+attachFileName));
 				
-				String ftitle = contactExpress.getCeCasecodeself()+"-"+attachFileName;
+				String ftitle = System.currentTimeMillis()+"-"+attachFileName;
 				file.setFTitle(ftitle);
 				file.setFType("案源文件");
 				file.setFilelibrary(this.filesService.loadById(6));
 				file.setFReldate(df1.format(new Date()));
 				file.setFAttach(attachFileName);
 				file.setUsers(admin);
+				file.setCasecodeself(contactExpress.getCeCasecodeself());
 				this.filesService.filesUpload(file);
 			}
 			if(contactExpress!=null){
