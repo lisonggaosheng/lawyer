@@ -1416,7 +1416,7 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				clearRecord.setCrattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\案件文件库\\" + attachFileName));
 
 				String ftitle = clearRecord.getCrcasecodeself() + "-"
 						+ attachFileName;
@@ -1453,7 +1453,7 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				clearClear.setCcattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\案件文件库\\" + attachFileName));
 
 				String ftitle = clearClear.getCccasecodeself() + "-"
 						+ attachFileName;
@@ -1489,7 +1489,7 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				litigation.setLiattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\案件文件库\\" + attachFileName));
 
 				String ftitle = litigation.getLicasecodeself() + "-"
 						+ attachFileName;
@@ -1525,7 +1525,7 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				execute.setExattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\案件文件库\\" + attachFileName));
 
 				String ftitle = execute.getExcasecodeself() + "-"
 						+ attachFileName;
@@ -1564,7 +1564,7 @@ public class ClearRecordAction extends ActionSupport {
 				attachFileName = df1.format(new Date()) + "_" + attachFileName;
 				closeRecord.setCrattach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\案件文件库\\" + attachFileName));
 
 				String ftitle = closeRecord.getCrcasecodeself() + "-"
 						+ attachFileName;

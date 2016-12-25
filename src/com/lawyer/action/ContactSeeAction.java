@@ -114,7 +114,7 @@ public class ContactSeeAction extends ActionSupport{
 			if(attachFileName != null){	
 				attachFileName = df2.format(new Date())+attachFileName;
 				contactSee.setCsAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\案源文件库\\"+attachFileName));
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\案源文件库\\"+attachFileName));
 			
 				String ftitle = contactSee.getCsCasecodeself()+"-"+attachFileName;
 				file.setFTitle(ftitle);

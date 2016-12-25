@@ -112,7 +112,7 @@ public class ContactTelAction extends ActionSupport {
 				attachFileName = df2.format(new Date()) + attachFileName;
 				contactTel.setCtAttach(attachFileName);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\uploads\\案源文件库\\" + attachFileName));
+						+ "\\fileUploads\\案源文件库\\" + attachFileName));
 				String ftitle = contactTel.getCtCasecodeself() + "-"
 						+ attachFileName;
 				file.setFTitle(ftitle);

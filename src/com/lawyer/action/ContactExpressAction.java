@@ -103,7 +103,7 @@ public class ContactExpressAction extends ActionSupport{
 			if(attachFileName != null){
 				attachFileName = df2.format(new Date())+attachFileName;
 				contactExpress.setCeAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\案源文件库\\"+attachFileName));
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\案源文件库\\"+attachFileName));
 				
 				String ftitle = System.currentTimeMillis()+"-"+attachFileName;
 				file.setFTitle(ftitle);

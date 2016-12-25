@@ -68,7 +68,7 @@ public class ContactSignAction extends ActionSupport{
 			if(attachFileName != null){	
 				attachFileName = df2.format(new Date())+attachFileName;
 				contactSign.setCsAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\案源文件库\\"+attachFileName));
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\案源文件库\\"+attachFileName));
 			
 				String ftitle = contactSign.getCsCasecodeself()+"-"+attachFileName;
 				file.setFTitle(ftitle);

@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <link rel="stylesheet" href="/lawyer/css/public.css" />
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script type="text/javascript">
 	function loadCalendar(data)
 	{
@@ -32,23 +33,15 @@
 		<tr>
 			<td>
 				<form name="searchForm" method="post" action="files-list?i=files&files1.fId=<s:property value="files1.filelibrary.flId"/>">
-					<!-- action="files-selectFile?i=files2" -->
 					<table cellpadding="0" cellspacing="0" width="90%" align="center"
 						class="search_table" border="0">
 						<tr>
-							<!-- <td align="right">文件库编号：</td>
-							<td><input type="text" name="files1.fId" />
-							</td> -->
 							<td align="right">文件标题：</td>
 							<td><input type="text" name="files1.fTitle" />
 							</td>
 							<td align="right">添加时间：</td>
-							<td><input type="text" name="starttime" id="calendardate" /><img
-								src="/lawyer/images/date.gif" width="20" height="25"
-								onClick="loadCalendar(searchForm.starttime)">至 <input
-									type="text" name="endtime" id="calendardate" /><img
-									src="/lawyer/images/date.gif" width="20" height="25"
-									onClick="loadCalendar(searchForm.endtime)">
+							<td><input type="text" name="starttime" id="calendardate" onClick="laydate()"/>至 <input
+									type="text" name="endtime" id="calendardate" onClick="laydate()"/>
 							</td>
 						</tr>
 						<tr>
@@ -59,8 +52,7 @@
 				</form></td>
 		</tr>
 		<tr>
-			<td align="right"><div align="left">
-					<!-- <a href="filelibrary-selectlist" target="content">添加文件</a> -->
+			<td align="right"><div align="left" class="title">
 					<a href="/lawyer/file/files.jsp?flid=<s:property value="files1.filelibrary.flId"/>&flname=<s:property value="files1.filelibrary.flName"/> ">添加文件</a>
 				</div>
 			</td>
@@ -92,7 +84,19 @@
 							</td>
 							<td width="20%">
 							<%-- <a href="files-delete?fid=<s:property value="#f.FId"/>">删除</a>&nbsp;&nbsp; --%>
-								<a href="downFile.action?filename=\\uploads\\<s:property value="#f.FType" />\\<s:property value="#f.FAttach" />">下载附件</a>
+								<a href="downFile.action?filePath=\\fileUploads\\<s:property value="#f.FType" />\\&filename=<s:property value="#f.FAttach" />">下载附件</a>
+								<s:if  test='#f.casecodeself == null '>
+									没有所属案件信息
+								</s:if>
+								<s:else>
+									<s:if test="#f.FType == 'anyuan' ">
+										<a href="#">所属案源信息</a>
+									</s:if>
+									<s:elseif test="#f.FType == 'anjian' ">
+										<a href="#">所属案件信息</a>
+									</s:elseif>
+									<s:else></s:else>
+								</s:else>
 							</td>
 						</tr>
 					</s:iterator>

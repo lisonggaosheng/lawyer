@@ -10,10 +10,18 @@ import com.opensymphony.xwork2.ActionSupport;
 public class DownAction extends ActionSupport{
 	
 	private static final long serialVersionUID = 1L;
+	private String filePath;
 	private String filename;
 	
+	
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	public String downFile(){
-		InputStream inputStream = ServletActionContext.getServletContext().getResourceAsStream(filename);
+		InputStream inputStream = ServletActionContext.getServletContext().getResourceAsStream(filePath+filename);
 		
 		if(inputStream != null){
 			return Action.SUCCESS;
@@ -23,7 +31,7 @@ public class DownAction extends ActionSupport{
 		
 	}
 	public InputStream getDownloadFile(){
-		InputStream  in = ServletActionContext.getServletContext().getResourceAsStream(filename);
+		InputStream  in = ServletActionContext.getServletContext().getResourceAsStream(filePath+filename);
 	
 		return in;
 	}

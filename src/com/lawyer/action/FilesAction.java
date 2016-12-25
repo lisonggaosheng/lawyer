@@ -17,6 +17,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 
@@ -26,7 +28,7 @@ import com.lawyer.pojo.Users;
 import com.lawyer.service.FilesService;
 import com.lawyer.service.PagingService;
 import com.lawyer.tools.PageBean;
-import com.opensymphony.xwork2.ActionContext;
+import com.lawyer.tools.PinyinTool;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class FilesAction extends ActionSupport {
@@ -46,7 +48,7 @@ public class FilesAction extends ActionSupport {
 	private String uploadContentType;
 	private String imageFiles;
 
-	private static String DOWNLOADFILEPATH = "/uploads/";
+	private static String DOWNLOADFILEPATH = "/fileUploads/";
 	private String fileName;
 	private PageBean pageBean;
 	private int page=1;
@@ -148,25 +150,29 @@ public class FilesAction extends ActionSupport {
 	 * 文件上传
 	 */
 	public String add() {
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		Users user=(Users) session.getAttribute("admin");
 		
 		if(uploadFileName != null){
-			uploadFileName = df1.format(new Date())+"_"+uploadFileName;
-			files1.setFAttach(uploadFileName);
-			files1.setFReldate(df2.format(new Date()));
-			files1.setUsers(user);
-			files1.setFilelibrary(this.filesService.loadById(filelibrary.getFlId()));
-			
 			try {
-				FileUtils.copyFile(upload, new File(ServletActionContext.getServletContext().getRealPath("/")+"\\uploads\\"+files1.getFType()+"\\"+uploadFileName));
-//				FileUtils.copyFile(upload, new File("E:/uploads/"+files1.getFType()+"/"+uploadFileName));
+				Filelibrary fileLibrary = this.filesService.loadById(filelibrary.getFlId());
+				
+				String fileAttach = System.currentTimeMillis()+"_"+uploadFileName;
+				files1.setFAttach(fileAttach);
+				files1.setFReldate(df2.format(new Date()));
+				files1.setUsers(user);
+				files1.setFType(PinyinTool.toPinYin(fileLibrary.getFlCategory()));
+				files1.setFilelibrary(fileLibrary);
+				
+				FileUtils.copyFile(upload, new File(ServletActionContext.getServletContext().getRealPath("/")+"\\fileUploads\\"+files1.getFType()+"\\"+fileAttach));
 				this.filesService.filesUpload(files1);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 				return ERROR;
+			} catch (BadHanyuPinyinOutputFormatCombination e) {
+				e.printStackTrace();
+				
 			}
 		}
 
@@ -236,7 +242,7 @@ public class FilesAction extends ActionSupport {
 
 	public String execute() {
 
-		DOWNLOADFILEPATH = "/uploads/";
+		DOWNLOADFILEPATH = "/fileUploads/";
 		return SUCCESS;
 	}
 

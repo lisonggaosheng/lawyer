@@ -11,24 +11,18 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
  * Created by zengxm on 2014/12/4.
  */
 public class PinyinTool {
-    HanyuPinyinOutputFormat format = null;
+	public  static HanyuPinyinOutputFormat  format = new HanyuPinyinOutputFormat();
     public static enum Type {
         UPPERCASE,              //全部大写
         LOWERCASE,              //全部小写
         FIRSTUPPER              //首字母大写
     }
 
-    public PinyinTool(){
-        format = new HanyuPinyinOutputFormat();
-        format.setCaseType(HanyuPinyinCaseType.UPPERCASE);
-        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
-    }
-
-    public String toPinYin(String str) throws BadHanyuPinyinOutputFormatCombination{
+    public static String toPinYin(String str) throws BadHanyuPinyinOutputFormatCombination{
         return toPinYin(str, "", Type.LOWERCASE);
     }
 
-    public String toPinYin(String str,String spera) throws BadHanyuPinyinOutputFormatCombination{
+    public static String toPinYin(String str,String spera) throws BadHanyuPinyinOutputFormatCombination{
         return toPinYin(str, spera, Type.LOWERCASE);
     }
 
@@ -40,7 +34,7 @@ public class PinyinTool {
      * @return
      * @throws BadHanyuPinyinOutputFormatCombination
      */
-    public String toPinYin(String str, String spera, Type type) throws BadHanyuPinyinOutputFormatCombination {
+    public static String toPinYin(String str, String spera, Type type) throws BadHanyuPinyinOutputFormatCombination {
         if(str == null || str.trim().length()==0)
             return "";
         if(type == Type.UPPERCASE)
@@ -48,6 +42,7 @@ public class PinyinTool {
         else
             format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
 
+        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
         String py = "";
         String temp = "";
         String[] t;
@@ -71,8 +66,7 @@ public class PinyinTool {
     }
     
     public static void main(String[] args) throws BadHanyuPinyinOutputFormatCombination {
-    	PinyinTool pinyin = new PinyinTool();
-		System.out.println(pinyin.toPinYin("案源"));
-		System.out.println(pinyin.toPinYin("案件"));
+		System.out.println(PinyinTool.toPinYin("案源"));
+		System.out.println(PinyinTool.toPinYin("案件"));
 	}
 }

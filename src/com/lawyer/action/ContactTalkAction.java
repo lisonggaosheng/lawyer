@@ -115,7 +115,7 @@ public class ContactTalkAction extends ActionSupport{
 			if(attachFileName != null){	
 				attachFileName = df2.format(new Date())+attachFileName;
 				contactTalk.setCtAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\案源文件库\\"+attachFileName));
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\案源文件库\\"+attachFileName));
 			
 				String ftitle = contactTalk.getCtCasecodeself()+"-"+attachFileName;
 				file.setFTitle(ftitle);

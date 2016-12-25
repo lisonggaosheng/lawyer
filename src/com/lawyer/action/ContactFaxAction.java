@@ -98,16 +98,18 @@ public class ContactFaxAction extends ActionSupport{
 			contactFax.setUsers(admin);
 			contactFax.setCfSavetime(sdf.format(new Date()));
 			if(attachFileName != null){		
-				contactFax.setCfAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\anyuan\\"+attachFileName));
-			
-				String ftitle = System.currentTimeMillis()+"-"+attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案源");
+				String fileAttach = System.currentTimeMillis()+"-"+attachFileName;
+				
+				contactFax.setCfAttach(fileAttach);
+				FileUtils.copyFile(attach, new File(basePath+"\\filefileUploads\\anyuan\\"+fileAttach));
+				
+				file.setFTitle(attachFileName);
+				file.setFType("1");
 				file.setFilelibrary(this.filesService.loadById(1001));
 				file.setFReldate(sdf.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fileAttach);
 				file.setUsers(admin);
+				file.setRemark(contactFax.getCfCasecodeself()+"案源快递联系文件");
 				file.setCasecodeself(contactFax.getCfCasecodeself());
 				this.filesService.filesUpload(file);
 			}

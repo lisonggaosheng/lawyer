@@ -128,7 +128,7 @@ public class ContactMailAction extends ActionSupport{
 			if(attachFileName != null){
 				attachFileName = df2.format(new Date())+attachFileName;
 				contactMail.setCmAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\uploads\\案源文件库\\"+attachFileName));
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\案源文件库\\"+attachFileName));
 				String ftitle = contactMail.getCmCasecodeself()+"-"+attachFileName;
 				file.setFTitle(ftitle);
 				file.setFType("案源文件");

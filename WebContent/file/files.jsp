@@ -7,6 +7,17 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>无标题文档</title>
 		<link rel="stylesheet" href="/lawyer/css/public.css" />
+		<script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+		<script language="javascript">
+		/* $(document).ready(function() {
+			
+			$("#targetFile").change(function(){  
+	            var filename = $(this).val();  
+	            $("#title").val(filename);  
+	        }); 
+		
+		}); */
+ </script>
 	</head>
 	<body>
 		<table cellspacing="0" cellpadding="0" border="0" width="100%"
@@ -14,20 +25,20 @@
 			<tr>
 				<td width="15%" colspan="2">
 					&nbsp;&nbsp;
-					<img src="/lawyer/images/flag3_(add)_16x16.gif" />
+					<img src="/lawyer/images/flag3_add_16x16.gif" />
 					&nbsp;
 					<span class="title">新建文件</span>
 				</td>
 			</tr>
 			<tr>
-				<td width="50%">
+				<td width="100%">
 					<form name="addForm" action="files-add?filelibrary.flId=<s:property value="#parameters.flid"/>" 
 						method="post" enctype="multipart/form-data">
 					 
 						<table width="90%" cellspacing="0" cellpadding="0" border="0" align="left" class="form_table">
 							<tr>
 								<td  align="right">文件标题：</td>
-								<td ><input type="text" name="files1.FTitle" /></td>
+								<td ><input type="text" name="files1.FTitle" id="title"/></td>
 							</tr>
 							<tr>
 								<td align="right">所属文件库：</td>
@@ -41,8 +52,12 @@
 							<tr>
 								<td align="right">上传附件：</td>
 								<td>
-									<input type="file" name="upload" />
+									<input type="file" name="upload" id="targetFile"/>
 								</td>
+							</tr>
+							<tr>
+								<td align="right">备注：</td>
+								<td colspan="10"><textarea  name="files1.remark"></textarea></td>
 							</tr>
 							<tr>
 								<td  align="right">
