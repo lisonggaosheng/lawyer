@@ -9,3 +9,9 @@ select * from courtinfo where pname='北京正华永兴房地产开发有限公�
 
 select * from executebusiness where e_c_casecodeself in ('11020220130408004','1102022013032202520131004085819');
 select * from applierinfo where a_c_casecodeself in ('11020220130408004','1102022013032202520131004085819');
+
+
+
+
+
+##material表添加attach字段，varchar128
