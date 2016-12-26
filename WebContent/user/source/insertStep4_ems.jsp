@@ -8,16 +8,7 @@
 <title>添加第四步（与申请执行人联系信息——快递）页面</title>
 <link rel="stylesheet" href="/lawyer/css/public.css"/>
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
-<script language="javascript">
-
-	function loadCalendar(data)
-	{
-	var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-	if(rtn!=null){
-		$(data).val(rtn);
-	}
-}
-  </script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 </head>
 
 <body>
@@ -64,7 +55,7 @@
                             </tr>
                             <tr>
                             	<td align="right">发送时间：</td>
-                                <td colspan="2"><input type="text" name="contactExpress.ceDate" onClick="loadCalendar(this)" 
+                                <td colspan="2"><input type="text" name="contactExpress.ceDate" onClick="laydate()" 
                                 readonly="readonly" value="${contactExpress.ceDate }"/></td>
                             </tr>
                             <tr>
@@ -78,7 +69,7 @@
                             <tr>
                             	<td align="right">接收时间：</td>
                                 <td colspan="2"><input type="text" name="contactExpress.ceTime" 
-                                onClick="loadCalendar(this)" readonly="readonly" value="${contactExpress.ceNumber }"/></td>
+                                onClick="laydate()" readonly="readonly" value="${contactExpress.ceNumber }"/></td>
                             </tr>
                             <tr>
                             	<td align="right">运单号码：</td>

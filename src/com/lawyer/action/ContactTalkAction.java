@@ -105,25 +105,24 @@ public class ContactTalkAction extends ActionSupport{
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
-			System.out.println("开始添加申请执行人联系信息--快递");
 			Users admin=(Users) session.getAttribute("admin");
 			contactTalk.setUsers(admin);
 			contactTalk.setCtSavetime(sdf.format(new Date()));
 			if(attachFileName != null){	
-				attachFileName = df2.format(new Date())+attachFileName;
-				contactTalk.setCtAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\案源文件库\\"+attachFileName));
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				contactTalk.setCtAttach(fAttach);
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\anyuan\\"+fAttach));
 			
-				String ftitle = contactTalk.getCtCasecodeself()+"-"+attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案源文件");
-				file.setFilelibrary(this.filesService.loadById(6));
+				file.setFTitle(attachFileName);
+				file.setFType("anyuan");
+				file.setFilelibrary(this.filesService.loadById(1001));
 				file.setFReldate(df1.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(admin);
+				file.setCasecodeself(contactTalk.getCtCasecodeself());
+				file.setRemark(contactTalk.getCtCasecodeself()+"案源约谈联系信息文件");
 				this.filesService.filesUpload(file);
 			}
 	

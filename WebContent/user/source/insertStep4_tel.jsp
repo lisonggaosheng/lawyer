@@ -10,16 +10,8 @@
 <link rel="stylesheet" href="/lawyer/css/public.css"/>
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectpenson.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script language="javascript">
-
-	function loadCalendar(data)
-		{
-		var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-		if(rtn!=null){
-			$(data).val(rtn);
-		}
-		return;
-	}
 	
 	function selectpenson(){
 		var pensonname = $("#penson").find("option:selected").text();
@@ -89,7 +81,7 @@
                             <tr>
                             	<td align="right">打电话时间：</td>
                                 <td colspan="2"><input type="text" name="contactTel.ctTime" value="${contactTel.ctTime }"
-                                 onClick="loadCalendar(this)" readonly="readonly"/></td>
+                                 onClick="laydate()" readonly="readonly"/></td>
                             </tr>
                             <tr>
                             	<td align="right">打电话结果：</td>

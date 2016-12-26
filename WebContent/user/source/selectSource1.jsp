@@ -601,7 +601,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="cmAttach" />">
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="cmAttach" />">
 												<s:property value="cmAttach" /></a></td>
 											</tr>
 
@@ -669,7 +669,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="ctAttach" />">
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ctAttach" />">
 												<s:property value="ctAttach" /></a></td>
 											</tr>
 											<tr>
@@ -734,7 +734,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="ceAttach" />"><s:property
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ceAttach" />"><s:property
 													value="ceAttach" /></a></td>
 											</tr>
 
@@ -787,7 +787,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="cfAttach" />"><s:property
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="cfAttach" />"><s:property
 													value="cfAttach" /></a></td>
 											</tr>
 											<tr>
@@ -843,7 +843,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="csAttach" />"><s:property
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="csAttach" />"><s:property
 													value="csAttach" /> </a></td>
 											</tr>
 											<tr>
@@ -893,7 +893,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="ctAttach" />"><s:property
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ctAttach" />"><s:property
 													value="ctAttach" /> </a></td>
 											</tr>
 											<tr>
@@ -960,7 +960,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="cmAttach" />">
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="cmAttach" />">
 												<s:property value="cmAttach" /></a></td>
 											</tr>
 											<tr>
@@ -1020,7 +1020,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="ctAttach" />">
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ctAttach" />">
 												<s:property value="ctAttach" /></a></td>
 											</tr>
 											<tr>
@@ -1082,7 +1082,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="ceAttach" />"><s:property
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ceAttach" />"><s:property
 													value="ceAttach" /></a></td>
 											</tr>
 
@@ -1134,7 +1134,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="cfAttach" />"><s:property
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="cfAttach" />"><s:property
 													value="cfAttach" /></a></td>
 											</tr>
 
@@ -1190,7 +1190,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="csAttach" />"><s:property
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="csAttach" />"><s:property
 													value="csAttach" /> </a></td>
 											</tr>
 											<tr>
@@ -1238,7 +1238,7 @@
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案源文件库/<s:property value="ctAttach" />"><s:property
+													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ctAttach" />"><s:property
 													value="ctAttach" /> </a></td>
 											</tr>
 											<tr>
@@ -1298,7 +1298,7 @@
 									<tr>
 										<td align="right" width="25%" class="td">附件：</td>
 										<td class="td"><a
-											href="downFile.action?filename=/uploads/案源文件库/${court.csign.csAttach}">${court.csign.csAttach}</a></td>
+											href="downFile.action?filePath=/fileUploads/anyuan/&filename=${court.csign.csAttach}">${court.csign.csAttach}</a></td>
 									</tr>
 
 									<tr>

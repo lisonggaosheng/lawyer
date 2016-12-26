@@ -9,26 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script language="javascript">
-	function loadCalendar(data) {
-		if (navigator.userAgent.indexOf("Chrome") > 0) {
-			var winOption = "height=250px,width=320px,status:no;help:no;scrolling=no;scrollbars=no";
-			var rtn = window.open(url, window, winOption);
-			if (rtn != null) {
-				$(data).val(rtn);
-			}
-		} else {
-			var rtn = window
-					.showModalDialog(
-							"/lawyer/user/source/calender.jsp",
-							"",
-							"dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-			if (rtn != null) {
-				$(data).val(rtn);
-			}
-		}
-	}
-
 	function yanzhen() {
 		var val1 = $("#cmMail").val();
 		var leng1 = val1.length;
@@ -97,7 +79,7 @@
 									<tr>
 										<td align="right">发送时间：</td>
 										<td colspan="2"><input type="text"
-											name="contactMail.cmDate" onClick="loadCalendar(this)"
+											name="contactMail.cmDate" onClick="laydate()"
 											readonly="readonly" value="${contactMail.cmDate}"/></td>
 									</tr>
 									<tr>

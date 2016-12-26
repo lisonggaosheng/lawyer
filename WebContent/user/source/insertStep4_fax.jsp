@@ -8,16 +8,7 @@
 <title>添加第四步（与申请执行人联系信息——传真）页面</title>
 <link rel="stylesheet" href="/lawyer/css/public.css"/>
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
-<script language="javascript">
-
-	function loadCalendar(data)
-	{
-	var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-	if(rtn!=null){
-		$(data).val(rtn);
-	}
-}
-  </script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 </head>
 
 <body>
@@ -64,7 +55,7 @@
                             </tr>
                             <tr>
                             	<td align="right">传真时间：</td>
-                                <td colspan="2"><input type="text" name="contactFax.cfTime" onClick="loadCalendar(this)"
+                                <td colspan="2"><input type="text" name="contactFax.cfTime" onClick="laydate()"
                                 readonly="readonly" value="${contactFax.cfTime }"/></td>
                             </tr>
                             <tr>

@@ -11,16 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>添加第四步（与申请执行人联系信息——签约情况）页面</title>
 <link rel="stylesheet" href="../../css/public.css"/>
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
-<script language="javascript">
-
-	function loadCalendar(data)
-	{
-	var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-	if(rtn!=null){
-		$(data).val(rtn);
-	}
-}
-  </script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 </head>
 
 <body>
@@ -60,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </tr>
                         	<tr>
                             	<td align="right" width="20%">签约时间：</td>
-                                <td colspan="2"><input type="text" name="contactSign.csDate" onClick="loadCalendar(this)" readonly="readonly"/></td>
+                                <td colspan="2"><input type="text" name="contactSign.csDate" onClick="laydate()" readonly="readonly"/></td>
                             </tr>
                             <tr>
                             	<td align="right">签约比例：</td>

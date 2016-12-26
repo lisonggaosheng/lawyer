@@ -9,21 +9,9 @@
 <link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectpenson.js"></script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 <script language="javascript">
 
-	function loadCalendar(data)
-	{
-		if(navigator.userAgent.indexOf("Chrome") >0 ){
-			var winOption = "height=250px,width=320px,status:no;help:no;scrolling=no;scrollbars=no";
-    		var rtn = window.open("/lawyer/user/source/calender.jsp","", winOption);
-		}else{
-			var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-			if(rtn!=null){
-				$(data).val(rtn);
-			}
-		}
-	}
-	
 	function selectpenson(){
 		var pensonname = $("#penson").find("option:selected").text();
 		$("#ctLawyerName").val(pensonname);	
@@ -93,7 +81,7 @@
 					<tr>
 						<td align="right" width="20%">时间：</td>
 						<td colspan="2"><input type="text" name="contactTalk.ctDate" value="${contactTalk.ctDate }" 
-						id="calendardate" onClick="loadCalendar(this)" readonly="readonly"/></td>
+						id="calendardate" onClick="laydate()" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td align="right">备注：</td>

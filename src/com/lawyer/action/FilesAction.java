@@ -150,7 +150,7 @@ public class FilesAction extends ActionSupport {
 	 * 文件上传
 	 */
 	public String add() {
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+		SimpleDateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日");
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		Users user=(Users) session.getAttribute("admin");
 		

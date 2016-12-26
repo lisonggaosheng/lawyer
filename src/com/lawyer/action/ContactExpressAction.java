@@ -93,7 +93,6 @@ public class ContactExpressAction extends ActionSupport{
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
 			
@@ -101,18 +100,19 @@ public class ContactExpressAction extends ActionSupport{
 			contactExpress.setUsers(admin);
 			contactExpress.setCeSavetime(sdf.format(new Date()));
 			if(attachFileName != null){
-				attachFileName = df2.format(new Date())+attachFileName;
-				contactExpress.setCeAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\案源文件库\\"+attachFileName));
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
 				
-				String ftitle = System.currentTimeMillis()+"-"+attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案源文件");
-				file.setFilelibrary(this.filesService.loadById(6));
+				contactExpress.setCeAttach(fAttach);
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\anyuan\\"+fAttach));
+				
+				file.setFTitle(attachFileName);
+				file.setFType("anyuan");
+				file.setFilelibrary(this.filesService.loadById(1001));
 				file.setFReldate(df1.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(admin);
 				file.setCasecodeself(contactExpress.getCeCasecodeself());
+				file.setRemark(contactExpress.getCeCasecodeself()+"案源快递联系信息文件");
 				this.filesService.filesUpload(file);
 			}
 			if(contactExpress!=null){

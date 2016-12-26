@@ -119,23 +119,24 @@ public class ContactMailAction extends ActionSupport{
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
 			Users admin=(Users) session.getAttribute("admin");
 			contactMail.setUsers(admin);
 			contactMail.setCmSavetime(sdf.format(new Date()));
 			if(attachFileName != null){
-				attachFileName = df2.format(new Date())+attachFileName;
-				contactMail.setCmAttach(attachFileName);
-				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\案源文件库\\"+attachFileName));
-				String ftitle = contactMail.getCmCasecodeself()+"-"+attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案源文件");
-				file.setFilelibrary(this.filesService.loadById(6));
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				
+				contactMail.setCmAttach(fAttach);
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\anyuan\\"+fAttach));
+				file.setFTitle(attachFileName);
+				file.setFType("anyuan");
+				file.setFilelibrary(this.filesService.loadById(1001));
 				file.setFReldate(df1.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(admin);
+				file.setCasecodeself(contactMail.getCmCasecodeself());
+				file.setRemark(contactMail.getCmCasecodeself()+"案源邮件联系信息文件");
 				this.filesService.filesUpload(file);
 			}
 			if(contactMail!=null){

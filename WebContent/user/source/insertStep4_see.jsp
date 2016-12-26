@@ -8,16 +8,7 @@
 <title>添加第四步（与申请执行人联系信息——登门拜访）页面</title>
 <link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
-<script language="javascript">
-
-	function loadCalendar(data)
-	{
-	var rtn=window.showModalDialog("/lawyer/user/source/calender.jsp","","dialogWidth:320px;dialogHeight:250px;status:no;help:no;scrolling=no;scrollbars=no");
-	if(rtn!=null){
-		$(data).val(rtn);
-	}
-}
-  </script>
+<script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
 </head>
 
 <body>
@@ -76,7 +67,7 @@
 					<tr>
 						<td align="right" width="20%">拜访时间：</td>
 						<td colspan="2"><input type="text" name="contactSee.csDate" value="${contactSee.csDate }" 
-						onClick="loadCalendar(this)" readonly="readonly"/></td>
+						onClick="laydate()" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td align="right">备注：</td>

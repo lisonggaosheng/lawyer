@@ -100,7 +100,6 @@ public class ContactTelAction extends ActionSupport {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日");
-		SimpleDateFormat df2 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
 		try {
@@ -109,18 +108,18 @@ public class ContactTelAction extends ActionSupport {
 			contactTel.setUsers(admin);
 			contactTel.setCtSavetime(sdf.format(new Date()));
 			if (attachFileName != null) {
-				attachFileName = df2.format(new Date()) + attachFileName;
-				contactTel.setCtAttach(attachFileName);
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				contactTel.setCtAttach(fAttach);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\fileUploads\\案源文件库\\" + attachFileName));
-				String ftitle = contactTel.getCtCasecodeself() + "-"
-						+ attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案源文件");
-				file.setFilelibrary(this.filesService.loadById(6));
+						+ "\\fileUploads\\anyuan\\" + fAttach));
+				file.setFTitle(attachFileName);
+				file.setFType("anyuan");
+				file.setFilelibrary(this.filesService.loadById(1001));
 				file.setFReldate(df1.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(admin);
+				file.setCasecodeself(contactTel.getCtCasecodeself());
+				file.setRemark(contactTel.getCtCasecodeself()+"案源电话联系信息文件");
 				this.filesService.filesUpload(file);
 			}
 
