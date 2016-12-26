@@ -102,7 +102,7 @@ public class ContactFaxAction extends ActionSupport{
 				String fileAttach = System.currentTimeMillis()+"_"+attachFileName;
 				
 				contactFax.setCfAttach(fileAttach);
-				FileUtils.copyFile(attach, new File(basePath+"\\filefileUploads\\anyuan\\"+fileAttach));
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\anyuan\\"+fileAttach));
 				
 				file.setFTitle(attachFileName);
 				file.setFType("anyuan");

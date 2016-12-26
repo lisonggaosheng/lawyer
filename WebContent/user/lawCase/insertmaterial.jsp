@@ -12,7 +12,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加材料整理</title>
-<link rel="stylesheet" href="../../css/public.css" />
+<link rel="stylesheet" href="/lawyer/css/public.css" />
 <script type="text/javascript" src="/lawyer/js/jquery-1.6.4.min.js"></script>
 <script type="text/javascript" src="/lawyer/js/selectlawyer.js"></script>
 <script type="text/javascript" src="/lawyer/js/laydate/laydate.js"></script>
@@ -23,7 +23,7 @@
 	height="100%" class="content_table">
 
 	<tr>
-		<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_(add)_16x16.gif" />&nbsp;
+		<td>&nbsp;&nbsp;<img src="/lawyer/images/flag3_add_16x16.gif" />&nbsp;
 		<span class="title">添加材料整理信息</span></td>
 	</tr>
 	<tr>
@@ -42,7 +42,7 @@
 			border="0">
 			<tr>
 				<td>
-				<form name="form3" method="post" action="addMaterial">
+				<form name="form3" method="post" action="addMaterial" enctype="multipart/form-data">
 				<table class="form_table" align="center" cellpadding="0"
 					cellspacing="0" width="100%" border="0">
 					<tr>
@@ -73,6 +73,10 @@
 						<td><textarea rows="5" cols="50" name="material.remark"></textarea>
 						<input type="hidden" name="material.casecodeself"
 							value="${param.Casecodeself}" /></td>
+					</tr>
+					<tr>
+						<td align="right">附件：</td>
+						<td colspan="2"><input type="file" name="attach" /></td>
 					</tr>
 					<tr>
 						<td align="center" colspan="2"><input type="submit"

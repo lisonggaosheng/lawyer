@@ -169,6 +169,12 @@
 									<td class="td">${cont.csSavetime }</td>
 								</tr>
 								<tr>
+									<td align="right" width="25%" class="td">附件：</td>
+									<td class="td"><a
+										href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.csAttach }">
+										${cont.csAttach }</a></td>
+								</tr>
+								<tr>
 									<td class="td" align="right"><b>可执行操作</b>：</td>
 									<td class="td"><a href="javascript:alert('业务不支持修改操作');">修改</a>&nbsp;&nbsp;
 										<a href="javascript:confirm('确实要删除吗?'){alert('业务不支持删除操作');};">删除</a>
@@ -214,6 +220,12 @@
 									<tr>
 										<td align="right" class="td">记录时间：</td>
 										<td class="td">${cont.material.savetime }</td>
+									</tr>
+									<tr>
+										<td align="right" width="25%" class="td">附件：</td>
+										<td class="td"><a
+											href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.material.attach }">
+											${cont.material.attach }</a></td>
 									</tr>
 									<tr>
 										<td class="td" align="right"><b>可执行操作</b>：</td>

@@ -15,6 +15,7 @@ public class Material implements Serializable{
 	private String remark;
 	private Users users;
 	private String savetime;
+	private String attach;
 	
 	public Integer getId() {
 		return id;
@@ -76,5 +77,12 @@ public class Material implements Serializable{
 	public void setSavetime(String savetime) {
 		this.savetime = savetime;
 	}
+	public String getAttach() {
+		return attach;
+	}
+	public void setAttach(String attach) {
+		this.attach = attach;
+	}
+	
 	
 }

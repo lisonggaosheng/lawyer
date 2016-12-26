@@ -1402,7 +1402,6 @@ public class ClearRecordAction extends ActionSupport {
 
 	public String addClearrecord() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
@@ -1413,19 +1412,19 @@ public class ClearRecordAction extends ActionSupport {
 			Users user = (Users) session.getAttribute("admin");
 			clearRecord.setUsers(user);
 			if (attachFileName != null) {
-				attachFileName = df1.format(new Date()) + "_" + attachFileName;
-				clearRecord.setCrattach(attachFileName);
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				clearRecord.setCrattach(fAttach);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\fileUploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\anjian\\" + fAttach));
 
-				String ftitle = clearRecord.getCrcasecodeself() + "-"
-						+ attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案件文件");
-				file.setFilelibrary(this.filesService.loadById(7));
+				file.setFTitle(attachFileName);
+				file.setFType("anjian");
+				file.setFilelibrary(this.filesService.loadById(1002));
 				file.setFReldate(df2.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(user);
+				file.setCasecodeself(clearRecord.getCrcasecodeself());
+				file.setRemark(clearRecord.getCrcasecodeself()+"案件清算立案信息文件");
 				this.filesService.filesUpload(file);
 			}
 			this.crs.addClearrecord(clearRecord);
@@ -1440,7 +1439,6 @@ public class ClearRecordAction extends ActionSupport {
 	public String addClearclear() {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
 		try {
@@ -1450,19 +1448,19 @@ public class ClearRecordAction extends ActionSupport {
 			clearClear.setCcsaveTime(sdf.format(new Date()));
 			clearClear.setUsers(user);
 			if (attachFileName != null) {
-				attachFileName = df1.format(new Date()) + "_" + attachFileName;
-				clearClear.setCcattach(attachFileName);
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				clearClear.setCcattach(fAttach);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\fileUploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\anjian\\" + fAttach));
 
-				String ftitle = clearClear.getCccasecodeself() + "-"
-						+ attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案件文件");
-				file.setFilelibrary(this.filesService.loadById(7));
+				file.setFTitle(attachFileName);
+				file.setFType("anjian");
+				file.setFilelibrary(this.filesService.loadById(1002));
 				file.setFReldate(simpleDateFormat.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(user);
+				file.setCasecodeself(clearClear.getCccasecodeself());
+				file.setRemark(clearClear.getCccasecodeself()+"案件清算结束信息文件");
 				this.filesService.filesUpload(file);
 			}
 			this.crs.addClearclear(clearClear);
@@ -1475,7 +1473,6 @@ public class ClearRecordAction extends ActionSupport {
 
 	public String addLitigation() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
@@ -1486,19 +1483,19 @@ public class ClearRecordAction extends ActionSupport {
 			litigation.setUsers(user);
 			litigation.setLisaveTime(sdf.format(new Date()));
 			if (attachFileName != null) {
-				attachFileName = df1.format(new Date()) + "_" + attachFileName;
-				litigation.setLiattach(attachFileName);
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				litigation.setLiattach(fAttach);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\fileUploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\anjian\\" + fAttach));
 
-				String ftitle = litigation.getLicasecodeself() + "-"
-						+ attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案件文件");
-				file.setFilelibrary(this.filesService.loadById(7));
+				file.setFTitle(attachFileName);
+				file.setFType("anjian");
+				file.setFilelibrary(this.filesService.loadById(1002));
 				file.setFReldate(df2.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(user);
+				file.setCasecodeself(litigation.getLicasecodeself());
+				file.setRemark(litigation.getLicasecodeself()+"案件诉讼信息文件");
 				this.filesService.filesUpload(file);
 			}
 			this.crs.addLitigation(litigation);
@@ -1511,7 +1508,6 @@ public class ClearRecordAction extends ActionSupport {
 
 	public String addExecute() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
@@ -1522,19 +1518,19 @@ public class ClearRecordAction extends ActionSupport {
 			execute.setUsers(user);
 			execute.setExsavetime(sdf.format(new Date()));
 			if (attachFileName != null) {
-				attachFileName = df1.format(new Date()) + "_" + attachFileName;
-				execute.setExattach(attachFileName);
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				execute.setExattach(fAttach);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\fileUploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\anjian\\" + fAttach));
 
-				String ftitle = execute.getExcasecodeself() + "-"
-						+ attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案件文件");
-				file.setFilelibrary(this.filesService.loadById(7));
+				file.setFTitle(attachFileName);
+				file.setFType("anjian");
+				file.setFilelibrary(this.filesService.loadById(1002));
 				file.setFReldate(df2.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(user);
+				file.setCasecodeself(execute.getExcasecodeself());
+				file.setRemark(execute.getExcasecodeself()+"案件执行信息文件");
 				this.filesService.filesUpload(file);
 			}
 			if(execute.getExecMoney().equals("")){
@@ -1550,7 +1546,6 @@ public class ClearRecordAction extends ActionSupport {
 
 	public String addClearClose() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyyMMddhhmmss");
 		SimpleDateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日");
 		String basePath = ServletActionContext.getServletContext().getRealPath(
 				"/");
@@ -1561,19 +1556,19 @@ public class ClearRecordAction extends ActionSupport {
 			closeRecord.setUsers(user);
 			closeRecord.setCrsavetime(sdf.format(new Date()));
 			if (attachFileName != null) {
-				attachFileName = df1.format(new Date()) + "_" + attachFileName;
-				closeRecord.setCrattach(attachFileName);
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				closeRecord.setCrattach(fAttach);
 				FileUtils.copyFile(attach, new File(basePath
-						+ "\\fileUploads\\案件文件库\\" + attachFileName));
+						+ "\\fileUploads\\anjian\\" + fAttach));
 
-				String ftitle = closeRecord.getCrcasecodeself() + "-"
-						+ attachFileName;
-				file.setFTitle(ftitle);
-				file.setFType("案件文件");
-				file.setFilelibrary(this.filesService.loadById(7));
+				file.setFTitle(attachFileName);
+				file.setFType("anjian");
+				file.setFilelibrary(this.filesService.loadById(1002));
 				file.setFReldate(df2.format(new Date()));
-				file.setFAttach(attachFileName);
+				file.setFAttach(fAttach);
 				file.setUsers(user);
+				file.setCasecodeself(closeRecord.getCrcasecodeself());
+				file.setRemark(closeRecord.getCrcasecodeself()+"案件结案信息文件");
 				this.filesService.filesUpload(file);
 			}
 			this.crs.addClearClose(closeRecord);
@@ -1851,13 +1846,31 @@ public class ClearRecordAction extends ActionSupport {
 	}
 	public String addMaterial() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日");
+		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
-			material.setSavetime(sdf.format(new Date()));
-			HttpSession session = ServletActionContext.getRequest()
-					.getSession();
+			HttpSession session = ServletActionContext.getRequest().getSession();
 			Users user = (Users) session.getAttribute("admin");
-			material.setUsers(user);
 			
+			if(attachFileName != null){
+				String fAttach = System.currentTimeMillis()+"_"+attachFileName;
+				
+				material.setAttach(fAttach);
+				FileUtils.copyFile(attach, new File(basePath+"\\fileUploads\\anjian\\"+fAttach));
+				
+				file.setFTitle(attachFileName);
+				file.setFType("anjian");
+				file.setFilelibrary(this.filesService.loadById(1002));
+				file.setFReldate(df1.format(new Date()));
+				file.setFAttach(fAttach);
+				file.setUsers(user);
+				file.setCasecodeself(material.getCasecodeself());
+				file.setRemark(material.getCasecodeself()+"案件材料整理信息文件");
+				this.filesService.filesUpload(file);
+			}
+			
+			material.setSavetime(sdf.format(new Date()));
+			material.setUsers(user);
 			this.crs.addMaterial(material);
 			return SUCCESS;
 		} catch (Exception e) {

@@ -34,6 +34,9 @@
         <property name="savetime" type="java.lang.String">
             <column name="savetime" length="128" />
         </property>
+        <property name="attach" type="java.lang.String">
+            <column name="attach" length="128" />
+        </property>
          
     </class>
 </hibernate-mapping>

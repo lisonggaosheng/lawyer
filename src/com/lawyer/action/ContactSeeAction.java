@@ -106,7 +106,6 @@ public class ContactSeeAction extends ActionSupport{
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy年MM月dd日");
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
 		try {
-			System.out.println("开始添加申请执行人联系信息--快递");
 			Users admin=(Users) session.getAttribute("admin");
 			contactSee.setUsers(admin);
 			contactSee.setCsSavetime(sdf.format(new Date()));

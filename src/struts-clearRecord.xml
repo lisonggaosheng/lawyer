@@ -126,7 +126,7 @@
 		</action>
 			
 		<action name="addMaterial" class="clearRecordAction" method="addMaterial">
-			<result type="redirect">selectDetail.action?cont.csCasecodeself=${material.casecodeself}</result>
+			<result type="redirect">/lawyer/selectDetail.action?cont.csCasecodeself=${material.casecodeself}</result>
 			<result name="error">/user/index.jsp</result>
 		</action>
 		<action name="selectMaterial" class="clearRecordAction" method="selectMaterial">
