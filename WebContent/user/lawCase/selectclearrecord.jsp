@@ -69,7 +69,7 @@
 				<tr>
 					<td align="right" class="td">附件：</td>
 					<td class="td"><a
-						href="downFile.action?filename=/uploads/案件文件库/${crattach}">${crattach}</a>
+						href="downFile.action?filePath=/fileUploads/anjian/&filename=${crattach}">${crattach}</a>
 					</td>
 				</tr>
 				<tr>

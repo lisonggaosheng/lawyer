@@ -391,8 +391,8 @@
 									<tr>
 										<td align="right" class="td">附件：</td>
 										<td class="td"><a
-											href="downFile.action?filename=/uploads/案件文件库/${cont.clearrecord.crattach}">${cont.clearrecord.crattach
-												}</a></td>
+											href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.clearrecord.crattach}">
+											${cont.clearrecord.crattach}</a></td>
 									</tr>
 									<tr>
 										<td align="right" class="td">记录人员：</td>
@@ -469,7 +469,8 @@
 									<tr>
 										<td align="right" class="td">附件：</td>
 										<td class="td"><a
-											href="downFile.action?filename=/uploads/案件文件库/${cont.clearclear.ccattach}">${cont.clearclear.ccattach}</a>
+											href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.clearclear.ccattach}">
+											${cont.clearclear.ccattach}</a>
 										</td>
 									</tr>
 									<tr>
@@ -560,7 +561,8 @@
 										<tr>
 											<td align="right" class="td">附件：</td>
 											<td class="td"><a
-												href="downFile.action?filename=/uploads/案件文件库/${cont.litigation.liattach}">${cont.litigation.liattach}</a>
+												href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.litigation.liattach}">
+												${cont.litigation.liattach}</a>
 											</td>
 										</tr>
 										<tr>
@@ -649,7 +651,8 @@
 											<tr>
 												<td align="right" class="td">附件：</td>
 												<td class="td"><a
-													href="downFile.action?filename=/uploads/案件文件库/${cont.execute.exattach}">${cont.execute.exattach}</a>
+													href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.execute.exattach}">
+													${cont.execute.exattach}</a>
 												</td>
 											</tr>
 											<tr>
@@ -706,7 +709,8 @@
 												<tr>
 													<td align="right" class="td">附件：</td>
 													<td class="td"><a
-														href="downFile.action?filename=/uploads/案件文件库/${cont.closerecord.crattach}">${cont.closerecord.crattach}</a>
+														href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.closerecord.crattach}">
+														${cont.closerecord.crattach}</a>
 													</td>
 												</tr>
 												<tr>
@@ -840,8 +844,8 @@
 										<tr>
 											<td align="right" class="td">附件：</td>
 											<td class="td"><a
-												href="downFile.action?filename=/uploads/案件文件库/${cont.clearrecord.crattach}">${cont.clearrecord.crattach
-													}</a></td>
+												href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.clearrecord.crattach}">
+												${cont.clearrecord.crattach}</a></td>
 										</tr>
 										<tr>
 											<td align="right" class="td">记录人员：</td>
@@ -920,7 +924,8 @@
 										<tr>
 											<td align="right" class="td">附件：</td>
 											<td class="td"><a
-												href="downFile.action?filename=/uploads/案件文件库/${cont.clearclear.ccattach}">${cont.clearclear.ccattach}</a>
+												href="downFile.action?filePath=/fileUploads/anjian/&filename=${cont.clearclear.ccattach}">
+												${cont.clearclear.ccattach}</a>
 											</td>
 										</tr>
 										<tr>

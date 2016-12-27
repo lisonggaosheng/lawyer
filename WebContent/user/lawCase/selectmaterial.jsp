@@ -55,6 +55,12 @@
 					<td align="right" class="td">保存时间：</td>
 					<td class="td">${savetime }</td>
 				</tr>
+				<tr>
+					<td align="right" class="td">附件：</td>
+					<td class="td"><a
+						href="downFile.action?filePath=/fileUploads/anjian/&filename=${attach}">${attach}</a>
+					</td>
+				</tr>
 			</table>
 			</td>
 		</tr>
