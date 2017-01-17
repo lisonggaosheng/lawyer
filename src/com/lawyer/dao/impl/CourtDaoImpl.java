@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
@@ -831,6 +832,9 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 				Iterator it = list.iterator();
 				while (it.hasNext()) {
 					DishonestyCourt dcourt = (DishonestyCourt) it.next();
+					if(StringUtils.isBlank(dcourt.getIname())){
+						continue;
+					}
 					List<Court> courts = selectCourtsByNameCasecode(dcourt.getIname(), dcourt.getCaseCode());
 					if(courts.size()>0){
 						for (Court court2 : courts) {
