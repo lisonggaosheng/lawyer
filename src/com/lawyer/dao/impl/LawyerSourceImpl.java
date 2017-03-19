@@ -170,7 +170,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		}else{
 			//市场部人员查询
 			if(user != null && user.getURole().contains("市场")){
-				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+//				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+				mysql.append(" and court0_.executestep<7 ");
 			}
 			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
@@ -353,7 +354,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		}else{
 			//市场部人员查询
 			if(user != null && user.getURole().contains("市场")){
-				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+//				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+				mysql.append(" and court0_.executestep<7 ");
 			}
 			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
@@ -630,7 +632,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		}else{
 			//市场部人员查询
 			if(user != null && user.getURole().contains("市场")){
-				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+//				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+				mysql.append(" and court0_.executestep<7 ");
 			}
 			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
@@ -842,7 +845,8 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		}else{
 			//市场部人员查询
 			if(user != null && user.getURole().contains("市场")){
-				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+//				mysql.append(" and court0_.execMoney >= 70000 and court0_.executestep<7 ");
+				mysql.append(" and court0_.executestep<7 ");
 			}
 			
 			if("".equals(params[28].trim())) params[28]="1111年11月11日";
