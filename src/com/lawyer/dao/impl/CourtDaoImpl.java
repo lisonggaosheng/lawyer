@@ -852,6 +852,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 							court2.setRemark(dcourt.getDuty());
 							court2.setSavetime(df1.format(new Date()));
 							court2.setUid(user.getUId());
+							court2.setExecMoney(String.valueOf(CommonUtil.getNumbers(dcourt.getDuty())));
 							this.getHibernateTemplate().update(court2);
 						}
 					}else{
@@ -877,6 +878,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 						court.setInfoType("3");
 						court.setExecMoney("1");
 						court.setRemark(dcourt.getDuty());
+						court.setExecMoney(String.valueOf(CommonUtil.getNumbers(dcourt.getDuty())));
 						court.setSavetime(df1.format(new Date()));
 						court.setUid(user.getUId());
 						this.getHibernateTemplate().save(court);
