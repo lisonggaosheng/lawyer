@@ -599,6 +599,10 @@
 												<td class="td"><s:property value="cmRemark" /></td>
 											</tr>
 											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="cmSavetime" /></td>
+											</tr>
+											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
 													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="cmAttach" />">
@@ -667,6 +671,10 @@
 												<td class="td"><s:property value="ctRemark" /></td>
 											</tr>
 											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="ctSavetime" /></td>
+											</tr>
+											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
 													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ctAttach" />">
@@ -732,6 +740,10 @@
 												<td class="td"><s:property value="ceRemark" /></td>
 											</tr>
 											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="ceSavetime" /></td>
+											</tr>
+											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
 													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ceAttach" />"><s:property
@@ -783,6 +795,10 @@
 											<tr>
 												<td align="right" width="25%" class="td">备注：</td>
 												<td class="td"><s:property value="cfRemark" /></td>
+											</tr>
+											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="cfSavetime" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
@@ -841,6 +857,10 @@
 												<td class="td"><s:property value="csRemark" /></td>
 											</tr>
 											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="csSavetime" /></td>
+											</tr>
+											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
 													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="csAttach" />"><s:property
@@ -889,6 +909,10 @@
 											<tr>
 												<td align="right" width="25%" class="td">备注：</td>
 												<td class="td"><s:property value="ctRemark" /></td>
+											</tr>
+											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="ctSavetime" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
@@ -958,6 +982,10 @@
 												<td class="td"><s:property value="cmRemark" /></td>
 											</tr>
 											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="cmSavetime" /></td>
+											</tr>
+											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
 													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="cmAttach" />">
@@ -1016,6 +1044,10 @@
 											<tr>
 												<td align="right" width="25%" class="td">备注：</td>
 												<td class="td"><s:property value="ctRemark" /></td>
+											</tr>
+											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="ctSavetime" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
@@ -1080,6 +1112,10 @@
 												<td class="td"><s:property value="ceRemark" /></td>
 											</tr>
 											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="ceSavetime" /></td>
+											</tr>
+											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
 													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="ceAttach" />"><s:property
@@ -1132,6 +1168,10 @@
 												<td class="td"><s:property value="cfRemark" /></td>
 											</tr>
 											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="cfSavetime" /></td>
+											</tr>
+											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
 												<td class="td"><a
 													href="downFile.action?filePath=/fileUploads/anyuan/&filename=<s:property value="cfAttach" />"><s:property
@@ -1182,10 +1222,13 @@
 												<td align="right" width="25%" class="td">拜访结果：</td>
 												<td class="td"><s:property value="csResult" /></td>
 											</tr>
-
 											<tr>
 												<td align="right" width="25%" class="td">备注：</td>
 												<td class="td"><s:property value="csRemark" /></td>
+											</tr>
+											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="csSavetime" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
@@ -1234,6 +1277,10 @@
 											<tr>
 												<td align="right" width="25%" class="td">备注：</td>
 												<td class="td"><s:property value="csRemark" /></td>
+											</tr>
+											<tr>
+												<td align="right" width="25%" class="td">记录时间：</td>
+												<td class="td"><s:property value="csSavetime" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>
