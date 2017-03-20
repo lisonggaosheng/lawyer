@@ -17,6 +17,8 @@ import com.lawyer.pojo.ApplierinfoNetwork;
 import com.lawyer.pojo.ApplierinfoOnself;
 import com.lawyer.pojo.ContactExpress;
 import com.lawyer.pojo.ContactMail;
+import com.lawyer.pojo.ContactSee;
+import com.lawyer.pojo.ContactTalk;
 import com.lawyer.pojo.ContactTel;
 import com.lawyer.pojo.ContractSign;
 import com.lawyer.pojo.Court;
@@ -41,6 +43,8 @@ public class LawyerSourceAction extends ActionSupport {
 	private ContactTel contactTel;
 	private ContractSign contractSign;
 	private ContactExpress contactExpress;
+	private ContactSee contactSee;
+	private ContactTalk contactTalk;
 	private String startqianyuetime;
 	private String endqianyuetime;
 	private String startliantime;
@@ -1022,9 +1026,12 @@ public class LawyerSourceAction extends ActionSupport {
 					contactTel.getCtTel1(),//40
 					usedmark,
 					startmarkTime,
-					endmarkTime, //43
-					disposeResult
-					
+					endmarkTime, 
+					disposeResult,//44
+					contactSee.getCsName(),
+					contactSee.getCsOthername(),
+					contactTalk.getCtName(),
+					contactTalk.getCtLawyerName()
 			};
 			flog="1";
 			session.put("params", params);
@@ -1175,5 +1182,22 @@ public class LawyerSourceAction extends ActionSupport {
 	public void setEndmarkTime(String endmarkTime) {
 		this.endmarkTime = endmarkTime;
 	}
+
+	public ContactSee getContactSee() {
+		return contactSee;
+	}
+
+	public void setContactSee(ContactSee contactSee) {
+		this.contactSee = contactSee;
+	}
+
+	public ContactTalk getContactTalk() {
+		return contactTalk;
+	}
+
+	public void setContactTalk(ContactTalk contactTalk) {
+		this.contactTalk = contactTalk;
+	}
+	
 
 }

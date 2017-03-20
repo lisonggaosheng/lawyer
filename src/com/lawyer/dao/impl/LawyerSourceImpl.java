@@ -149,6 +149,17 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			mysql.append("left join contact_express contact_ce_express ");
 			mysql.append("ON court0_.casecodeself=contact_ce_express.ce_casecodeself ");
 		}
+		
+		//添加登门拜访和约谈查询
+		if(!"".equals(params[45].trim()) || !"".equals(params[46].trim())){
+			mysql.append("left join lawyer.contact_see contact_see ");
+			mysql.append("ON court0_.casecodeself=contact_see.cs_casecodeself ");
+		}
+		if(!"".equals(params[47].trim()) || !"".equals(params[48].trim())){
+			mysql.append("left join lawyer.contact_talk contact_talk ");
+			mysql.append("ON court0_.casecodeself=contact_talk.casecodeself ");
+		}
+		
 		mysql.append("where ");
 		mysql.append("court0_.excludeStatus ='0' ");
 		
@@ -253,6 +264,15 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		if (!"".equals(params[40].trim()))
 			mysql.append("AND contacttel3_.ct_tel1 LIKE '%"+params[40]+"%' ");
 		
+		//添加登门拜访和约谈查询		
+		if (!"".equals(params[45].trim()))
+			mysql.append("AND contact_see.cs_name LIKE '%"+params[45]+"%' ");
+		if (!"".equals(params[46].trim()))
+			mysql.append("AND contact_see.cs_othername LIKE '%"+params[46]+"%' ");
+		if (!"".equals(params[47].trim()))
+			mysql.append("AND contact_talk.name LIKE '%"+params[47]+"%' ");
+		if (!"".equals(params[48].trim()))
+			mysql.append("AND contact_talk.lawyername LIKE '%"+params[48]+"%' ");
 		
 		if (!"".equals(params[14].trim()))
 			mysql.append("AND contractsi4_.cs_name LIKE '%"+params[14]+"%' ");
@@ -332,6 +352,17 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			mysql.append("left join contact_express contact_ce_express ");
 			mysql.append("ON court0_.casecodeself=contact_ce_express.ce_casecodeself ");
 		}
+		
+		//添加登门拜访和约谈查询
+		if(!"".equals(params[45].trim()) || !"".equals(params[46].trim())){
+			mysql.append("left join lawyer.contact_see contact_see ");
+			mysql.append("ON court0_.casecodeself=contact_see.cs_casecodeself ");
+		}
+		if(!"".equals(params[47].trim()) || !"".equals(params[48].trim())){
+			mysql.append("left join lawyer.contact_talk contact_talk ");
+			mysql.append("ON court0_.casecodeself=contact_talk.casecodeself ");
+		}
+		
 		mysql.append("where ");
 		mysql.append("court0_.excludeStatus ='0' ");
 		
@@ -462,6 +493,17 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		if(!"".equals(params[25].trim())){
 			mysql.append("AND executebus5_.e_status LIKE '%"+params[25]+"%' ");
 		}
+		
+		//添加登门拜访和约谈查询		
+		if (!"".equals(params[45].trim()))
+			mysql.append("AND contact_see.cs_name LIKE '%"+params[45]+"%' ");
+		if (!"".equals(params[46].trim()))
+			mysql.append("AND contact_see.cs_othername LIKE '%"+params[46]+"%' ");
+		if (!"".equals(params[47].trim()))
+			mysql.append("AND contact_talk.name LIKE '%"+params[47]+"%' ");
+		if (!"".equals(params[48].trim()))
+			mysql.append("AND contact_talk.lawyername LIKE '%"+params[48]+"%' ");
+		
 		if(!"".equals(params[32].trim()))
 			mysql.append("AND court0_.casecodeself LIKE '%"+params[32]+"%' ");
 		if (!"".equals(params[33].trim()))
@@ -614,6 +656,17 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			mysql.append("left join lawyer.contact_express contact_ce_express ");
 			mysql.append("ON court0_.casecodeself=contact_ce_express.ce_casecodeself ");
 		}
+		
+		//添加登门拜访和约谈查询
+		if(!"".equals(params[45].trim()) || !"".equals(params[46].trim())){
+			mysql.append("left join lawyer.contact_see contact_see ");
+			mysql.append("ON court0_.casecodeself=contact_see.cs_casecodeself ");
+		}
+		if(!"".equals(params[47].trim()) || !"".equals(params[48].trim())){
+			mysql.append("left join lawyer.contact_talk contact_talk ");
+			mysql.append("ON court0_.casecodeself=contact_talk.casecodeself ");
+		}
+		
 		mysql.append("where 1 ");
 		if(showNote.endsWith("1")){  //公告信息
 			//市场部人员查询
@@ -739,6 +792,16 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			mysql.append("AND contact_ce_express.ce_name LIKE '%"+params[34]+"%' ");
 		if (!"".equals(params[24].trim()))
 			mysql.append("AND contact_ce_express.ce_number LIKE '%"+params[24]+"%' ");
+		//添加登门拜访和约谈查询
+		if (!"".equals(params[45].trim()))
+			mysql.append("AND contact_see.cs_name LIKE '%"+params[45]+"%' ");
+		if (!"".equals(params[46].trim()))
+			mysql.append("AND contact_see.cs_othername LIKE '%"+params[46]+"%' ");
+		if (!"".equals(params[47].trim()))
+			mysql.append("AND contact_talk.name LIKE '%"+params[47]+"%' ");
+		if (!"".equals(params[48].trim()))
+			mysql.append("AND contact_talk.lawyername LIKE '%"+params[48]+"%' ");
+		
 		if(!"".equals(params[32].trim()))
 			mysql.append("AND court0_.casecodeself LIKE '%"+params[32]+"%' ");
 		if (!"".equals(params[33].trim()))
@@ -813,6 +876,14 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		if(!"".equals(params[24].trim()) || !"".equals(params[34].trim()) || !"".equals(params[35].trim()) || !"".equals(params[36].trim())){
 			mysql.append("left join lawyer.contact_express contact_ce_express ");
 			mysql.append("ON court0_.casecodeself=contact_ce_express.ce_casecodeself ");
+		}
+		if(!"".equals(params[45].trim()) || !"".equals(params[46].trim())){
+			mysql.append("left join lawyer.contact_see contact_see ");
+			mysql.append("ON court0_.casecodeself=contact_see.cs_casecodeself ");
+		}
+		if(!"".equals(params[47].trim()) || !"".equals(params[48].trim())){
+			mysql.append("left join lawyer.contact_talk contact_talk ");
+			mysql.append("ON court0_.casecodeself=contact_talk.casecodeself ");
 		}
 		mysql.append("where 1 ");
 		
@@ -941,7 +1012,16 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			mysql.append("AND contact_ce_express.ce_number LIKE '%"+params[24]+"%' ");
 		if (!"".equals(params[34].trim()))
 			mysql.append("AND contact_ce_express.ce_name LIKE '%"+params[34]+"%' ");
-			
+		
+		if (!"".equals(params[45].trim()))
+			mysql.append("AND contact_see.cs_name LIKE '%"+params[45]+"%' ");
+		if (!"".equals(params[46].trim()))
+			mysql.append("AND contact_see.cs_othername LIKE '%"+params[46]+"%' ");
+		if (!"".equals(params[47].trim()))
+			mysql.append("AND contact_talk.name LIKE '%"+params[47]+"%' ");
+		if (!"".equals(params[48].trim()))
+			mysql.append("AND contact_talk.lawyername LIKE '%"+params[48]+"%' ");
+		
 		if(!"".equals(params[32].trim()))
 			mysql.append("AND court0_.casecodeself LIKE '%"+params[32]+"%' ");
 		if (!"".equals(params[33].trim()))

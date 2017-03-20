@@ -10,7 +10,6 @@ public class ContactSee implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	// Fields
 
 	private Integer csId;
 	private String csName;
@@ -22,8 +21,6 @@ public class ContactSee implements java.io.Serializable {
 	private Users users;
 	private String csCasecodeself;
 	private String csSavetime;
-
-	// Constructors
 
 	public String getCsSavetime() {
 		return csSavetime;

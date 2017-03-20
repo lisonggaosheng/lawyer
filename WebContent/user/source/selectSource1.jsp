@@ -1260,27 +1260,27 @@
 											class="step_table">
 											<tr>
 												<td align="right" width="40%" class="td">时间：</td>
-												<td class="td"><s:property value="csDate" /></td>
+												<td class="td"><s:property value="ctDate" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">对方联系人：</td>
-												<td class="td"><s:property value="csName" /></td>
+												<td class="td"><s:property value="ctName" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">跟进人：</td>
-												<td class="td"><s:property value="csOthername" /></td>
+												<td class="td"><s:property value="ctLawyerName" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">跟进情况：</td>
-												<td class="td"><s:property value="csResult" /></td>
+												<td class="td"><s:property value="ctResult" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">备注：</td>
-												<td class="td"><s:property value="csRemark" /></td>
+												<td class="td"><s:property value="ctRemark" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">记录时间：</td>
-												<td class="td"><s:property value="csSavetime" /></td>
+												<td class="td"><s:property value="ctSavetime" /></td>
 											</tr>
 											<tr>
 												<td align="right" width="25%" class="td">附件：</td>

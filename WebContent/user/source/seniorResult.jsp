@@ -209,10 +209,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </td>
                     </tr>
                     <tr>
-                    	<td align="right">联系人1姓名：</td>
+                    	<td align="right">电话联系人1姓名：</td>
                         <td><input type="text" name="contactTel.ctName1" /></td>
-                        <td align="right">联系人1电话：</td>
+                        <td align="right">电话联系人1电话：</td>
                         <td><input type="text" name="contactTel.ctTel1" /></td>
+                    </tr>
+                    <tr>
+                    	<td align="right">登门拜访人：</td>
+                        <td><input type="text" name="contactSee.csName" /></td>
+                        <td align="right">登门拜访被联系人：</td>
+                        <td><input type="text" name="contactSee.csOthername" /></td>
+                    </tr>
+                    <tr>
+                    	<td align="right">约谈人：</td>
+                        <td><input type="text" name="contactTalk.ctName" /></td>
+                        <td align="right">跟进律师：</td>
+                        <td><input type="text" name="contactTalk.ctLawyerName" /></td>
                     </tr>
                     <tr>
                         <td align="right">签约联系人：</td>
