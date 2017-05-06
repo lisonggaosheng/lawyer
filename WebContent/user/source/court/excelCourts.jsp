@@ -70,5 +70,9 @@
 	</form>
 	
 	<div style="margin-left: 20px;margin-top: 10px;"><span id="message" style="font-size:24px;color:blue;">${message}</span></div>
+<script type="text/javascript">
+
+</script>
+
 </body>
 </html>
