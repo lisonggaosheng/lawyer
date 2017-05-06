@@ -198,7 +198,7 @@ public class CourtAction extends ActionSupport{
 						Court court = new Court();
 						court.setPname(ExcelTools.getValue(pname));
 						court.setCaseCode(ExcelTools.getValue(caseCode));
-						court.setExecMoney(StringFilter.getOrderNumber( ExcelTools.getValue(execMoney)));
+						court.setExecMoney(StringFilter.getStringNumber(ExcelTools.getValue(execMoney)));
 						court.setRemark(ExcelTools.getValue(remark));
 						court.setCreditor(ExcelTools.getValue(creditor));
 						court.setCreditorAddress(ExcelTools.getValue(creditorAddress));

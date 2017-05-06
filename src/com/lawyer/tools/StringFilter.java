@@ -19,10 +19,13 @@ public class StringFilter {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(getOrderNumber("123213元"));
+		System.out.println(getStringNumber("123213元"));
 	}
 	
-	public static String getOrderNumber(String str) {
+	public static String getStringNumber(String str) {
+		if(str == null || str.length()==0){
+			return "0";
+		}
         Pattern pat = Pattern.compile(regex);    
         Matcher mat = pat.matcher(str);   
         String repickStr = mat.replaceAll("");
