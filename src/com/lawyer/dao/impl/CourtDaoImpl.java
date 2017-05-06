@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
@@ -49,6 +50,9 @@ import com.lawyer.tools.StringFilter;
 
 @Entity
 public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
+	
+	private static Logger logger = Logger.getLogger(CourtDaoImpl.class);
+	
 	/**
 	 * 向数据库插入外部软件所需要的数据
 	 */

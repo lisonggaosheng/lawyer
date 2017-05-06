@@ -6,6 +6,8 @@ import java.util.regex.PatternSyntaxException;
 
 public class StringFilter {
 	
+	private static String regex ="[\u4e00-\u9fa5]";
+	
 	public static String stringFilter(String str) throws PatternSyntaxException {
 		// 只允许字母和数字
 		// String regEx = "[^a-zA-Z0-9]";
@@ -17,10 +19,15 @@ public class StringFilter {
 	}
 	
 	public static void main(String[] args) {
-		int num = 23;
-		String str = String.format("%3d", num).replace(" ", "0");
-		System.out.println(str);
+		System.out.println(getOrderNumber("123213元"));
 	}
+	
+	public static String getOrderNumber(String str) {
+        Pattern pat = Pattern.compile(regex);    
+        Matcher mat = pat.matcher(str);   
+        String repickStr = mat.replaceAll("");
+        return repickStr;
+    }
 	
 	
 }
