@@ -54,7 +54,7 @@
 		</table>
 	</form>
 	
-	<form action="excelInsertCourt.action" method="post" enctype="multipart/form-data">
+	<form id="FirstForm" name="FirstForm" action="excelInsertCourt.action" method="post" enctype="multipart/form-data">
 		<table cellpadding="0" cellspacing="0" border="0" align="center"
 		width="98%" class="result_table">
 			<tr>
@@ -63,7 +63,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				<input type="file" name="upd" /><input type="submit" value="导入"/>
+				<input type="file" name="upd" /><input id="dealFirst" type="button" value="导入" onclick = "checkUser();"/>
 				</td>
 		</tr>
 		</table>
@@ -71,7 +71,10 @@
 	
 	<div style="margin-left: 20px;margin-top: 10px;"><span id="message" style="font-size:24px;color:blue;">${message}</span></div>
 <script type="text/javascript">
-
+	function checkUser(){
+		$("#message").text("正在执行中。。。");
+	  document.getElementById("FirstForm").submit();
+	}
 </script>
 
 </body>

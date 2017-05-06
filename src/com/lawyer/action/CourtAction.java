@@ -210,8 +210,8 @@ public class CourtAction extends ActionSupport{
 					}
 				}
 				is.close();
-				this.courtService.excelInsertCourt(dataList);
-				request.setAttribute("message","excel导入第一步执行成功");
+				long count = this.courtService.excelInsertCourt(dataList);
+				request.setAttribute("message","excel导入第一步执行成功 "+count+" 条");
 				return SUCCESS;
 			}else{
 				request.setAttribute("message","excel导入第一步文件上传失败");
