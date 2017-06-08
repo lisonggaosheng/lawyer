@@ -48,6 +48,7 @@ import com.lawyer.service.AddRecordService;
 import com.lawyer.service.CourtService;
 import com.lawyer.service.LawyerCourtService;
 import com.lawyer.tools.ExcelTools;
+import com.lawyer.tools.StringFilter;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -197,7 +198,7 @@ public class CourtAction extends ActionSupport{
 						Court court = new Court();
 						court.setPname(ExcelTools.getValue(pname));
 						court.setCaseCode(ExcelTools.getValue(caseCode));
-						court.setExecMoney(ExcelTools.getValue(execMoney));
+						court.setExecMoney(StringFilter.getStringNumber(ExcelTools.getValue(execMoney)));
 						court.setRemark(ExcelTools.getValue(remark));
 						court.setCreditor(ExcelTools.getValue(creditor));
 						court.setCreditorAddress(ExcelTools.getValue(creditorAddress));
@@ -209,8 +210,8 @@ public class CourtAction extends ActionSupport{
 					}
 				}
 				is.close();
-				this.courtService.excelInsertCourt(dataList);
-				request.setAttribute("message","excel导入第一步执行成功");
+				long count = this.courtService.excelInsertCourt(dataList);
+				request.setAttribute("message","excel导入第一步执行成功 "+count+" 条");
 				return SUCCESS;
 			}else{
 				request.setAttribute("message","excel导入第一步文件上传失败");

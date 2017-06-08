@@ -620,9 +620,11 @@ public class CourtServiceImpl implements CourtService {
 	}
 
 	@Override
-	public void excelInsertCourt(List<Court> dataList) throws Exception {
-		HttpSession session = ServletActionContext.getRequest().getSession();
-		Users admin = (Users) session.getAttribute("admin");
+	public long excelInsertCourt(List<Court> dataList) throws Exception {
+		long dealCount = 0;
+		
+		HttpSession session=ServletActionContext.getRequest().getSession();
+		Users admin=(Users) session.getAttribute("admin");	
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
@@ -662,7 +664,11 @@ public class CourtServiceImpl implements CourtService {
 			applierinfo.setUsers(admin);
 			applierinfo.setAppCCasecodeself(casecodeself);
 			appdao.insertApp(applierinfo);
+			
+			dealCount++;
 		}
+		
+		return dealCount;
 	}
 
 	@Override

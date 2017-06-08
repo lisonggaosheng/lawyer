@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
@@ -50,6 +51,9 @@ import com.lawyer.tools.StringFilter;
 
 @Entity
 public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
+	
+	private static Logger logger = Logger.getLogger(CourtDaoImpl.class);
+	
 	/**
 	 * 向数据库插入外部软件所需要的数据
 	 */
@@ -167,7 +171,10 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 					+ minMoney
 					+ "' and '"
 					+ maxMoney
-					+ "' and c.excludeStatus='0' and eb.EStatus like '%"+exb.getEStatus()+"%' ";
+					+ "' and c.excludeStatus='0' ";
+			if(exb.getEStatus()!=null && exb.getEStatus().length()>0){
+				hql += "and eb.EStatus like '%"+exb.getEStatus()+"%' ";
+			}
 		}
 		if(user != null && user.getURole().contains("市场")){
 			hql += " and c.execMoney >= 70000 ";
@@ -182,58 +189,6 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			 courts.add(courtNew);
 		}
 		return courts;
-//		return this.getHibernateTemplate().executeFind(new HibernateCallback() {
-//			@Override
-//			public Object doInHibernate(Session session)
-//					throws HibernateException, SQLException {
-//				if(exb.getEStatus() == null){
-//					exb.setEStatus("");
-//				}
-//				String hql = "";
-//				if(Parser.getInt(court.getExecutestep()) == 1){
-//					hql = "from Court c where c.courtcode like '%"
-//							+ court.getCourtcode()
-//							+ "%'  and c.executestep like '%"
-//							+ court.getExecutestep()
-//							+ "%' and c.caseCreateTime between '"
-//							+ startDate
-//							+ "' and '"
-//							+ endDate
-//							+ "' and c.savetime between '"
-//							+ instartDate
-//							+ "' and '"
-//							+ inendDate
-//							+ "' and c.execMoney between '"
-//							+ minMoney
-//							+ "' and '"
-//							+ maxMoney
-//							+ "' and c.excludeStatus='0' ";
-//				}else{
-//					hql = "from Court c, Executebusiness eb  where c.casecodeself=eb.ECCasecodeself and c.courtcode like '%"
-//							+ court.getCourtcode()
-//							+ "%'  and c.executestep like '%"
-//							+ court.getExecutestep()
-//							+ "%' and c.caseCreateTime between '"
-//							+ startDate
-//							+ "' and '"
-//							+ endDate
-//							+ "' and c.savetime between '"
-//							+ instartDate
-//							+ "' and '"
-//							+ inendDate
-//							+ "' and c.execMoney between '"
-//							+ minMoney
-//							+ "' and '"
-//							+ maxMoney
-//							+ "' and c.excludeStatus='0' and eb.EStatus like '%"+exb.getEStatus()+"%' ";
-//				}
-//				hql += " order by c.caseCreateTime desc";
-//				Query query = session.createQuery(hql);
-//				query.setFirstResult((currentPage - 1) * 12);
-//				query.setMaxResults(12);
-//				return query.list();
-//			}
-//		});
 	}
 
 	/**
@@ -278,7 +233,10 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 					+ minMoney
 					+ "' and '"
 					+ maxMoney
-					+ "' and c.excludeStatus='0' and eb.EStatus like '%"+exb.getEStatus()+"%' ";
+					+ "' and c.excludeStatus='0' ";
+			if(exb.getEStatus()!=null && exb.getEStatus().length()>0){
+				hql += "and eb.EStatus like '%"+exb.getEStatus()+"%' ";
+			}
 		}
 		if(user != null && user.getURole().contains("市场")){
 			hql += " and c.execMoney >= 70000";

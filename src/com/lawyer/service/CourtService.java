@@ -22,7 +22,7 @@ public interface CourtService {
 	 * excel导入被执行人信息
 	 * @throws Exception 
 	 */
-	public void excelInsertCourt(List<Court> dataList) throws Exception;
+	public long excelInsertCourt(List<Court> dataList) throws Exception;
 	
 	/**
 	 * 向数据库插入企业更新所需要的数据
