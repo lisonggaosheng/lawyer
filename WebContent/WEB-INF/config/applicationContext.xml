@@ -19,7 +19,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 				<prop key="hibernate.dialect">
 					org.hibernate.dialect.MySQLDialect
 				</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
 				<!-- 配置proxool连接池 -->
 				<prop key="hibernate.proxool.pool_alias">DBPool</prop>
 				<prop key="hibernate.proxool.xml">proxool.xml</prop>

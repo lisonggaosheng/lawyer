@@ -1485,7 +1485,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 		try{
 			String sql = "SELECT id,caseId,person_execution,person_execution_addr,courtname,publishDate,"+
 							"caseCode,case_content,applicant,applicant_addr "+
-							"from bjcourt limit 0,5000";
+							"from bjcourt limit 0,2000";
 			list = this.getSession().createSQLQuery(sql)
 					.addEntity("RefereeDocumentCourt", RefereeDocumentCourt.class).list();
 		}catch(Exception e){
@@ -1495,7 +1495,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	}
 	@Override
 	public void deleteRefereeDocument() {
-		String deleteSql = "DELETE FROM court_shixin limit 5000";
+		String deleteSql = "DELETE FROM bjcourt limit 2000";
 		this.getSession().createSQLQuery(deleteSql).executeUpdate();
 	}
 	

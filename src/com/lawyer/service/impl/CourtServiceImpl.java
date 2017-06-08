@@ -694,7 +694,7 @@ public class CourtServiceImpl implements CourtService {
 				String courtNumber = lawyerCourtDao.getCourtNumberByName(dcourt.getCourtname());
 				long courtCount = courtDao.countCourtByCC(courtNumber, dcourt.getPublishDate());
 				String count = String.format("%4d", courtCount+1).replace(" ", "0");
-				String date = sdf.format(simpleDateFormat.parse(dcourt.getPublishDate()));
+				String date = sdf.format(sdf.parse(dcourt.getPublishDate()));
 				String casecodeself = courtNumber+date+count+System.currentTimeMillis();
 				Court court = new Court();
 				court.setCasecodeself(casecodeself);
