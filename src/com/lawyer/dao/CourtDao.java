@@ -58,13 +58,13 @@ public interface CourtDao {
 	public void insertCourt(Court court) throws Exception;
 	public Apply selectApply(Users users)throws Exception;
 	public Apply selectCourt3(Apply apply,Users users) throws Exception;
-	public List selectCourtAll(Court court)throws Exception;
+	public List<?> selectCourtAll(Court court)throws Exception;
 	public void updateCourt(Court court)throws Exception;
 	public long countCourtByCC(String courtcode,String caseCreateTime) throws Exception; 
 	
 	public String insertMoreCourts(Users user) throws Exception;//��Դ���������������־��
 	
-	public List queryForPage(final String hql,final int offset,final int length);
+	public List<?> queryForPage(final String hql,final int offset,final int length);
     
     public int getAllRowCount(String hql);
     
@@ -102,4 +102,13 @@ public interface CourtDao {
 	
 	public ContactSee updConSee(String csCasecodeself)throws Exception;
 	public void toupdConSee(ContactSee csee)throws Exception;
+	
+	/**
+	 * 处理裁判文书
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
+	List<?> listRefereeDocument();
+	void deleteRefereeDocument();
 }

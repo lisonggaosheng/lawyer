@@ -5,6 +5,10 @@
 <struts>
 	<package name="court" extends="struts-default" >
 		
+		<!-- 裁判文书批量录入 -->
+		<action name="insertRefereeDocument" class="courtAction" method="insertRefereeDocument">
+		</action>
+		
 		<!-- excel导入被执行人信息 -->
 		<action name="excelInsertCourt" class="courtAction" method="excelInsertCourt">
 			<result>/user/source/court/excelCourts.jsp</result>

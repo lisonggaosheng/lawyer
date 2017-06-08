@@ -21,6 +21,9 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 			 <property name="appdao">
 				<ref bean="applierinfoDao" />
 			</property>
+			<property name="lawyerCourtDao">
+			 	<ref bean="lawyerCourtDao"></ref>
+			 </property>
 		</bean>		
 		
 		<!-- action -->

@@ -42,6 +42,7 @@ import com.lawyer.pojo.LawyerCourt;
 import com.lawyer.pojo.LawyerCourtName;
 import com.lawyer.pojo.NoteInfo;
 import com.lawyer.pojo.PageBean;
+import com.lawyer.pojo.RefereeDocumentCourt;
 import com.lawyer.pojo.Users;
 import com.lawyer.tools.CommonUtil;
 import com.lawyer.tools.Parser;
@@ -1519,4 +1520,26 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 			}
 		});
 	}
+	
+	@Override
+	public List<?> listRefereeDocument() {
+		List<?> list = new ArrayList<>();
+		try{
+			String sql = "SELECT id,caseId,person_execution,person_execution_addr,courtname,publishDate,"+
+							"caseCode,case_content,applicant,applicant_addr "+
+							"from bjcourt limit 0,5000";
+			list = this.getSession().createSQLQuery(sql)
+					.addEntity("RefereeDocumentCourt", RefereeDocumentCourt.class).list();
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+		return list;
+	}
+	@Override
+	public void deleteRefereeDocument() {
+		String deleteSql = "DELETE FROM court_shixin limit 5000";
+		this.getSession().createSQLQuery(deleteSql).executeUpdate();
+	}
+	
+	
 }

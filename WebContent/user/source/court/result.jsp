@@ -139,7 +139,29 @@
 			});
 		}
 	}
-
+	
+	//裁判文书批处理
+	function insertRefereeDocument(){
+		var mes = "确定进行裁判文书批量操作？ ";
+		if(confirm(mes)){
+			$.ajax({
+				type:"POST",
+				cache:false,
+				url:"/lawyer/insertRefereeDocument.action",
+				beforeSend:function(){
+					document.getElementById("bg").style.display ="block";
+					document.getElementById("show").style.display ="block";
+				},
+				success:function(msg){
+					alert(msg);
+				},
+				complete: function(XMLHttpRequest, textStatus){
+					document.getElementById("bg").style.display ='none';
+					document.getElementById("show").style.display ='none';
+             	}
+			});
+		}
+	}
 	//被执行人执行信息批处理
 	function insertCourts(){
 		var mes = "确定进行被执行人执行信息批量操作？ ";
@@ -406,6 +428,14 @@
 			<td colspan="2">&nbsp;&nbsp;<img src="images/view_16x16.gif" />&nbsp;
 			<span class="title">批处理操作</span></td>
 		</tr>
+			<tr class="title">
+				<td colspan="6">&nbsp;&nbsp;<img
+					src="/lawyer/images/flag2_16x16.gif" />&nbsp;裁判文书查询</td>	
+			</tr>
+			<tr>
+				<td align="center"><input type="button" value="裁判文书导入"
+					onclick="insertRefereeDocument()" /></td>
+			</tr>
 			<tr class="title">
 				<td colspan="6">&nbsp;&nbsp;<img
 					src="/lawyer/images/flag2_16x16.gif" />&nbsp;被执行人(债务人)执行信息</td>

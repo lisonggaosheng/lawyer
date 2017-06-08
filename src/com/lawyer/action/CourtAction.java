@@ -1010,4 +1010,25 @@ public class CourtAction extends ActionSupport{
 			return ERROR;
 		}
 	}
+	
+	/**
+	 * 裁判文书批处理导入——郭志鹏
+	 * @return
+	 */
+	public String insertRefereeDocument(){
+		try {
+			String message = courtService.insertRefereeDocument();
+			
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print(message);
+			out.flush();
+			out.close();
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

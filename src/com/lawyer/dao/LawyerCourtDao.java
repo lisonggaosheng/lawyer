@@ -6,35 +6,37 @@ import com.lawyer.pojo.LawyerCourt;
 
 /**
  * @date 2013-4-13 15:45:03
- * @author ÀîÃÎÏè
- *	·¨ÔºµÄ³Ö¾Ã»¯²ã
+ * @author ææ¢¦ç¿”
+ *	æ³•é™¢çš„æŒä¹…åŒ–å±‚
  */
 public interface LawyerCourtDao {
 	/**
-	 * ²éÕÒËùÓĞ·¨ÔºĞÅÏ¢
+	 * æŸ¥æ‰¾æ‰€æœ‰æ³•é™¢ä¿¡æ¯
 	 * @return
 	 * @throws Exception
 	 */
 	public List<LawyerCourt> selectAll() throws Exception;
 	/**
-	 * ²éÕÒÒ»¼¶µÄ·¨Ôº
+	 * æŸ¥æ‰¾ä¸€çº§çš„æ³•é™¢
 	 */
 	public List<LawyerCourt> selectFirst() throws Exception;
 	/**
-	 * ¸ù¾İÒ»¼¶²éÕÒ¶ş¼¶
+	 * æ ¹æ®ä¸€çº§æŸ¥æ‰¾äºŒçº§
 	 */
 	public List<LawyerCourt> selectSecond(String fir_id) throws Exception;
 	/**
-	 * ¸ù¾İ¶ş¼¶²éÕÒÈı¼¶
+	 * æ ¹æ®äºŒçº§æŸ¥æ‰¾ä¸‰çº§
 	 */
 	public List<LawyerCourt> selectThird(String sec_id) throws Exception;
 	/**
-	 * ¸ù¾İid²éÕÒ·¨Ôº
+	 * æ ¹æ®idæŸ¥æ‰¾æ³•é™¢
 	 */
 	public LawyerCourt selectCourtByID(int courtid) throws Exception;
 	
 	/**
-	 * ¸ù¾İnumber²éÕÒ·¨Ôº
+	 * æ ¹æ®numberæŸ¥æ‰¾æ³•é™¢
 	 */
 	public LawyerCourt selectCourtByNumber(String courtnumber) throws Exception;
+	
+	String getCourtNumberByName(String courtName);
 }

@@ -4,11 +4,19 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 
 import com.lawyer.dao.ApplierinfoDao;
 import com.lawyer.dao.CourtDao;
 import com.lawyer.dao.ExecutebusinessDao;
+import com.lawyer.dao.LawyerCourtDao;
 import com.lawyer.pojo.Applierinfo;
 import com.lawyer.pojo.ApplierinfoNetwork;
 import com.lawyer.pojo.ApplierinfoOnself;
@@ -20,15 +28,10 @@ import com.lawyer.pojo.ContactSee;
 import com.lawyer.pojo.ContactTel;
 import com.lawyer.pojo.Court;
 import com.lawyer.pojo.Executebusiness;
-import com.lawyer.pojo.PageBean;
+import com.lawyer.pojo.RefereeDocumentCourt;
 import com.lawyer.pojo.Users;
 import com.lawyer.service.CourtService;
-
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.servlet.http.HttpSession;
-
-import org.apache.struts2.ServletActionContext;
+import com.lawyer.tools.CommonUtil;
 
 @Entity
 public class CourtServiceImpl implements CourtService {
@@ -36,6 +39,8 @@ public class CourtServiceImpl implements CourtService {
 	private CourtDao courtDao;
 	private ExecutebusinessDao executebusDao;
 	private ApplierinfoDao appdao;
+	private LawyerCourtDao lawyerCourtDao;
+	
 
 	public CourtDao getCourtDao() {
 		return courtDao;
@@ -59,6 +64,14 @@ public class CourtServiceImpl implements CourtService {
 
 	public void setAppdao(ApplierinfoDao appdao) {
 		this.appdao = appdao;
+	}
+
+	public LawyerCourtDao getLawyerCourtDao() {
+		return lawyerCourtDao;
+	}
+
+	public void setLawyerCourtDao(LawyerCourtDao lawyerCourtDao) {
+		this.lawyerCourtDao = lawyerCourtDao;
 	}
 
 	/**
@@ -103,8 +116,8 @@ public class CourtServiceImpl implements CourtService {
 			minMoney = "0";
 		if (maxMoney == null || "".equals(maxMoney.trim()))
 			maxMoney = "100000000000";
-		courtDao.createUpdateData(court, startDate, endDate, instartDate, inendDate,
-				minMoney, maxMoney);
+		courtDao.createUpdateData(court, startDate, endDate, instartDate,
+				inendDate, minMoney, maxMoney);
 	}
 
 	/**
@@ -156,7 +169,54 @@ public class CourtServiceImpl implements CourtService {
 	/**
 	 * 按条件分页查询court信息
 	 */
-	public List<Court> selectCourts(Court court,Executebusiness exb, int currentPage,
+	public List<Court> selectCourts(Court court, Executebusiness exb,
+			int currentPage, String startDate, String endDate,
+			String instartDate, String inendDate, String minMoney,
+			String maxMoney) throws Exception {
+		if (startDate == null || "".equals(startDate.trim()))
+			startDate = "1111年11月11日";
+		if (endDate == null || "".equals(endDate.trim()))
+			endDate = "2222年22月22日";
+		if (instartDate == null || "".equals(instartDate.trim()))
+			instartDate = "1111-11-11 00:00:00";
+		else {
+			instartDate += " 00:00:00";
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
+			Date d;
+			try {
+				d = df2.parse(instartDate);
+				instartDate = df.format(d);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		if (inendDate == null || "".equals(inendDate.trim()))
+			inendDate = "2222-22-22 00:00:00";
+		else {
+			inendDate += " 00:00:00";
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			DateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
+			Date d;
+			try {
+				d = df2.parse(inendDate);
+				inendDate = df.format(d);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		if (minMoney == null || "".equals(minMoney.trim()))
+			minMoney = "0";
+		if (maxMoney == null || "".equals(maxMoney.trim()))
+			maxMoney = "100000000000";
+		return courtDao.selectCourts(court, exb, currentPage, startDate,
+				endDate, instartDate, inendDate, minMoney, maxMoney);
+	}
+
+	/**
+	 * 按条件分页查询的总页数
+	 */
+	public int selectTatolPage(Court court, Executebusiness exb,
 			String startDate, String endDate, String instartDate,
 			String inendDate, String minMoney, String maxMoney)
 			throws Exception {
@@ -196,54 +256,8 @@ public class CourtServiceImpl implements CourtService {
 			minMoney = "0";
 		if (maxMoney == null || "".equals(maxMoney.trim()))
 			maxMoney = "100000000000";
-		return courtDao.selectCourts(court,exb, currentPage, startDate, endDate,
+		return courtDao.selectTatolPage(court, exb, startDate, endDate,
 				instartDate, inendDate, minMoney, maxMoney);
-	}
-
-	/**
-	 * 按条件分页查询的总页数
-	 */
-	public int selectTatolPage(Court court,Executebusiness exb, String startDate, String endDate,
-			String instartDate, String inendDate, String minMoney,
-			String maxMoney) throws Exception {
-		if (startDate == null || "".equals(startDate.trim()))
-			startDate = "1111年11月11日";
-		if (endDate == null || "".equals(endDate.trim()))
-			endDate = "2222年22月22日";
-		if (instartDate == null || "".equals(instartDate.trim()))
-			instartDate = "1111-11-11 00:00:00";
-		else {
-			instartDate += " 00:00:00";
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
-			Date d;
-			try {
-				d = df2.parse(instartDate);
-				instartDate = df.format(d);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		}
-		if (inendDate == null || "".equals(inendDate.trim()))
-			inendDate = "2222-22-22 00:00:00";
-		else {
-			inendDate += " 00:00:00";
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			DateFormat df2 = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
-			Date d;
-			try {
-				d = df2.parse(inendDate);
-				inendDate = df.format(d);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		}
-		if (minMoney == null || "".equals(minMoney.trim()))
-			minMoney = "0";
-		if (maxMoney == null || "".equals(maxMoney.trim()))
-			maxMoney = "100000000000";
-		return courtDao.selectTatolPage(court,exb, startDate, endDate, instartDate,
-				inendDate, minMoney, maxMoney);
 	}
 
 	/**
@@ -289,16 +303,16 @@ public class CourtServiceImpl implements CourtService {
 			minMoney = "0";
 		if (maxMoney == null || "".equals(maxMoney.trim()))
 			maxMoney = "100000000000";
-		return courtDao.selectNoteCourts(court, currentPage, startDate, endDate,
-				instartDate, inendDate, minMoney, maxMoney);
+		return courtDao.selectNoteCourts(court, currentPage, startDate,
+				endDate, instartDate, inendDate, minMoney, maxMoney);
 	}
 
 	/**
 	 * 按条件分页查询公告的总页数
 	 */
-	public int selectNoteTatolPage(Court court, String startDate, String endDate,
-			String instartDate, String inendDate, String minMoney,
-			String maxMoney) throws Exception {
+	public int selectNoteTatolPage(Court court, String startDate,
+			String endDate, String instartDate, String inendDate,
+			String minMoney, String maxMoney) throws Exception {
 		if (startDate == null || "".equals(startDate.trim()))
 			startDate = "1111年11月11日";
 		if (endDate == null || "".equals(endDate.trim()))
@@ -335,10 +349,10 @@ public class CourtServiceImpl implements CourtService {
 			minMoney = "0";
 		if (maxMoney == null || "".equals(maxMoney.trim()))
 			maxMoney = "100000000000";
-		return courtDao.selectNoteTatolPage(court, startDate, endDate, instartDate,
-				inendDate, minMoney, maxMoney);
+		return courtDao.selectNoteTatolPage(court, startDate, endDate,
+				instartDate, inendDate, minMoney, maxMoney);
 	}
-	
+
 	/**
 	 * 新建案源信息
 	 */
@@ -545,7 +559,7 @@ public class CourtServiceImpl implements CourtService {
 	public void insertNoteCourts(Users users) throws Exception {
 		courtDao.insertNoteCourts(users);
 	}
-	
+
 	@Override
 	public String insertDishonestyCourts(Users users) throws Exception {
 		return courtDao.insertDishonestyCourts(users);
@@ -601,45 +615,47 @@ public class CourtServiceImpl implements CourtService {
 			minMoney = "0";
 		if (maxMoney == null || "".equals(maxMoney.trim()))
 			maxMoney = "100000000000";
-		courtDao.createUpdateData(court, startDate, endDate, instartDate, inendDate,
-				minMoney, maxMoney);
+		courtDao.createUpdateData(court, startDate, endDate, instartDate,
+				inendDate, minMoney, maxMoney);
 	}
 
 	@Override
 	public void excelInsertCourt(List<Court> dataList) throws Exception {
-		HttpSession session=ServletActionContext.getRequest().getSession();
-		Users admin=(Users) session.getAttribute("admin");	
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Users admin = (Users) session.getAttribute("admin");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 		for (int i = 0; i < dataList.size(); i++) {
 			Court court = dataList.get(i);
-			if(court.getCaseCode() == null){
+			if (court.getCaseCode() == null) {
 				continue;
 			}
-			List<Court> courts = courtDao.selectCourtsByNameCasecode(court.getPname(), court.getCaseCode());
-			if(courts.size()>0){
+			List<Court> courts = courtDao.selectCourtsByNameCasecode(
+					court.getPname(), court.getCaseCode());
+			if (courts.size() > 0) {
 				continue;
 			}
-			courtDao.getCourtByCasecode(court);
 			Date resultDate = simpleDateFormat.parse(court.getCaseCreateTime());
-			String casedatetime  = sdf.format(resultDate);
-			
-			long count = courtDao.countCourtByCC(court.getCourtcode(), court.getCaseCreateTime());
-			
-			String casecodeself = court.getCourtcode() + casedatetime + count +System.currentTimeMillis();
+			String casedatetime = sdf.format(resultDate);
+
+			long count = courtDao.countCourtByCC(court.getCourtcode(),
+					court.getCaseCreateTime());
+
+			String casecodeself = court.getCourtcode() + casedatetime + count
+					+ System.currentTimeMillis();
 			court.setCasecodeself(casecodeself);
 			court.setSavetime(df1.format(new Date()));
 			court.setUid(admin.getUId());
-			court.setCaseId( String.valueOf((int)((Math.random()*9+1)*100000)));
+			court.setCaseId(String.valueOf((int) ((Math.random() * 9 + 1) * 100000)));
 			courtDao.insertCourt(court);
-			
+
 			Executebusiness executebus = new Executebusiness();
 			executebus.setEName(court.getPname());
 			executebus.setUsers(admin);
 			executebus.setECCasecodeself(casecodeself);
 			executebusDao.insertStep2(executebus);
-			
+
 			Applierinfo applierinfo = new Applierinfo();
 			applierinfo.setAppName(court.getCreditor());
 			applierinfo.setAppAddress(court.getCreditorAddress());
@@ -647,6 +663,71 @@ public class CourtServiceImpl implements CourtService {
 			applierinfo.setAppCCasecodeself(casecodeself);
 			appdao.insertApp(applierinfo);
 		}
+	}
+
+	@Override
+	public String insertRefereeDocument() throws Exception {
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Users user = (Users) session.getAttribute("admin");
+		String message = "";
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+		int dealCount = 0;
+		List<?> list = courtDao.listRefereeDocument();
+		if (list.size() > 0) {
+			Iterator<?> it = list.iterator();
+			while (it.hasNext()) {
+				RefereeDocumentCourt dcourt = (RefereeDocumentCourt) it.next();
+				List<Court> courts = courtDao.selectCourtsByNameCasecode(dcourt.getPerson_execution(), dcourt.getCaseCode());
+				if (courts.size() > 0) {
+					continue;
+				}
+
+				String courtNumber = lawyerCourtDao.getCourtNumberByName(dcourt.getCourtname());
+				long courtCount = courtDao.countCourtByCC(courtNumber, dcourt.getPublishDate());
+				String count = String.format("%4d", courtCount+1).replace(" ", "0");
+				String date = sdf.format(simpleDateFormat.parse(dcourt.getPublishDate()));
+				String casecodeself = courtNumber+date+count+System.currentTimeMillis();
+				Court court = new Court();
+				court.setCasecodeself(casecodeself);
+				court.setCaseId(CommonUtil.generateString(8));
+				court.setPname(dcourt.getPerson_execution());
+				court.setCaseCode(dcourt.getCaseCode());
+				court.setExecCourtName(dcourt.getCourtname());
+				court.setCourtcode(courtNumber);
+				court.setCaseCreateTime(date);
+				court.setExecutestep("1");
+				court.setExcludeStatus("0");
+				court.setInfoType("1");
+				court.setExecMoney("1");
+				court.setRemark(dcourt.getCase_content());
+				court.setSavetime(df1.format(new Date()));
+				court.setUid(user.getUId());
+				courtDao.insertCourt(court);
+
+				Executebusiness executebus = new Executebusiness();
+				executebus.setEName(dcourt.getPerson_execution());
+				executebus.setEAddress(dcourt.getPerson_execution_addr());
+				executebus.setUsers(user);
+				executebus.setECCasecodeself(casecodeself);
+				executebusDao.insertStep2(executebus);
+
+				Applierinfo applierinfo = new Applierinfo();
+				applierinfo.setAppName(dcourt.getApplicant());
+				applierinfo.setAppAddress(dcourt.getApplicant_addr());
+				applierinfo.setUsers(user);
+				applierinfo.setAppCCasecodeself(casecodeself);
+				appdao.insertApp(applierinfo);
+
+				dealCount++;
+			}
+		}
+
+		courtDao.deleteRefereeDocument();
+		message = "批处理数据完成,查询" + list.size() + "条，实际插入更新" + dealCount + "条数据";
+		return message;
 	}
 
 }

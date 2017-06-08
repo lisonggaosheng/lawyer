@@ -140,4 +140,9 @@ public interface CourtService {
 	public ContactSee updConSee(String csCasecodeself)throws Exception;
 	public void toupdConSee(ContactSee csee)throws Exception;
 	
+	/**
+	 * 裁判文书信息批处理导入
+	 */
+	public String insertRefereeDocument()throws Exception;
+	
 }

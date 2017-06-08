@@ -6,12 +6,14 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.lawyer.dao.LawyerCourtDao;
 import com.lawyer.pojo.LawyerCourt;
+import com.lawyer.tools.Parser;
 
 public class LawyerCourtDaoImpl extends HibernateDaoSupport implements LawyerCourtDao {
 
@@ -73,6 +75,18 @@ public class LawyerCourtDaoImpl extends HibernateDaoSupport implements LawyerCou
 			lawyerCourt = lcs.next();
 		}
 		return lawyerCourt;
+	}
+	@Override
+	public String getCourtNumberByName(String courtName) {
+		String hql = "select lc.number from lawyer_court lc "+
+				" inner join lawyer_court_name lcn  on lcn.court_id=lc.Id "+
+				" where lcn.same_name like '%"+courtName+"%' group by number";
+		SQLQuery query = this.getSession().createSQLQuery(hql);
+		List<Object[]> list = query.list();
+		if(list.size() >0 ){
+			return Parser.getString(list.get(0));
+		}
+		return "000000";
 	}
 
 }
