@@ -308,6 +308,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 			mysql.append("AND applierinf1_.a_name LIKE '%"+params[33]+"%' ");
 		
 		String sql = mysql.toString();
+		System.out.println(sql);
 		Query query = this.getSession().createSQLQuery(sql);
 		query.setFirstResult((currentPage - 1) * pageSize);
 		query.setMaxResults(pageSize);
@@ -509,6 +510,7 @@ public class LawyerSourceImpl extends HibernateDaoSupport implements
 		if (!"".equals(params[33].trim()))
 			mysql.append("AND applierinf1_.a_name LIKE '%"+params[33]+"%' ");
 		final String hql = mysql.toString();
+		System.out.println(hql);
 		Query query = this.getSession().createSQLQuery(hql);
 		return query.list().get(0);
 	}

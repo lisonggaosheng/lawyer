@@ -690,6 +690,12 @@ public class CourtServiceImpl implements CourtService {
 				if (courts.size() > 0) {
 					continue;
 				}
+				
+				//被申请人/被执行人自然人去除
+				String courtName = dcourt.getPerson_execution();
+				if(courtName.length()<=6){
+					continue;
+				}
 
 				String courtNumber = lawyerCourtDao.getCourtNumberByName(dcourt.getCourtname());
 				long courtCount = courtDao.countCourtByCC(courtNumber, dcourt.getPublishDate());
