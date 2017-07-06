@@ -693,7 +693,7 @@ public class CourtServiceImpl implements CourtService {
 				
 				//被申请人/被执行人自然人去除
 				String courtName = dcourt.getPerson_execution();
-				if(courtName.length()<=6){
+				if(courtName.length()<=6 || courtName.length()>200){
 					continue;
 				}
 
@@ -709,7 +709,7 @@ public class CourtServiceImpl implements CourtService {
 				court.setCaseCode(dcourt.getCaseCode());
 				court.setExecCourtName(dcourt.getCourtname());
 				court.setCourtcode(courtNumber);
-				court.setCaseCreateTime(date);
+				court.setCaseCreateTime(simpleDateFormat.format(sdf.parse(dcourt.getPublishDate())));
 				court.setExecutestep("1");
 				court.setExcludeStatus("0");
 				court.setInfoType("1");
