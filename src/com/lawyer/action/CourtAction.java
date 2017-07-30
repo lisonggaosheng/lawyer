@@ -157,7 +157,7 @@ public class CourtAction extends ActionSupport{
 		this.endDate = endDate;
 	}
 	
-	/*
+	/**
 	 * excel导入被执行人信息
 	 */
 	public String excelInsertCourt(){
@@ -1030,6 +1030,62 @@ public class CourtAction extends ActionSupport{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	/**
+	 * excel导入公告信息
+	 */
+	public String excelInsertNoteCourts(){
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session=ServletActionContext.getRequest().getSession();
+		String basePath=ServletActionContext.getServletContext().getRealPath("/");
+		try {
+			if(updFileName != null){
+				String path = basePath+"\\impExcel\\"+updFileName;
+				FileUtils.copyFile(upd, new File(path));
+				
+				List<Court> dataList = new ArrayList<Court>();
+				InputStream is = new FileInputStream(path);
+				HSSFWorkbook workbook = new HSSFWorkbook(is);
+				//在Excel文档中，第一张工作表的缺省索引是0
+				HSSFSheet sheet = workbook.getSheetAt(0);
+				// 获取到Excel文件中的所有行数
+				int rows = sheet.getPhysicalNumberOfRows();
+				// 遍历行
+				for (int i = 1; i < rows; i++) {
+					// 读取左上端单元格
+					HSSFRow row = sheet.getRow(i);
+					// 行不为空
+					if (row != null) {
+						HSSFCell casecodeself = row.getCell(0);;
+						HSSFCell creditor = row.getCell(1);
+						HSSFCell pname = row.getCell(2);
+						
+						Court court = new Court();
+						court.setPname(ExcelTools.getValue(pname));
+						court.setCasecodeself(ExcelTools.getValue(casecodeself));
+						court.setCreditor(ExcelTools.getValue(creditor));
+						dataList.add(court);
+					}
+				}
+				is.close();
+				long count = this.courtService.excelInsertCourt(dataList);
+				request.setAttribute("message","excel导入公告信息执行成功 "+count+" 条");
+				return SUCCESS;
+			}else{
+				request.setAttribute("message","excel导入公告信息文件上传失败");
+				return SUCCESS;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				request.setAttribute("message","excel导入公告信息执行失败");
+				return SUCCESS;
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				return SUCCESS;
+			}
 		}
 	}
 }

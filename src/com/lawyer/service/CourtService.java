@@ -145,4 +145,10 @@ public interface CourtService {
 	 */
 	public String insertRefereeDocument()throws Exception;
 	
+	/**
+	 * excel导入公告信息
+	 * @throws Exception 
+	 */
+	public long excelInsertNoteCourts(List<Court> dataList) throws Exception;
+	
 }

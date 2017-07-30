@@ -862,7 +862,7 @@ public class CourtDaoImpl extends HibernateDaoSupport implements CourtDao {
 	public Court selCourtByCasecodeself(String casecodeself) throws Exception {
 		Court court = null;
 		Iterator<Court> courts = this.getHibernateTemplate()
-				.find("from Court c where c.caseId='" + casecodeself + "'")
+				.find("from Court c where c.casecodeself='" + casecodeself + "'")
 				.iterator();
 		while (courts.hasNext()) {
 			court = courts.next();

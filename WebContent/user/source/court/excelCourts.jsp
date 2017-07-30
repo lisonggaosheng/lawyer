@@ -69,11 +69,31 @@
 		</table>
 	</form>
 	
+	<form id="noteForm" name="noteForm" action="excelInsertNoteCourts.action" method="post" enctype="multipart/form-data">
+		<table cellpadding="0" cellspacing="0" border="0" align="center"
+		width="98%" class="result_table">
+			<tr>
+			<td colspan="2">&nbsp;&nbsp;<img src="../../images/view_16x16.gif" />&nbsp;
+			<span class="title">导入公告信息excel</span></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<input type="file" name="upd" /><input id="dealFirst" type="button" value="导入" onclick = "dealNote();"/>
+				</td>
+		</tr>
+		</table>
+	</form>
+	
 	<div style="margin-left: 20px;margin-top: 10px;"><span id="message" style="font-size:24px;color:blue;">${message}</span></div>
 <script type="text/javascript">
 	function checkUser(){
 		$("#message").text("正在执行中。。。");
 	  document.getElementById("FirstForm").submit();
+	}
+	
+	function dealNote(){
+		$("#message").text("正在执行中。。。");
+	  document.getElementById("noteForm").submit();
 	}
 </script>
 

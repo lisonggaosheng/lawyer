@@ -32,6 +32,7 @@ import com.lawyer.pojo.RefereeDocumentCourt;
 import com.lawyer.pojo.Users;
 import com.lawyer.service.CourtService;
 import com.lawyer.tools.CommonUtil;
+import com.lawyer.tools.Parser;
 
 @Entity
 public class CourtServiceImpl implements CourtService {
@@ -740,6 +741,50 @@ public class CourtServiceImpl implements CourtService {
 		courtDao.deleteRefereeDocument();
 		message = "批处理数据完成,查询" + list.size() + "条，实际插入更新" + dealCount + "条数据";
 		return message;
+	}
+
+	@Override
+	public long excelInsertNoteCourts(List<Court> dataList) throws Exception {
+		long dealCount = 0;
+		
+		HttpSession session=ServletActionContext.getRequest().getSession();
+		Users admin=(Users) session.getAttribute("admin");	
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+		for (int i = 0; i < dataList.size(); i++) {
+			Court court = dataList.get(i);
+			String casecodeself = court.getCasecodeself();
+			
+			Court courtDB = courtDao.selCourtByCasecodeself(casecodeself);
+			if(courtDB == null){
+				continue;
+			}
+			
+			if(Parser.getInt(courtDB.getExecutestep()) == 1){
+				Executebusiness executebus = new Executebusiness();
+				executebus.setEName(court.getPname());
+				executebus.setUsers(admin);
+				executebus.setECCasecodeself(casecodeself);
+				executebusDao.insertStep2(executebus);
+
+				Applierinfo applierinfo = new Applierinfo();
+				applierinfo.setAppName(court.getCreditor());
+				applierinfo.setUsers(admin);
+				applierinfo.setAppCCasecodeself(casecodeself);
+				appdao.insertApp(applierinfo);
+			}else if(Parser.getInt(courtDB.getExecutestep()) == 2){
+				Applierinfo applierinfo = new Applierinfo();
+				applierinfo.setAppName(court.getCreditor());
+				applierinfo.setUsers(admin);
+				applierinfo.setAppCCasecodeself(casecodeself);
+				appdao.insertApp(applierinfo);
+			}
+			
+			dealCount++;
+		}
+		
+		return dealCount;
 	}
 
 }

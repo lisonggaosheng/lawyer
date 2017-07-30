@@ -14,6 +14,11 @@
 			<result>/user/source/court/excelCourts.jsp</result>
 		</action>
 		
+		<!-- excel导入公告信息 -->
+		<action name="excelInsertNoteCourts" class="courtAction" method="excelInsertNoteCourts">
+			<result>/user/source/court/excelCourts.jsp</result>
+		</action>
+		
 		<!-- 法院编码更新 -->
 		<action name="courtcodeUpdate" class="courtAction" method="courtcodeUpdate">
 		</action>
