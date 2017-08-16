@@ -749,15 +749,15 @@ public class CourtServiceImpl implements CourtService {
 		
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		Users admin=(Users) session.getAttribute("admin");	
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 		for (int i = 0; i < dataList.size(); i++) {
 			Court court = dataList.get(i);
 			String casecodeself = court.getCasecodeself();
 			
 			Court courtDB = courtDao.selCourtByCasecodeself(casecodeself);
 			if(courtDB == null){
+				continue;
+			}
+			if(Parser.getInt(courtDB.getExecutestep()) > 2){
 				continue;
 			}
 			

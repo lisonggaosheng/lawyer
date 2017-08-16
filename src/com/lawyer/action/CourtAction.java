@@ -1070,7 +1070,7 @@ public class CourtAction extends ActionSupport{
 					}
 				}
 				is.close();
-				long count = this.courtService.excelInsertCourt(dataList);
+				long count = this.courtService.excelInsertNoteCourts(dataList);
 				request.setAttribute("message","excel导入公告信息执行成功 "+count+" 条");
 				return SUCCESS;
 			}else{
