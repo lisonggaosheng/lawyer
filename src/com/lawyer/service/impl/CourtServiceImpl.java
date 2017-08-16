@@ -764,18 +764,21 @@ public class CourtServiceImpl implements CourtService {
 			if(Parser.getInt(courtDB.getExecutestep()) == 1){
 				Executebusiness executebus = new Executebusiness();
 				executebus.setEName(court.getPname());
+				executebus.setEStatus(court.getExcludeStatus());
 				executebus.setUsers(admin);
 				executebus.setECCasecodeself(casecodeself);
 				executebusDao.insertStep2(executebus);
 
 				Applierinfo applierinfo = new Applierinfo();
 				applierinfo.setAppName(court.getCreditor());
+				applierinfo.setAppStatus(court.getCreditorStatus());
 				applierinfo.setUsers(admin);
 				applierinfo.setAppCCasecodeself(casecodeself);
 				appdao.insertApp(applierinfo);
 			}else if(Parser.getInt(courtDB.getExecutestep()) == 2){
 				Applierinfo applierinfo = new Applierinfo();
 				applierinfo.setAppName(court.getCreditor());
+				applierinfo.setAppStatus(court.getCreditorStatus());
 				applierinfo.setUsers(admin);
 				applierinfo.setAppCCasecodeself(casecodeself);
 				appdao.insertApp(applierinfo);
