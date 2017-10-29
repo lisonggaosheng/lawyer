@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -27,6 +28,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.lawyer.pojo.Addrecord;
 import com.lawyer.pojo.Applierinfo;
+import com.lawyer.pojo.Executebusiness;
 import com.lawyer.pojo.Users;
 import com.lawyer.service.AddRecordService;
 import com.lawyer.service.ApplierinfoService;
@@ -181,44 +183,46 @@ public class ApplierinfoAction extends ActionSupport{
 	public String excelInsertApplierinfo(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
-		Connection conn = null;
 		try {
 			if(updFileName != null){
 				String path = basePath+"\\impExcel\\"+updFileName;
 				FileUtils.copyFile(upd, new File(path));
 				
-				
-				Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-				String dburl = "driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=" + path;
-				String connectionString = "jdbc:odbc:" + dburl;
-				conn = DriverManager.getConnection(connectionString);
-				Statement stmt = conn.createStatement();
-				ResultSet  rs = stmt.executeQuery("select * from [sheet1$]");
-				// 获取列名（cnName）
 				// 获取数据
 				List<Applierinfo> dataList = new ArrayList<Applierinfo>();
-				while (rs.next()) {
-					String pname = rs.getString("被执行人名称");
-					String casecode = rs.getString("执行案号");
-					String appName = rs.getString("申请人名称");
-					String appAddress = rs.getString("住所");
-					
-					if(pname == null || pname.length() ==0){
-						break;
+				InputStream is = new FileInputStream(path);
+				HSSFWorkbook workbook = new HSSFWorkbook(is);
+				//在Excel文档中，第一张工作表的缺省索引是0
+				HSSFSheet sheet = workbook.getSheetAt(0);
+				// 获取到Excel文件中的所有行数
+				int rows = sheet.getPhysicalNumberOfRows();
+				// 遍历行
+				for (int i = 1; i < rows; i++) {
+					// 读取左上端单元格
+					HSSFRow row = sheet.getRow(i);
+					// 行不为空
+					if (row != null) {
+						HSSFCell pname = row.getCell(0);;
+						HSSFCell casecode = row.getCell(1);;
+						HSSFCell appName = row.getCell(2);
+						HSSFCell appAddress = row.getCell(3);
+						if(ExcelTools.getValue(pname) == null || ExcelTools.getValue(pname).length() ==0){
+							break;
+						}
+						
+						Applierinfo applierinfo = new Applierinfo();
+						applierinfo.setPname(ExcelTools.getValue(pname));
+						applierinfo.setCasecode(ExcelTools.getValue(casecode));
+						applierinfo.setAppName(ExcelTools.getValue(appName));
+						if(appAddress != null && !appAddress.equals("")){
+							applierinfo.setAppAddress(ExcelTools.getValue(appAddress));
+						}
+						dataList.add(applierinfo);
 					}
-					
-					Applierinfo applierinfo = new Applierinfo();
-					applierinfo.setPname(pname);
-					applierinfo.setCasecode(casecode);
-					applierinfo.setAppName(appName);
-					if(appAddress != null && !appAddress.equals("")){
-						applierinfo.setAppAddress(appAddress);
-					}
-					
-					dataList.add(applierinfo);
 				}
+				is.close();
+
 				this.appinfoService.excelInsertApplierinfo(dataList);
-				conn.close();
 				request.setAttribute("message","excel导入第三步信息执行成功");
 				return SUCCESS;
 			}else{
@@ -228,7 +232,6 @@ public class ApplierinfoAction extends ActionSupport{
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-				conn.close(); 
 				request.setAttribute("message","excel导入第三步执行失败");
 				return SUCCESS;
 			} catch (Exception e1) {

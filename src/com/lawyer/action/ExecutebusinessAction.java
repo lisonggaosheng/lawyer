@@ -1,6 +1,8 @@
 package com.lawyer.action;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,15 +19,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 
 import cn.com.stronginfo.core.jdbc.DBConnection;
 import cn.com.stronginfo.core.jdbc.DBConnectionHelper;
 
+import com.lawyer.pojo.Court;
 import com.lawyer.pojo.Executebusiness;
 import com.lawyer.pojo.Users;
 import com.lawyer.service.AddRecordService;
 import com.lawyer.service.ExecutebusinessService;
+import com.lawyer.tools.ExcelTools;
+import com.lawyer.tools.StringFilter;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ExecutebusinessAction extends ActionSupport{
@@ -102,40 +112,42 @@ public class ExecutebusinessAction extends ActionSupport{
 	public String excelInsertExecutebusiness(){
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String basePath=ServletActionContext.getServletContext().getRealPath("/");
-		Connection conn = null;
 		try {
 			if(updFileName != null){
 				String path = basePath+"\\impExcel\\"+updFileName;
 				FileUtils.copyFile(upd, new File(path));
 				
-				
-				Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-				String dburl = "driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=" + path;
-				String connectionString = "jdbc:odbc:" + dburl;
-				conn = DriverManager.getConnection(connectionString);
-				Statement stmt = conn.createStatement();
-				ResultSet  rs = stmt.executeQuery("select * from [sheet1$]");
-				// 获取列名（cnName）
 				// 获取数据
 				List<Executebusiness> dataList = new ArrayList<Executebusiness>();
-				while (rs.next()) {
-					String pname = rs.getString("名称");
-					String address = rs.getString("住所");
-					String status = rs.getString("企业状态");
-					String exception = rs.getString("经营异常名录");
-					
-					Executebusiness executebusiness = new Executebusiness();
-					executebusiness.setEName(pname);
-					executebusiness.setEAddress(address);
-					executebusiness.setException(exception);
-					if(status != null && !status.equals("")){
-						executebusiness.setEStatus(status);
+				InputStream is = new FileInputStream(path);
+				HSSFWorkbook workbook = new HSSFWorkbook(is);
+				//在Excel文档中，第一张工作表的缺省索引是0
+				HSSFSheet sheet = workbook.getSheetAt(0);
+				// 获取到Excel文件中的所有行数
+				int rows = sheet.getPhysicalNumberOfRows();
+				// 遍历行
+				for (int i = 1; i < rows; i++) {
+					// 读取左上端单元格
+					HSSFRow row = sheet.getRow(i);
+					// 行不为空
+					if (row != null) {
+						
+						HSSFCell pname = row.getCell(0);;
+						HSSFCell address = row.getCell(1);;
+						HSSFCell status = row.getCell(2);
+						HSSFCell exception = row.getCell(3);
+						Executebusiness executebusiness = new Executebusiness();
+						executebusiness.setEName(ExcelTools.getValue(pname));
+						executebusiness.setEAddress(ExcelTools.getValue(address));
+						executebusiness.setException(ExcelTools.getValue(exception));
+						if(status != null && !status.equals("")){
+							executebusiness.setEStatus(ExcelTools.getValue(status));
+						}
+						dataList.add(executebusiness);
 					}
-					
-					dataList.add(executebusiness);
 				}
+				is.close();
 				this.executebusService.excelInsertExecutebusiness(dataList);
-				conn.close();
 				request.setAttribute("message","excel导入第二步信息执行成功");
 				return SUCCESS;
 			}else{
@@ -145,7 +157,6 @@ public class ExecutebusinessAction extends ActionSupport{
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-				conn.close(); 
 				request.setAttribute("message","excel导入第二步执行失败");
 				return SUCCESS;
 			} catch (Exception e1) {
