@@ -749,9 +749,6 @@ public class CourtServiceImpl implements CourtService {
 		
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		Users admin=(Users) session.getAttribute("admin");	
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
 		for (int i = 0; i < dataList.size(); i++) {
 			Court court = dataList.get(i);
 			String casecodeself = court.getCasecodeself();
@@ -760,22 +757,28 @@ public class CourtServiceImpl implements CourtService {
 			if(courtDB == null){
 				continue;
 			}
+			if(Parser.getInt(courtDB.getExecutestep()) > 2){
+				continue;
+			}
 			
 			if(Parser.getInt(courtDB.getExecutestep()) == 1){
 				Executebusiness executebus = new Executebusiness();
 				executebus.setEName(court.getPname());
+				executebus.setEStatus(court.getExcludeStatus());
 				executebus.setUsers(admin);
 				executebus.setECCasecodeself(casecodeself);
 				executebusDao.insertStep2(executebus);
 
 				Applierinfo applierinfo = new Applierinfo();
 				applierinfo.setAppName(court.getCreditor());
+				applierinfo.setAppStatus(court.getCreditorStatus());
 				applierinfo.setUsers(admin);
 				applierinfo.setAppCCasecodeself(casecodeself);
 				appdao.insertApp(applierinfo);
 			}else if(Parser.getInt(courtDB.getExecutestep()) == 2){
 				Applierinfo applierinfo = new Applierinfo();
 				applierinfo.setAppName(court.getCreditor());
+				applierinfo.setAppStatus(court.getCreditorStatus());
 				applierinfo.setUsers(admin);
 				applierinfo.setAppCCasecodeself(casecodeself);
 				appdao.insertApp(applierinfo);

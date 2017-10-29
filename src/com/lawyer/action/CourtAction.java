@@ -1058,19 +1058,23 @@ public class CourtAction extends ActionSupport{
 					HSSFRow row = sheet.getRow(i);
 					// 行不为空
 					if (row != null) {
-						HSSFCell casecodeself = row.getCell(0);;
-						HSSFCell creditor = row.getCell(1);
-						HSSFCell pname = row.getCell(2);
+						HSSFCell casecodeself = row.getCell(0);
+						HSSFCell pname = row.getCell(1);
+						HSSFCell pStatus = row.getCell(2);
+						HSSFCell creditor = row.getCell(3);
+						HSSFCell creditorStatus = row.getCell(4);
 						
 						Court court = new Court();
 						court.setPname(ExcelTools.getValue(pname));
+						court.setExcludeStatus(ExcelTools.getValue(pStatus));
 						court.setCasecodeself(ExcelTools.getValue(casecodeself));
 						court.setCreditor(ExcelTools.getValue(creditor));
+						court.setCreditorStatus(ExcelTools.getValue(creditorStatus));
 						dataList.add(court);
 					}
 				}
 				is.close();
-				long count = this.courtService.excelInsertCourt(dataList);
+				long count = this.courtService.excelInsertNoteCourts(dataList);
 				request.setAttribute("message","excel导入公告信息执行成功 "+count+" 条");
 				return SUCCESS;
 			}else{

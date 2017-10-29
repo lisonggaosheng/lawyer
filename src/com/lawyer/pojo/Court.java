@@ -20,8 +20,11 @@ public class Court implements java.io.Serializable {
 	private Integer uid;
 	private String executestep;
 	private String remark;
+	
+	private String executeStatus;  //债务人企业状态
 	private String creditor;  //债权人
 	private String creditorAddress;  //债权人住所
+	private String creditorStatus;  //债权人企业状态
 	
 	private String noticeCourt;
 	private String noticeTime;
@@ -411,4 +414,14 @@ public class Court implements java.io.Serializable {
 	public void setExcludeStatus(String excludeStatus) {
 		this.excludeStatus = excludeStatus;
 	}
+
+	public String getCreditorStatus() {
+		return creditorStatus;
+	}
+
+	public void setCreditorStatus(String creditorStatus) {
+		this.creditorStatus = creditorStatus;
+	}
+	
+	
 }
