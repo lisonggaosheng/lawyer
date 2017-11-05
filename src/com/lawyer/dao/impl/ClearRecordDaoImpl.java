@@ -843,17 +843,17 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 							&& !cont.getCsName().equals("")) {
 						sql += " s.csName like '%" + cont.getCsName() + "%' and ";
 					}
-					if (cont.getPname() != null
-							&& !cont.getPname().equals("")) {
-						sql += " c.pname like '%" + cont.getPname() + "%' and ";
+					if (cont.getDebtorName() != null
+							&& !cont.getDebtorName().equals("")) {
+						sql += " s.debtorName like '%" + cont.getDebtorName() + "%' and ";
 					}
-					if (cont.getAppName() != null
-							&& !cont.getAppName().equals("")) {
-						sql += " a.appName like '%" + cont.getAppName() + "%' and ";
+					if (cont.getClaimName() != null
+							&& !cont.getClaimName().equals("")) {
+						sql += " s.claimName like '%" + cont.getClaimName() + "%' and ";
 					}
 				}
 				
-				String hql = "select s.csId,s.csDate,s.csName,s.csTel,s.csNo,s.csRemark,s.csCasecodeself,s.csCaseID,c.pname,a.appName from ContractSign s,Court c,Applierinfo a where s.csCasecodeself=c.casecodeself and s.csCasecodeself=a.appCCasecodeself and c.executestep=7 and " + sql;
+				String hql = "select s.csId,s.csDate,s.csName,s.csTel,s.csNo,s.csRemark,s.csCasecodeself,s.csCaseID,s.debtorName,s.claimName from ContractSign s where 1=1 and " + sql;
 				hql = hql.substring(0, hql.length() - 4) + " GROUP BY s.csId order by s.csId asc";
 				Query query = session.createQuery(hql);
 				query.setFirstResult((currentPage - 1) * 10);
@@ -882,13 +882,13 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 							&& !cont.getCsName().equals("")) {
 						sql += " s.csName like '%" + cont.getCsName() + "%' and ";
 					}
-					if (cont.getPname() != null
-							&& !cont.getPname().equals("")) {
-						sql += " c.pname like '%" + cont.getPname() + "%' and ";
+					if (cont.getDebtorName() != null
+							&& !cont.getDebtorName().equals("")) {
+						sql += " s.debtorName like '%" + cont.getDebtorName() + "%' and ";
 					}
-					if (cont.getAppName() != null
-							&& !cont.getAppName().equals("")) {
-						sql += " a.appName like '%" + cont.getAppName() + "%' and ";
+					if (cont.getClaimName() != null
+							&& !cont.getClaimName().equals("")) {
+						sql += " s.claimName like '%" + cont.getClaimName() + "%' and ";
 					}
 				}
 				if (startDate != null && endDate != null
@@ -896,7 +896,7 @@ public class ClearRecordDaoImpl extends HibernateDaoSupport implements
 					sql += " s.csDate between '" + startDate + "' and '"
 							+ endDate + "' and ";
 				}
-				String hql = "select count(distinct s.csId) from ContractSign s,Court c,Applierinfo a where s.csCasecodeself=c.casecodeself and s.csCasecodeself=a.appCCasecodeself and c.executestep=7 and " + sql;
+				String hql = "select count(distinct s.csId) from ContractSign s where 1=1 and " + sql;
 				hql = hql.substring(0, hql.length() - 4);
 				Query query = session.createQuery(hql);
 				return query.iterate().next();

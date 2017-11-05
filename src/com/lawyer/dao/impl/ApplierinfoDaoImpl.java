@@ -13,6 +13,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.lawyer.dao.ApplierinfoDao;
 import com.lawyer.pojo.Applierinfo;
+import com.lawyer.pojo.Court;
 import com.lawyer.pojo.Users;
 
 public class ApplierinfoDaoImpl extends HibernateDaoSupport implements
@@ -51,9 +52,9 @@ public class ApplierinfoDaoImpl extends HibernateDaoSupport implements
 	}
 
 	/**
-	 * °¸Ô´µÚÈý²½ÉêÇëÖ´ÐÐÈËÆóÒµÐÅÏ¢µÄÅú´¦Àí²Ù×÷¡ª¡ª¹ùÖ¾Åô
+	 * ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½
 	 * 
-	 * ------ËùÓÐÅú³öÀí ÊÂÎñ£¨ÀîÃÎÏè£©
+	 * ------ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è£©
 	 */
 	public void insertMoreApplierinfos(Users user) throws Exception {
 
@@ -153,6 +154,18 @@ public class ApplierinfoDaoImpl extends HibernateDaoSupport implements
 				+"' where a_name like '%"+applierinfo.getAppName()+"%'; ";
 		this.getSession().createSQLQuery(sql).executeUpdate();
 		
+	}
+	
+	@Override
+	public Applierinfo selectByCasecodeself(String casecodeself) throws Exception {
+		Applierinfo applierinfo = null;
+		Iterator<Applierinfo> apps = this.getHibernateTemplate()
+				.find("from Applierinfo a where a.appCCasecodeself='" + casecodeself + "'")
+				.iterator();
+		while (apps.hasNext()) {
+			applierinfo = apps.next();
+		}
+		return applierinfo;
 	}
 
 }

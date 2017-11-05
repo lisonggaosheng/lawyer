@@ -15,6 +15,12 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 		<property name="csd">
 			<ref bean="conSignDao" />
 		</property>
+		<property name="appdao">
+			<ref bean="applierinfoDao" />
+		</property>
+		<property name="courtDao">
+			<ref bean="courtDao" />
+		</property>
 	</bean>
 
 	<!-- action -->

@@ -92,8 +92,8 @@ function fanxuan() {
 					<td><s:property value="#css"></s:property></td>
 					<s:set value="#css+1" name="css"></s:set>
 					<td>${csNo}</td>
-					<td>${pname}</td>
-					<td>${appName}</td>
+					<td>${debtorName}</td>
+					<td>${claimName}</td>
 					<td>${csDate}</td>
 					<td>${csName}</td>
 					<td>${csTel}</td>

@@ -34,7 +34,7 @@ public class SendSmsAction extends ActionSupport{
 	private int page;
 
 	/**
-	 * ·¢ËÍ¶ÌĞÅÌáĞÑ
+	 * å‘é€çŸ­ä¿¡æé†’
 	 * @return
 	 * @throws Exception
 	 */
@@ -45,9 +45,9 @@ public class SendSmsAction extends ActionSupport{
 				systask.getContent(),systask.getRemindTime());
 		String message="";
 		if(result.equals("1")){
-			message = "{'result':1,'message':'¶ÌĞÅ·¢ËÍ³É¹¦£¡'}";
+			message = "{'result':1,'message':'çŸ­ä¿¡å‘é€æˆåŠŸï¼'}";
 		}else{
-			message = "{'result':-1,'message':'¶ÌĞÅ·¢ËÍÊ§°Ü£¡'}";
+			message = "{'result':-1,'message':'çŸ­ä¿¡å‘é€å¤±è´¥ï¼'}";
 		}
 		
 		HttpServletResponse response =  ServletActionContext.getResponse();
@@ -61,7 +61,7 @@ public class SendSmsAction extends ActionSupport{
 
 	
 	public String insertTasks() throws IOException {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 		
 		SysTask task  = new SysTask();
 		task.setLawyername(lawyername);
@@ -76,9 +76,9 @@ public class SendSmsAction extends ActionSupport{
 		try {
 			usertask = (SysTask) userTaskService.insertUserTask(task);
 			if(usertask.getId() > 0){
-				message = "{'result':1,'message':'ÌáĞÑÄÚÈİ±£´æ³É¹¦£¬Çëµ½´ú°ìÊÂÏî²é¿´£¡'}";
+				message = "{'result':1,'message':'æé†’å†…å®¹ä¿å­˜æˆåŠŸï¼Œè¯·åˆ°ä»£åŠäº‹é¡¹æŸ¥çœ‹ï¼'}";
 			}else{
-				message = "{'result':-1,'message':'ÌáĞÑÄÚÈİ±£´æÊ§°Ü£¡'}";
+				message = "{'result':-1,'message':'æé†’å†…å®¹ä¿å­˜å¤±è´¥ï¼'}";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

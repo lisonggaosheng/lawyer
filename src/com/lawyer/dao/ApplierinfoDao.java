@@ -3,21 +3,25 @@ package com.lawyer.dao;
 import java.util.List;
 
 import com.lawyer.pojo.Applierinfo;
+import com.lawyer.pojo.Court;
 import com.lawyer.pojo.Users;
 
 public interface ApplierinfoDao {
-	public void insertApp(Applierinfo applierinfo) throws Exception;//Ìí¼ÓÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢£¨×¢²áĞÅÏ¢£©¡ª¡ª¹ùÖ¾Åô
-//	public Applierinfo selectApp(Applierinfo applierinfo,Users users)throws Exception;//ÉêÇëÈ¨ÏŞ£¬²éÑ¯ÓĞÎŞ¶ÔÏó¡ª¡ª¹ùÖ¾Åô
-	public List selectApp(Applierinfo applierinfo)throws Exception;//²éÑ¯ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢£¨×¢²áĞÅÏ¢£©¡ª¡ª¹ùÖ¾Åô
-	public void updateAppMark(Applierinfo applierinfo)throws Exception;//¸üĞÂÉêÇëÈËÊĞ³¡±ê¼Ç ¡ª¡ª¹ùÖ¾Åô
-	public void insertMoreApplierinfos(Users user) throws Exception;//°¸Ô´µÚÈı²½ÉêÇëÖ´ĞĞÈËÆóÒµĞÅÏ¢µÄÅú´¦Àí²Ù×÷¡ª¡ª¹ùÖ¾Åô
+	public void insertApp(Applierinfo applierinfo) throws Exception;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ï¢ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½
+//	public Applierinfo selectApp(Applierinfo applierinfo,Users users)throws Exception;//ï¿½ï¿½ï¿½ï¿½È¨ï¿½Ş£ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ş¶ï¿½ï¿½ó¡ª¡ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½
+	public List selectApp(Applierinfo applierinfo)throws Exception;//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ï¢ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½
+	public void updateAppMark(Applierinfo applierinfo)throws Exception;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½
+	public void insertMoreApplierinfos(Users user) throws Exception;//ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½
 	public void insertAppSoft(Applierinfo applierinfo) throws Exception;
 	public List<Applierinfo> selAp(Applierinfo applierinfo)throws Exception;
 	
 	/**
-	 * ¸üĞÂÉêÇëÈËµÄÆóÒµ×´Ì¬
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Òµ×´Ì¬
 	 * @param applierinfo
 	 * @throws Exception
 	 */
 	public void updateAppStatus(Applierinfo applierinfo)throws Exception;
+	
+	public Applierinfo selectByCasecodeself(String casecodeself)throws Exception;
+	
 }

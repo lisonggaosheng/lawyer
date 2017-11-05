@@ -5,13 +5,32 @@ import java.util.List;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.lawyer.dao.ApplierinfoDao;
 import com.lawyer.dao.ContractSignDao;
+import com.lawyer.dao.CourtDao;
+import com.lawyer.pojo.Applierinfo;
 import com.lawyer.pojo.ContractSign;
+import com.lawyer.pojo.Court;
 import com.lawyer.pojo.Users;
 import com.lawyer.service.ContractSignService;
 
 public class ContractSignServiceImpl implements ContractSignService {
 	private ContractSignDao csd = null;
+	private ApplierinfoDao appdao = null;
+	private CourtDao courtDao;
+	public ApplierinfoDao getAppdao() {
+		return appdao;
+	}
+
+	public void setAppdao(ApplierinfoDao appdao) {
+		this.appdao = appdao;
+	}
+	public CourtDao getCourtDao() {
+		return courtDao;
+	}
+	public void setCourtDao(CourtDao courtDao) {
+		this.courtDao = courtDao;
+	}
 	public ContractSignDao getCsd() {
 		return csd;
 	}
@@ -21,14 +40,22 @@ public class ContractSignServiceImpl implements ContractSignService {
 	}
 
 	/**
-	 * ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨Ç©Ô¼Çé¿ö£©
+	 * æ–°å¢æ¡ˆæºç­¾çº¦
 	 */
 	public void insertContractSign(ContractSign contractSign) throws Exception {
+		Court court = courtDao.selCourtByCasecodeself(contractSign.getCsCasecodeself());
+		if(court!=null){
+			contractSign.setDebtorName(court.getPname());
+		}
+		Applierinfo applierinfo = appdao.selectByCasecodeself(contractSign.getCsCasecodeself());
+		if(applierinfo!=null){
+			contractSign.setClaimName(applierinfo.getAppName());
+		}
 		this.csd.insertContractSign(contractSign);
 	}
 
 	/**
-	 * ÉêÇëÈ¨ÏŞ£¬²éÑ¯ÓĞÎŞ¶ÔÏó,ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨Ç©Ô¼Çé¿ö£©
+	 * ï¿½ï¿½ï¿½ï¿½È¨ï¿½Ş£ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ş¶ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Ï¢ï¿½ï¿½Ç©Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public ContractSign selectContractSign(ContractSign contractSign,
 			Users users) throws Exception {
@@ -44,7 +71,7 @@ public class ContractSignServiceImpl implements ContractSignService {
 	}
 
 	/**
-	 * ²éÑ¯  ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨Ç©Ô¼Çé¿ö£©
+	 * ï¿½ï¿½Ñ¯  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Ï¢ï¿½ï¿½Ç©Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public List selectContractSign(ContractSign contractSign) throws Exception {
 	//	List list = this.getHibernateTemplate().find("from ContractSign");
@@ -52,14 +79,14 @@ public class ContractSignServiceImpl implements ContractSignService {
 	}
 
 	/**
-	 * ĞŞ¸Ä  ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨Ç©Ô¼Çé¿ö£©
+	 * ï¿½Ş¸ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Ï¢ï¿½ï¿½Ç©Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void updateContractSign(ContractSign contractSign) throws Exception {
 	//	this.getHibernateTemplate().load(ContractSign.class, contractSign.getCsId());
 	}
 
 	/**
-	 * É¾³ı  ÓëÉêÇëÖ´ĞĞÈËÁªÏµĞÅÏ¢£¨Ç©Ô¼Çé¿ö£©
+	 * É¾ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Ï¢ï¿½ï¿½Ç©Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void deleteContractSign(ContractSign contractSign) throws Exception {
 	//	this.getHibernateTemplate().delete(contractSign);

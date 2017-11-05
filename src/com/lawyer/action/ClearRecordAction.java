@@ -1159,63 +1159,6 @@ public class ClearRecordAction extends ActionSupport {
 	@SuppressWarnings("unchecked")
 	public String seniorSelect() throws Exception {
 		Map<String, Object> session = ActionContext.getContext().getSession();
-//		String[] params = null;
-//		if (flog.endsWith("0")) {
-//			params = new String[] {
-//					// 0-3
-//					cont.getCsNo(),
-//					cont.getCsAle(),
-//					cont.getCsName(),
-//					cont.getCsTel(),
-//					// 4-9
-//					cont.getClearrecord().getCrnumber(),
-//					cont.getClearrecord().getCrcontactjudge(),
-//					cont.getClearrecord().getCrcontacttel(),
-//					cont.getClearrecord().getCrlawname(),
-//					cont.getClearrecord().getCrlawtel(),
-//					cont.getClearrecord().getCrfollowupresult(),
-//					// 10-15
-//					cont.getClearclear().getCcnumber(),
-//					cont.getClearclear().getCcjudge(),
-//					cont.getClearclear().getCcjudgetel(),
-//					cont.getClearclear().getCclawname(),
-//					cont.getClearclear().getCclawnametel(),
-//					cont.getClearclear().getCcfollowupresult(),
-//					// 16-21
-//					cont.getLitigation().getLinumber(),
-//					cont.getLitigation().getLijudge(),
-//					cont.getLitigation().getLijudgetel(),
-//					cont.getLitigation().getLilawname(),
-//					cont.getLitigation().getLilawtel(),
-//					cont.getLitigation().getLifollowupresult(),
-//					// 22-27
-//					cont.getExecute().getExnumber(),
-//					cont.getExecute().getExjudge(),
-//					cont.getExecute().getExjudgetel(),
-//					cont.getExecute().getExlawname(),
-//					cont.getExecute().getExlawtel(),
-//					cont.getExecute().getExfollowupresult(),
-//					// 28-29
-//					cont.getCloserecord().getCrperson(),
-//					cont.getCloserecord().getCrpersontel(),
-//					// 30-31
-//					contMinTime,
-//					contMaxTime,
-//					// 32-33
-//					clearrecordMinTime,
-//					clearrecordMaxTime,
-//					// 34-37
-//					litigationMinTime, litigationMaxTime, litigationMinMoney,
-//					litigationMaxMoney,
-//					// 38-41
-//					executeMinTime, executeMaxTime, closerecordMinTime,
-//					closerecordMaxTime };
-//
-//			flog = "1";
-//			session.put("params", params);
-//		} else {
-//			params = (String[]) session.get("params");
-//		}
 		if (flog.endsWith("0")) {
 			session.put("cont", cont);
 		}else{

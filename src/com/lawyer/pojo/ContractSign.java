@@ -22,9 +22,9 @@ public class ContractSign implements java.io.Serializable {
 	private String csCasecodeself;
 	private String csSavetime;
 	private String csCaseID;
+	private String debtorName;
+	private String claimName;
 	
-	private String pname;
-	private String appName;
 	private String lawyerName;
 	
 	private String contMinTime;
@@ -53,7 +53,7 @@ public class ContractSign implements java.io.Serializable {
 
 	public ContractSign(Integer csId, Users users, String csDate, String csAle,
 			String csName, String csTel, String csNo, String csRemark,
-			String csAttach, String csCasecodeself,String pname,String appName) {
+			String csAttach, String csCasecodeself,String debtorName,String claimName) {
 		super();
 		this.csId = csId;
 		this.users = users;
@@ -65,46 +65,31 @@ public class ContractSign implements java.io.Serializable {
 		this.csRemark = csRemark;
 		this.csAttach = csAttach;
 		this.csCasecodeself = csCasecodeself;
-		this.pname = pname;
-		this.appName = appName;
+		this.debtorName = debtorName;
+		this.claimName = claimName;
 	}
 
 	/** full constructor */
 
-	// Property accessors
 
 	public Integer getCsId() {
 		return this.csId;
 	}
 
-	public ContractSign(Users users, String csDate, String csAle,
-			String csMyName,String csName, String csTel, String csNo, String csRemark,
-			String csAttach, String csCasecodeself, String csSavetime,
-			List<ClearClear> clearclears, List<ClearRecord> clearrecords,
-			List<Litigation> litigations, List<Execute> executes,
-			ClearClear clearclear, ClearRecord clearrecord,
-			Litigation litigation, Execute execute, CloseRecord closerecord) {
-		super();
-		this.users = users;
-		this.csDate = csDate;
-		this.csAle = csAle;
-		this.csMyName = csMyName;
-		this.csName = csName;
-		this.csTel = csTel;
-		this.csNo = csNo;
-		this.csRemark = csRemark;
-		this.csAttach = csAttach;
-		this.csCasecodeself = csCasecodeself;
-		this.csSavetime = csSavetime;
-		this.clearclears = clearclears;
-		this.clearrecords = clearrecords;
-		this.litigations = litigations;
-		this.executes = executes;
-		this.clearclear = clearclear;
-		this.clearrecord = clearrecord;
-		this.litigation = litigation;
-		this.execute = execute;
-		this.closerecord = closerecord;
+	public String getDebtorName() {
+		return debtorName;
+	}
+
+	public void setDebtorName(String debtorName) {
+		this.debtorName = debtorName;
+	}
+
+	public String getClaimName() {
+		return claimName;
+	}
+
+	public void setClaimName(String claimName) {
+		this.claimName = claimName;
 	}
 
 	public void setCsId(Integer csId) {
@@ -278,22 +263,6 @@ public class ContractSign implements java.io.Serializable {
 
 	public void setCsMyName(String csMyName) {
 		this.csMyName = csMyName;
-	}
-
-	public String getPname() {
-		return pname;
-	}
-
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
-
-	public String getAppName() {
-		return appName;
-	}
-
-	public void setAppName(String appName) {
-		this.appName = appName;
 	}
 
 	public String getLawyerName() {

@@ -46,5 +46,11 @@
         <property name="csCaseID" type="java.lang.String">
             <column name="cs_caseid" length="128" />
         </property>
+        <property name="debtorName" type="java.lang.String">
+            <column name="debtor_name" />
+        </property>
+        <property name="claimName" type="java.lang.String">
+            <column name="claim_name" />
+        </property>
     </class>
 </hibernate-mapping>

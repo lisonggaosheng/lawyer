@@ -82,8 +82,8 @@ function searchCourtsClear(){
 	$("#csId").val("");
 	$("#csNo").val("");
 	$("#csName").val("");
-	$("#pname").val("");
-	$("#appName").val("");
+	$("#debtorName").val("");
+	$("#claimName").val("");
 	$("#strTimeEvection").val("");
 	$("#endTimeEvection").val("");
 	
@@ -124,8 +124,8 @@ function searchCourtsClear(){
 					<td>对方联系人：<input type="text" name="cont.csName" id="csName" value="${cont.csName}"/></td>
 				</tr>
 				<tr>
-					<td>被执行人：<input type="text" name="cont.pname" id="pname" value="${cont.pname}" size="50"/></td>
-					<td>申请人：<input type="text" name="cont.appName" id="appName" value="${cont.appName}" size="50"/></td>
+					<td>被执行人：<input type="text" name="cont.debtorName" id="debtorName" value="${cont.debtorName}" size="50"/></td>
+					<td>申请人：<input type="text" name="cont.claimName" id="claimName" value="${cont.claimName}" size="50"/></td>
 				</tr>
 				<tr>
 					<td>签约号：<input type="text" name="cont.csNo" id="csNo" value="${cont.csNo}"/></td>
