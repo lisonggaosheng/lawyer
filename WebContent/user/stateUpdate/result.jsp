@@ -147,8 +147,9 @@
 				<form id="fenye" action="updateStutasByCourt.action" method="post">
 				案源当前执行步骤: <select name="court.executestep" id="step">
 					<option value="">请选择执行步骤</option>
-					<option value="1"
-						<s:if test="%{court.executestep==1}" >selected</s:if>>1.被执行人执行信息</option>
+					<option value="1" <s:if test="%{court.executestep==1}" >selected</s:if>>1.被执行人执行信息</option>
+					
+					
 					<option value="2"
 						<s:if test="%{court.executestep==2}" >selected</s:if>>2.被执行人企业信息</option>
 					<option value="3"

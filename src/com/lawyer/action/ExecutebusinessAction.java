@@ -124,7 +124,7 @@ public class ExecutebusinessAction extends ActionSupport{
 				//在Excel文档中，第一张工作表的缺省索引是0
 				HSSFSheet sheet = workbook.getSheetAt(0);
 				// 获取到Excel文件中的所有行数
-				int rows = sheet.getPhysicalNumberOfRows();
+				int rows = sheet.getLastRowNum();
 				// 遍历行
 				for (int i = 1; i < rows; i++) {
 					// 读取左上端单元格
@@ -132,8 +132,12 @@ public class ExecutebusinessAction extends ActionSupport{
 					// 行不为空
 					if (row != null) {
 						
-						HSSFCell pname = row.getCell(0);;
-						HSSFCell address = row.getCell(1);;
+						HSSFCell pname = row.getCell(0);
+						if(StringUtils.isBlank(ExcelTools.getValue(pname))){
+							continue;
+						}
+						
+						HSSFCell address = row.getCell(1);
 						HSSFCell status = row.getCell(2);
 						HSSFCell exception = row.getCell(3);
 						Executebusiness executebusiness = new Executebusiness();
